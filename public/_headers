@@ -1,0 +1,23 @@
+# Security headers for all pages
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self' https://visionedit.ro; script-src 'self' https://fonts.googleapis.com https://www.google.com https://maps.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https: https://formsubmit.co; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self';
+  Permissions-Policy: autoplay=(), camera=(), microphone=(), geolocation=(), interest-cohort=()
+  X-Robots-Tag: index, follow
+  Content-Language: ro-RO
+
+# Cache headers for static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache headers for images (opțional, dacă ai imagini în foldere separate)
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
