@@ -264,7 +264,8 @@ const Contact = () => {
           {/* Map - Hidden on Mobile */}
           <div className="hidden lg:block bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white/50">
             <div className="p-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-              <h3 className="text-xl font-semibold mb-2">Găsește-ne pe Hartă</h3>
+              <h3 className="text-xl font-semibold mb-2">Unde ne găsești?
+Lucrăm din București, dar colaborăm în toată țara.</h3>
               <p className="text-blue-100">București, România</p>
             </div>
             <iframe
