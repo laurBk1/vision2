@@ -10,14 +10,16 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Pricing from './components/Pricing';
 import Terms from './components/Terms';
+import Privacy from './components/Privacy';
 
 function App() {
   // Verificăm dacă suntem pe pagina de termeni
   const isTermsPage = window.location.hash === '#terms';
+  const isPrivacyPage = window.location.hash === '#privacy';
 
   useEffect(() => {
     // Scroll la top când se încarcă pagina de termeni - FORȚAT
-    if (isTermsPage) {
+    if (isTermsPage || isPrivacyPage) {
       // Forțăm scroll la top imediat
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       // Și încă o dată după un mic delay pentru siguranță
@@ -25,11 +27,11 @@ function App() {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       }, 50);
     }
-  }, [isTermsPage]);
+  }, [isTermsPage, isPrivacyPage]);
 
   // Adăugăm un useEffect suplimentar pentru a forța scroll la top
   useEffect(() => {
-    if (isTermsPage) {
+    if (isTermsPage || isPrivacyPage) {
       // Forțăm scroll la top de fiecare dată când componenta se re-renderează
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
@@ -41,6 +43,16 @@ function App() {
       <div className="min-h-screen">
         <Header />
         <Terms />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (isPrivacyPage) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <Privacy />
         <Footer />
       </div>
     );

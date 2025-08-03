@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 const Footer = () => {
   const handleNavClick = (href: string) => {
     // Dacă suntem pe pagina de termeni, navigăm înapoi la home
-    if (window.location.hash === '#terms') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
       window.location.reload();
       setTimeout(() => {
@@ -33,8 +33,22 @@ const Footer = () => {
     }, 50);
   };
 
+  const handlePrivacyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Forțăm scroll la top înainte de navigare
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.location.hash = '#privacy';
+    // Delay mic pentru a permite hash-ul să se seteze
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
+  };
+
   const handleLogoClick = () => {
     if (window.location.hash === '#terms') {
+      window.location.hash = '';
+      window.location.reload();
+    } else if (window.location.hash === '#privacy') {
       window.location.hash = '';
       window.location.reload();
     } else {
@@ -157,10 +171,10 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleNavClick('#contact')}
+                  onClick={handlePrivacyClick}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Contact
+                  Confidențialitate și GDPR
                 </button>
               </li>
               <li>

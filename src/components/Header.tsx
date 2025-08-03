@@ -7,6 +7,7 @@ const Header = () => {
 
   // Verificăm dacă suntem pe pagina de termeni
   const isTermsPage = window.location.hash === '#terms';
+  const isPrivacyPage = window.location.hash === '#privacy';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +28,7 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     // Dacă suntem pe pagina de termeni, navigăm înapoi la home
-    if (window.location.hash === '#terms') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
       window.location.reload();
       setTimeout(() => {
@@ -47,7 +48,7 @@ const Header = () => {
   };
 
   const handleContactClick = () => {
-    if (window.location.hash === '#terms') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
       window.location.reload();
       setTimeout(() => {
@@ -66,7 +67,7 @@ const Header = () => {
   };
 
   const handleLogoClick = () => {
-    if (window.location.hash === '#terms') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
       window.location.reload();
     } else {
@@ -86,7 +87,7 @@ const Header = () => {
   };
 
   // Pentru pagina de termeni, forțăm întotdeauna fundalul albastru închis
-  const headerBackground = isTermsPage 
+  const headerBackground = (isTermsPage || isPrivacyPage)
     ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' 
     : (isScrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent');
 
