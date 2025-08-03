@@ -251,7 +251,7 @@ const Footer = () => {
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 w-full md:w-auto max-w-sm">
               <div className="text-center">
                 <h4 className="text-white font-semibold text-sm mb-3 leading-tight">
-                  SOLUȚIONAREA ALTERNATIVĂ<br />A LITIGIILOR
+                  SOLUȚIONAREA ALTERNATIVĂ<br />A LITIGIILOR (ANPC)
                 </h4>
                 <div className="mb-4 flex justify-center">
                   <img 
@@ -279,7 +279,7 @@ const Footer = () => {
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 w-full md:w-auto max-w-sm">
               <div className="text-center">
                 <h4 className="text-white font-semibold text-sm mb-3 leading-tight">
-                  SOLUȚIONAREA ONLINE<br />A LITIGIILOR
+                  SOLUȚIONAREA ONLINE<br />A LITIGIILOR (UE)
                 </h4>
                 <div className="mb-4 flex justify-center">
                   <img 
