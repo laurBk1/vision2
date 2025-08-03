@@ -255,12 +255,11 @@ const Portfolio = () => {
         <div className="text-center">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-shadow">
-              Vrei să Lucrezi<br className="sm:hidden" />
-              <span className="block mt-1">cu Încredere?</span>
+              Vrei un partener de încredere<br className="sm:hidden" />
+              <span className="block mt-1">pentru proiectul tău?</span>
             </h3>
-            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed font-medium">
-              Contactează-ne pentru a discuta despre proiectul tău în deplină confidențialitate. 
-              Îți garantăm discreție totală și rezultate excepționale.
+            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed font-medium"> 
+              Hai să vorbim! Confidențialitate 100%, rezultate clare.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
