@@ -35,7 +35,7 @@ const Process = () => {
         <div className="text-center mb-12 md:mb-20">
           <h1 className="premium-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight" title="Metodologia Premium de Editare Video Profesională" aria-label="Metodologia Premium de Editare Video Profesională">
             Metodologia Premium de Editare Video Profesională
-          </h1>
+          </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium px-2">
             De la conceptul inițial la livrarea finală, urmăm un proces dovedit 
             care asigură rezultate de calitate și satisfacția clientului de fiecare dată.

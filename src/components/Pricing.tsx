@@ -212,7 +212,7 @@ const Pricing = () => {
           <h1 className="premium-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight px-2" title="Soluții Premium de Editare Video pentru Creșterea Afacerii" aria-label="Soluții Premium de Editare Video pentru Creșterea Afacerii">
             Soluții Premium de Editare Video<br className="sm:hidden" />
             <span className="block mt-1">pentru Creșterea Afacerii</span>
-          </h1>
+          </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium px-2">
             Alege planul care îți va transforma conținutul și îți va crește vizibilitatea online. 
             Pachete flexibile adaptate nevoilor tale de business.
