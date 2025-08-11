@@ -123,11 +123,11 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
-          <span className="text-blue-600 font-semibold text-base md:text-lg tracking-wide">
+          <span className="premium-subtitle text-base md:text-lg tracking-wide font-semibold" title="Servicii Complete de Editare Video" aria-label="Servicii Complete de Editare Video">
             Servicii Complete
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-4 md:mb-6 text-shadow-sm">
-            Ce Servicii Oferim
+          <h1 className="premium-title text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 md:mb-6" title="Servicii Premium de Editare Video pentru Afaceri" aria-label="Servicii Premium de Editare Video pentru Afaceri">
+            Servicii Premium de Editare Video pentru Afaceri
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
            Editare profesională pentru Shorts, Reels, TikTok și alte formate scurte, optimizată pentru a maximiza vizualizările și engagement-ul pe social media. Transformăm ideile tale în conținut care captează atenția.

@@ -37,11 +37,11 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-20">
-          <span className="text-blue-600 font-semibold text-base md:text-lg tracking-wide">
+          <span className="premium-subtitle text-base md:text-lg tracking-wide font-semibold" title="Despre VisionEdit România" aria-label="Despre VisionEdit România">
             Despre VisionEdit
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-4 md:mb-6 text-shadow-sm">
-            Cu ce ne ocupăm?
+          <h1 className="premium-title text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 md:mb-6" title="Experți în Editare Video și Marketing Digital Premium" aria-label="Experți în Editare Video și Marketing Digital Premium">
+            Experți în Editare Video și Marketing Digital Premium
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
             La VisionEdit creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali, 

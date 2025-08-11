@@ -209,9 +209,9 @@ const Pricing = () => {
     <section id="pricing" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight text-shadow-sm px-2">
-            Pachete Video Care Îți Pun<br className="sm:hidden" />
-            <span className="block mt-1">Afacerea în Mișcare</span>
+          <h1 className="premium-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight px-2" title="Soluții Premium de Editare Video pentru Creșterea Afacerii" aria-label="Soluții Premium de Editare Video pentru Creșterea Afacerii">
+            Soluții Premium de Editare Video<br className="sm:hidden" />
+            <span className="block mt-1">pentru Creșterea Afacerii</span>
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium px-2">
             Alege planul care îți va transforma conținutul și îți va crește vizibilitatea online. 

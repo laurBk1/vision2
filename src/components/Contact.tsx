@@ -199,9 +199,9 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-blue-600 font-semibold text-lg">Hai să Colaborăm</span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 mt-2">
-            Contactează-ne
+          <span className="premium-subtitle text-lg font-semibold" title="Hai să Colaborăm pentru Succesul Tău" aria-label="Hai să Colaborăm pentru Succesul Tău">Hai să Colaborăm</span>
+          <h1 className="premium-title text-4xl lg:text-5xl font-bold mb-6 mt-2" title="Contactează Experții în Editare Video Premium" aria-label="Contactează Experții în Editare Video Premium">
+            Contactează Experții în Editare Video Premium
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Suntem gata să transformăm ideile tale în videoclipuri care atrag și convertesc. 

@@ -33,8 +33,8 @@ const Process = () => {
     <section id="process" className="py-16 md:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight text-shadow-sm">
-            Procesul Nostru Creativ
+          <h1 className="premium-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight" title="Metodologia Premium de Editare Video Profesională" aria-label="Metodologia Premium de Editare Video Profesională">
+            Metodologia Premium de Editare Video Profesională
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium px-2">
             De la conceptul inițial la livrarea finală, urmăm un proces dovedit 
