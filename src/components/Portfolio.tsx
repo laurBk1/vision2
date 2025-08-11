@@ -81,12 +81,12 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-20">
-          <span className="premium-subtitle text-base md:text-lg tracking-wide font-semibold block mb-2" title="Portofoliu Confidențial Premium" aria-label="Portofoliu Confidențial Premium">
+          <span className="text-blue-600 font-semibold text-base md:text-lg tracking-wide block mb-2">
             Portofoliu Confidențial
           </span>
-          <h1 className="premium-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight px-2" title="Confidențialitate și Discreție Profesională în Editare Video" aria-label="Confidențialitate și Discreție Profesională în Editare Video">
-            Confidențialitate și Discreție<br className="sm:hidden" />
-            <span className="block mt-1">Profesională în Editare Video</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight text-shadow-sm px-2">
+            De Ce Nu Afișăm<br className="sm:hidden" />
+            <span className="block mt-1">Portofoliul Nostru</span>
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium px-2">
             La VisionEdit, confidențialitatea și discreția sunt fundamentale în relația noastră cu clienții. 
