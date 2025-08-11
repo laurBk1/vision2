@@ -87,7 +87,7 @@ const Portfolio = () => {
           <h1 className="premium-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight px-2" title="Confidențialitate și Discreție Profesională în Editare Video" aria-label="Confidențialitate și Discreție Profesională în Editare Video">
             Confidențialitate și Discreție<br className="sm:hidden" />
             <span className="block mt-1">Profesională în Editare Video</span>
-          </h2>
+          </h1>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium px-2">
             La VisionEdit, confidențialitatea și discreția sunt fundamentale în relația noastră cu clienții. 
             Respectăm intimitatea și strategiile de business ale fiecărui client.

@@ -42,7 +42,7 @@ const About = () => {
           </span>
           <h1 className="premium-title text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 md:mb-6" title="Experți în Editare Video și Marketing Digital Premium" aria-label="Experți în Editare Video și Marketing Digital Premium">
             Experți în Editare Video și Marketing Digital Premium
-          </h2>
+          </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
             La VisionEdit creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali, 
             afaceri mici și mijlocii, influenceri, prestatori de servicii, agenții imobiliare și creatori de conținut. 
