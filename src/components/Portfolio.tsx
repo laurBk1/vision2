@@ -87,7 +87,7 @@ const Portfolio = () => {
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight px-2">
               De Ce Nu Afișăm<br className="sm:hidden" />
-              <span className="block mt-1">Portofoliul Nostru</span>
+              <span className="block mt-1">Portofoliul Nostru?</span>
             </h2>
           </div>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium px-2">
