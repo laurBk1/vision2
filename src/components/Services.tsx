@@ -209,7 +209,7 @@ const Services = () => {
               Procesul Nostru de Lucru
             </h3>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-              Fiecare proiect urmează un proces structurat pentru a asigura calitatea și satisfacția clientului
+              Fiecare proiect urmează un proces structurat pentru a asigura calitatea și satisfacția clientului.
             </p>
           </div>
           
