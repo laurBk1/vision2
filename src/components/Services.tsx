@@ -266,7 +266,7 @@ const Services = () => {
                 }}
                 className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-200"
               >
-                Contactează-ne
+                Contactează-ne!
               </button>
             </div>
           </div>
