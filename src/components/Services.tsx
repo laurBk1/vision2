@@ -123,12 +123,14 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
-          <span className="text-blue-600 font-semibold text-base md:text-lg tracking-wide">
-            Servicii Complete
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-4 md:mb-6 text-shadow-sm">
-            Ce Servicii Oferim
-          </h2>
+          <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg">
+            <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm md:text-base tracking-wide px-4 py-2 rounded-full mb-4">
+              ⭐ Servicii Complete Premium
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight">
+              Ce Servicii Oferim Pentru Succesul Tău
+            </h2>
+          </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
            Editare profesională pentru Shorts, Reels, TikTok și alte formate scurte, optimizată pentru a maximiza vizualizările și engagement-ul pe social media. Transformăm ideile tale în conținut care captează atenția.
           </p>

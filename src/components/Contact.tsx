@@ -199,10 +199,14 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-blue-600 font-semibold text-lg">Hai să Colaborăm</span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 mt-2">
-            Contactează-ne
-          </h2>
+          <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 border-2 border-purple-200 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg mb-6">
+            <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-sm md:text-base tracking-wide px-4 py-2 rounded-full mb-4">
+              🤝 Hai să Colaborăm Premium
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight">
+              Contactează-ne Pentru Succesul Tău
+            </h2>
+          </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Suntem gata să transformăm ideile tale în videoclipuri care atrag și convertesc. 
             Contactează-ne astăzi pentru servicii de editare video profesionale.

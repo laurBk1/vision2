@@ -33,9 +33,14 @@ const Process = () => {
     <section id="process" className="py-16 md:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight text-shadow-sm">
-            Procesul Nostru Creativ
-          </h2>
+          <div className="bg-gradient-to-r from-gray-50 via-white to-slate-50 border-2 border-gray-300 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg mb-6">
+            <span className="inline-block bg-gradient-to-r from-gray-700 to-slate-700 text-white font-bold text-sm md:text-base tracking-wide px-4 py-2 rounded-full mb-4">
+              🎯 Metodologie Profesională
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight">
+              Procesul Nostru Creativ Premium
+            </h2>
+          </div>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium px-2">
             De la conceptul inițial la livrarea finală, urmăm un proces dovedit 
             care asigură rezultate de calitate și satisfacția clientului de fiecare dată.

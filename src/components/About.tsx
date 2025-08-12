@@ -37,12 +37,14 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-20">
-          <span className="text-blue-600 font-semibold text-base md:text-lg tracking-wide">
-            Despre VisionEdit
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-4 md:mb-6 text-shadow-sm">
-            Cu ce ne ocupăm?
-          </h2>
+          <div className="bg-gradient-to-r from-blue-50 via-white to-green-50 border-2 border-blue-200 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg">
+            <span className="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-sm md:text-base tracking-wide px-4 py-2 rounded-full mb-4">
+              🚀 Despre VisionEdit Premium
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight">
+              Experți în Video Marketing de Succes
+            </h2>
+          </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
             La VisionEdit creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali, 
             afaceri mici și mijlocii, influenceri, prestatori de servicii, agenții imobiliare și creatori de conținut. 
