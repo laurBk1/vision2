@@ -128,7 +128,7 @@ const About = () => {
               }}
               className="bg-white text-blue-600 hover:bg-gray-100 px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-colors duration-200 transform hover:scale-105 shadow-lg"
             >
-              Contactează-ne
+              Contactează-ne!
             </button>
           </div>
         </div>
