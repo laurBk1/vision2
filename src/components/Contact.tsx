@@ -201,10 +201,10 @@ const Contact = () => {
         <div className="text-center mb-16">
           <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 border-2 border-purple-200 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg mb-6">
             <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-sm md:text-base tracking-wide px-4 py-2 rounded-full mb-4">
-              🤝 Hai să Colaborăm Premium
+              🤝 Hai să Colaborăm
             </span>
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight">
-              Contactează-ne Pentru Succesul Tău
+              Contactează-ne
             </h2>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
