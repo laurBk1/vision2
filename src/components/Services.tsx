@@ -206,7 +206,7 @@ const Services = () => {
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl mb-12 md:mb-16">
           <div className="text-center mb-8 md:mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4 text-shadow-sm">
-              Procesul Nostru de Lucru
+              Procesul Nostru de Lucru:
             </h3>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium">
               Fiecare proiect urmează un proces structurat pentru a asigura calitatea și satisfacția clientului.
