@@ -204,7 +204,7 @@ const Contact = () => {
               Hai să Colaborăm
             </span>
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight">
-              Contactează-ne
+              Contactează-ne!
             </h2>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
