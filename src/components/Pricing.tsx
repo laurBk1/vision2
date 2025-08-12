@@ -214,8 +214,8 @@ const Pricing = () => {
               Pachete Video
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight px-2">
-              Pachete Video Care Îți Pun<br className="sm:hidden" />
-              <span className="block mt-1">Afacerea în Mișcare</span>
+            Pachete de Editare Video pentru Promovarea<br className="sm:hidden" />
+              <span className="block mt-1">Afacerii Tale prin Video Marketing</span>
             </h2>
           </div>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium px-2">
