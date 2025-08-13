@@ -86,7 +86,7 @@ const Hero = () => {
           </div>
 
           <div className="relative mt-8 lg:mt-0">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-4 md:p-5 transform rotate-3 hover:rotate-0 transition-transform duration-300 shadow-2xl">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 md:p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300 shadow-2xl">
               <div className="bg-slate-800 rounded-xl p-4 md:p-6">
                 <div className="aspect-video bg-gradient-to-r from-gray-700 to-gray-600 rounded-lg mb-4 flex items-center justify-center">
                   <div className="bg-white/10 rounded-full p-3 md:p-4">
