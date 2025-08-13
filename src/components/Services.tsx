@@ -123,11 +123,11 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
-          <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg">
+          <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-2xl p-4 md:p-6 max-w-4xl mx-auto shadow-lg">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm md:text-base tracking-wide px-4 py-2 rounded-full mb-4">
               Servicii Complete
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent mb-4 md:mb-6 leading-tight px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent mb-2 md:mb-3 leading-tight px-2">
               Ce Servicii Oferim?
             </h2>
           </div>
