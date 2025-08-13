@@ -46,7 +46,7 @@ const About = () => {
             </h2>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-            La VisionEdit creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali, 
+            Creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali, 
             afaceri mici și mijlocii, influenceri, prestatori de servicii, agenții imobiliare și creatori de conținut. 
             Indiferent de nișa ta sau platforma preferată — YouTube Shorts, Instagram Reels, TikTok sau altele — 
             transformăm ideile tale în mesaje vizuale care captează atenția, construiesc conexiuni autentice și aduc clienți noi.
