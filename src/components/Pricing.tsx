@@ -316,7 +316,7 @@ const Pricing = () => {
             onClick={handleContactClick}
             className="bg-slate-900 hover:bg-slate-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold transition-colors duration-200 text-sm md:text-base shadow-lg"
           >
-            Contactează-ne pentru Ofertă Personalizată
+            Contactează-ne pentru Ofertă Personalizată!
           </button>
         </div>
       </div>
