@@ -290,7 +290,7 @@ const Pricing = () => {
             <div>
               <h4 className="font-bold text-gray-900 mb-3 text-sm md:text-base">📋 Ce Includ Pachetele:</h4>
               <ul className="space-y-2 text-gray-700 text-xs md:text-sm font-medium">
-                <li>• O revizuire gratuită în 48 de ore</li>
+                <li>• O revizuire gratuită, livrată în maximum 48 de ore</li>
                 <li>• Livrare flexibilă comunicată în prealabil</li>
                 <li>• Format vertical 9:16 optimizat</li>
                 <li>• Suport tehnic complet</li>
