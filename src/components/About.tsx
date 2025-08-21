@@ -46,11 +46,10 @@ const About = () => {
             </h2>
           </div>
           <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-            Creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali, 
-            afaceri mici și mijlocii, influenceri, prestatori de servicii, agenții imobiliare și creatori de conținut. 
-            Indiferent de nișa ta sau platforma preferată — YouTube Shorts, Instagram Reels, TikTok sau altele — 
-            transformăm ideile tale în mesaje vizuale care captează atenția, construiesc conexiuni autentice și aduc clienți noi.
-          </p>
+            Creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali,
+            afaceri mici și mijlocii, influenceri, prestatori de servicii, agenții imobiliare și creatori de conținut. Indiferent de nișa ta sau             platforma preferată, YouTube Shorts, Instagram Reels, TikTok sau altele, transformăm ideile tale în mesaje vizuale care atrag        atenția, construiesc conexiuni autentice și generează clienți noi.
+            
+                     </p>
         </div>
 
         {/* Main Content Grid */}
