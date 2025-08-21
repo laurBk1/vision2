@@ -268,7 +268,7 @@ const Pricing = () => {
               </h3>
               <p className="text-gray-700 leading-relaxed text-sm md:text-base font-medium">
                 Aceste pachete includ tot ce ai nevoie: <strong>editare profesională, voiceover cu AI, 
-                script personalizat și materiale video/foto stock și avatar virtual care poate prezenta videoclipul</strong> - oferite în limita resurselor 
+                script personalizat și materiale video/foto stock și un avatar virtual care poate prezenta videoclipul</strong> - oferite în limita resurselor 
                 disponibile pentru fiecare proiect.
               </p>
             </div>
