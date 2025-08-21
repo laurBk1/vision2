@@ -84,8 +84,8 @@ const Pricing = () => {
         'Videoclipuri personalizate de la A la Z',
         'Montaj complet profesional',
         'Voice-over profesional cu AI',
+        'Avatar virtual profesional (UGC) inclu',
         'Script adaptat conținutului',
-        'Materiale video stock incluse',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil'
       ],
