@@ -209,7 +209,7 @@ const Contact = () => {
           </div>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Suntem gata să transformăm ideile tale în videoclipuri care atrag și convertesc. 
-            Contactează-ne astăzi pentru servicii de editare video profesionale.
+            Contactează-ne astăzi pentru servicii de editare video profesionale!
           </p>
         </div>
 
