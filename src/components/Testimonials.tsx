@@ -40,8 +40,8 @@ const Testimonials = () => {
             Ce Spun Clienții Noștri
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
-            Nu lua doar cuvântul nostru. Iată ce au de spus clienții noștri mulțumiți 
-            despre experiența lor de lucru cu VisionEdit.
+            Nu e vorba doar despre videoclipuri, ci despre experiențe și rezultate.
+            Iată ce spun clienții VisionEdit despre colaborarea cu noi:
           </p>
         </div>
 
