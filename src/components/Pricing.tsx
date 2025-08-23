@@ -132,7 +132,7 @@ const Pricing = () => {
         'Strategie de conținut inclusă',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil',
-        'Analiză performanță lunară'
+        'Sfaturi pentru videoclipuri mai performante'
       ],
       buttonText: 'Maximizează Impactul Complet',
       buttonColor: 'bg-green-600 hover:bg-green-700'
