@@ -21,7 +21,7 @@ const Pricing = () => {
         'Tot ce găsești în secțiunea „Servicii” este inclus în editarea ta',
         'Montaj complet și optimizat',
         'Tranziții și efecte vizuale',
-        'Corecție de culori și stabilizare',
+        'Subtitrări și texte personalizate',
         'Format vertical 9:16 optimizat',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil'
