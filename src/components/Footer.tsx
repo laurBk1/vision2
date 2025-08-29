@@ -221,7 +221,7 @@ const Footer = () => {
 
               {/* TikTok */}
               <a 
-                href="https://www.tiktok.com/@laur_visionedit" 
+                href="https://www.tiktok.com/@laur_visionedit.ro" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-black hover:bg-gray-800 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
