@@ -58,7 +58,7 @@ const Pricing = () => {
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',
         'Suport prioritar și comunicare directă',
-        'Sugestii pentru a filma corect videoclipurile',
+        'Feedback rapid pe materialele trimise',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil',
         'Analiză performanță lunară'
