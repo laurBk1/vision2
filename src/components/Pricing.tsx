@@ -40,7 +40,7 @@ const Pricing = () => {
         'Toate beneficiile din Start Smart',
         'Preț redus per videoclip',
         'Suport prioritar',
-        'Consultanță strategică inclusă',
+        'Plan de acțiune personalizat',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil'
       ],
