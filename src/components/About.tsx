@@ -18,7 +18,7 @@ const About = () => {
     {
       icon: Target,
       title: 'Edităm pentru Orice Nișă',
-      description: 'Indiferent de domeniul tău – de la servicii și comerț, până la beauty, educație, sănătate, evenimente sau imobiliare – avem experiență extinsă. Lucrăm alături de antreprenori, afaceri mici și mijlocii, influenceri, prestatori de servicii și creatori de conținut pentru a crea materiale video care vorbesc direct publicului tău țintă.'
+      description: 'Indiferent de domeniul tău, de la servicii și comerț până la beauty, educație, sănătate, evenimente sau imobiliare, avem experiență extinsă. Lucrăm alături de antreprenori, afaceri mici și mijlocii, influenceri, prestatori de servicii și creatori de conținut pentru a crea materiale video care vorbesc direct publicului tău țintă.'
     },
     {
       icon: Globe,
