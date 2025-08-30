@@ -309,7 +309,7 @@ const Pricing = () => {
 
         <div className="text-center">
           <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base font-medium">
-            Toate pachetele includ o revizuire gratuită în 48 de ore și livrare flexibilă comunicată în prealabil.
+            Fiecare video include o revizuire gratuită și livrare în maximum 48 de ore.
           </p>
           <button 
             onClick={handleContactClick}
