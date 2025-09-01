@@ -40,7 +40,7 @@ const Pricing = () => {
         'Toate beneficiile din Start Smart',
         'Preț redus per videoclip',
         'Suport prioritar',
-        'Plan de acțiune personalizat',
+        'Feedback rapid pe materialele trimise',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil'
       ],
@@ -58,7 +58,7 @@ const Pricing = () => {
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',
         'Suport prioritar și comunicare directă',
-        'Feedback rapid pe materialele trimise',
+        'Plan de acțiune personalizat',
         'O revizuire gratuită în 48 de ore',
         'Livrare flexibilă comunicată în prealabil',
         'Analiză performanță lunară'
