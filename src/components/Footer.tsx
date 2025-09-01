@@ -254,66 +254,45 @@ const Footer = () => {
 
         {/* Legal Compliance Section */}
         <div className="border-t border-gray-700 mt-8 pt-6">
-          <div className="text-center mb-4">
-            <h3 className="text-base font-semibold text-white mb-1">Protecția Consumatorului</h3>
-            <p className="text-gray-400 text-xs">Conform legislației din România și Uniunea Europeană</p>
-          </div>
-          
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center max-w-3xl mx-auto">
-            {/* ANPC Link */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-all duration-300 border border-white/10 w-full md:w-auto max-w-xs">
-              <div className="text-center">
-                <h4 className="text-white font-semibold text-xs mb-2 leading-tight">
-                  SOLUȚIONAREA ALTERNATIVĂ<br />A LITIGIILOR (ANPC)
-                </h4>
-                <div className="mb-3 flex justify-center">
-                  <img 
-                    src="/anpc-visionedit.ro.webp" 
-                    alt="ANPC - Autoritatea Națională pentru Protecția Consumatorilor" 
-                    className="h-8 w-auto object-contain"
-                    loading="lazy"
-                    width="80"
-                    height="32"
-                  />
-                </div>
-                <a 
-                  href="https://reclamatiisal.anpc.ro/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors duration-200"
-                  aria-label="Accesează platforma ANPC pentru soluționarea alternativă a litigiilor"
-                >
-                  DETALII
-                </a>
-              </div>
-            </div>
+          <div className="text-center">
+            <p className="text-gray-400 text-xs mb-4">Protecția Consumatorului - Conform legislației din România și UE</p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              {/* ANPC Link */}
+              <a 
+                href="https://reclamatiisal.anpc.ro/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity duration-200"
+                aria-label="ANPC - Soluționarea alternativă a litigiilor"
+              >
+                <img 
+                  src="/anpc-visionedit.ro.webp" 
+                  alt="ANPC - Soluționarea alternativă a litigiilor" 
+                  className="h-10 w-auto object-contain"
+                  loading="lazy"
+                  width="120"
+                  height="40"
+                />
+              </a>
 
-            {/* SOL Link */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-all duration-300 border border-white/10 w-full md:w-auto max-w-xs">
-              <div className="text-center">
-                <h4 className="text-white font-semibold text-xs mb-2 leading-tight">
-                  SOLUȚIONAREA ONLINE<br />A LITIGIILOR (UE)
-                </h4>
-                <div className="mb-3 flex justify-center">
-                  <img 
-                    src="/sol-visionedit.ro.png" 
-                    alt="SOL - Platforma europeană de soluționare online a litigiilor" 
-                    className="h-8 w-auto object-contain"
-                    loading="lazy"
-                    width="80"
-                    height="32"
-                  />
-                </div>
-                <a 
-                  href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors duration-200"
-                  aria-label="Accesează platforma europeană SOL pentru soluționarea online a litigiilor"
-                >
-                  DETALII
-                </a>
-              </div>
+              {/* SOL Link */}
+              <a 
+                href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity duration-200"
+                aria-label="SOL - Soluționarea online a litigiilor UE"
+              >
+                <img 
+                  src="/sol-visionedit.ro.png" 
+                  alt="SOL - Soluționarea online a litigiilor UE" 
+                  className="h-10 w-auto object-contain"
+                  loading="lazy"
+                  width="120"
+                  height="40"
+                />
+              </a>
             </div>
           </div>
         </div>
