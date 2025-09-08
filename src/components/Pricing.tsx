@@ -23,7 +23,7 @@ const Pricing = () => {
         'Tranziții și efecte vizuale',
         'Subtitrări și texte personalizate',
         'Format vertical 9:16 optimizat',
-        'O revizuire gratuită în 48 de ore',
+        'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Alege Editare Simplă',
