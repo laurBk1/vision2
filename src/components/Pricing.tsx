@@ -18,7 +18,10 @@ const Pricing = () => {
       price: '180 lei/video',
       description: 'Editare doar cu materialele tale',
       features: [
-        'Tot ce găsești în secțiunea „Servicii” este inclus în editarea ta',
+        <>
+        Tot ce găsești în secțiunea „Servicii”<br />
+        și mai jos, nu pe același rând, este inclus în editarea ta
+      </>,
         'Montaj complet și optimizat',
         'Tranziții și efecte vizuale',
         'Subtitrări și texte personalizate',
