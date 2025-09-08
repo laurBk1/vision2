@@ -284,7 +284,7 @@ const Contact = () => {
             
             {/* Mesaj informativ sub hartă */}
             <div className="p-6 bg-gradient-to-r from-gray-50 to-blue-50 border-t border-gray-200">
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Unde ne găsești?</h4>
+              <h4 className="text-lg font-bold text-gray-900 mb-3">Cum lucrăm împreună?</h4>
               <p className="text-gray-700 leading-relaxed text-sm">
                 La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație. 
                 Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
