@@ -239,7 +239,7 @@ const Services = () => {
         <div className="text-center">
           <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-shadow">
-              Gata să Transformi Conținutul Tău?
+              Vrei conținut care aduce rezultate?
             </h3>
             <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto font-medium">
               Alege din serviciile noastre profesionale și vezi cum videoclipurile tale 
