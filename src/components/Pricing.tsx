@@ -58,10 +58,10 @@ const Pricing = () => {
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',
         'Suport prioritar și comunicare directă',
-        'Plan de acțiune personalizat',
+        'Plan de editare video personalizat',
         'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil',
-        'Analiză performanță lunară'
+        'Raport lunar cu feedback și recomandări'
       ],
       buttonText: 'Maximizează Impactul',
       buttonColor: 'bg-green-600 hover:bg-green-700'
