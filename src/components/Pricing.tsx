@@ -107,7 +107,7 @@ const Pricing = () => {
         'Toate beneficiile din Start Smart Complet',
         'Preț redus per videoclip',
         'Suport prioritar',
-        'Plan de acțiune personalizat',
+        'Plan de editare video personalizat',
         'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
