@@ -86,7 +86,7 @@ const Pricing = () => {
         'Voice-over profesional cu AI',
         'Avatar virtual profesional (UGC) inclus',
         'Script adaptat conținutului',
-        'O revizuire gratuită în 48 de ore',
+        'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Pachet Complet',
