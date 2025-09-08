@@ -20,7 +20,7 @@ const Pricing = () => {
       features: [
         <>
         Tot ce găsești în secțiunea „Servicii”<br />
-        și mai jos, nu pe același rând, este inclus în editarea ta
+        este inclus în editarea ta
       </>,
         'Montaj complet și optimizat',
         'Tranziții și efecte vizuale',
