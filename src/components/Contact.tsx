@@ -527,7 +527,7 @@ const Contact = () => {
                 {[
                   'Calitate profesională garantată',
                   'Termene de livrare rapide',
-                  'O revizuire gratuită în 48h',
+                  'O revizuire gratuită',
                   'Soluții personalizate'
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-3">
