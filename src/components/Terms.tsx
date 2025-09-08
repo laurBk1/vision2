@@ -34,7 +34,7 @@ const Terms = () => {
         '• Stabilizare video și blur selectiv pe zonele indicate de Client',
         '• Format vertical 9:16, optimizat pentru TikTok, Instagram Reels, YouTube Shorts și alte platforme sociale',
         '• Animații simple și efecte grafice precum emoji-uri animate, stickere și texte dinamice',
-        'Toate serviciile sunt prestate conform specificațiilor și instrucțiunilor primite de la Client și în regim de freelancing.'
+        'Toate serviciile sunt prestate conform specificațiilor și instrucțiunilor primite de la Client.'
       ]
     },
     {
