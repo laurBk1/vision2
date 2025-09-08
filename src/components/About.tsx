@@ -46,9 +46,7 @@ const About = () => {
             </h2>
           </div>
           <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-            Creăm și edităm videoclipuri scurte, captivante și eficiente pentru antreprenori locali,
-            afaceri mici și mijlocii, influenceri, prestatori de servicii, agenții imobiliare și creatori de conținut. Indiferent de nișa ta sau             platforma preferată, YouTube Shorts, Instagram Reels, TikTok sau altele, transformăm ideile tale în mesaje vizuale care atrag        atenția, construiesc conexiuni autentice și generează clienți noi.
-            
+            Creăm videoclipuri scurte și captivante pentru branduri, afaceri și creatori din orice domeniu. Optimizate pentru Reels, TikTok, Shorts și alte platforme, transformăm ideile tale în conținut care atrage, conectează și vinde.            
                      </p>
         </div>
 
