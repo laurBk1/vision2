@@ -41,7 +41,7 @@ const Pricing = () => {
         'Preț redus per videoclip',
         'Suport prioritar',
         'Feedback rapid pe materialele trimise',
-        'O revizuire gratuită în 48 de ore',
+        'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Cel Mai Popular',
