@@ -46,7 +46,7 @@ const About = () => {
             </h2>
           </div>
           <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-            Creăm videoclipuri scurte și captivante pentru branduri, afaceri și creatori din orice domeniu. Optimizate pentru Reels, TikTok, Shorts și alte platforme, transformăm ideile tale în conținut care atrage, conectează și vinde.            
+            Creăm și edităm videoclipuri scurte și captivante pentru branduri, afaceri și creatori din orice domeniu. Cu focus pe storytelling               autentic și trend-uri actuale, optimizăm conținutul pentru Reels, TikTok, Shorts și alte platforme, transformând ideile tale în                  conținut care atrage, conectează și vinde.            
                      </p>
         </div>
 
