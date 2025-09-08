@@ -286,9 +286,8 @@ const Contact = () => {
             <div className="p-6 bg-gradient-to-r from-gray-50 to-blue-50 border-t border-gray-200">
               <h4 className="text-lg font-bold text-gray-900 mb-3">Unde ne găsești?</h4>
               <p className="text-gray-700 leading-relaxed text-sm">
-                Oferim servicii profesionale de editare video, disponibile pentru clienți din toată țara, 
-                indiferent de locație. Lucrăm 100% remote, astfel încât să vă putem ajuta rapid și eficient, 
-                oriunde v-ați afla.
+                La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație. 
+                Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
               </p>
               <p className="text-gray-700 leading-relaxed text-sm mt-3">
                 Dacă aveți nevoie de un video editat profesionist și livrat în timp util, ne puteți contacta 
