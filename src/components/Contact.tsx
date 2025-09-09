@@ -321,7 +321,7 @@ const Contact = () => {
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-white font-bold text-lg">Gata să începem?</p>
-                          <p className="text-white/80 text-sm">Contactează-ne pentru o consultație gratuită</p>
+                          <p className="text-white/80 text-sm">Hai să discutăm despre proiectul tău.</p>
                         </div>
                         <button 
                           onClick={() => {
