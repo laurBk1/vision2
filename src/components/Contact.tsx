@@ -231,12 +231,15 @@ const Contact = () => {
               </a>
             </p>
             
-            {/* Mesaj pentru mobil */}
-            <div className="lg:hidden bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
-              <p className="text-gray-700 text-sm leading-relaxed font-medium">
-                La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație. Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
-              </p>
-            </div>
+          {/* Mesaj pentru mobil */}
+<div className="lg:hidden bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+  <p className="text-gray-700 text-sm leading-relaxed font-medium">
+    La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.
+  </p>
+  <p className="text-gray-700 text-sm leading-relaxed font-medium mt-2">
+    Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
+  </p>
+</div>
           </div>
 
           <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
