@@ -304,7 +304,6 @@ const Contact = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
-                    Cum lucrăm împreună?
                   </h4>
                   
                   <div className="space-y-4 text-white/90">
@@ -316,24 +315,28 @@ const Contact = () => {
                       Dacă aveți nevoie de un video editat profesionist și livrat în timp util, ne puteți contacta oricând. <strong className="text-white">Răspundem prompt și suntem aici să discutăm orice idee sau proiect aveți în minte.</strong>
                     </p>
                     
-                    {/* Call to Action */}
-                    <div className="bg-white/10 rounded-lg p-4 mt-6 border border-white/20">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-white font-bold text-lg">Gata să începem?</p>
-                          <p className="text-white/80 text-sm">Contactează-ne pentru o consultație gratuită</p>
+                      <div className="bg-white/10 rounded-lg p-6 mt-6 border border-white/20">
+                        <div className="text-center">
+                          <h5 className="text-white font-bold text-xl mb-3">Gata să începem?</h5>
+                          <p className="text-white/90 text-base mb-4 leading-relaxed">
+                            Contactează-ne pentru o consultație gratuită și să discutăm proiectul tău
+                          </p>
+                          <button 
+                            onClick={() => {
+                              const nameInput = document.getElementById('name');
+                              if (nameInput) {
+                                nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                setTimeout(() => nameInput.focus(), 500);
+                              }
+                            }}
+                            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold text-base transition-all duration-200 shadow-lg transform hover:scale-105 inline-flex items-center space-x-2"
+                          >
+                            <span>Contactează-ne Acum</span>
+                            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </button>
                         </div>
-                        <button 
-                          onClick={() => {
-                            const contactForm = document.querySelector('.contact__form');
-                            if (contactForm) {
-                              contactForm.scrollIntoView({ behavior: 'smooth' });
-                            }
-                          }}
-                          className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-2 rounded-lg font-bold text-sm transition-colors duration-200 shadow-lg"
-                        >
-                          Contactează-ne
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -518,14 +521,15 @@ const Contact = () => {
                 {/* Hidden input for form submission */}
                 <input type="hidden" name="pachet" value={formData.pachet} />
               </div>
-
-              {/* Selected Package Display */}
-              {selectedPackage && selectedPackage.id !== 'none' && (
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Zap className="h-5 w-5 text-blue-600" />
-                    <span className="font-semibold text-gray-900">Pachet Selectat:</span>
-                    {selectedPackage.popular && (
+                    <h4 className="text-xl font-bold text-white mb-4 text-shadow flex items-center">
+                      <div className="bg-white/20 rounded-lg p-2 mr-3">
+                        <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      Cum lucrăm împreună?
+                    </h4>
                       <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
                         <Star className="h-3 w-3 mr-1" />
                         Popular
