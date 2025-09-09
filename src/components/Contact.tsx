@@ -331,8 +331,6 @@ const Contact = () => {
                 * Câmpurile marcate sunt obligatorii. Îți vom răspunde în maxim 24 de ore.
               </p>
             </form>
-          </div>
-        </div>
 
         {/* Additional Info */}
         <div className="mt-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-2xl p-8 lg:p-12 text-white">
