@@ -220,7 +220,7 @@ const Contact = () => {
               <MapPin className="h-8 w-8 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Locația Noastră</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 mb-4">
               <a 
                 href="https://www.google.com/maps/place/București,+România" 
                 target="_blank" 
@@ -230,6 +230,13 @@ const Contact = () => {
                 București, România
               </a>
             </p>
+            
+            {/* Mesaj pentru mobil */}
+            <div className="lg:hidden bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+              <p className="text-gray-700 text-sm leading-relaxed font-medium">
+                La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație. Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
+              </p>
+            </div>
           </div>
 
           <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
@@ -282,17 +289,56 @@ const Contact = () => {
               title="Locația VisionEdit în București"
             ></iframe>
             
-            {/* Mesaj informativ sub hartă */}
-            <div className="p-6 bg-gradient-to-r from-gray-50 to-blue-50 border-t border-gray-200">
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Cum lucrăm împreună?</h4>
-              <p className="text-gray-700 leading-relaxed text-sm">
-                La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație. 
-                Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
-              </p>
-              <p className="text-gray-700 leading-relaxed text-sm mt-3">
-                Dacă aveți nevoie de un video editat profesionist și livrat în timp util, ne puteți contacta 
-                oricând. Răspundem prompt și suntem aici să discutăm orice idee sau proiect aveți în minte.
-              </p>
+            {/* Mesaj informativ sub hartă - Design Premium */}
+            <div className="p-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 border-t-4 border-gradient-to-r from-blue-500 to-purple-500 relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23blue%22 fill-opacity=%220.03%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 shadow-lg border-2 border-white/50">
+                  <h4 className="text-xl font-bold text-white mb-4 text-shadow flex items-center">
+                    <div className="bg-white/20 rounded-lg p-2 mr-3">
+                      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    Cum lucrăm împreună?
+                  </h4>
+                  
+                  <div className="space-y-4 text-white/90">
+                    <p className="text-base leading-relaxed font-medium">
+                      <strong className="text-white">La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.</strong> Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
+                    </p>
+                    
+                    <p className="text-base leading-relaxed font-medium">
+                      Dacă aveți nevoie de un video editat profesionist și livrat în timp util, ne puteți contacta oricând. <strong className="text-white">Răspundem prompt și suntem aici să discutăm orice idee sau proiect aveți în minte.</strong>
+                    </p>
+                    
+                    {/* Call to Action */}
+                    <div className="bg-white/10 rounded-lg p-4 mt-6 border border-white/20">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-white font-bold text-lg">Gata să începem?</p>
+                          <p className="text-white/80 text-sm">Contactează-ne pentru o consultație gratuită</p>
+                        </div>
+                        <button 
+                          onClick={() => {
+                            const contactForm = document.querySelector('.contact__form');
+                            if (contactForm) {
+                              contactForm.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }}
+                          className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-2 rounded-lg font-bold text-sm transition-colors duration-200 shadow-lg"
+                        >
+                          Contactează-ne
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
