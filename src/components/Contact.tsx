@@ -297,7 +297,6 @@ const Contact = () => {
               {/* Content */}
               <div className="relative z-10">
                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 shadow-lg border-2 border-white/50"></div>
-              )}
 
               {/* Message */}
               <div className="group">
