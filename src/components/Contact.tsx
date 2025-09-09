@@ -233,6 +233,9 @@ const Contact = () => {
             
           {/* Mesaj pentru mobil */}
 <div className="lg:hidden bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+  <h2 className="text-blue-700 text-base font-semibold mb-2">
+    Cum lucrăm împreună?
+  </h2>
   <p className="text-gray-700 text-sm leading-relaxed font-medium">
     La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.
   </p>
