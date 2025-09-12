@@ -35,7 +35,7 @@ const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
     const phoneNumber = '+40767082106';
     const message = encodeURIComponent(
-      'Salut! Am văzut site-ul VisionEdit și aș dori să aflu mai multe despre serviciile de editare video.'
+      'Salut! Aș dori informații despre serviciile de editare video și cum am putea începe colaborarea.'
     );
     const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${message}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
