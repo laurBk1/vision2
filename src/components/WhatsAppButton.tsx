@@ -11,7 +11,7 @@ const WhatsAppButton = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
       // Dispare după 5 secunde de inactivitate
-      timeoutRef.current = setTimeout(() => setIsVisible(false), 5000);
+      timeoutRef.current = setTimeout(() => setIsVisible(false), 4000);
     };
 
     const handleInteraction = () => showButton();
