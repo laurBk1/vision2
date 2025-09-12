@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Pricing from './components/Pricing';
 import Terms from './components/Terms';
 import Privacy from './components/Privacy';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   // Verificăm dacă suntem pe pagina de termeni
@@ -44,6 +45,7 @@ function App() {
         <Header />
         <Terms />
         <Footer />
+        <WhatsAppButton />
       </div>
     );
   }
@@ -54,6 +56,7 @@ function App() {
         <Header />
         <Privacy />
         <Footer />
+        <WhatsAppButton />
       </div>
     );
   }
@@ -70,6 +73,7 @@ function App() {
       <Testimonials />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
