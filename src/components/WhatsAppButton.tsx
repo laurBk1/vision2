@@ -10,7 +10,7 @@ const WhatsAppButton = () => {
 
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-      // Dispare după 5 secunde de inactivitate
+      // Dispare după 4 secunde de inactivitate
       timeoutRef.current = setTimeout(() => setIsVisible(false), 4000);
     };
 
