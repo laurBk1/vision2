@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './WhatsAppButton.css'; // import CSS-ul cu animatii
 
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,16 +8,12 @@ const WhatsAppButton = () => {
   useEffect(() => {
     const showButton = () => {
       setIsVisible(true);
-
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
-      // Dispare după 4 secunde de inactivitate
-      timeoutRef.current = setTimeout(() => setIsVisible(false), 4000);
+      timeoutRef.current = setTimeout(() => setIsVisible(false), 4000); // 4 secunde
     };
 
     const handleInteraction = () => showButton();
 
-    // Evenimente care arată interesul vizitatorului
     window.addEventListener('scroll', handleInteraction, { passive: true });
     window.addEventListener('mousemove', handleInteraction, { passive: true });
     window.addEventListener('touchstart', handleInteraction, { passive: true });
@@ -27,7 +24,6 @@ const WhatsAppButton = () => {
       window.removeEventListener('mousemove', handleInteraction);
       window.removeEventListener('touchstart', handleInteraction);
       window.removeEventListener('touchmove', handleInteraction);
-
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
@@ -45,13 +41,13 @@ const WhatsAppButton = () => {
     <div
       className={`fixed bottom-5 right-5 z-50 transition-all duration-500 ease-in-out transform ${
         isVisible
-          ? 'opacity-100 translate-y-0 scale-100'
+          ? 'opacity-100 translate-y-0 scale-100 bounce-once'
           : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
       }`}
     >
       <button
         onClick={handleWhatsAppClick}
-        className="w-15 h-15 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group transform hover:scale-110 active:scale-95"
+        className="w-15 h-15 bg-green-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group transform hover:scale-110 active:scale-95 hover:glow"
         style={{ backgroundColor: '#25D366' }}
         aria-label="Contactează-ne pe WhatsApp"
         title="Contactează-ne pe WhatsApp"
