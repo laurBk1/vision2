@@ -1,68 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let hasInteracted = false;
-
     const showButton = () => {
-      if (!hasInteracted) {
-        hasInteracted = true;
-      }
-      
       setIsVisible(true);
-      
-      // Clear existing timeout
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      
-      // Set new timeout to hide after 5 seconds
-      const newTimeoutId = setTimeout(() => {
-        setIsVisible(false);
-      }, 5000);
-      
-      setTimeoutId(newTimeoutId);
+
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+      // Dispare după 5 secunde de inactivitate
+      timeoutRef.current = setTimeout(() => setIsVisible(false), 5000);
     };
 
-    const handleScroll = () => showButton();
-    const handleMouseMove = () => showButton();
-    const handleTouch = () => showButton();
+    const handleInteraction = () => showButton();
 
-    // Add event listeners
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('touchstart', handleTouch, { passive: true });
-    window.addEventListener('touchmove', handleTouch, { passive: true });
+    // Evenimente care arată interesul vizitatorului
+    window.addEventListener('scroll', handleInteraction, { passive: true });
+    window.addEventListener('mousemove', handleInteraction, { passive: true });
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('touchmove', handleInteraction, { passive: true });
 
     return () => {
-      // Cleanup
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouch);
-      window.removeEventListener('touchmove', handleTouch);
-      
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('touchmove', handleInteraction);
+
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [timeoutId]);
+  }, []);
 
   const handleWhatsAppClick = () => {
     const phoneNumber = '+40767082106';
-    const message = encodeURIComponent('Salut! Am văzut site-ul VisionEdit și aș dori să aflu mai multe despre serviciile de editare video.');
+    const message = encodeURIComponent(
+      'Salut! Am văzut site-ul VisionEdit și aș dori să aflu mai multe despre serviciile de editare video.'
+    );
     const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${message}`;
-    
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div
       className={`fixed bottom-5 right-5 z-50 transition-all duration-500 ease-in-out transform ${
-        isVisible 
-          ? 'opacity-100 translate-y-0 scale-100' 
+        isVisible
+          ? 'opacity-100 translate-y-0 scale-100'
           : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
       }`}
     >
@@ -73,7 +56,6 @@ const WhatsAppButton = () => {
         aria-label="Contactează-ne pe WhatsApp"
         title="Contactează-ne pe WhatsApp"
       >
-        {/* WhatsApp Icon */}
         <svg
           className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-200"
           fill="currentColor"
