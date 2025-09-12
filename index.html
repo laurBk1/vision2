@@ -15,6 +15,19 @@
     
     <!-- Schema markup LocalBusiness -->
     <script type="application/ld+json">
+    <!-- Trusted Types Policy -->
+    <script>
+      if (window.trustedTypes && window.trustedTypes.createPolicy) {
+        window.trustedTypes.createPolicy('default', {
+          createHTML: (input) => input,
+          createScript: (input) => input,
+          createScriptURL: (input) => input
+        });
+      }
+    </script>
+    
+    <!-- Schema markup LocalBusiness -->
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
