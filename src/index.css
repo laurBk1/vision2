@@ -43,3 +43,18 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
 }
+/* Bounce o singură dată la apariție */
+@keyframes bounce-once {
+  0% { transform: translateY(20px) scale(0.95); }
+  50% { transform: translateY(-5px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.bounce-once {
+  animation: bounce-once 0.5s ease-out forwards;
+}
+
+/* Glow subtil la hover */
+.hover\:glow:hover {
+  box-shadow: 0 0 12px 2px rgba(37, 211, 102, 0.6);
+}
