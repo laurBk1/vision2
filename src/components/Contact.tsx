@@ -366,7 +366,7 @@ const Contact: React.FC = () => {
           <div className="contact__form bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl border border-white/50">
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold text-gray-900 mb-3">
-                Să Începem Proiectul!
+                Să Începem Colaborarea!
               </h3>
               <p className="text-gray-600">
                 Completează formularul și îți vom răspunde în cel mai scurt timp
