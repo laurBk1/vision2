@@ -319,7 +319,7 @@ const Contact = () => {
                     </p>
                     
                     <p className="text-base leading-relaxed font-medium">
-                      Dacă</strong>
+                      Dacă aveți nevoie de un video editat profesionist și livrat în timp util, ne puteți contacta oricând. <strong className="text-white">Răspundem prompt și suntem aici să discutăm orice idee sau proiect aveți în minte.</strong>
                     </p>
                     
                     {/* Call to Action */}
