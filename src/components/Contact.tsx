@@ -124,6 +124,30 @@ const Contact = () => {
     setShowConfirmation(false);
   };
 
+  const handleContactFormScroll = () => {
+    // Scroll lin la formularul de contact
+    const contactForm = document.querySelector('.contact__form');
+    if (contactForm) {
+      contactForm.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      
+      // Focus pe câmpul de nume după scroll
+      setTimeout(() => {
+        const nameInput = document.getElementById('name') as HTMLInputElement;
+        if (nameInput) {
+          nameInput.focus();
+          // Adăugăm și un efect vizual subtil
+          nameInput.style.transform = 'scale(1.02)';
+          setTimeout(() => {
+            nameInput.style.transform = 'scale(1)';
+          }, 200);
+        }
+      }, 800); // Delay pentru a permite scroll-ul să se termine
+    }
+  };
+
   // Group packages by category
   const groupedPackages = packages.reduce((acc, pkg) => {
     if (!acc[pkg.category]) {
@@ -349,7 +373,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl border border-white/50">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl border border-white/50 contact__form">
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 Să Începem Proiectul!
@@ -385,6 +409,14 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Numele tău complet"
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300"
+                      ref={(el) => {
+                        if (el && window.location.hash === '#contact-focus') {
+                          setTimeout(() => {
+                            el.focus();
+                            window.history.replaceState(null, '', window.location.pathname);
+                          }, 100);
+                        }
+                      }}
                       required
                     />
                   </div>
@@ -450,12 +482,7 @@ const Contact = () => {
               {/* Package Selection - COMPLETELY REBUILT */}
               <div className="group">
                 <label htmlFor="pachet" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Alege Pachetul *
-                </label>
-                <div className="relative">
-                  {/* Main Select Button */}
-                  <div
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    onClick={handleContactFormScroll}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300 text-left flex items-center justify-between cursor-pointer"
                   >
                     <span className={selectedPackage ? 'text-gray-900' : 'text-gray-500'}>
