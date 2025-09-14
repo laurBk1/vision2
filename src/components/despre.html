@@ -41,25 +41,68 @@
  
     <!-- Schema markup LocalBusiness -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "VisionEdit",
+  "image": "https://visionedit.ro/apple-touch-icon.png",
+  "url": "https://visionedit.ro",
+  "telephone": "+40-767-082-106",
+  "email": "contact@visionedit.ro",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Strada Exemplu 123",
+    "addressLocality": "București",
+    "addressRegion": "București",
+    "postalCode": "010101",
+    "addressCountry": "RO"
+  },
+  "description": "VisionEdit oferă servicii profesionale de video marketing, specializat în videoclipuri scurte pentru YouTube Shorts, Instagram Reels și TikTok. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage, conectează și vinde.",
+  "openingHoursSpecification": [
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "VisionEdit",
-      "image": "https://visionedit.ro/apple-touch-icon.png",
-      "telephone": "+40-000-000-000",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Strada Exemplu 123",
-        "addressLocality": "București",
-        "addressCountry": "RO"
-      },
-      "url": "https://visionedit.ro",
-      "sameAs": [
-        "https://www.facebook.com/visionedit",
-        "https://www.instagram.com/visionedit"
-      ]
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
     }
-    </script>
+  ],
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Weekend Urgente",
+      "value": "Servicii disponibile doar pentru urgențe"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/share/1b1MVuEKH2/?mibextid=wwXIfr",
+    "https://www.instagram.com/laur_visionedit?igsh=MXRjbHozY3NidW1rdg%3D%3D&utm_source=qr",
+    "https://www.tiktok.com/@laur_visionedit.ro",
+    "https://youtube.com/@laur_visionedit?si=FsGDHSF9gbsEjUwR"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Service",
+      "name": "Editare video YouTube Shorts",
+      "description": "La VisionEdit, transformăm materialele tale brute în videoclipuri scurte și captivante pentru YouTube Shorts, optimizate pentru storytelling autentic și trend-uri actuale, maximizând engagement-ul și vizibilitatea canalului tău."
+    },
+    {
+      "@type": "Service",
+      "name": "Editare video Instagram Reels",
+      "description": "Creăm conținut video profesional pentru Instagram Reels, adaptat pentru orice nișă și destinat să atragă, conecteze și convertească publicul țintă, transformând ideile tale în videoclipuri care vând."
+    },
+    {
+      "@type": "Service",
+      "name": "Editare video TikTok",
+      "description": "Serviciile noastre de editare video pentru TikTok includ conținut vertical 9:16, optimizat global, estetic și gata de publicare, menit să genereze viralitate și să amplifice impactul campaniilor tale digitale."
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "23"
+  }
+}
+</script>
 
    <!-- Css Styles optimizat -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="print" onload="this.onload=null;this.media='all';">
