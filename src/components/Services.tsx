@@ -137,7 +137,7 @@ const Services = () => {
   <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium mt-4">
     Transformăm ideile tale în conținut care captează atenția.
   </p>
-</div>
+</div> 
 
         {/* Special Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
