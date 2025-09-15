@@ -89,14 +89,7 @@ const Portfolio = () => {
               De Ce Nu Afișăm<br className="sm:hidden" />
               <span className="block mt-1">Portofoliul Nostru?</span>
             </h2>
-          <div>
-  <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-    La VisionEdit, confidențialitatea și discreția sunt fundamentale în relația noastră cu clienții.
-  </p>
-  <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium mt-4">
-    Respectăm intimitatea și strategiile de business ale fiecărui client.
-  </p>
-</div>
+          </div> <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium"> La VisionEdit, confidențialitatea și discreția sunt fundamentale în relația noastră cu clienții. Respectăm intimitatea și strategiile de business ale fiecărui client. </p> </div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-20">
           {/* Video Presentation */}
