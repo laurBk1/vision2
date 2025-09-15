@@ -130,14 +130,7 @@ const Services = () => {
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
               Ce Servicii Oferim?
             </h2>
-          <div>
-  <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-    Editare profesională pentru Shorts, Reels, TikTok și alte formate scurte, optimizată pentru a maximiza vizualizările și engagement-ul pe social media.
-  </p>
-  <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium mt-4">
-    Transformăm ideile tale în conținut care captează atenția.
-  </p>
-</div>
+          </div> <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium"> Editare profesională pentru Shorts, Reels, TikTok și alte formate scurte, optimizată pentru a maximiza vizualizările și engagement-ul pe social media. Transformăm ideile tale în conținut care captează atenția. </p> </div>
 
         {/* Special Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
