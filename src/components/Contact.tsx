@@ -228,10 +228,12 @@ const Contact: React.FC = () => {
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</h2>
           </div>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Suntem gata să transformăm ideile tale în videoclipuri care atrag și convertesc.
-            Contactează-ne astăzi pentru servicii de editare video profesionale!
-          </p>
-        </div>
+    Ești gata să-ți transformi ideile în videoclipuri care atrag și convertesc?
+  </p>
+  <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mt-4">
+    Contactează-ne astăzi pentru servicii de editare video profesionale!
+  </p>
+</div>
 
         {/* Contact Info Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
