@@ -221,11 +221,15 @@ const Pricing = () => {
               <span className="block mt-1">pentru Promovarea Afacerii Tale!</span>
             </h2>
           </div>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
-            Alege planul care îți va transforma conținutul și îți va crește vizibilitatea online. 
-            Pachete flexibile adaptate nevoilor tale de business.
-          </p>
-        </div>
+           <div className="max-w-3xl mx-auto">
+    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+      Alege planul care îți va transforma conținutul și îți va crește vizibilitatea online.
+    </p>
+    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-4">
+      Pachete flexibile adaptate nevoilor tale de business.
+    </p>
+  </div>
+</div>
 
         {/* Editare cu materialele tale */}
         <div className="mb-16 md:mb-20">
