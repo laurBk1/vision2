@@ -227,10 +227,10 @@ const Contact: React.FC = () => {
             <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</h2>
           </div>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+  <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
     Ești gata să-ți transformi ideile în videoclipuri care atrag și convertesc?
   </p>
-  <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mt-4">
+  <p className="text-base md:text-lg text-gray-800 font-semibold max-w-3xl mx-auto leading-relaxed mt-2">
     Contactează-ne astăzi pentru servicii de editare video profesionale!
   </p>
 </div>
