@@ -49,7 +49,7 @@ const About = () => {
     <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
       Creăm și edităm videoclipuri scurte și captivante pentru branduri, afaceri și creatori, optimizate pentru Reels, TikTok, Shorts și alte platforme.
     </p>
-    <p className="text-base md:text-lg text-gray-800 leading-relaxed font-semibold mt-1">
+    <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium mt-1">
   Cu focus pe storytelling autentic și trend-uri actuale, transformăm ideile tale în conținut video care atrage și convertește.
 </p>
     </div>
