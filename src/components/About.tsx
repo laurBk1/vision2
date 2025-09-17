@@ -46,7 +46,7 @@ const About = () => {
             </h2>
           </div>
 <div className="max-w-4xl mx-auto">
-  <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium">
+  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
     Creăm și edităm videoclipuri scurte, captivante și optimizate pentru Reels, TikTok, Shorts și alte platforme, combinând storytelling autentic și trenduri actuale pentru a transforma ideile tale în conținut video care atrage și convertește.
   </p>
 </div>
