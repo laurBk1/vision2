@@ -45,12 +45,11 @@ const About = () => {
               Cu ce ne ocupăm?
             </h2>
           </div>
-
   <div className="max-w-4xl mx-auto">
     <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
       Creăm și edităm videoclipuri scurte și captivante pentru branduri, afaceri și creatori, optimizate pentru Reels, TikTok, Shorts și alte platforme.
     </p>
-    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-4">
+    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-1">
       Cu focus pe storytelling autentic și trend-uri actuale, transformăm ideile tale în conținut video care atrage și convertește.
     </p>
   </div>
