@@ -96,7 +96,7 @@ const Portfolio = () => {
     <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
       La VisionEdit, confidențialitatea și discreția sunt fundamentale în relația noastră cu clienții.
     </p>
-    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-4">
+    <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium mt-1">
       Respectăm intimitatea și strategiile de business ale fiecărui client.
     </p>
   </div>
