@@ -136,7 +136,7 @@ const Services = () => {
     <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
       Editare profesională pentru Shorts, Reels, TikTok și alte formate scurte, optimizată pentru a maximiza vizualizările și engagement-ul pe social media.
     </p>
-    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-4">
+    <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium mt-1">
       Transformăm ideile tale în conținut care captează atenția.
     </p>
   </div>
