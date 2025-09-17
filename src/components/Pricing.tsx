@@ -225,7 +225,7 @@ const Pricing = () => {
     <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
       Alege planul care îți va transforma conținutul și îți va crește vizibilitatea online.
     </p>
-    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-4">
+    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-1">
       Pachete flexibile adaptate nevoilor tale de business.
     </p>
   </div>
