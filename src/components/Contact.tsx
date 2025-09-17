@@ -230,7 +230,7 @@ const Contact: React.FC = () => {
   <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
     Ești gata să-ți transformi ideile în videoclipuri care atrag și convertesc?
   </p>
-  <p className="text-base md:text-lg text-gray-800 font-semibold max-w-3xl mx-auto leading-relaxed mt-1">
+  <p className="text-base md:text-lg text-gray-800 font-medium max-w-3xl mx-auto leading-relaxed mt-1">
     Contactează-ne astăzi pentru servicii de editare video profesionale!
   </p>
 </div>
