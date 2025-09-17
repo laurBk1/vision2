@@ -52,6 +52,9 @@ const About = () => {
     <p className="text-base md:text-lg text-gray-800 leading-relaxed font-semibold mt-1">
   Cu focus pe storytelling autentic și trend-uri actuale, transformăm ideile tale în conținut video care atrage și convertește.
 </p>
+    </div>
+</div>
+
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start mb-16 md:mb-20">
