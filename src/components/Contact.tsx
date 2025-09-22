@@ -340,7 +340,7 @@ const Contact: React.FC = () => {
                     </p>
                     
                     <p className="text-base leading-relaxed font-medium">
-                      Dacă aveți nevoie de un video editat profesionist și livrat în timp util, ne puteți contacta oricând. <strong className="text-white">Răspundem prompt și suntem aici să discutăm orice idee sau proiect aveți în minte.</strong>
+                      <strong className="text-white"></strong>
                     </p>
                     
                     {/* Call to Action */}
