@@ -16,7 +16,7 @@ const Pricing = () => {
       icon: '🚀',
       popular: false,
       price: '180 lei/video',
-      description: 'Editare doar cu materialele tale',
+      description: '(180 lei — 900 lei / lună)',
       features: [
         <>
         Tot ce găsești în secțiunea „Servicii”<br />
@@ -37,8 +37,8 @@ const Pricing = () => {
       subtitle: '6-12 videoclipuri pe lună',
       icon: '💡',
       popular: true,
-      price: '140 lei/video',
-      description: 'Editare doar cu materialele tale',
+      price: '150 lei/video',
+      description: '(900 lei — 1.800 lei / lună)',
       features: [
         'Toate beneficiile din Start Smart',
         'Preț redus per videoclip',
@@ -55,8 +55,8 @@ const Pricing = () => {
       subtitle: '13-24+ videoclipuri pe lună',
       icon: '🔥',
       popular: false,
-      price: '120 lei/video',
-      description: 'Editare doar cu materialele tale',
+      price: '135 lei/video',
+      description: '(de la 1.755 lei / lună)',
       features: [
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',
@@ -221,13 +221,14 @@ const Pricing = () => {
               <span className="block mt-1">pentru Promovarea Afacerii Tale!</span>
             </h2>
           </div>
-           <div className="max-w-3xl mx-auto">
-    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
-      Alege planul care îți va transforma conținutul și îți va crește vizibilitatea online.
-    </p>
-    <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium mt-1">
-      Pachete flexibile adaptate nevoilor tale de business.
-    </p>
+          <div className="max-w-3xl mx-auto text-center px-4">
+  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic">
+    Alege planul care îți va <span className="text-indigo-600 font-bold not-italic">transforma conținutul</span> și îți va 
+    <span className="text-gray-900 font-bold not-italic"> crește vizibilitatea online</span>.
+  </p>
+  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-3 italic">
+    Pachete <span className="text-blue-700 font-bold not-italic">flexibile</span> adaptate nevoilor tale de business.
+  </p>
   </div>
 </div>
 
@@ -246,10 +247,13 @@ const Pricing = () => {
               <div className="bg-blue-50 rounded-lg p-3 md:p-4 border-l-4 border-blue-500">
                 <div className="flex items-start">
                   <Clock className="h-4 w-4 md:h-5 md:w-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                  <p className="text-blue-800 font-bold text-xs md:text-sm leading-tight">
-                    <strong>Durată maximă:</strong> „Maxim 1 minut" se referă la durata videoclipului final editat, 
-                    nu la durata materialelor raw trimise spre editare.
-                  </p>
+                  <p className="text-blue-800 font-medium text-xs md:text-sm leading-relaxed">
+                  <strong className="font-bold">Durată maximă:</strong> „Maxim 1 minut" se referă la durata videoclipului final editat, 
+                  nu la durata materialelor raw trimise spre editare.
+                  <span className="block mt-2 font-semibold">
+      Putem edita și clipuri care depășesc această durată, însă prețul se poate modifica în funcție de complexitatea și durata finală a proiectului.
+    </span>
+  </p>
                 </div>
               </div>
             </div>
@@ -273,10 +277,16 @@ const Pricing = () => {
                   <span className="block sm:inline"> Script și Materiale Stock</span>
                 </span>
               </h3>
-              <p className="text-gray-700 leading-relaxed text-sm md:text-base font-medium">
-                Aceste pachete includ tot ce ai nevoie: <strong>editare profesională, voiceover cu AI, 
-                script personalizat și materiale video/foto stock (B-rolls), plus un avatar virtual tip UGC care transmite mesajul tău într-un mod natural și profesionist</strong> - oferite în limita resurselor disponibile pentru fiecare proiect.
-              </p>
+              <p className="text-gray-700 leading-relaxed text-sm md:text-base font-medium text-center">
+              Aceste pachete includ tot ce ai nevoie: 
+              <span className="block mt-2 text-gray-900">
+              <strong>editare profesională, voiceover cu AI, script personalizat și materiale video/foto stock (B-rolls), 
+               plus un avatar virtual tip UGC care transmite mesajul tău într-un mod natural și profesionist</strong> 
+              </span>
+              <span className="block mt-2 text-xs md:text-sm text-gray-500 font-normal italic">
+              — oferite în limita resurselor disponibile pentru fiecare proiect.
+    </span>
+  </p>
             </div>
           </div>
 
@@ -316,7 +326,7 @@ const Pricing = () => {
 
         <div className="text-center">
           <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base font-medium">
-            Fiecare video include o revizuire gratuită și livrare în maximum 48 de ore.
+            Fiecare video include o revizuire gratuită și livrare în maximum 48 de ore
           </p>
           <button 
             onClick={handleContactClick}

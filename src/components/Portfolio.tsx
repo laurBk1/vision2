@@ -92,14 +92,17 @@ const Portfolio = () => {
 
             </div>
 
-  <div className="max-w-4xl mx-auto">
-    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
-      La VisionEdit, confidențialitatea și discreția sunt fundamentale în relația noastră cu clienții.
-    </p>
-    <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium mt-1">
-      Respectăm intimitatea și strategiile de business ale fiecărui client.
-    </p>
-  </div>
+            <div className="max-w-3xl mx-auto px-4 mt-12 text-center">
+  {/* Prima linie - Accent pe valori */}
+  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic">
+    La VisionEdit, <span className="text-gray-900 font-bold not-italic">confidențialitatea și discreția</span> sunt fundamentale în relația noastră cu clienții.
+  </p>
+  
+  {/* A doua linie - Accent pe business */}
+  <p className="text-base md:text-lg text-gray-600 mt-3 leading-relaxed font-medium italic">
+    Respectăm intimitatea și <span className="text-indigo-600 font-bold not-italic">strategiile de business</span> ale fiecărui client.
+  </p>
+</div>
 </div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-20">

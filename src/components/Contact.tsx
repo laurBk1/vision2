@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
       id: 'Creștere Accelerată',
       name: 'Creștere Accelerată',
       category: 'Editare cu materialele tale',
-      price: '140 lei/video',
+      price: '150 lei/video',
       description: '6-12 videoclipuri pe lună',
       popular: true
     },
@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
       id: 'Vizibilitate Max',
       name: 'Vizibilitate Max',
       category: 'Editare cu materialele tale',
-      price: '120 lei/video',
+      price: '135 lei/video',
       description: '13-24+ videoclipuri pe lună',
       popular: false
     },
@@ -227,12 +227,17 @@ const Contact: React.FC = () => {
             <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</h2>
           </div>
-  <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-    Ești gata să-ți transformi ideile în videoclipuri care atrag și convertesc?
+          <div className="max-w-3xl mx-auto px-4 text-center">
+  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic">
+    Ești gata să-ți transformi ideile în videoclipuri care 
+    <span className="text-indigo-600 font-bold not-italic"> atrag și convertesc</span>?
   </p>
-  <p className="text-base md:text-lg text-gray-800 font-medium max-w-3xl mx-auto leading-relaxed mt-1">
-    Contactează-ne astăzi pentru servicii de editare video profesionale!
+  
+  <p className="text-base md:text-lg text-gray-600 mt-3 leading-relaxed font-medium italic">
+    Contactează-ne astăzi pentru servicii de 
+    <span className="text-gray-900 font-bold not-italic"> editare video profesionale</span>!
   </p>
+</div>
 </div>
 
         {/* Contact Info Cards */}
