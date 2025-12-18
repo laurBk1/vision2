@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -15,10 +15,13 @@ import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   const hash = window.location.hash;
-  const isTermsPage = hash === '#terms';
-  const isPrivacyPage = hash === '#privacy';
+  const path = window.location.pathname;
 
-  // 1. Logica pentru paginile speciale (Terms/Privacy)
+  // Verificăm ambele variante pentru paginile speciale (cu sau fără #)
+  const isTermsPage = hash === '#terms' || path === '/terms';
+  const isPrivacyPage = hash === '#privacy' || path === '/privacy';
+
+  // 1. Scroll la top pentru Terms/Privacy
   useEffect(() => {
     if (isTermsPage || isPrivacyPage) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -27,18 +30,20 @@ function App() {
 
   // 2. Logica pentru TOATE link-urile din sitemap (#services, #portfolio, #about, etc.)
   useEffect(() => {
-    if (!isTermsPage && !isPrivacyPage && hash) {
-      // Așteptăm un mic delay pentru ca elementele să fie randate pe pagină
-      const timer = setTimeout(() => {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 300);
-      return () => clearTimeout(timer);
+    if (!isTermsPage && !isPrivacyPage) {
+      const targetId = hash ? hash.replace('#', '') : (path !== '/' ? path.replace('/', '') : null);
+      
+      if (targetId) {
+        const timer = setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 300);
+        return () => clearTimeout(timer);
+      }
     }
-  }, [hash, isTermsPage, isPrivacyPage]);
+  }, [hash, path, isTermsPage, isPrivacyPage]);
 
   if (isTermsPage) {
     return (
