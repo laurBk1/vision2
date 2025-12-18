@@ -137,11 +137,6 @@ const Terms = () => {
     }
   ];
 
-  const handleContactClick = () => {
-    // Navigăm direct la secțiunea contact
-    window.location.hash = '#contact';
-    window.location.reload();
-  };
 
   return (
     <section className="py-20 bg-gray-50 min-h-screen">
