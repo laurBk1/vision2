@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
+# Zone restricționate pentru securitate
 Disallow: /admin/
 Disallow: /tmp/
 Disallow: /cgi-bin/
@@ -9,7 +9,7 @@ Disallow: /private/
 Disallow: /.well-known/
 Disallow: /api/
 
-# Allow important files
+# Permisiuni pentru resurse esențiale (ajută Google să vadă designul corect)
 Allow: /sitemap.xml
 Allow: /robots.txt
 Allow: /favicon.ico
@@ -17,11 +17,5 @@ Allow: /logo.webp
 Allow: /*.css
 Allow: /*.js
 
-# Crawl delay
-Crawl-delay: 1
-
-# Sitemap location
+# Locația sitemap-ului
 Sitemap: https://visionedit.ro/sitemap.xml
-
-# Host preference
-Host: https://visionedit.ro
