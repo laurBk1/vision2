@@ -68,9 +68,9 @@ const Footer = () => {
               <img 
                 src="/logo.webp" 
                 alt="VisionEdit România Logo" 
-                className="h-10 w-auto"
-                width="120"
-                height="40"
+                className="h-11 md:h-14 w-auto"
+                width="170"
+                height="54"
                 loading="lazy"
               />
               <div className="text-white">
