@@ -14,30 +14,31 @@ import Privacy from './components/Privacy';
 import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
-  // Verificăm dacă suntem pe pagina de termeni
-  const isTermsPage = window.location.hash === '#terms';
-  const isPrivacyPage = window.location.hash === '#privacy';
+  const hash = window.location.hash;
+  const isTermsPage = hash === '#terms';
+  const isPrivacyPage = hash === '#privacy';
 
+  // 1. Logica pentru paginile speciale (Terms/Privacy)
   useEffect(() => {
-    // Scroll la top când se încarcă pagina de termeni - FORȚAT
     if (isTermsPage || isPrivacyPage) {
-      // Forțăm scroll la top imediat
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      // Și încă o dată după un mic delay pentru siguranță
-      setTimeout(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      }, 50);
     }
   }, [isTermsPage, isPrivacyPage]);
 
-  // Adăugăm un useEffect suplimentar pentru a forța scroll la top
+  // 2. Logica pentru TOATE link-urile din sitemap (#services, #portfolio, #about, etc.)
   useEffect(() => {
-    if (isTermsPage || isPrivacyPage) {
-      // Forțăm scroll la top de fiecare dată când componenta se re-renderează
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+    if (!isTermsPage && !isPrivacyPage && hash) {
+      // Așteptăm un mic delay pentru ca elementele să fie randate pe pagină
+      const timer = setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
     }
-  });
+  }, [hash, isTermsPage, isPrivacyPage]);
 
   if (isTermsPage) {
     return (
@@ -64,14 +65,14 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <Services />
-      <Portfolio />
-      <Process />
-      <Pricing />
-      <About />
+      <div id="home"><Hero /></div>
+      <div id="services"><Services /></div>
+      <div id="portfolio"><Portfolio /></div>
+      <div id="process"><Process /></div>
+      <div id="pricing"><Pricing /></div>
+      <div id="about"><About /></div>
       <Testimonials />
-      <Contact />
+      <div id="contact"><Contact /></div>
       <Footer />
       <WhatsAppButton />
     </div>
