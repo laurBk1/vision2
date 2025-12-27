@@ -115,30 +115,47 @@ const About = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-<div className="text-center">
-  <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
-    <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-shadow">
-      Concurența ta se folosește deja de video marketing ca soluție de promovare!
-    </h3>
-    <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-shadow">
-      Tu de ce mai aștepți?
-    </h3>
-    <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 font-medium">
-      Contactează-ne astăzi și du-ți afacerea la următorul nivel!<br />
-      Împreună, creăm videoclipuri care atrag clienți și aduc rezultate reale.
-    </p>
-            <button 
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="bg-white text-blue-600 hover:bg-gray-100 px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-colors duration-200 transform hover:scale-105 shadow-lg"
-            >
-              Contactează-ne!
-            </button>
+{/* Call to Action */}
+<div className="text-center mt-12 md:mt-20 px-4">
+          <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-[2.5rem] p-8 md:p-20 text-white shadow-2xl max-w-5xl mx-auto overflow-hidden">
+            
+            {/* Elemente de design pentru profunzime (opțional dar fac diferența) */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-400 rounded-full blur-3xl"></div>
+            </div>
+
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <div className="mb-10">
+                <h3 className="text-2xl md:text-4xl font-extrabold mb-4 leading-tight tracking-tight">
+                  Concurența ta se folosește deja de video marketing ca soluție de promovare!
+                </h3>
+                <h3 className="text-xl md:text-2xl font-semibold text-blue-100/90 uppercase tracking-widest">
+                  Tu de ce mai aștepți?
+                </h3>
+              </div>
+
+              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-10"></div>
+
+              <p className="text-lg md:text-xl mb-12 text-white/90 font-medium leading-relaxed max-w-3xl mx-auto">
+                Contactează-ne astăzi și du-ți afacerea la următorul nivel!{" "}
+                <span className="md:block mt-2 font-normal text-white/80">
+                  Împreună, creăm videoclipuri care atrag clienți și aduc rezultate reale.
+                </span>
+              </p>
+
+              <button 
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="bg-white text-blue-700 hover:bg-blue-50 px-12 py-5 rounded-2xl font-extrabold text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] active:scale-95 border-b-4 border-blue-100"
+              >
+                Contactează-ne!
+              </button>
+            </div>
           </div>
         </div>
       </div>

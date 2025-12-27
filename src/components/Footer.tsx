@@ -80,7 +80,7 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-300 mb-6 leading-relaxed">
-              La VisionEdit ne ocupăm de crearea și editarea videoclipurilor scurte, atractive și profesionale care îți cresc vizibilitatea și aduc clienți noi.
+            La VisionEdit creăm și edităm videoclipuri scurte, atractive și profesionale, care îți cresc vizibilitatea și aduc clienți noi.
             </p>
             
             <div className="space-y-2">
