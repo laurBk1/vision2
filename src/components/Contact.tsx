@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
       id: 'Creștere Accelerată',
       name: 'Creștere Accelerată',
       category: 'Editare cu materialele tale',
-      price: '150 lei/video',
+      price: '160 lei/video',
       description: '6-12 videoclipuri pe lună',
       popular: true
     },
@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
       id: 'Vizibilitate Max',
       name: 'Vizibilitate Max',
       category: 'Editare cu materialele tale',
-      price: '135 lei/video',
+      price: '150 lei/video',
       description: '13-24+ videoclipuri pe lună',
       popular: false
     },
