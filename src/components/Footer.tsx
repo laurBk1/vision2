@@ -299,7 +299,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2025 VisionEdit. Toate drepturile rezervate.<br />
+            © 2026 VisionEdit România. Toate drepturile rezervate.<br />
             Creat cu <span className="text-red-500">♥</span> de Laur Bk.
           </p>
         </div>
