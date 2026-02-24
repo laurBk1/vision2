@@ -117,11 +117,11 @@ const Portfolio = () => {
                 </div>
                 
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 text-shadow">
-                  Prezentare Personală
+                  Despre Noi
                 </h3>
                 
                 <p className="text-blue-100 mb-6 md:mb-8 font-medium text-sm md:text-base leading-relaxed">
-                  Află mai multe despre mine și despre pasiunea mea pentru editarea video
+                  Transformăm viziunea ta în conținut video de impact
                 </p>
 
                 {/* Video Container - 9:16 Aspect Ratio */}
