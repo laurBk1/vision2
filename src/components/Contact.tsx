@@ -54,24 +54,24 @@ const Contact: React.FC = () => {
     {
       id: 'Start Smart Complet',
       name: 'Start Smart Complet',
-      category: 'Pachete complete cu voiceover, script și materiale stock',
-      price: '250-325 lei/video',
+      category: 'Pachete Complete — Videoclipuri de la A la Z',
+      price: '280-350 lei/video',
       description: '1-5 videoclipuri pe lună',
       popular: false
     },
     {
       id: 'Creștere Accelerată Complet',
       name: 'Creștere Accelerată Complet',
-      category: 'Pachete complete cu voiceover, script și materiale stock',
-      price: '225-300 lei/video',
+      category: 'Pachete Complete — Videoclipuri de la A la Z',
+      price: '255-315 lei/video',
       description: '6-12 videoclipuri pe lună',
       popular: true
     },
     {
       id: 'Vizibilitate Max Complet',
       name: 'Vizibilitate Max Complet',
-      category: 'Pachete complete cu voiceover, script și materiale stock',
-      price: '200-275 lei/video',
+      category: 'Pachete Complete — Videoclipuri de la A la Z',
+      price: '240-295 lei/video',
       description: '13-24+ videoclipuri pe lună',
       popular: false
     }

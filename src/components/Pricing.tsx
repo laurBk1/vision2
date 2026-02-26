@@ -77,17 +77,17 @@ const Pricing = () => {
       subtitle: '1-5 videoclipuri pe lună',
       icon: '🎬',
       popular: false,
-      price: '250-325 lei/video',
+      price: '280-350 lei/video',
       priceDetails: [
-        { duration: 'Sub 30 secunde', price: '250 lei/video' },
-        { duration: '30 sec - 1 min', price: '325 lei/video' }
+        { duration: 'Sub 30 secunde', price: '280 lei/video' },
+        { duration: '30 sec - 1 min', price: '350 lei/video' }
       ],
-      description: 'Pachet complet cu voiceover, script și materiale stock',
+      description: 'Videoclip complet, gata de publicat',
       features: [
         'Videoclipuri personalizate de la A la Z',
         'Montaj complet profesional',
-        'Voice-over profesional cu AI',
-        'Avatar virtual profesional (UGC) inclus',
+        'Voiceover AI — voce naturală, impact maxim',
+        'Avatar UGC profesional inclus',
         'Script adaptat conținutului',
         'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
@@ -100,12 +100,12 @@ const Pricing = () => {
       subtitle: '6-12 videoclipuri pe lună',
       icon: '🎯',
       popular: true,
-      price: '225-300 lei/video',
+      price: '255-315 lei/video',
       priceDetails: [
-        { duration: 'Sub 30 secunde', price: '225 lei/video' },
-        { duration: '30 sec - 1 min', price: '300 lei/video' }
+        { duration: 'Sub 30 secunde', price: '255 lei/video' },
+        { duration: '30 sec - 1 min', price: '315 lei/video' }
       ],
-      description: 'Pachet complet cu voiceover, script și materiale stock',
+      description: 'Videoclip complet, gata de publicat',
       features: [
         'Toate beneficiile din Start Smart Complet',
         'Preț redus per videoclip',
@@ -122,12 +122,12 @@ const Pricing = () => {
       subtitle: '13-24+ videoclipuri pe lună',
       icon: '🏆',
       popular: false,
-      price: '200-275 lei/video',
+      price: '240-295 lei/video',
       priceDetails: [
-        { duration: 'Sub 30 secunde', price: '200 lei/video' },
-        { duration: '30 sec - 1 min', price: '275 lei/video' }
+        { duration: 'Sub 30 secunde', price: '240 lei/video' },
+        { duration: '30 sec - 1 min', price: '295 lei/video' }
       ],
-      description: 'Pachet complet cu voiceover, script și materiale stock',
+      description: 'Videoclip complet, gata de publicat',
       features: [
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',
@@ -273,15 +273,14 @@ const Pricing = () => {
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 flex items-center justify-center flex-wrap">
                 <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 mr-2 flex-shrink-0" />
                 <span className="text-center leading-tight">
-                  Pachete Complete cu Voiceover,<br className="sm:hidden" />
-                  <span className="block sm:inline"> Script și Materiale Stock</span>
+                  Pachete Complete —<br className="sm:hidden" />
+                  <span className="block sm:inline"> Videoclipuri de la A la Z</span>
                 </span>
               </h3>
               <p className="text-gray-700 leading-relaxed text-sm md:text-base font-medium text-center">
               Aceste pachete includ tot ce ai nevoie: 
               <span className="block mt-2 text-gray-900">
-              <strong>editare profesională, voiceover cu AI, script personalizat și materiale video/foto stock (B-rolls), 
-               plus un avatar virtual tip UGC care transmite mesajul tău într-un mod natural și profesionist</strong> 
+              <strong>editare profesională, voiceover AI premium, script personalizat și materiale video/foto stock (B-rolls), plus un avatar virtual UGC care transmite mesajul tău într-un mod natural și profesionist</strong> 
               </span>
               <span className="block mt-2 text-xs md:text-sm text-gray-500 font-normal italic">
               — oferite în limita resurselor disponibile pentru fiecare proiect.
@@ -316,7 +315,7 @@ const Pricing = () => {
               <h4 className="font-bold text-gray-900 mb-3 text-sm md:text-base">⚠️ Note Importante:</h4>
               <ul className="space-y-2 text-gray-700 text-xs md:text-sm font-medium">
                 <li>• Materialele stock sunt oferite în limita disponibilității</li>
-                <li>• Voiceover-ul este generat cu AI profesional</li>
+                <li>• Voiceover AI — voce naturală, impact maxim</li>
                 <li>• Revizii suplimentare: 30-50 lei/video</li>
                 <li>• Prețurile pot varia în funcție de complexitate</li>
               </ul>
