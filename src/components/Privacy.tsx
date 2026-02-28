@@ -21,7 +21,7 @@ const Privacy = () => {
       icon: FileText,
       title: '1. Introducere',
       content: [
-        'VisionEdit SRL ("noi", "compania") respectă prevederile Regulamentului General privind Protecția Datelor (GDPR) (UE) 2016/679 și ale legislației românești aplicabile în domeniul protecției datelor cu caracter personal.',
+        'VISIONEDIT SRL ("noi", "compania") respectă prevederile Regulamentului General privind Protecția Datelor (GDPR) (UE) 2016/679 și ale legislației românești aplicabile în domeniul protecției datelor cu caracter personal.',
         '',
         'Această politică stabilește modul în care colectăm, utilizăm, stocăm și protejăm datele personale ale clienților și vizitatorilor site-ului nostru www.visionedit.ro.',
         '',
@@ -32,7 +32,7 @@ const Privacy = () => {
       icon: Users,
       title: '2. Datele Operatorului',
       content: [
-        'Denumire: VisionEdit SRL',
+        'Denumire: VISIONEDIT SRL',
         'Sediu social: București, România',
         'Date de contact:',
         '',
@@ -137,9 +137,9 @@ const Privacy = () => {
         '• Email: contact@visionedit.ro',
         '• Telefon: +40 767 082 106',
         '',
-        'Această politică este efectivă începând cu 28.07.2025.',
+        'Această politică este efectivă începând cu 28.02.2026.',
         '',
-        'VisionEdit SRL se angajează să respecte cele mai înalte standarde de protecție a datelor personale în conformitate cu legislația europeană și românească.'
+        'VISIONEDIT SRL se angajează să respecte cele mai înalte standarde de protecție a datelor personale în conformitate cu legislația europeană și românească.'
       ]
     }
   ];
@@ -152,7 +152,7 @@ const Privacy = () => {
             Politică de Confidențialitate și Protecția Datelor (GDPR)
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            VisionEdit SRL respectă prevederile GDPR și ale legislației românești pentru protecția 
+            VISIONEDIT SRL respectă prevederile GDPR și ale legislației românești pentru protecția 
             datelor personale. Află cum colectăm, utilizăm și protejăm informațiile tale.
           </p>
         </div>
@@ -167,7 +167,7 @@ const Privacy = () => {
             </h3>
           </div>
           <p className="text-gray-700 leading-relaxed">
-            VisionEdit SRL se angajează să protejeze confidențialitatea și securitatea datelor personale 
+            VISIONEDIT SRL se angajează să protejeze confidențialitatea și securitatea datelor personale 
             ale clienților săi, în conformitate cu Regulamentul General privind Protecția Datelor (GDPR) 
             și legislația națională aplicabilă.
           </p>
