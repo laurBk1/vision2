@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
       id: 'Start Smart',
       name: 'Start Smart',
       category: 'Editare cu materialele tale',
-      price: '180 lei/video',
+      price: '210 lei/video',
       description: '1-5 videoclipuri pe lună',
       popular: false
     },
@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
       id: 'Creștere Accelerată',
       name: 'Creștere Accelerată',
       category: 'Editare cu materialele tale',
-      price: '160 lei/video',
+      price: '185 lei/video',
       description: '6-12 videoclipuri pe lună',
       popular: true
     },
@@ -47,8 +47,8 @@ const Contact: React.FC = () => {
       id: 'Vizibilitate Max',
       name: 'Vizibilitate Max',
       category: 'Editare cu materialele tale',
-      price: '150 lei/video',
-      description: '13-24+ videoclipuri pe lună',
+      price: '175 lei/video',
+      description: '13+ videoclipuri pe lună',
       popular: false
     },
     {
