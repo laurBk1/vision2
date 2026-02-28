@@ -15,8 +15,8 @@ const Pricing = () => {
       subtitle: '1-5 videoclipuri pe lună',
       icon: '🚀',
       popular: false,
-      price: '180 lei/video',
-      description: '(180 lei — 900 lei / lună)',
+      price: '210 lei/video',
+      description: '(210 lei — 1.050 lei / lună)',
       features: [
         <>
         Tot ce găsești în secțiunea „Servicii”<br />
@@ -25,7 +25,7 @@ const Pricing = () => {
         'Montaj complet și optimizat',
         'Tranziții și efecte vizuale',
         'Subtitrări și texte personalizate',
-        'Format vertical 9:16 optimizat',
+        'Sound Design & Efecte Sonore',
         'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
@@ -37,8 +37,8 @@ const Pricing = () => {
       subtitle: '6-12 videoclipuri pe lună',
       icon: '💡',
       popular: true,
-      price: '160 lei/video',
-      description: '(960 lei — 1.920 lei / lună)',
+      price: '185 lei/video',
+      description: '(1.110 lei — 2.220 lei / lună)',
       features: [
         'Toate beneficiile din Start Smart',
         'Preț redus per videoclip',
@@ -52,11 +52,11 @@ const Pricing = () => {
     },
     {
       name: 'Vizibilitate Max',
-      subtitle: '13-24+ videoclipuri pe lună',
+      subtitle: '13+ videoclipuri pe lună',
       icon: '🔥',
       popular: false,
-      price: '150 lei/video',
-      description: '(de la 1.950 lei / lună)',
+      price: '175 lei/video',
+      description: '(de la 2.275 lei / lună)',
       features: [
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',
@@ -86,8 +86,8 @@ const Pricing = () => {
       features: [
         'Videoclipuri personalizate de la A la Z',
         'Montaj complet profesional',
-        'Voiceover AI — voce naturală, impact maxim',
         'Avatar UGC profesional inclus',
+        'Voiceover AI Premium',
         'Script adaptat conținutului',
         'O revizuire gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
@@ -119,7 +119,7 @@ const Pricing = () => {
     },
     {
       name: 'Vizibilitate Max Complet',
-      subtitle: '13-24+ videoclipuri pe lună',
+      subtitle: '13+ videoclipuri pe lună',
       icon: '🏆',
       popular: false,
       price: '240-295 lei/video',
@@ -242,7 +242,7 @@ const Pricing = () => {
               </h3>
               <p className="text-gray-700 leading-relaxed mb-3 md:mb-4 text-sm md:text-base font-medium">
                 Aceste pachete includ doar editarea profesională a materialelor pe care ni le furnizezi. 
-                <strong className="block mt-2"> Nu includ voiceover, script sau materiale video/foto din stock.</strong>
+                <strong className="block mt-2">Editare 100% personalizată după nevoile tale.</strong>
               </p>
               <div className="bg-blue-50 rounded-lg p-3 md:p-4 border-l-4 border-blue-500">
                 <div className="flex items-start">
