@@ -621,25 +621,31 @@ const Contact: React.FC = () => {
                   className={`text-sm leading-relaxed cursor-pointer select-none transition-colors duration-200 ${gdprPulse ? 'text-red-500 font-medium' : 'text-gray-600'}`}
                 >
                   Am citit și sunt de acord cu{' '}
-                  <a
-                    href="/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                      window.location.hash = '#privacy';
+                      setTimeout(() => window.location.reload(), 50);
+                    }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
-                    onClick={(e) => e.stopPropagation()}
                   >
                     Politica de Confidențialitate & GDPR
-                  </a>{' '}
+                  </button>{' '}
                   și cu{' '}
-                  <a
-                    href="/terms"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                      window.location.hash = '#terms';
+                      setTimeout(() => window.location.reload(), 50);
+                    }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
-                    onClick={(e) => e.stopPropagation()}
                   >
                     Termenii și Condițiile
-                  </a>
+                  </button>
                   . *
                 </label>
               </div>
