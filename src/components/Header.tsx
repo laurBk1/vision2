@@ -39,9 +39,10 @@ const Header = () => {
       }, 100);
     } else {
       // Navigare normală pe aceeași pagină
-      const element = document.querySelector(href);
+      const element = document.querySelector(href) as HTMLElement;
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const top = element.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     }
     setIsMenuOpen(false);
@@ -60,7 +61,8 @@ const Header = () => {
     } else {
       const contactSection = document.getElementById('contact');
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+        const top = contactSection.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     }
     setIsMenuOpen(false);

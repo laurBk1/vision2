@@ -37,7 +37,8 @@ function App() {
         const timer = setTimeout(() => {
           const element = document.getElementById(targetId);
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const top = element.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: 'smooth' });
           }
         }, 300);
         return () => clearTimeout(timer);
