@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,12 +18,12 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Servicii', href: '#services' },
-    { name: 'Portofoliu', href: '#portfolio' },
-    { name: 'Proces', href: '#process' },
-    { name: 'Prețuri', href: '#pricing' },
-    { name: 'Despre', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Servicii', href: '#services', icon: Clapperboard },
+    { name: 'Portofoliu', href: '#portfolio', icon: BookImage },
+    { name: 'Proces', href: '#process', icon: GitMerge },
+    { name: 'Prețuri', href: '#pricing', icon: BadgeDollarSign },
+    { name: 'Despre', href: '#about', icon: Users },
+    { name: 'Contact', href: '#contact', icon: Mail }
   ];
 
   const handleNavClick = (href: string) => {
@@ -89,7 +89,7 @@ const Header = () => {
   };
 
   // Pentru pagina de termeni, forțăm întotdeauna fundalul albastru închis
-  const headerBackground = (isTermsPage || isPrivacyPage)
+  const headerBackground = (isTermsPage || isPrivacyPage || isMenuOpen)
     ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' 
     : (isScrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent');
 
@@ -150,23 +150,55 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-slate-800/95 backdrop-blur-sm rounded-lg mt-2 py-4 shadow-xl border border-white/10">
-            {navItems.map((item) => (
+          <div className="lg:hidden shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
+            style={{ background: 'linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)' }}
+          >
+            {/* Menu Header */}
+            <div className="px-5 py-4 border-b border-white/10"
+              style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.15) 0%, rgba(147,51,234,0.15) 100%)' }}
+            >
+              <p className="text-xs font-bold text-blue-400 uppercase tracking-widest">Navigare</p>
+            </div>
+
+            {/* Nav Items */}
+            <div className="py-2">
+              {navItems.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.href)}
+                    className="group flex items-center w-full px-5 py-4 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
+                  >
+                    <div className="flex items-center justify-center w-9 h-9 rounded-xl mr-4 transition-all duration-200 group-hover:scale-110"
+                      style={{ background: index % 2 === 0 
+                        ? 'linear-gradient(135deg, rgba(37,99,235,0.3), rgba(37,99,235,0.1))' 
+                        : 'linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1))' 
+                      }}
+                    >
+                      <Icon className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-400' : 'text-purple-400'}`} />
+                    </div>
+                    <span className="flex-1 text-left text-gray-200 font-semibold text-base group-hover:text-white transition-colors duration-200">
+                      {item.name}
+                    </span>
+                    <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-gray-400 group-hover:translate-x-1 transition-all duration-200" />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* CTA Button */}
+            <div className="px-5 py-5 border-t border-white/10"
+              style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.1) 0%, rgba(147,51,234,0.1) 100%)' }}
+            >
               <button
-                key={item.name}
-                onClick={() => handleNavClick(item.href)}
-                className="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors duration-200 font-semibold"
-              >
-                {item.name}
-              </button>
-            ))}
-            <div className="px-4 pt-2">
-              <button 
                 onClick={handleContactClick}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-200 shadow-lg"
+                className="w-full text-white px-6 py-4 rounded-xl font-bold text-base transition-all duration-200 shadow-lg flex items-center justify-center space-x-2 hover:shadow-blue-500/25 hover:scale-[1.02] active:scale-[0.98]"
+                style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #2563eb 100%)' }}
                 aria-label="Începe proiectul tău"
               >
-                Începe Proiectul
+                <Zap className="h-5 w-5" />
+                <span>Începe Proiectul</span>
               </button>
             </div>
           </div>
