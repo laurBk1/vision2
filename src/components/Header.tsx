@@ -103,7 +103,7 @@ const Header = () => {
             <img 
               src="/logo.webp" 
               alt="VisionEdit România Logo" 
-              className="h-10 md:h-12 w-auto"
+              className="h-14 md:h-16 w-auto"
               width="150"
               height="50"
               loading="eager"
