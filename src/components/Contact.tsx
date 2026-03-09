@@ -22,6 +22,8 @@ const Contact: React.FC = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [gdprPulse, setGdprPulse] = useState(false);
   const nameInputRef = useRef<HTMLInputElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -120,6 +122,11 @@ const Contact: React.FC = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!gdprAccepted) {
+      setGdprPulse(true);
+      setTimeout(() => setGdprPulse(false), 1000);
+      return;
+    }
     setShowConfirmation(true);
 
     try {
@@ -145,6 +152,7 @@ const Contact: React.FC = () => {
           pachet: '',
           message: ''
         });
+        setGdprAccepted(false);
       }, 1500);
     }
   };
@@ -589,10 +597,57 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
+              {/* GDPR Checkbox */}
+              <div className={`flex items-start space-x-3 rounded-xl transition-all duration-300 ${gdprPulse ? 'animate-bounce' : ''}`}>
+                <div className="flex-shrink-0 mt-0.5">
+                  <button
+                    type="button"
+                    onClick={() => setGdprAccepted(!gdprAccepted)}
+                    className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${
+                      gdprAccepted
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 border-blue-600'
+                        : gdprPulse
+                        ? 'border-red-500 bg-red-50 shadow-lg shadow-red-200'
+                        : 'border-gray-300 bg-white hover:border-blue-400'
+                    }`}
+                    aria-checked={gdprAccepted}
+                    role="checkbox"
+                  >
+                    {gdprAccepted && <Check className="h-3 w-3 text-white" strokeWidth={3} />}
+                  </button>
+                </div>
+                <label
+                  onClick={() => setGdprAccepted(!gdprAccepted)}
+                  className={`text-sm leading-relaxed cursor-pointer select-none transition-colors duration-200 ${gdprPulse ? 'text-red-500 font-medium' : 'text-gray-600'}`}
+                >
+                  Am citit și sunt de acord cu{' '}
+                  <a
+                    href="/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Politica de Confidențialitate & GDPR
+                  </a>{' '}
+                  și cu{' '}
+                  <a
+                    href="/terms"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Termenii și Condițiile
+                  </a>
+                  . *
+                </label>
+              </div>
+
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-bold py-5 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-[1.02] hover:shadow-2xl"
+                className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-bold py-5 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-[1.02] hover:shadow-2xl cursor-pointer"
               >
                 <span className="text-lg">Trimite Mesajul</span>
                 <Send className="h-6 w-6" />
