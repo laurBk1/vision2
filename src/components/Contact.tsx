@@ -622,6 +622,7 @@ const Contact: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setGdprAccepted(!gdprAccepted)}
+                    aria-label="Acceptă politica de confidențialitate și termenii și condițiile"
                     className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${
                       gdprAccepted
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 border-blue-600'
@@ -646,7 +647,7 @@ const Contact: React.FC = () => {
                       e.stopPropagation();
                       navigateToPage('#privacy');
                     }}
-                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
+                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >
                     Politica de Confidențialitate & GDPR
                   </button>{' '}
@@ -657,7 +658,7 @@ const Contact: React.FC = () => {
                       e.stopPropagation();
                       navigateToPage('#terms');
                     }}
-                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
+                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >
                     Termenii și Condițiile
                   </button>

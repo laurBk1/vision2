@@ -92,7 +92,7 @@ const Hero = () => {
           font-weight: 500;
           letter-spacing: 0.07em;
           text-transform: uppercase;
-          color: #7DD3FC;
+          color: #BAE6FD;
           white-space: normal;
           text-align: center;
         }
@@ -217,7 +217,7 @@ const Hero = () => {
           line-height: 1; margin-bottom: 5px;
         }
         .h-stat-lbl {
-          font-size: 11px; font-weight: 400; color: #475569;
+          font-size: 11px; font-weight: 500; color: #94A3B8;
           text-transform: uppercase; letter-spacing: 0.06em;
         }
 
@@ -286,7 +286,7 @@ const Hero = () => {
           font-size: 16px; font-weight: 700; color: #EFF6FF; margin-bottom: 8px;
         }
         .h-card-desc {
-          font-size: 13px; font-weight: 300; color: #64748B;
+          font-size: 13px; font-weight: 300; color: #94A3B8;
           line-height: 1.6; margin-bottom: 16px;
         }
         .h-card-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
@@ -328,13 +328,13 @@ const Hero = () => {
           font-family: 'Syne', sans-serif;
           font-size: 12px; font-weight: 700; color: #EFF6FF;
         }
-        .h-float-sub { font-size: 10.5px; color: #475569; }
+        .h-float-sub { font-size: 10.5px; color: #94A3B8; }
         .h-float-strong {
           display: block;
           font-family: 'Syne', sans-serif;
           font-size: 12px; font-weight: 700; color: #EFF6FF;
         }
-        .h-float-sub { font-size: 10.5px; color: #475569; }
+        .h-float-sub { font-size: 10.5px; color: #94A3B8; }
 
         /* MOBILE */
         @media (max-width: 860px) {

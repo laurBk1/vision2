@@ -199,6 +199,7 @@ const Pricing = () => {
 
         <button 
           onClick={handleContactClick}
+          aria-label={`Alege pachetul ${pkg.buttonText}`}
           className={`w-full text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 text-sm md:text-base ${pkg.buttonColor}`}
         >
           <span>{pkg.buttonText}</span>
