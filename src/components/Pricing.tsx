@@ -67,7 +67,7 @@ const Pricing = () => {
         'Raport lunar cu feedback și recomandări'
       ],
       buttonText: 'Maximizează Impactul',
-      buttonColor: 'bg-green-600 hover:bg-green-700'
+      buttonColor: 'bg-green-700 hover:bg-green-800'
     }
   ];
 
@@ -138,7 +138,7 @@ const Pricing = () => {
         'Analiză performanță lunară'
       ],
       buttonText: 'Maximizează Impactul Complet',
-      buttonColor: 'bg-green-600 hover:bg-green-700'
+      buttonColor: 'bg-green-700 hover:bg-green-800'
     }
   ];
 

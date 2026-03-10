@@ -64,7 +64,9 @@ function App() {
     return (
       <div className="min-h-screen">
         <Header />
-        <Terms />
+        <main>
+          <Terms />
+        </main>
         <Footer />
         <WhatsAppButton />
       </div>
@@ -75,7 +77,9 @@ function App() {
     return (
       <div className="min-h-screen">
         <Header />
-        <Privacy />
+        <main>
+          <Privacy />
+        </main>
         <Footer />
         <WhatsAppButton />
       </div>
@@ -85,14 +89,16 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <div id="home"><Hero /></div>
-      <div id="services"><Services /></div>
-      <div id="portfolio"><Portfolio /></div>
-      <div id="process"><Process /></div>
-      <div id="pricing"><Pricing /></div>
-      <div id="about"><About /></div>
-      <Testimonials />
-      <div id="contact"><Contact /></div>
+      <main>
+        <div id="home"><Hero /></div>
+        <div id="services"><Services /></div>
+        <div id="portfolio"><Portfolio /></div>
+        <div id="process"><Process /></div>
+        <div id="pricing"><Pricing /></div>
+        <div id="about"><About /></div>
+        <Testimonials />
+        <div id="contact"><Contact /></div>
+      </main>
       <Footer />
       <WhatsAppButton />
     </div>
