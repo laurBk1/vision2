@@ -27,6 +27,25 @@ const Contact: React.FC = () => {
   const nameInputRef = useRef<HTMLInputElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
+  // Restaurează datele formularului dacă clientul a revenit de pe Terms/Privacy
+  useEffect(() => {
+    const saved = sessionStorage.getItem('contact_form_data');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setFormData(parsed.formData || formData);
+        setGdprAccepted(parsed.gdprAccepted || false);
+        sessionStorage.removeItem('contact_form_data');
+      } catch (e) {}
+    }
+  }, []);
+
+  // Salvează datele și navighează fără reload
+  const navigateToPage = (hash: string) => {
+    sessionStorage.setItem('contact_form_data', JSON.stringify({ formData, gdprAccepted }));
+    window.location.hash = hash;
+  };
+
   const packages: Package[] = [
     { id: 'none', name: '-- Nu am nevoie de pachet --', category: 'Altele' },
     {
@@ -625,9 +644,7 @@ const Contact: React.FC = () => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                      window.location.hash = '#privacy';
-                      setTimeout(() => window.location.reload(), 50);
+                      navigateToPage('#privacy');
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
                   >
@@ -638,9 +655,7 @@ const Contact: React.FC = () => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                      window.location.hash = '#terms';
-                      setTimeout(() => window.location.reload(), 50);
+                      navigateToPage('#terms');
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
                   >

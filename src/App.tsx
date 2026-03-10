@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -14,25 +14,39 @@ import Privacy from './components/Privacy';
 import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
-  const hash = window.location.hash;
-  const path = window.location.pathname;
+  const [location, setLocation] = useState({
+    hash: window.location.hash,
+    path: window.location.pathname,
+  });
 
-  // Verificăm ambele variante pentru paginile speciale (cu sau fără #)
+  // Ascultăm butonul înapoi/înainte al browserului
+  useEffect(() => {
+    const handlePopState = () => {
+      setLocation({
+        hash: window.location.hash,
+        path: window.location.pathname,
+      });
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const { hash, path } = location;
+
   const isTermsPage = hash === '#terms' || path === '/terms';
   const isPrivacyPage = hash === '#privacy' || path === '/privacy';
 
-  // 1. Scroll la top pentru Terms/Privacy
+  // Scroll la top pentru Terms/Privacy
   useEffect(() => {
     if (isTermsPage || isPrivacyPage) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [isTermsPage, isPrivacyPage]);
 
-  // 2. Logica pentru TOATE link-urile din sitemap (#services, #portfolio, #about, etc.)
+  // Scroll la secțiune pentru link-urile din meniu
   useEffect(() => {
     if (!isTermsPage && !isPrivacyPage) {
       const targetId = hash ? hash.replace('#', '') : (path !== '/' ? path.replace('/', '') : null);
-      
       if (targetId) {
         const timer = setTimeout(() => {
           const element = document.getElementById(targetId);

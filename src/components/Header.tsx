@@ -27,18 +27,17 @@ const Header = () => {
   ];
 
   const handleNavClick = (href: string) => {
-    // Dacă suntem pe pagina de termeni, navigăm înapoi la home
     if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
+      // Revenim la home fără reload — schimbăm hash-ul și scrollăm
       window.location.hash = '';
-      window.location.reload();
       setTimeout(() => {
-        const element = document.querySelector(href);
+        const element = document.querySelector(href) as HTMLElement;
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const top = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
         }
-      }, 100);
+      }, 50);
     } else {
-      // Navigare normală pe aceeași pagină
       const element = document.querySelector(href) as HTMLElement;
       if (element) {
         const top = element.getBoundingClientRect().top + window.scrollY - 80;
@@ -51,13 +50,13 @@ const Header = () => {
   const handleContactClick = () => {
     if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
-      window.location.reload();
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
+          const top = contactSection.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
         }
-      }, 100);
+      }, 50);
     } else {
       const contactSection = document.getElementById('contact');
       if (contactSection) {
@@ -71,7 +70,9 @@ const Header = () => {
   const handleLogoClick = () => {
     if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
-      window.location.reload();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 50);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -79,13 +80,7 @@ const Header = () => {
 
   const handleTermsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Forțăm scroll la top înainte de navigare
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     window.location.hash = '#terms';
-    // Delay mic pentru a permite hash-ul să se seteze
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
   };
 
   // Pentru pagina de termeni, forțăm întotdeauna fundalul albastru închis

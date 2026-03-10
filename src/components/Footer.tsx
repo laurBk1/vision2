@@ -3,54 +3,38 @@ import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const handleNavClick = (href: string) => {
-    // Dacă suntem pe pagina de termeni, navigăm înapoi la home
     if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
-      window.location.reload();
       setTimeout(() => {
-        const element = document.querySelector(href);
+        const element = document.querySelector(href) as HTMLElement;
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const top = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
         }
-      }, 100);
+      }, 50);
     } else {
-      // Navigare normală pe aceeași pagină
-      const element = document.querySelector(href);
+      const element = document.querySelector(href) as HTMLElement;
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const top = element.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     }
   };
 
   const handleTermsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Forțăm scroll la top înainte de navigare
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     window.location.hash = '#terms';
-    // Delay mic pentru a permite hash-ul să se seteze
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
   };
 
   const handlePrivacyClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Forțăm scroll la top înainte de navigare
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     window.location.hash = '#privacy';
-    // Delay mic pentru a permite hash-ul să se seteze
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
   };
 
   const handleLogoClick = () => {
-    if (window.location.hash === '#terms') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
       window.location.hash = '';
-      window.location.reload();
-    } else if (window.location.hash === '#privacy') {
-      window.location.hash = '';
-      window.location.reload();
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

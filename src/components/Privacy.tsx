@@ -2,19 +2,6 @@ import React from 'react';
 import { Shield, Lock, Eye, FileText, Users, AlertCircle, CheckCircle, Scale, Mail, Phone } from 'lucide-react';
 
 const Privacy = () => {
-  React.useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   const sections = [
     {

@@ -2,17 +2,6 @@ import React from 'react';
 import { FileText, Shield, Clock, CreditCard, Users, AlertCircle, CheckCircle, Scale, Trash2, Lock } from 'lucide-react';
 
 const Terms = () => {
-  React.useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   const sections = [
     {
