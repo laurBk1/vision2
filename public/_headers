@@ -11,12 +11,10 @@
   X-Robots-Tag: index, follow
   Content-Language: ro-RO
 
-# Cache headers for static assets
+# Cache headers
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-
 /images/*
   Cache-Control: public, max-age=31536000, immutable
-
 /img/*
   Cache-Control: public, max-age=31536000, immutable
