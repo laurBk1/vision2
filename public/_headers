@@ -15,7 +15,6 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache headers for images
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
