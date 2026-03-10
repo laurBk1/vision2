@@ -120,7 +120,7 @@ const Portfolio = () => {
                   Despre Noi
                 </h3>
                 
-                <p className="text-blue-50 mb-6 md:mb-8 font-medium text-sm md:text-base leading-relaxed">
+                <p className="text-blue-100 mb-6 md:mb-8 font-medium text-sm md:text-base leading-relaxed">
                   Transformăm viziunea ta în conținut video de impact
                 </p>
 
@@ -133,13 +133,11 @@ const Portfolio = () => {
                       controls
                       preload="metadata"
                       poster=""
-                      aria-label="Prezentare VisionEdit - editare video profesională"
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onEnded={() => setIsPlaying(false)}
                     >
-                      <source src="https://res.cloudinary.com/dmjeeintj/video/upload/v1773149253/portofoliu_qhkiht.mp4" type="video/mp4" />
-                      <track kind="captions" src="/portofoliu.vtt" srclang="ro" label="Română" default />
+                      <source src="/portofoliu.mp4" type="video/mp4" />
                       Browserul tău nu suportă redarea video.
                     </video>
                     
