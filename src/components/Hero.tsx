@@ -327,28 +327,60 @@ const Hero = () => {
           font-size: 12px; font-weight: 700; color: #EFF6FF;
         }
         .h-float-sub { font-size: 10.5px; color: #94A3B8; }
-        .h-float-strong {
-          display: block;
-          font-family: 'Syne', sans-serif;
-          font-size: 12px; font-weight: 700; color: #EFF6FF;
+
+        /* CARD WRAPPER */
+        .h-card-wrapper {
+          position: relative;
+          width: 100%;
+          max-width: 400px;
         }
-        .h-float-sub { font-size: 10.5px; color: #94A3B8; }
+
+        /* Badge-uri flotante - ascunse pe desktop, vizibile pe mobile */
+        .h-proof-float { display: none; }
+
+        /* Badge-uri din interior - vizibile pe desktop */
+        .h-proofs-desktop { display: flex; }
 
         /* MOBILE */
         @media (max-width: 860px) {
           .h-section { padding: 72px 0 64px; }
-          .h-inner {
-            grid-template-columns: 1fr;
-            gap: 48px;
-            padding: 0 24px;
-          }
+          .h-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
           .h-left { align-items: center; text-align: center; }
           .h-body { max-width: 100%; }
           .h-checks { align-items: center; }
           .h-cta { justify-content: center; }
           .h-stats { justify-content: center; max-width: 400px; margin: 0 auto; }
-          .h-right { padding: 24px; }
+          .h-right { padding: 40px 24px 48px; }
           .h-card-outer { max-width: 360px; }
+          .h-card-wrapper { max-width: 360px; margin: 0 auto; }
+
+          /* Ascunde badge-urile din interior pe mobile */
+          .h-proofs-desktop { display: none; }
+
+          /* Afișează badge-urile flotante pe mobile */
+          .h-proof-float {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #0D1525;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            min-width: 150px;
+            max-width: 210px;
+            animation: badge-float 3s ease-in-out infinite;
+          }
+          .h-proof-top { top: -18px; right: 10px; animation-delay: 0s; }
+          .h-proof-bottom { 
+            bottom: -22px; 
+            left: 10px; 
+            animation-delay: 1.5s; 
+            white-space: nowrap; 
+          }
+          .h-card-wrapper { display: flex; flex-direction: column; }
         }
 
         @media (max-width: 480px) {
@@ -443,40 +475,63 @@ const Hero = () => {
 
           {/* RIGHT — Card */}
           <div className="h-right">
-            <div className="h-card-outer">
-              <div className="h-card-inner">
-                <div className="h-card-thumb">
-                  <div className="h-play-btn">
-                    <Play size={20} color="#fff" fill="#fff" />
-                  </div>
-                </div>
-                <div className="h-card-title">Editare Video Profesională</div>
-                <p className="h-card-desc">
-                  Trimite-ne materialele, noi ne ocupăm de editare — format scurt, gata de publicat.
-                </p>
-                <div className="h-card-badges">
-                  {['Instagram Reels', 'TikTok', 'YouTube Shorts', 'Facebook Ads', '+ Alte platforme sociale'].map((p) => (
-                    <span className="h-badge" key={p}>{p}</span>
-                  ))}
-                </div>
+            <div className="h-card-wrapper">
 
-                <div className="h-card-proofs">
-                  <div className="h-proof-item">
-                    <div className="h-float-icon yellow">⭐</div>
-                    <div>
-                      <strong className="h-float-strong">Calitate garantată</strong>
-                      <span className="h-float-sub">Satisfacție 100%</span>
+              {/* Badge sus-dreapta — doar pe mobile */}
+              <div className="h-proof-float h-proof-top">
+                <div className="h-float-icon yellow">⭐</div>
+                <div>
+                  <strong className="h-float-strong">Calitate garantată</strong>
+                  <span className="h-float-sub">Satisfacție 100%</span>
+                </div>
+              </div>
+
+              <div className="h-card-outer">
+                <div className="h-card-inner">
+                  <div className="h-card-thumb">
+                    <div className="h-play-btn">
+                      <Play size={20} color="#fff" fill="#fff" />
                     </div>
                   </div>
-                  <div className="h-proof-item">
-                    <div className="h-float-icon green">🚀</div>
-                    <div>
-                      <strong className="h-float-strong">Livrare flexibilă</strong>
-                      <span className="h-float-sub">Adaptată proiectului tău</span>
+                  <div className="h-card-title">Editare Video Profesională</div>
+                  <p className="h-card-desc">
+                    Edităm conținut video profesional pentru orice platformă, gata de publicat.
+                  </p>
+                  <div className="h-card-badges">
+                    {['Instagram Reels', 'TikTok', 'YouTube Shorts', 'Facebook Ads', '+ Alte platforme sociale'].map((p) => (
+                      <span className="h-badge" key={p}>{p}</span>
+                    ))}
+                  </div>
+
+                  {/* Badge-uri în interior — doar pe desktop */}
+                  <div className="h-card-proofs h-proofs-desktop">
+                    <div className="h-proof-item">
+                      <div className="h-float-icon yellow">⭐</div>
+                      <div>
+                        <strong className="h-float-strong">Calitate garantată</strong>
+                        <span className="h-float-sub">Satisfacție 100%</span>
+                      </div>
+                    </div>
+                    <div className="h-proof-item">
+                      <div className="h-float-icon green">🚀</div>
+                      <div>
+                        <strong className="h-float-strong">Livrare flexibilă</strong>
+                        <span className="h-float-sub">Adaptată proiectului tău</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Badge jos-stânga — doar pe mobile */}
+              <div className="h-proof-float h-proof-bottom">
+                <div className="h-float-icon green">🚀</div>
+                <div>
+                  <strong className="h-float-strong">Livrare flexibilă</strong>
+                  <span className="h-float-sub">Adaptată proiectului tău</span>
+                </div>
+              </div>
+
             </div>
           </div>
 
