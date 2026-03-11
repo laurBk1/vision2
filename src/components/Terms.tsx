@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Shield, Clock, CreditCard, Users, AlertCircle, CheckCircle, Scale, Trash2, Lock } from 'lucide-react';
+import { FileText, Shield, Clock, CreditCard, Users, AlertCircle, CheckCircle, Scale, Trash2, Lock, Network } from 'lucide-react';
 
 const Terms = () => {
 
@@ -99,56 +99,73 @@ const Terms = () => {
       ]
     },
     {
-      icon: Trash2,
-      title: '7. Stocarea și ștergerea materialelor',
+      icon: Network,
+      title: '7. Capacitate operațională și colaboratori autorizați',
       content: [
-        '7.1. VISIONEDIT SRL nu are obligația de a stoca pe termen nelimitat materialele video. Politica de retenție:',
+        '7.1. VISIONEDIT SRL operează ca o structură de producție video distribuită, coordonând o rețea de colaboratori autorizați — editori video independenți și agenții partenere — locați pe teritoriul României. Acest model operațional permite livrarea de servicii la standarde ridicate de calitate, respectarea termenelor agreate indiferent de volumul de lucru și oferirea unui serviciu continuu, scalabil și profesionist.',
+        '',
+        '7.2. Prin semnarea contractului, Clientul ia la cunoștință și acordă consimțământul expres ca VISIONEDIT SRL să implice, atunci când volumul de lucru sau complexitatea proiectului o impune, colaboratori autorizați în procesul de producție și post-producție video. Această practică este parte integrantă a modelului de lucru al VISIONEDIT SRL și nu constituie un transfer al obligațiilor contractuale.',
+        '',
+        '7.3. Protecția materialelor Clientului — orice colaborator autorizat este obligat, anterior accesului la orice material al Clientului, să semneze un acord de confidențialitate cu VISIONEDIT SRL, prin care se obligă să:',
+        '• Păstreze confidențialitatea absolută a tuturor materialelor video, audio, grafice și a instrucțiunilor primite',
+        '• Nu utilizeze materialele Clientului în scop de portofoliu personal, promovare sau orice formă de comunicare publică',
+        '• Nu transmită, reproducă sau stocheze materialele dincolo de scopul strict al execuției lucrării încredințate',
+        '• Șteargă toate materialele primite imediat după finalizarea și predarea lucrării către VISIONEDIT SRL',
+        '',
+        '7.4. Indiferent de structura internă a echipei implicate, Clientul tratează exclusiv cu VISIONEDIT SRL, care răspunde integral pentru calitatea materialelor finale livrate, respectarea termenelor și confidențialitatea datelor. Implicarea colaboratorilor autorizați nu transferă, nu diminuează și nu fragmentează în niciun mod răspunderea contractuală a VISIONEDIT SRL față de Client.'
+      ]
+    },
+    {
+      icon: Trash2,
+      title: '8. Stocarea și ștergerea materialelor',
+      content: [
+        '8.1. VISIONEDIT SRL nu are obligația de a stoca pe termen nelimitat materialele video. Politica de retenție:',
         '• Materiale raw primite de la Client: pot fi șterse imediat după livrarea finală',
         '• Fișiere finale editate: păstrate maximum 30 de zile de la confirmarea livrării, apoi șterse definitiv',
         '• Proiecte de editare (.prproj, .aep, .resolve etc.): pot fi șterse oricând după livrare',
         '',
-        '7.2. Clientul este singurul responsabil pentru arhivarea fișierelor finale. VISIONEDIT SRL recomandă descărcarea tuturor materialelor în cel mult 30 de zile de la primirea link-ului.',
+        '8.2. Clientul este singurul responsabil pentru arhivarea fișierelor finale. VISIONEDIT SRL recomandă descărcarea tuturor materialelor în cel mult 30 de zile de la primirea link-ului.',
         '',
-        '7.3. Re-livrarea materialelor după expirarea celor 30 de zile poate fi condiționată de o taxă administrativă suplimentară.'
+        '8.3. Re-livrarea materialelor după expirarea celor 30 de zile poate fi condiționată de o taxă administrativă suplimentară.'
       ]
     },
     {
       icon: Lock,
-      title: '8. Prelucrarea datelor cu caracter personal (GDPR)',
+      title: '9. Prelucrarea datelor cu caracter personal (GDPR)',
       content: [
-        '8.1. VISIONEDIT SRL prelucrează datele Clientului exclusiv în scopul executării contractului, în conformitate cu Regulamentul (UE) 2016/679 (GDPR) și Legea nr. 190/2018.',
+        '9.1. VISIONEDIT SRL prelucrează datele Clientului exclusiv în scopul executării contractului, în conformitate cu Regulamentul (UE) 2016/679 (GDPR) și Legea nr. 190/2018.',
         '',
-        '8.2. Datele prelucrate includ: denumire/nume, adresă, CUI/CNP, date de contact, IBAN.',
+        '9.2. Datele prelucrate includ: denumire/nume, adresă, CUI/CNP, date de contact, IBAN.',
         '',
-        '8.3. Datele nu sunt transferate sau vândute unor terți. Datele fiscale și contractuale sunt păstrate conform legii (minimum 5 ani, facturile minimum 10 ani). Clientul beneficiază de toate drepturile GDPR: acces, rectificare, ștergere, portabilitate și dreptul de a se plânge la ANSPDCP.'
+        '9.3. Datele nu sunt transferate sau vândute unor terți. Datele fiscale și contractuale sunt păstrate conform legii (minimum 5 ani, facturile minimum 10 ani). Clientul beneficiază de toate drepturile GDPR: acces, rectificare, ștergere, portabilitate și dreptul de a se plânge la ANSPDCP.'
       ]
     },
     {
       icon: AlertCircle,
-      title: '9. Modificări ale termenilor și reziliere',
+      title: '10. Modificări ale termenilor și reziliere',
       content: [
-        '9.1. Orice modificare a condițiilor colaborării se face exclusiv în scris, prin Act Adițional semnat de ambele părți.',
+        '10.1. Orice modificare a condițiilor colaborării se face exclusiv în scris, prin Act Adițional semnat de ambele părți.',
         '',
-        '9.2. Reziliere unilaterală: oricare dintre părți poate încheia colaborarea cu un preaviz scris de minimum 10 zile calendaristice, fără acordul celeilalte părți.',
+        '10.2. Reziliere unilaterală: oricare dintre părți poate încheia colaborarea cu un preaviz scris de minimum 10 zile calendaristice, fără acordul celeilalte părți.',
         '',
-        '9.3. VISIONEDIT SRL își rezervă dreptul de a rezilia contractul din proprie inițiativă, fără justificare, cu 7 zile preaviz scris, în situații de incompatibilitate profesională (comunicare deficitară, comportament neprofesional, nerespectarea repetată a termenelor etc.).',
+        '10.3. VISIONEDIT SRL își rezervă dreptul de a rezilia contractul din proprie inițiativă, fără justificare, cu 7 zile preaviz scris, în situații de incompatibilitate profesională (deficiențe în comunicare, comportament neprofesional, nerespectarea repetată a termenelor etc.).',
         '',
-        '9.4. În caz de neplată: VISIONEDIT SRL poate suspenda imediat lucrările și rezilia contractul fără preaviz, reținând avansul. Materialele parțiale sau finale nu se livrează.',
+        '10.4. În caz de neplată: VISIONEDIT SRL poate suspenda imediat lucrările și rezilia contractul fără preaviz, reținând avansul. Materialele parțiale sau finale nu se livrează.',
         '',
-        '9.5. La reziliere, VISIONEDIT SRL reține contravaloarea muncii executate și returnează suma aferentă serviciilor neprestate.'
+        '10.5. La reziliere, VISIONEDIT SRL reține contravaloarea muncii executate și returnează suma aferentă serviciilor neprestate.'
       ]
     },
     {
       icon: Scale,
-      title: '10. Soluționarea litigiilor și dispoziții finale',
+      title: '11. Soluționarea litigiilor și dispoziții finale',
       content: [
-        '10.1. Orice neînțelegere se soluționează în primul rând pe cale amiabilă, în termen de 30 de zile.',
+        '11.1. Orice neînțelegere se soluționează în primul rând pe cale amiabilă, în termen de 30 de zile.',
         '',
-        '10.2. Dacă nu se ajunge la o soluție, litigiile vor fi supuse instanțelor judecătorești competente de la sediul VISIONEDIT SRL, conform legii române.',
+        '11.2. Dacă nu se ajunge la o soluție, litigiile vor fi supuse instanțelor judecătorești competente de la sediul VISIONEDIT SRL, conform legii române.',
         '',
-        '10.3. Prezentul document reprezintă termenii și condițiile de colaborare cu VISIONEDIT SRL. Semnarea contractului implică acceptarea integrală a acestor termeni.',
+        '11.3. Prezentul document reprezintă termenii și condițiile de colaborare cu VISIONEDIT SRL. Semnarea contractului implică acceptarea integrală a acestor termeni.',
         '',
-        '10.4. Contractul complet, cu toate clauzele detaliate și Anexa 1 (oferta de preț), este transmis Clientului înainte de începerea colaborării.'
+        '11.4. Contractul complet, cu toate clauzele detaliate și Anexa 1 (oferta de preț), este transmis Clientului înainte de începerea colaborării.'
       ]
     }
   ];
