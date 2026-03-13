@@ -93,7 +93,7 @@ const Contact: React.FC = () => {
       name: 'Vizibilitate Max Complet',
       category: 'Pachete Complete — Videoclipuri de la A la Z',
       price: '240-295 lei/video',
-      description: '13-24+ videoclipuri pe lună',
+      description: '13+ videoclipuri pe lună',
       popular: false
     }
   ];
