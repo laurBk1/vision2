@@ -3,7 +3,8 @@ import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react
 
 const Hero = () => {
   const handleFAQ = () => {
-    window.location.hash = '#faq';
+    history.pushState(null, '', '#faq');
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
   const handleViewPortfolio = () => {
     const el = document.getElementById('portfolio');
@@ -96,7 +97,7 @@ const Hero = () => {
         }
 
         .h-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Syne', sans-serif !important;
           font-weight: 800;
           font-size: clamp(1.6rem, 7vw, 3rem);
           line-height: 1.2;
@@ -110,7 +111,7 @@ const Hero = () => {
           max-width: 100%;
         }
         .h-heading-accent {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Syne', sans-serif !important;
           font-weight: 800;
           font-size: clamp(1.6rem, 7vw, 3rem);
           line-height: 1.2;
@@ -387,6 +388,22 @@ const Hero = () => {
              
           }
           .h-card-wrapper { display: flex; flex-direction: column; }
+
+          /* FIX 1 & 2: Fonturile sunt acum importate + Scroll deblocat + height auto pe mobil */
+          .h-root, .h-section, .h-left, .h-card-wrapper {
+            overflow: visible !important;
+          }
+          .h-section {
+            min-height: auto !important;
+            height: auto !important;
+          }
+          /* Dezactivare animații transform (float cu rotate) pe mobil – rezolvă bug Safari/iOS */
+          .h-card-outer {
+            animation: none !important;
+          }
+          /* FIX 3: Mutăm badge-urile ÎN INTERIORUL cardului pe mobil (ascundem flotantele, arătăm cele din interior) – elimină spațiu alb, clipping și lock */
+          .h-proofs-desktop { display: flex !important; }
+          .h-proof-float { display: none !important; }
         }
 
         @media (max-width: 480px) {

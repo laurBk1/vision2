@@ -30,7 +30,8 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     if (href === '#faq') {
-      window.location.hash = '#faq';
+      history.pushState(null, '', '#faq');
+      window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
       return;
     }

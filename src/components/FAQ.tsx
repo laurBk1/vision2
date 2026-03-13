@@ -1,287 +1,277 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
+import React, { useState } from 'react';
+import { HelpCircle, CreditCard, Clock, RefreshCw, Package, Video, Shield, Users, Phone, ChevronDown, ChevronUp } from 'lucide-react';
 
-const Footer = () => {
-  const handleNavClick = (href: string) => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      window.location.hash = '';
-      setTimeout(() => {
-        const element = document.querySelector(href) as HTMLElement;
-        if (element) {
-          const top = element.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
+const FAQ = () => {
+  const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
+
+  const toggleItem = (key: string) => {
+    setOpenItems(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const sections = [
+    {
+      icon: HelpCircle,
+      title: 'Proces și Colaborare',
+      faqs: [
+        {
+          q: 'Cum decurge procesul de colaborare cu VisionEdit?',
+          a: 'Fluxul nostru de lucru este simplificat și optimizat pentru colaborarea la distanță (100% remote). Procesul include patru etape clare: consultanța inițială, semnarea acordului contractual (însoțită de achitarea avansului), transmiterea asset-urilor sursă și, în final, livrarea conținutului editat prin link securizat, finalizat pentru distribuție imediată.'
+        },
+        {
+          q: 'Lucrați cu clienți din toată România?',
+          a: 'Da, operăm 100% remote. Indiferent de locația dumneavoastră, recepționăm asset-urile online și livrăm digital, rapid și eficient, oriunde în România.'
+        },
+        {
+          q: 'Când demarați execuția proiectului meu?',
+          a: 'Demarăm execuția proiectului exclusiv după îndeplinirea cumulativă a trei condiții: semnarea contractului de ambele părți, confirmarea plății avansului și transmiterea integrală a materialelor sursă. Nicio lucrare nu este inițiată înainte de confirmarea plății.'
+        },
+        {
+          q: 'Ce materiale trebuie să vă transmit?',
+          a: 'Pentru a asigura un flux de lucru eficient, preluăm asset-urile brute (filmările sursă) și le procesăm integral, eliminând efortul tehnic din partea dumneavoastră. Puteți transmite suplimentar elemente de identitate vizuală: logo, watermark, fonturi, grafică de brand. Dacă optați pentru un pachet complet, nu este necesară furnizarea niciunui material — ne ocupăm de întregul proces, de la script până la livrarea finală.'
         }
-      }, 50);
-    } else {
-      const element = document.querySelector(href) as HTMLElement;
-      if (element) {
-        const top = element.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
+      ]
+    },
+    {
+      icon: CreditCard,
+      title: 'Prețuri și Plăți',
+      faqs: [
+        {
+          q: 'Cât costă editarea video la VisionEdit?',
+          a: 'Tarifele noastre pornesc de la 175 lei/video (pachet Vizibilitate Max — 13+ videoclipuri/lună) și ajung la 210 lei/video (pachet Start Smart — 1-5 videoclipuri/lună), pentru proiectele în care furnizați materialele sursă. Pachetele Complete (cu script, voiceover AI, avatar UGC și materiale stock incluse) pornesc de la 240 lei/video. Contactați-ne pentru o ofertă personalizată.'
+        },
+        {
+          q: 'Cum se realizează plata?',
+          a: 'Aplicăm o politică de plată structurată, cu trei variante disponibile în funcție de tipul colaborării:\n• Varianta A — 100% upfront: achitare integrală anterior demarării lucrărilor (recomandată pentru proiecte punctuale și colaborări noi).\n• Varianta B — 50% + 50%: avans înainte de start, sold după livrarea materialelor finale.\n• Varianta C — Abonament lunar prepaid: valoarea lunară se achită anterior începerii lucrărilor pentru luna respectivă.\n\nVarianta agreată se stabilește în urma discuției inițiale și se confirmă prin semnarea contractului. Toate plățile se efectuează prin transfer bancar, cu emitere de factură fiscală.'
+        },
+        {
+          q: 'Pot achiziționa serviciile pe firmă și primi factură fiscală?',
+          a: 'Da, emitem factură fiscală pentru toate serviciile prestate, conform legislației române în vigoare. Transmiteți datele de identificare fiscală la momentul semnării contractului, iar factura va fi emisă pe CUI-ul companiei dumneavoastră.'
+        },
+        {
+          q: 'Pot achiziționa un volum mai mare de videoclipuri și să le solicit etapizat?',
+          a: 'Da, oferim flexibilitate în planificarea livrărilor. Stabilim împreună un calendar adaptat ritmului dumneavoastră de publicare. Contactați-ne pe WhatsApp sau email pentru a identifica soluția optimă.'
+        }
+      ]
+    },
+    {
+      icon: Clock,
+      title: 'Termene și Livrare',
+      faqs: [
+        {
+          q: 'Cât durează livrarea unui videoclip?',
+          a: 'Termenul de livrare este stabilit în prealabil și comunicat explicit înainte de demararea proiectului. În cazul în care transmiterea materialelor sursă întârzie, termenul se decalează proporțional. Pentru proiecte cu termen critic, punem la dispoziție serviciul Fast Track — livrare în aceeași zi sau în maximum 24 de ore.'
+        },
+        {
+          q: 'Ce rezoluție și format primesc la final?',
+          a: 'Livrăm conținut video în format vertical 9:16, optimizat pentru TikTok, Instagram Reels și YouTube Shorts, la rezoluție HD/Full HD, finalizat pentru distribuție imediată pe orice platformă, fără procesare suplimentară din partea dumneavoastră.'
+        },
+        {
+          q: 'Cât timp sunt stocate materialele după livrare?',
+          a: 'Asset-urile sursă recepționate pot fi șterse imediat după finalizarea livrării. Fișierele finale editate sunt stocate maximum 30 de zile de la confirmare, după care sunt eliminate definitiv. Recomandăm descărcarea integrală a materialelor în cel mult 30 de zile de la recepționarea link-ului. Re-livrarea ulterioară acestui termen poate fi condiționată de o taxă administrativă suplimentară.'
+        },
+        {
+          q: 'Pot recepționa fișierele de proiect (.prproj, .aep etc.), nu doar exportul final?',
+          a: 'Fișierele de proiect nu sunt incluse în mod standard în pachetele noastre și pot fi eliminate după livrare. Dacă necesitați accesul la acestea, vă rugăm să menționați acest aspect anterior demarării colaborării, urmând să stabilim condiții contractuale separate.'
+        }
+      ]
+    },
+    {
+      icon: RefreshCw,
+      title: 'Revizuiri și Modificări',
+      faqs: [
+        {
+          q: 'Câte revizuiri sunt incluse în tarif?',
+          a: 'Fiecare videoclip include o rundă de revizuiri gratuite. Feedback-ul trebuie transmis integral, într-un singur mesaj consolidat, în termen de 48 de ore de la recepționarea versiunii inițiale. Feedback-ul fragmentat sau transmis în etape succesive este contabilizat ca runde separate de revizuire.'
+        },
+        {
+          q: 'Ce este inclus într-o rundă de revizuire?',
+          a: 'O rundă de revizuire acoperă orice modificare de ordin editorial: înlocuirea muzicii, ajustarea efectelor vizuale, modificarea tranzițiilor, actualizarea subtitrărilor sau a elementelor grafice. Solicitările care implică schimbarea conceptului inițial sau introducerea de materiale sursă noi sunt tratate ca proiecte distincte și se tarifează separat.'
+        },
+        {
+          q: 'Cât costă o rundă de revizuire suplimentară?',
+          a: '• Revizie simplă: 30–50 lei/video;\n• Revizie complexă (modificări orare): 50–100 lei/oră;\n• Revizuiri solicitate după termenul de 48 de ore: tarif suplimentar;\n• Modificări care implică schimbarea conceptului inițial: proiect nou, tarif separat.\n\nNicio lucrare suplimentară nu este executată fără aprobarea dumneavoastră scrisă.'
+        }
+      ]
+    },
+    {
+      icon: Package,
+      title: 'Pachete și Servicii',
+      faqs: [
+        {
+          q: 'Oferiți pachete complete, fără să furnizez materiale proprii?',
+          a: 'Da. Pachetele noastre Complete (A-Z) acoperă întregul proces de producție: script personalizat, voiceover AI premium, avatar UGC profesional și materiale video/foto stock — fără nicio implicare din partea dumneavoastră. Tarifele pornesc de la 240 lei/video (sub 30 de secunde) sau 295 lei/video (30 secunde – 1 minut) pentru pachete de 13+ videoclipuri/lună.'
+        },
+        {
+          q: 'Putem stabili o colaborare pe termen lung?',
+          a: 'Absolut. Structura noastră de tarifare recompensează volumul: cu cât este mai mare numărul de videoclipuri lunare, cu atât tariful per unitate este mai avantajos. Pachetul Vizibilitate Max (13+ videoclipuri/lună) include cel mai competitiv tarif, un plan de producție personalizat, suport prioritar și un raport lunar de performanță cu recomandări strategice.'
+        },
+        {
+          q: 'Muzica utilizată este licențiată și fără restricții de copyright?',
+          a: 'Da, utilizăm exclusiv muzică licențiată sau royalty-free, compatibilă cu publicarea pe platformele sociale, eliminând riscul de penalizări sau demonetizare. Dacă aveți preferințe stilistice specifice, le putem integra în procesul de producție.'
+        },
+        {
+          q: 'Vă ocupați și de distribuția și promovarea videoclipurilor?',
+          a: 'Aria noastră de expertiză acoperă exclusiv producția și post-producția video. Livrăm conținut finalizat pentru distribuție, optimizat pentru algoritmii platformelor, însă strategia de promovare și publicarea efectivă rămân în responsabilitatea dumneavoastră. Putem oferi recomandări generale privind bunele practici de publicare.'
+        }
+      ]
+    },
+    {
+      icon: Video,
+      title: 'Avatar UGC și Personaje',
+      faqs: [
+        {
+          q: 'Ce este avatarul UGC și cum este integrat în producție?',
+          a: 'Avatarul UGC este un personaj virtual profesionist care prezintă produsul sau serviciul dumneavoastră într-un mod autentic și credibil, similar unui creator de conținut real. Această soluție este inclusă în pachetele Complete și reprezintă alternativa ideală atunci când nu doriți să apăreați în fața camerei sau nu dispuneți de resurse de filmare proprii.'
+        },
+        {
+          q: 'Pot rezerva un avatar dedicat exclusiv brandului meu?',
+          a: 'Da. Putem rezerva sau dezvolta un personaj unic pentru brandul dumneavoastră — inclusiv prin clonarea imaginii și vocii dumneavoastră, sau prin crearea unui avatar personalizat care să reprezinte identitatea vizuală a companiei. Acest serviciu este disponibil pentru colaborările de durată și implică costuri suplimentare. Contactați-ne pe WhatsApp pentru o discuție detaliată.'
+        }
+      ]
+    },
+    {
+      icon: Shield,
+      title: 'Confidențialitate și Drepturi',
+      faqs: [
+        {
+          q: 'Pot consulta exemple din portofoliu anterior colaborării?',
+          a: 'Din considerente de confidențialitate față de clienții noștri, nu facem public portofoliul nostru. Fiecare proiect rămâne proprietatea exclusivă a clientului și nu este utilizat în scop promoțional fără acordul scris explicit al acestuia. Calitatea serviciilor noastre este reflectată de cei 150+ clienți mulțumiți și 1.345+ proiecte finalizate.'
+        },
+        {
+          q: 'Datele mele cu caracter personal sunt protejate?',
+          a: 'Da. Prelucrăm datele dumneavoastră exclusiv în scopul executării contractului, în conformitate cu Regulamentul (UE) 2016/679 (GDPR) și Legea nr. 190/2018. Datele nu sunt transferate sau comercializate către terți. Beneficiați de toate drepturile GDPR: acces, rectificare, ștergere și portabilitate.'
+        },
+        {
+          q: 'Cui îi aparțin drepturile asupra videoclipului final?',
+          a: 'La data achitării integrale a contravalorii serviciilor, VISIONEDIT SRL cedează clientului toate drepturile patrimoniale de autor asupra materialului video final editat. Cesiunea este totală, exclusivă, permanentă și nelimitată teritorial — conținutul vă aparține în totalitate.'
+        }
+      ]
+    },
+    {
+      icon: Phone,
+      title: 'Contact și Suport',
+      faqs: [
+        {
+          q: 'Prin ce canale vă pot contacta?',
+          a: 'Ne puteți contacta prin:\n• Telefon / WhatsApp: +40 767 082 106;\n• Email: contact@visionedit.ro;\n• Formular de contact pe visionedit.ro.\n\nProgram: Luni – Vineri, 09:00 – 18:00. Răspundem în maximum 24 de ore.'
+        },
+        {
+          q: 'Oferiți suport dedicat pe parcursul colaborării?',
+          a: 'Da, comunicarea clară și transparentă reprezintă un standard al serviciilor noastre. De la consultanța inițială până la livrarea finală, asigurăm suport complet pentru fiecare etapă a proiectului. Clienții din pachetele superioare beneficiază de suport prioritar și un canal de comunicare direct dedicat.'
+        }
+      ]
     }
-  };
-
-  const handleTermsClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.hash = '#terms';
-  };
-
-  const handlePrivacyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.hash = '#privacy';
-  };
-
-  const handleLogoClick = () => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      window.location.hash = '';
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
+  ];
 
   return (
-    <footer className="bg-slate-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div 
-              className="flex items-center space-x-3 mb-4 cursor-pointer"
-              onClick={handleLogoClick}
-            >
-              <img 
-                src="/logo.webp" 
-                alt="VisionEdit România Logo" 
-                className="h-11 md:h-14 w-auto"
-                width="170"
-                height="54"
-                loading="lazy"
-              />
-              <div className="text-white">
-                <div className="text-xl font-bold">VisionEdit</div>
-                <div className="text-sm text-blue-300 font-medium">România</div>
-              </div>
-            </div>
-            
-            <p className="text-gray-300 mb-6 leading-relaxed">
-            Partenerul tău de încredere în video marketing: creăm și edităm videoclipuri profesionale, strategice și orientate spre rezultate, care cresc vizibilitatea și atrag clienți noi.
-            </p>
-            
-            <div className="space-y-2">
-              <div className="flex items-center text-gray-300">
-                <Phone className="h-4 w-4 mr-2" />
-                <a href="tel:+40767082106" className="hover:text-white transition-colors">
-                  +40 767 082 106
-                </a>
-              </div>
-              <div className="flex items-center text-gray-300">
-                <Mail className="h-4 w-4 mr-2" />
-                <a href="mailto:contact@visionedit.ro" className="hover:text-white transition-colors">
-                  contact@visionedit.ro
-                </a>
-              </div>
-              <div className="flex items-center text-gray-300">
-                <MapPin className="h-4 w-4 mr-2" />
-                <span>București, România</span>
-              </div>
-            </div>
-          </div>
+    <section className="pt-28 pb-20 bg-gray-50 min-h-screen">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Link-uri rapide</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>
-                <button 
-                  onClick={() => handleNavClick('#services')}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Servicii
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('#portfolio')}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Portofoliu
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('#process')}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Proces
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('#about')}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Despre
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('#contact')}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Contact
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Informații utile</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>
-                <button 
-                  onClick={() => { window.location.hash = '#faq'; }}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  FAQ
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={handlePrivacyClick}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Confidențialitate și GDPR
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={handleTermsClick}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Termeni și condiții
-                </button>
-              </li>
-            </ul>
-            <div className="mt-4 text-sm text-gray-400">
-              <p>Program: Luni - Vineri, 9:00 - 18:00</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Iconițe Sociale */}
-        <div className="border-t border-gray-700 mt-12 pt-8">
-          <div className="flex flex-col items-center space-y-6">
-            <h3 className="text-lg font-semibold text-white">Urmărește-ne pe Social Media</h3>
-            
-            <div className="flex space-x-6">
-              {/* Facebook */}
-              <a 
-                href="https://www.facebook.com/share/1b1MVuEKH2/?mibextid=wwXIfr" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
-                aria-label="Urmărește-ne pe Facebook"
-              >
-                <Facebook className="h-6 w-6 text-white group-hover:animate-pulse" />
-              </a>
-
-              {/* Instagram */}
-              <a 
-                href="https://www.instagram.com/laur_visionedit?igsh=MXRjbHozY3NidW1rdg%3D%3D&utm_source=qr" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
-                aria-label="Urmărește-ne pe Instagram"
-              >
-                <Instagram className="h-6 w-6 text-white group-hover:animate-pulse" />
-              </a>
-
-              {/* TikTok */}
-              <a 
-                href="https://www.tiktok.com/@laur_visionedit.ro" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-black hover:bg-gray-800 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
-                aria-label="Urmărește-ne pe TikTok"
-              >
-                <svg className="h-6 w-6 text-white group-hover:animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                </svg>
-              </a>
-
-              {/* YouTube */}
-              <a 
-                href="https://youtube.com/@laur_visionedit?si=FsGDHSF9gbsEjUwR" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-red-600 hover:bg-red-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
-                aria-label="Urmărește-ne pe YouTube"
-              >
-                <svg className="h-6 w-6 text-white group-hover:animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-            </div>
-
-            <p className="text-gray-400 text-sm text-center">
-              Conectează-te cu noi pentru ultimele noutăți!
-            </p>
-          </div>
-        </div>
-
-        {/* Legal Compliance Section */}
-        <div className="border-t border-gray-700 mt-8 pt-6">
-          <div className="text-center">
-            <p className="text-gray-400 text-xs mb-4">Protecția Consumatorului - Conform legislației din România și UE</p>
-            
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              {/* ANPC Link */}
-              <a 
-                href="https://reclamatiisal.anpc.ro/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-200"
-                aria-label="ANPC - Soluționarea alternativă a litigiilor"
-              >
-                <img 
-                  src="/anpc-visionedit.ro.webp" 
-                  alt="ANPC - Soluționarea alternativă a litigiilor" 
-                  className="h-10 w-auto object-contain"
-                  loading="lazy"
-                  width="120"
-                  height="40"
-                />
-              </a>
-
-              {/* SOL Link */}
-              <a 
-                href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-200"
-                aria-label="SOL - Soluționarea online a litigiilor UE"
-              >
-                <img 
-                  src="/sol-visionedit.ro.png" 
-                  alt="SOL - Soluționarea online a litigiilor UE" 
-                  className="h-10 w-auto object-contain"
-                  loading="lazy"
-                  width="120"
-                  height="40"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400">
-          © 2026 VISIONEDIT SRL. Toate drepturile rezervate.<br />
-            Creat cu <span className="text-red-500">♥</span> de Laur Bk.
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Întrebări Frecvente
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Găsiți aici răspunsuri la cele mai frecvente întrebări despre serviciile noastre de editare video,
+            tarife, termene de livrare și procesul de colaborare cu VISIONEDIT SRL.
           </p>
         </div>
+
+        {/* Intro card */}
+        <div className="bg-white rounded-xl p-8 shadow-lg mb-12 border-l-6 border-blue-600">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            Cum vă putem sprijini?
+          </h3>
+          <p className="text-gray-700 leading-relaxed">
+            La VisionEdit, transparența și comunicarea clară sunt standarde ale fiecărei colaborări.
+            Indiferent că este primul dumneavoastră proiect video sau că vizați un parteneriat de lungă durată
+            pentru promovarea afacerii, suntem disponibili să răspundem oricărei întrebări anterior demarării colaborării.
+          </p>
+          <p className="text-gray-700 leading-relaxed mt-4">
+            Dacă nu identificați răspunsul căutat în secțiunile de mai jos, nu ezitați să ne contactați
+            direct pe WhatsApp sau prin formularul de contact — răspundem în maximum 24 de ore.
+          </p>
+        </div>
+
+        {/* FAQ Sections */}
+        <div className="space-y-8">
+          {sections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="bg-blue-100 rounded-lg p-3 flex-shrink-0">
+                  <section.icon className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 pt-1">
+                  {section.title}
+                </h3>
+              </div>
+
+              <div className="space-y-3">
+                {section.faqs.map((faq, faqIndex) => {
+                  const key = `${sectionIndex}-${faqIndex}`;
+                  const isOpen = openItems[key];
+                  return (
+                    <div key={faqIndex} className="border border-gray-100 rounded-lg overflow-hidden">
+                      <button
+                        onClick={() => toggleItem(key)}
+                        className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors duration-200"
+                      >
+                        <span className="font-medium text-gray-900 pr-4">{faq.q}</span>
+                        {isOpen
+                          ? <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                          : <ChevronDown className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                        }
+                      </button>
+                      {isOpen && (
+                        <div className="px-4 pb-4 border-t border-gray-100 bg-gray-50">
+                          <div className="pt-4 space-y-2">
+                            {faq.a.split('\n').map((line, lineIndex) => (
+                              <p
+                                key={lineIndex}
+                                className={`text-gray-700 leading-relaxed ${line.startsWith('•') ? 'ml-4' : ''} ${line === '' ? 'h-2' : ''}`}
+                              >
+                                {line}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA bottom */}
+        <div className="mt-12 bg-white rounded-xl p-8 shadow-lg text-center border-l-6 border-blue-600">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Nu ați identificat răspunsul căutat?
+          </h3>
+          <p className="text-gray-600 mb-6">
+            Contactați-ne direct și vă răspundem în maximum 24 de ore. Suntem disponibili Luni – Vineri, 09:00 – 18:00.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://wa.me/40767082106"
+              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200"
+            >
+              Scrieți-ne pe WhatsApp
+            </a>
+            <a
+              href="mailto:contact@visionedit.ro"
+              className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200"
+            >
+              Trimiteți Email
+            </a>
+          </div>
+        </div>
+
       </div>
-    </footer>
+    </section>
   );
 };
 
-export default Footer;
+export default FAQ;

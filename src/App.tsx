@@ -20,16 +20,20 @@ function App() {
     path: window.location.pathname,
   });
 
-  // Ascultăm butonul înapoi/înainte al browserului
+  // Ascultăm popstate (înapoi/înainte) ȘI hashchange (click pe linkuri cu #)
   useEffect(() => {
-    const handlePopState = () => {
+    const updateLocation = () => {
       setLocation({
         hash: window.location.hash,
         path: window.location.pathname,
       });
     };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', updateLocation);
+    window.addEventListener('hashchange', updateLocation);
+    return () => {
+      window.removeEventListener('popstate', updateLocation);
+      window.removeEventListener('hashchange', updateLocation);
+    };
   }, []);
 
   const { hash, path } = location;

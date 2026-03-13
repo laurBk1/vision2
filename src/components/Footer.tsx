@@ -124,7 +124,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => { window.location.hash = '#faq'; }}
+                  onClick={() => { history.pushState(null, '', '#faq'); window.dispatchEvent(new PopStateEvent('popstate')); }}
                   className="hover:text-white transition-colors text-left"
                 >
                   FAQ
@@ -146,7 +146,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <button 
-                  onClick={() => { window.location.hash = '#faq'; }}
+                  onClick={() => { history.pushState(null, '', '#faq'); window.dispatchEvent(new PopStateEvent('popstate')); }}
                   className="hover:text-white transition-colors text-left"
                 >
                   FAQ
