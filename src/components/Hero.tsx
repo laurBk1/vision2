@@ -26,7 +26,6 @@ const Hero = () => {
           background: #060A12;
           display: flex;
           align-items: center;
-          overflow-x: hidden;
           padding: 80px 0;
         }
 
@@ -389,9 +388,9 @@ const Hero = () => {
           }
           .h-card-wrapper { display: flex; flex-direction: column; }
 
-          /* FIX 1 & 2: Fonturile sunt acum importate + Scroll deblocat + height auto pe mobil */
-          .h-root, .h-section, .h-left, .h-card-wrapper {
-            overflow: visible !important;
+          /* overflow fix - doar left si card-wrapper, nu root/section */
+          .h-left, .h-card-wrapper {
+            overflow: visible;
           }
           .h-section {
             min-height: auto !important;
@@ -472,8 +471,7 @@ const Hero = () => {
         }
 
         /* Protecție globală overflow */
-        .h-root { overflow-x: hidden; max-width: 100vw; }
-        .h-section { overflow-x: hidden; }
+        .h-root { max-width: 100%; }
         .h-left { width: 100%; max-width: 100%; overflow: hidden; }
         .h-body { word-break: break-word; overflow-wrap: break-word; }
         .h-check span { word-break: break-word; overflow-wrap: break-word; }
@@ -481,7 +479,7 @@ const Hero = () => {
         .h-btn-primary, .h-btn-secondary { max-width: 100%; box-sizing: border-box; }
       `}</style>
 
-      <section className="h-root h-section" style={{overflowX: 'hidden', maxWidth: '100%'}}>
+      <section className="h-root h-section" style={{maxWidth: '100%', width: '100%'}}>
         <div className="h-blob1" />
         <div className="h-blob2" />
 

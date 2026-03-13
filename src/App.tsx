@@ -15,6 +15,18 @@ import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
+  // Previne scroll orizontal global pe toate dispozitivele
+  useEffect(() => {
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    document.body.style.maxWidth = '100vw';
+    return () => {
+      document.documentElement.style.overflowX = '';
+      document.body.style.overflowX = '';
+      document.body.style.maxWidth = '';
+    };
+  }, []);
+
   const [location, setLocation] = useState({
     hash: window.location.hash,
     path: window.location.pathname,
