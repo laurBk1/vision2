@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight } from 'lucide-react';
+import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +8,7 @@ const Header = () => {
   // Verificăm dacă suntem pe pagina de termeni
   const isTermsPage = window.location.hash === '#terms';
   const isPrivacyPage = window.location.hash === '#privacy';
+  const isFaqPage = window.location.hash === '#faq';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +24,17 @@ const Header = () => {
     { name: 'Proces', href: '#process', icon: GitMerge },
     { name: 'Prețuri', href: '#pricing', icon: BadgeDollarSign },
     { name: 'Despre', href: '#about', icon: Users },
+    { name: 'FAQ', href: '#faq', icon: HelpCircle },
     { name: 'Contact', href: '#contact', icon: Mail }
   ];
 
   const handleNavClick = (href: string) => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
+    if (href === '#faq') {
+      window.location.hash = '#faq';
+      setIsMenuOpen(false);
+      return;
+    }
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
       // Revenim la home fără reload — schimbăm hash-ul și scrollăm
       window.location.hash = '';
       setTimeout(() => {
@@ -48,7 +55,7 @@ const Header = () => {
   };
 
   const handleContactClick = () => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
       window.location.hash = '';
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
@@ -68,7 +75,7 @@ const Header = () => {
   };
 
   const handleLogoClick = () => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
+    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
       window.location.hash = '';
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -84,7 +91,7 @@ const Header = () => {
   };
 
   // Pentru pagina de termeni, forțăm întotdeauna fundalul albastru închis
-  const headerBackground = (isTermsPage || isPrivacyPage || isMenuOpen)
+  const headerBackground = (isTermsPage || isPrivacyPage || isFaqPage || isMenuOpen)
     ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' 
     : (isScrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent');
 
@@ -156,16 +163,16 @@ const Header = () => {
             </div>
 
             {/* Nav Items */}
-            <div className="py-2">
+            <div className="py-1">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="group flex items-center w-full px-5 py-4 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
+                    className="group flex items-center w-full px-5 py-3 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
-                    <div className="flex items-center justify-center w-9 h-9 rounded-xl mr-4 transition-all duration-200 group-hover:scale-110"
+                    <div className="flex items-center justify-center w-8 h-8 rounded-xl mr-3 transition-all duration-200 group-hover:scale-110"
                       style={{ background: index % 2 === 0 
                         ? 'linear-gradient(135deg, rgba(37,99,235,0.3), rgba(37,99,235,0.1))' 
                         : 'linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1))' 
@@ -173,28 +180,13 @@ const Header = () => {
                     >
                       <Icon className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-400' : 'text-purple-400'}`} />
                     </div>
-                    <span className="flex-1 text-left text-gray-200 font-semibold text-base group-hover:text-white transition-colors duration-200">
-                      {item.name}
+                    <span className="flex-1 text-left text-gray-200 font-semibold text-sm group-hover:text-white transition-colors duration-200">
+                      {item.name === 'FAQ' ? 'FAQ — Întrebări frecvente' : item.name}
                     </span>
                     <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-gray-400 group-hover:translate-x-1 transition-all duration-200" />
                   </button>
                 );
               })}
-            </div>
-
-            {/* CTA Button */}
-            <div className="px-5 py-5 border-t border-white/10"
-              style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.1) 0%, rgba(147,51,234,0.1) 100%)' }}
-            >
-              <button
-                onClick={handleContactClick}
-                className="w-full text-white px-6 py-4 rounded-xl font-bold text-base transition-all duration-200 shadow-lg flex items-center justify-center space-x-2 hover:shadow-blue-500/25 hover:scale-[1.02] active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #2563eb 100%)' }}
-                aria-label="Începe proiectul tău"
-              >
-                <Zap className="h-5 w-5" />
-                <span>Începe Proiectul</span>
-              </button>
             </div>
           </div>
         )}

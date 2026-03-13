@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== FONT LOCAL - SYNE ===== */
+@font-face {
+  font-family: 'Syne';
+  src: url('/fonts/Syne-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   * {
@@ -40,4 +51,14 @@
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
+}
+
+/* Font override - forțează Syne pe headings Hero */
+.h-heading,
+.h-heading-accent {
+  font-family: 'Syne', sans-serif !important;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }

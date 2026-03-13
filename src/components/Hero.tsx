@@ -2,9 +2,8 @@ import React from 'react';
 import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react';
 
 const Hero = () => {
-  const handleStartProject = () => {
-    const el = document.getElementById('about');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const handleFAQ = () => {
+    window.location.hash = '#faq';
   };
   const handleViewPortfolio = () => {
     const el = document.getElementById('portfolio');
@@ -26,7 +25,7 @@ const Hero = () => {
           background: #060A12;
           display: flex;
           align-items: center;
-          overflow: hidden;
+          overflow-x: hidden;
           padding: 80px 0;
         }
 
@@ -55,6 +54,7 @@ const Hero = () => {
           grid-template-columns: 1fr 1fr;
           gap: 64px;
           align-items: center;
+          box-sizing: border-box;
         }
 
         /* LEFT */
@@ -98,19 +98,21 @@ const Hero = () => {
         .h-heading {
           font-family: 'Syne', sans-serif;
           font-weight: 800;
-          font-size: clamp(2rem, 8vw, 3rem);
+          font-size: clamp(1.6rem, 7vw, 3rem);
           line-height: 1.2;
           letter-spacing: -0.02em;
           color: #EFF6FF;
           margin-bottom: 8px;
-          word-break: keep-all;
-          overflow-wrap: normal;
+          overflow-wrap: break-word;
+          word-break: break-word;
           white-space: normal;
+          width: 100%;
+          max-width: 100%;
         }
         .h-heading-accent {
           font-family: 'Syne', sans-serif;
           font-weight: 800;
-          font-size: clamp(2rem, 8vw, 3rem);
+          font-size: clamp(1.6rem, 7vw, 3rem);
           line-height: 1.2;
           letter-spacing: -0.02em;
           background: linear-gradient(95deg, #38BDF8 0%, #FBBF24 100%);
@@ -120,6 +122,10 @@ const Hero = () => {
           display: block;
           margin-bottom: 28px;
           white-space: normal;
+          overflow-wrap: break-word;
+          word-break: break-word;
+          width: 100%;
+          max-width: 100%;
         }
 
         .h-body {
@@ -259,7 +265,7 @@ const Hero = () => {
           border-radius: 14px;
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 20px;
-          position: relative; overflow: hidden;
+          position: relative; overflow-x: hidden;
           border: 1px solid rgba(255,255,255,0.06);
         }
         .h-card-thumb::before {
@@ -378,7 +384,7 @@ const Hero = () => {
             bottom: -22px; 
             left: 10px; 
             animation-delay: 1.5s; 
-            white-space: nowrap; 
+             
           }
           .h-card-wrapper { display: flex; flex-direction: column; }
         }
@@ -405,10 +411,60 @@ const Hero = () => {
           .h-inner { padding: 0 16px; }
           .h-chip { padding: 6px 14px; }
           .h-stat + .h-stat { padding-left: 10px; margin-left: 10px; }
+          .h-heading { font-size: clamp(1.4rem, 8vw, 1.8rem); }
+          .h-heading-accent { font-size: clamp(1.4rem, 8vw, 1.8rem); }
+          .h-btn-primary, .h-btn-secondary { padding: 14px 16px; font-size: 14px; }
         }
+
+        @media (max-width: 280px) {
+          .h-inner { padding: 0 12px; }
+          .h-heading { font-size: clamp(1.2rem, 8vw, 1.5rem); }
+          .h-heading-accent { font-size: clamp(1.2rem, 8vw, 1.5rem); }
+          .h-chip-text { font-size: 9px; }
+          .h-stat + .h-stat { padding-left: 6px; margin-left: 6px; }
+          .h-stat-num { font-size: 1.2rem; }
+          .h-stat-lbl { font-size: 9px; }
+        }
+
+        /* Ascunde paragraful pe mobile */
+        @media (max-width: 860px) {
+          .h-body-mobile-hidden { display: none; }
+          .h-heading-mobile { font-size: clamp(1.4rem, 5.5vw, 2.4rem) !important; line-height: 1.3 !important; }
+          .h-heading-accent-mobile { font-size: clamp(1.3rem, 5vw, 2.2rem) !important; line-height: 1.3 !important; }
+          .h-inner { padding: 0 28px !important; }
+        }
+
+        @media (max-width: 480px) {
+          .h-heading-mobile { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
+          .h-heading-accent-mobile { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; }
+          .h-inner { padding: 0 24px !important; }
+          .h-stat-num { font-size: 1.3rem !important; }
+          .h-stat-lbl { font-size: 9px !important; letter-spacing: 0.02em !important; }
+          .h-stat + .h-stat { padding-left: 12px !important; margin-left: 12px !important; }
+          .h-stat-icon svg { width: 22px !important; height: 22px !important; }
+        }
+
+        @media (max-width: 360px) {
+          .h-heading-mobile { font-size: clamp(1.1rem, 5vw, 1.4rem) !important; }
+          .h-heading-accent-mobile { font-size: clamp(1rem, 4.5vw, 1.3rem) !important; }
+          .h-inner { padding: 0 20px !important; }
+          .h-stat-num { font-size: 1.1rem !important; }
+          .h-stat-lbl { font-size: 8px !important; letter-spacing: 0 !important; }
+          .h-stat + .h-stat { padding-left: 8px !important; margin-left: 8px !important; }
+          .h-stat-icon svg { width: 20px !important; height: 20px !important; }
+        }
+
+        /* Protecție globală overflow */
+        .h-root { overflow-x: hidden; max-width: 100vw; }
+        .h-section { overflow-x: hidden; }
+        .h-left { width: 100%; max-width: 100%; overflow: hidden; }
+        .h-body { word-break: break-word; overflow-wrap: break-word; }
+        .h-check span { word-break: break-word; overflow-wrap: break-word; }
+        .h-cta { width: 100%; max-width: 100%; }
+        .h-btn-primary, .h-btn-secondary { max-width: 100%; box-sizing: border-box; }
       `}</style>
 
-      <section className="h-root h-section">
+      <section className="h-root h-section" style={{overflowX: 'hidden', maxWidth: '100%'}}>
         <div className="h-blob1" />
         <div className="h-blob2" />
 
@@ -421,12 +477,12 @@ const Hero = () => {
               <span className="h-chip-text">Editare Video · Formate Scurte</span>
             </div>
 
-            <h1 className="h-heading">
-              Vrei mai multă vizibilitate<br />pentru afacerea ta?
+            <h1 className="h-heading h-heading-mobile">
+              Vrei mai multă vizibilitate pentru afacerea ta?
             </h1>
-            <span className="h-heading-accent">Video marketingul e soluția!</span>
+            <span className="h-heading-accent h-heading-accent-mobile">Video marketingul e soluția!</span>
 
-            <p className="h-body">
+            <p className="h-body h-body-mobile-hidden">
               Noi îți edităm videoclipurile scurte, dinamice și optimizate pentru Reels, TikTok, Shorts și alte formate scurte, exact ce ai nevoie pentru a atrage atenția și a-ți crește vânzările.
             </p>
 
@@ -444,8 +500,8 @@ const Hero = () => {
             </div>
 
             <div className="h-cta">
-              <button onClick={handleStartProject} className="h-btn-primary">
-                <span>Începe Proiectul Tău</span>
+              <button onClick={handleFAQ} className="h-btn-primary">
+                <span>Întrebări Frecvente</span>
                 <ArrowRight size={16} />
               </button>
               <button onClick={handleViewPortfolio} className="h-btn-secondary" type="button">

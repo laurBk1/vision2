@@ -124,14 +124,6 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => { window.location.hash = '#faq'; }}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  FAQ
-                </button>
-              </li>
-              <li>
-                <button 
                   onClick={() => handleNavClick('#contact')}
                   className="hover:text-white transition-colors text-left"
                 >

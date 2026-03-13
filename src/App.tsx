@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Pricing from './components/Pricing';
 import Terms from './components/Terms';
 import Privacy from './components/Privacy';
+import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
@@ -35,17 +36,18 @@ function App() {
 
   const isTermsPage = hash === '#terms' || path === '/terms';
   const isPrivacyPage = hash === '#privacy' || path === '/privacy';
+  const isFaqPage = hash === '#faq' || path === '/faq';
 
-  // Scroll la top pentru Terms/Privacy
+  // Scroll la top pentru Terms/Privacy/FAQ
   useEffect(() => {
-    if (isTermsPage || isPrivacyPage) {
+    if (isTermsPage || isPrivacyPage || isFaqPage) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
-  }, [isTermsPage, isPrivacyPage]);
+  }, [isTermsPage, isPrivacyPage, isFaqPage]);
 
   // Scroll la secțiune pentru link-urile din meniu
   useEffect(() => {
-    if (!isTermsPage && !isPrivacyPage) {
+    if (!isTermsPage && !isPrivacyPage && !isFaqPage) {
       const targetId = hash ? hash.replace('#', '') : (path !== '/' ? path.replace('/', '') : null);
       if (targetId) {
         const timer = setTimeout(() => {
@@ -58,7 +60,7 @@ function App() {
         return () => clearTimeout(timer);
       }
     }
-  }, [hash, path, isTermsPage, isPrivacyPage]);
+  }, [hash, path, isTermsPage, isPrivacyPage, isFaqPage]);
 
   if (isTermsPage) {
     return (
@@ -66,6 +68,19 @@ function App() {
         <Header />
         <main>
           <Terms />
+        </main>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    );
+  }
+
+  if (isFaqPage) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <FAQ />
         </main>
         <Footer />
         <WhatsAppButton />
