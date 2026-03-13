@@ -48,6 +48,10 @@ const FAQ = () => {
           a: 'Da, emitem factură fiscală pentru toate serviciile prestate, conform legislației române în vigoare. Transmiteți datele de identificare fiscală la momentul semnării contractului, iar factura va fi emisă pe CUI-ul companiei dumneavoastră.'
         },
         {
+          q: 'Prețurile afișate includ TVA?',
+          a: 'Prețurile afișate sunt finale. VisionEdit SRL nu este plătitor de TVA, prin urmare nu se adaugă nicio taxă suplimentară la sumele prezentate. Plătești exact ce vezi — fără surprize, fără costuri ascunse.'
+        },
+        {
           q: 'Pot achiziționa un volum mai mare de videoclipuri și să le solicit etapizat?',
           a: 'Da, oferim flexibilitate în planificarea livrărilor. Stabilim împreună un calendar adaptat ritmului dumneavoastră de publicare. Contactați-ne pe WhatsApp sau email pentru a identifica soluția optimă.'
         }

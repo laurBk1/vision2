@@ -230,8 +230,34 @@ const Pricing = () => {
   <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-3 italic">
     Pachete <span className="text-blue-700 font-bold not-italic">flexibile</span> adaptate nevoilor tale de business.
   </p>
+
   </div>
 </div>
+
+        {/* TVA Banner - Premium Dark - plasat strategic înainte de prețuri */}
+        <div className="mb-12 md:mb-16 max-w-4xl mx-auto">
+          <div className="bg-slate-900 rounded-2xl px-6 md:px-10 py-5 md:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-white font-bold text-sm md:text-base leading-snug">
+                  Prețurile afișate sunt finale
+                </p>
+                <p className="text-slate-200 text-xs md:text-sm mt-0.5 leading-relaxed">
+                  VisionEdit SRL nu este plătitor de TVA — plătești exact ce vezi, fără nicio taxă adăugată.
+                </p>
+              </div>
+            </div>
+            <div className="flex-shrink-0 bg-white/10 rounded-xl px-4 py-2 text-center">
+              <p className="text-white font-bold text-sm tracking-wide">Fără TVA</p>
+              <p className="text-slate-300 text-xs">0% taxe suplimentare</p>
+            </div>
+          </div>
+        </div>
 
         {/* Editare cu materialele tale */}
         <div className="mb-16 md:mb-20">
