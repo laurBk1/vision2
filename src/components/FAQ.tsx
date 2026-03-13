@@ -15,11 +15,11 @@ const FAQ = () => {
       faqs: [
         {
           q: 'Cum decurge procesul de colaborare cu VisionEdit?',
-          a: 'Fluxul nostru de lucru este simplificat și optimizat pentru colaborarea la distanță (100% remote). Procesul include patru etape clare: consultanța inițială, semnarea acordului contractual (însoțită de achitarea avansului), transmiterea asset-urilor sursă și, în final, livrarea conținutului editat prin link securizat, finalizat pentru distribuție imediată.'
+          a: 'Fluxul nostru de lucru este simplificat și optimizat pentru colaborarea la distanță (100% de la distanță). Procesul include patru etape clare: consultanța inițială, semnarea acordului contractual (însoțită de achitarea avansului), transmiterea asset-urilor sursă și, în final, livrarea conținutului editat prin link securizat, finalizat pentru distribuție imediată.'
         },
         {
           q: 'Lucrați cu clienți din toată România?',
-          a: 'Da, operăm 100% remote. Indiferent de locația dumneavoastră, recepționăm asset-urile online și livrăm digital, rapid și eficient, oriunde în România.'
+          a: 'Da, operăm 100% de la distanță. Indiferent de locația dumneavoastră, primim materialele online și livrăm digital, rapid și eficient, oriunde în România.'
         },
         {
           q: 'Când demarați execuția proiectului meu?',
@@ -41,7 +41,7 @@ const FAQ = () => {
         },
         {
           q: 'Cum se realizează plata?',
-          a: 'Aplicăm o politică de plată structurată, cu trei variante disponibile în funcție de tipul colaborării:\n• Varianta A — 100% upfront: achitare integrală anterior demarării lucrărilor (recomandată pentru proiecte punctuale și colaborări noi).\n• Varianta B — 50% + 50%: avans înainte de start, sold după livrarea materialelor finale.\n• Varianta C — Abonament lunar prepaid: valoarea lunară se achită anterior începerii lucrărilor pentru luna respectivă.\n\nVarianta agreată se stabilește în urma discuției inițiale și se confirmă prin semnarea contractului. Toate plățile se efectuează prin transfer bancar, cu emitere de factură fiscală.'
+          a: 'Aplicăm o politică de plată structurată, cu trei variante disponibile în funcție de tipul colaborării:\n• Varianta A: achitare integrală anterior demarării lucrărilor (recomandată pentru proiecte punctuale și colaborări noi).\n• Varianta B: avans 50% înainte de start, sold 50% după livrarea materialelor finale.\n• Varianta C: valoarea lunară se achită anterior începerii lucrărilor pentru luna respectivă (abonament prepaid).\n\nVarianta agreată se stabilește în urma discuției inițiale și se confirmă prin semnarea contractului. Toate plățile se efectuează prin transfer bancar, cu emitere de factură fiscală.'
         },
         {
           q: 'Pot achiziționa serviciile pe firmă și primi factură fiscală?',
@@ -49,7 +49,7 @@ const FAQ = () => {
         },
         {
           q: 'Prețurile afișate includ TVA?',
-          a: 'Prețurile afișate sunt finale. VisionEdit SRL nu este plătitor de TVA, prin urmare nu se adaugă nicio taxă suplimentară la sumele prezentate. Plătești exact ce vezi — fără surprize, fără costuri ascunse.'
+          a: 'Prețurile afișate sunt finale. VisionEdit SRL nu este plătitor de TVA, prin urmare nu se adaugă nicio taxă suplimentară la sumele prezentate. Plătiți exact suma afișată — fără surprize, fără costuri ascunse.'
         },
         {
           q: 'Pot achiziționa un volum mai mare de videoclipuri și să le solicit etapizat?',
@@ -71,7 +71,7 @@ const FAQ = () => {
         },
         {
           q: 'Cât timp sunt stocate materialele după livrare?',
-          a: 'Asset-urile sursă recepționate pot fi șterse imediat după finalizarea livrării. Fișierele finale editate sunt stocate maximum 30 de zile de la confirmare, după care sunt eliminate definitiv. Recomandăm descărcarea integrală a materialelor în cel mult 30 de zile de la recepționarea link-ului. Re-livrarea ulterioară acestui termen poate fi condiționată de o taxă administrativă suplimentară.'
+          a: 'Materialele sursă primite pot fi șterse imediat după finalizarea livrării. Fișierele finale editate sunt stocate maximum 30 de zile de la confirmare, după care sunt eliminate definitiv. Recomandăm descărcarea integrală a materialelor în cel mult 30 de zile de la primirea link-ului. Re-livrarea ulterioară acestui termen poate fi condiționată de o taxă administrativă suplimentară.'
         },
         {
           q: 'Pot recepționa fișierele de proiect (.prproj, .aep etc.), nu doar exportul final?',
@@ -85,7 +85,7 @@ const FAQ = () => {
       faqs: [
         {
           q: 'Câte revizuiri sunt incluse în tarif?',
-          a: 'Fiecare videoclip include o rundă de revizuiri gratuite. Feedback-ul trebuie transmis integral, într-un singur mesaj consolidat, în termen de 48 de ore de la recepționarea versiunii inițiale. Feedback-ul fragmentat sau transmis în etape succesive este contabilizat ca runde separate de revizuire.'
+          a: 'Fiecare videoclip include o rundă de revizuiri gratuite. Feedback-ul trebuie transmis integral, într-un singur mesaj consolidat, în termen de 48 de ore de la primirea versiunii inițiale. Feedback-ul fragmentat sau transmis în etape succesive este contabilizat ca runde separate de revizuire.'
         },
         {
           q: 'Ce este inclus într-o rundă de revizuire?',
@@ -147,7 +147,7 @@ const FAQ = () => {
         },
         {
           q: 'Cui îi aparțin drepturile asupra videoclipului final?',
-          a: 'La data achitării integrale a contravalorii serviciilor, VISIONEDIT SRL cedează clientului toate drepturile patrimoniale de autor asupra materialului video final editat. Cesiunea este totală, exclusivă, permanentă și nelimitată teritorial — conținutul vă aparține în totalitate.'
+          a: 'La data achitării integrale a contravalorii serviciilor, VisionEdit SRL cedează clientului toate drepturile patrimoniale de autor asupra materialului video final editat. Cesiunea este totală, exclusivă, permanentă și nelimitată teritorial — conținutul vă aparține în totalitate.'
         }
       ]
     },
@@ -178,7 +178,7 @@ const FAQ = () => {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Găsiți aici răspunsuri la cele mai frecvente întrebări despre serviciile noastre de editare video,
-            tarife, termene de livrare și procesul de colaborare cu VISIONEDIT SRL.
+            tarife, termene de livrare și procesul de colaborare cu VisionEdit SRL.
           </p>
         </div>
 
