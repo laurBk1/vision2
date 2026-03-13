@@ -14,6 +14,8 @@ const Hero = () => {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Inter:wght@300;400;500&display=swap');
+
         .h-root *, .h-root *::before, .h-root *::after {
           box-sizing: border-box; margin: 0; padding: 0;
         }
@@ -96,13 +98,13 @@ const Hero = () => {
         }
 
         .h-heading {
-          font-family: 'Syne', sans-serif !important;
-          font-weight: 800;
-          font-size: clamp(1.6rem, 7vw, 3rem);
-          line-height: 1.2;
-          letter-spacing: -0.02em;
-          color: #EFF6FF;
-          margin-bottom: 8px;
+          font-family: 'Outfit', sans-serif !important;
+          font-weight: 900;
+          font-size: clamp(2rem, 8vw, 3.6rem);
+          line-height: 1.1;
+          letter-spacing: -0.03em;
+          color: #F0F7FF;
+          margin-bottom: 10px;
           overflow-wrap: break-word;
           word-break: break-word;
           white-space: normal;
@@ -110,22 +112,24 @@ const Hero = () => {
           max-width: 100%;
         }
         .h-heading-accent {
-          font-family: 'Syne', sans-serif !important;
-          font-weight: 800;
-          font-size: clamp(1.6rem, 7vw, 3rem);
+          font-family: 'Outfit', sans-serif !important;
+          font-weight: 900;
+          font-size: clamp(2rem, 8vw, 3.6rem);
           line-height: 1.2;
-          letter-spacing: -0.02em;
-          background: linear-gradient(95deg, #38BDF8 0%, #FBBF24 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          letter-spacing: -0.03em;
           display: block;
-          margin-bottom: 28px;
+          margin-bottom: 32px;
           white-space: normal;
           overflow-wrap: break-word;
           word-break: break-word;
           width: 100%;
           max-width: 100%;
+        }
+        .h-heading-accent-inner {
+          display: inline;
+          color: #38BDF8;
+          background: none;
+          -webkit-text-fill-color: unset;
         }
 
         .h-body {
@@ -215,7 +219,7 @@ const Hero = () => {
           50% { transform: translateY(-5px); }
         }
         .h-stat-num {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Outfit', sans-serif;
           font-size: clamp(1.4rem, 2vw, 1.8rem);
           font-weight: 800; color: #EFF6FF;
           line-height: 1; margin-bottom: 5px;
@@ -286,7 +290,7 @@ const Hero = () => {
         .h-play-btn:hover { background: rgba(255,255,255,0.22); transform: scale(1.1); }
 
         .h-card-title {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Outfit', sans-serif;
           font-size: 16px; font-weight: 700; color: #EFF6FF; margin-bottom: 8px;
         }
         .h-card-desc {
@@ -329,7 +333,7 @@ const Hero = () => {
         .h-float-icon.green  { background: rgba(52,211,153,0.12); }
         .h-float-strong {
           display: block;
-          font-family: 'Syne', sans-serif;
+          font-family: 'Outfit', sans-serif;
           font-size: 12px; font-weight: 700; color: #EFF6FF;
         }
         .h-float-sub { font-size: 10.5px; color: #94A3B8; }
@@ -445,14 +449,14 @@ const Hero = () => {
         /* Ascunde paragraful pe mobile */
         @media (max-width: 860px) {
           .h-body-mobile-hidden { display: none; }
-          .h-heading-mobile { font-size: clamp(1.4rem, 5.5vw, 2.4rem) !important; line-height: 1.3 !important; }
-          .h-heading-accent-mobile { font-size: clamp(1.3rem, 5vw, 2.2rem) !important; line-height: 1.3 !important; }
+          .h-heading-mobile { font-size: clamp(1.9rem, 7vw, 2.8rem) !important; line-height: 1.1 !important; }
+          .h-heading-accent-mobile { font-size: clamp(1.8rem, 6.5vw, 2.6rem) !important; line-height: 1.2 !important; }
           .h-inner { padding: 0 28px !important; }
         }
 
         @media (max-width: 480px) {
-          .h-heading-mobile { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
-          .h-heading-accent-mobile { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; }
+          .h-heading-mobile { font-size: clamp(1.8rem, 7.5vw, 2.2rem) !important; }
+          .h-heading-accent-mobile { font-size: clamp(1.7rem, 7vw, 2rem) !important; }
           .h-inner { padding: 0 24px !important; }
           .h-stat-num { font-size: 1.3rem !important; }
           .h-stat-lbl { font-size: 9px !important; letter-spacing: 0.02em !important; }
@@ -461,8 +465,8 @@ const Hero = () => {
         }
 
         @media (max-width: 360px) {
-          .h-heading-mobile { font-size: clamp(1.1rem, 5vw, 1.4rem) !important; }
-          .h-heading-accent-mobile { font-size: clamp(1rem, 4.5vw, 1.3rem) !important; }
+          .h-heading-mobile { font-size: clamp(1.5rem, 7vw, 1.8rem) !important; }
+          .h-heading-accent-mobile { font-size: clamp(1.4rem, 6.5vw, 1.7rem) !important; }
           .h-inner { padding: 0 20px !important; }
           .h-stat-num { font-size: 1.1rem !important; }
           .h-stat-lbl { font-size: 8px !important; letter-spacing: 0 !important; }
@@ -472,7 +476,7 @@ const Hero = () => {
 
         /* Protecție globală overflow */
         .h-root { max-width: 100%; }
-        .h-left { width: 100%; max-width: 100%; overflow: hidden; }
+        .h-left { width: 100%; max-width: 100%; overflow: visible; }
         .h-body { word-break: break-word; overflow-wrap: break-word; }
         .h-check span { word-break: break-word; overflow-wrap: break-word; }
         .h-cta { width: 100%; max-width: 100%; }
@@ -495,7 +499,10 @@ const Hero = () => {
             <h1 className="h-heading h-heading-mobile">
               Vrei mai multă vizibilitate pentru afacerea ta?
             </h1>
-            <span className="h-heading-accent h-heading-accent-mobile">Video marketingul e soluția!</span>
+            <span className="h-heading-accent h-heading-accent-mobile">
+              <span style={{color:'#38BDF8'}}>Video marketingul</span>
+              <span style={{color:'#FBBF24'}}> e soluția!</span>
+            </span>
 
             <p className="h-body h-body-mobile-hidden">
               Noi îți edităm videoclipurile scurte, dinamice și optimizate pentru Reels, TikTok, Shorts și alte formate scurte, exact ce ai nevoie pentru a atrage atenția și a-ți crește vânzările.

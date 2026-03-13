@@ -432,6 +432,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Numele tău complet"
+                      autoComplete="name"
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300"
                       required
                       ref={nameInputRef}
@@ -451,6 +452,7 @@ const Contact: React.FC = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+40 xxx xxx xxx"
+                      autoComplete="tel"
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300"
                       required
                     />
@@ -472,6 +474,7 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="email@exemplu.ro"
+                      autoComplete="email"
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300"
                       required
                     />
@@ -490,6 +493,7 @@ const Contact: React.FC = () => {
                       value={formData.website}
                       onChange={handleChange}
                       placeholder="www.site-ul-tau.ro"
+                      autoComplete="url"
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300"
                     />
                   </div>
@@ -571,7 +575,7 @@ const Contact: React.FC = () => {
                 </div>
                 
                 {/* Hidden input for form submission */}
-                <input type="hidden" name="pachet" value={formData.pachet} />
+                <input type="hidden" id="pachet" name="pachet" value={formData.pachet} />
               </div>
 
               {/* Selected Package Display */}
