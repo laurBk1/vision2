@@ -15,8 +15,8 @@ const Pricing = () => {
       subtitle: '1-5 videoclipuri pe lună',
       icon: '🚀',
       popular: false,
-      price: '210 lei/video',
-      description: '(210 lei — 1.050 lei / lună)',
+      price: '249 lei/video',
+      description: '(249 lei — 1.245 lei / lună)',
       features: [
         <>
         Tot ce găsești în secțiunea „Servicii”<br />
@@ -37,8 +37,8 @@ const Pricing = () => {
       subtitle: '6-12 videoclipuri pe lună',
       icon: '💡',
       popular: true,
-      price: '185 lei/video',
-      description: '(1.110 lei — 2.220 lei / lună)',
+      price: '210 lei/video',
+      description: '(1.260 lei — 2.520 lei / lună)',
       features: [
         'Toate beneficiile din Start Smart',
         'Preț redus per videoclip',
@@ -55,8 +55,8 @@ const Pricing = () => {
       subtitle: '13+ videoclipuri pe lună',
       icon: '🔥',
       popular: false,
-      price: '175 lei/video',
-      description: '(de la 2.275 lei / lună)',
+      price: '185 lei/video',
+      description: '(de la 2.405 lei / lună)',
       features: [
         'Toate beneficiile anterioare',
         'Cel mai bun preț per videoclip',

@@ -37,7 +37,7 @@ const FAQ = () => {
       faqs: [
         {
           q: 'Cât costă editarea video la VisionEdit?',
-          a: 'Tarifele noastre pornesc de la 175 lei/video (pachet Vizibilitate Max — 13+ videoclipuri/lună) și ajung la 210 lei/video (pachet Start Smart — 1-5 videoclipuri/lună), pentru proiectele în care furnizați materialele sursă. Pachetele Complete (cu script, voiceover AI, avatar UGC și materiale stock incluse) pornesc de la 240 lei/video. Contactați-ne pentru o ofertă personalizată.'
+          a: 'Tarifele noastre pornesc de la 185 lei/video (pachet Vizibilitate Max — 13+ videoclipuri/lună) și ajung la 249 lei/video (pachet Start Smart — 1-5 videoclipuri/lună), pentru proiectele în care furnizați materialele sursă. Pachetele Complete (cu script, voiceover AI, avatar UGC și materiale stock incluse) pornesc de la 240 lei/video. Contactați-ne pentru o ofertă personalizată.'
         },
         {
           q: 'Cum se realizează plata?',
