@@ -248,7 +248,7 @@ const Pricing = () => {
                   Prețurile afișate sunt finale
                 </p>
                 <p className="text-slate-200 text-xs md:text-sm mt-0.5 leading-relaxed">
-                  VisionEdit SRL nu este plătitor de TVA — plătești exact ce vezi, fără nicio taxă adăugată.
+                  Agenția VisionEdit România nu e plătitoare de TVA – plătești exact prețurile afișate.
                 </p>
               </div>
             </div>
