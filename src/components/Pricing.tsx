@@ -332,7 +332,7 @@ const Pricing = () => {
             <div>
               <h4 className="font-bold text-gray-900 mb-3 text-sm md:text-base">📋 Ce Includ Pachetele:</h4>
               <ul className="space-y-2 text-gray-700 text-xs md:text-sm font-medium">
-                <li>• O revizuire gratuită, livrată în maximum 48 de ore</li>
+                <li>• O revizuire gratuită per material video, valabilă 48 de ore de la primire și efectuată cât mai rapid</li>
                 <li>• Livrare flexibilă comunicată în prealabil</li>
                 <li>• Format vertical 9:16 optimizat</li>
                 <li>• Suport tehnic complet</li>
@@ -352,7 +352,7 @@ const Pricing = () => {
 
         <div className="text-center">
           <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base font-medium">
-            Fiecare video include o revizuire gratuită și livrare în maximum 48 de ore
+           Fiecare videoclip este realizat cu atenție la detalii, pentru un impact maxim.
           </p>
           <button 
             onClick={handleContactClick}
