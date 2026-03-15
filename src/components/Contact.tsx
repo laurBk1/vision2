@@ -502,17 +502,16 @@ const Contact: React.FC = () => {
 
               {/* Package Selection - COMPLETELY REBUILT */}
               <div className="group">
-                <label htmlFor="pachet-dropdown" className="block text-sm font-semibold text-gray-700 mb-2">
+                <div id="pachet-label" className="block text-sm font-semibold text-gray-700 mb-2">
                   Alege Pachetul *
-                </label>
+                </div>
                 <div className="relative" ref={dropdownRef}>
                   {/* Main Select Button */}
                   <div
-                    id="pachet-dropdown"
                     role="combobox"
+                    aria-labelledby="pachet-label"
                     aria-expanded={isDropdownOpen}
                     aria-haspopup="listbox"
-                    aria-label="Alege Pachetul"
                     tabIndex={0}
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsDropdownOpen(!isDropdownOpen); } }}
