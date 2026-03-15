@@ -10,21 +10,12 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     minify: 'terser',
-    cssCodeSplit: true,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
           icons: ['lucide-react']
-        },
-        // Preload doar chunk-urile critice
-        experimentalMinChunkSize: 10000,
+        }
       }
     }
   },
