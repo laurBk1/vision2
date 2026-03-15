@@ -502,13 +502,20 @@ const Contact: React.FC = () => {
 
               {/* Package Selection - COMPLETELY REBUILT */}
               <div className="group">
-                <label htmlFor="pachet" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="pachet-dropdown" className="block text-sm font-semibold text-gray-700 mb-2">
                   Alege Pachetul *
                 </label>
-                <div className="relative">
+                <div className="relative" ref={dropdownRef}>
                   {/* Main Select Button */}
                   <div
+                    id="pachet-dropdown"
+                    role="combobox"
+                    aria-expanded={isDropdownOpen}
+                    aria-haspopup="listbox"
+                    aria-label="Alege Pachetul"
+                    tabIndex={0}
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsDropdownOpen(!isDropdownOpen); } }}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white/50 backdrop-blur-sm group-hover:border-gray-300 text-left flex items-center justify-between cursor-pointer"
                   >
                     <span className={selectedPackage ? 'text-gray-900' : 'text-gray-500'}>
@@ -575,7 +582,7 @@ const Contact: React.FC = () => {
                 </div>
                 
                 {/* Hidden input for form submission */}
-                <input type="hidden" id="pachet" name="pachet" value={formData.pachet} />
+                <input type="hidden" name="pachet" value={formData.pachet} />
               </div>
 
               {/* Selected Package Display */}
