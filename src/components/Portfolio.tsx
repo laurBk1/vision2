@@ -137,7 +137,7 @@ const Portfolio = () => {
                       onPause={() => setIsPlaying(false)}
                       onEnded={() => setIsPlaying(false)}
                     >
-                      <source src="/portofoliu.mp4" type="video/mp4" />
+                      <source src="https://res.cloudinary.com/daxjtytdu/video/upload/portofoliu_c7c4vd.mp4" type="video/mp4" />
                       Browserul tău nu suportă redarea video.
                     </video>
                     
