@@ -172,7 +172,7 @@ const Pricing = () => {
           {isComplete && pkg.priceDetails && (
             <div className="bg-gray-50 rounded-lg p-3 mb-3">
               {pkg.priceDetails.map((detail: any, idx: number) => (
-                <div key={idx} className="text-xs md:text-sm">
+                <div key={idx} className="text-sm md:text-base">
                   <span className="font-bold text-gray-900">{detail.duration}</span>
                   <span className="text-gray-700"> - </span>
                   <span className="font-bold text-blue-600">{detail.price}</span>
@@ -181,7 +181,7 @@ const Pricing = () => {
             </div>
           )}
           
-          <p className={`text-xs md:text-sm font-bold ${isComplete ? 'text-green-800' : 'text-gray-800'} leading-tight`}>
+          <p className={`text-sm md:text-base font-bold ${isComplete ? 'text-green-800' : 'text-gray-800'} leading-tight`}>
             {pkg.description}
           </p>
         </div>
@@ -190,7 +190,7 @@ const Pricing = () => {
           {pkg.features.map((feature: string, idx: number) => (
             <li key={idx} className="flex items-start">
               <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-              <span className="text-gray-700 text-xs md:text-sm leading-relaxed font-medium">
+              <span className="text-gray-700 text-sm md:text-base leading-relaxed font-medium">
                 {feature}
               </span>
             </li>
@@ -247,14 +247,14 @@ const Pricing = () => {
                 <p className="text-white font-bold text-sm md:text-base leading-snug">
                   Prețurile afișate sunt finale
                 </p>
-                <p className="text-slate-200 text-xs md:text-sm mt-0.5 leading-relaxed">
+                <p className="text-slate-200 text-sm md:text-base mt-0.5 leading-relaxed">
                   Agenția VisionEdit România nu e plătitoare de TVA – plătești exact prețurile afișate.
                 </p>
               </div>
             </div>
             <div className="flex-shrink-0 bg-white/10 rounded-xl px-4 py-2 text-center">
               <p className="text-white font-bold text-sm tracking-wide">Fără TVA</p>
-              <p className="text-slate-300 text-xs">0% taxe suplimentare</p>
+              <p className="text-slate-300 text-sm">0% taxe suplimentare</p>
             </div>
           </div>
         </div>
@@ -274,7 +274,7 @@ const Pricing = () => {
               <div className="bg-blue-50 rounded-lg p-3 md:p-4 border-l-4 border-blue-500">
                 <div className="flex items-start">
                   <Clock className="h-4 w-4 md:h-5 md:w-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                  <p className="text-blue-800 font-medium text-xs md:text-sm leading-relaxed">
+                  <p className="text-blue-800 font-medium text-sm md:text-base leading-relaxed">
                   <strong className="font-bold">Durată maximă:</strong> „Maxim 1 minut" se referă la durata videoclipului final editat, 
                   nu la durata materialelor raw trimise spre editare.
                   <span className="block mt-2 font-semibold">
@@ -309,7 +309,7 @@ const Pricing = () => {
               <span className="block mt-2 text-gray-900">
               <strong>editare profesională, voiceover AI premium, script personalizat și materiale video/foto stock (B-rolls), plus un avatar virtual UGC care transmite mesajul tău într-un mod natural și profesionist</strong> 
               </span>
-              <span className="block mt-2 text-xs md:text-sm text-gray-500 font-normal italic">
+              <span className="block mt-2 text-sm md:text-sm text-gray-500 font-normal italic">
               — oferite în limita resurselor disponibile pentru fiecare proiect.
     </span>
   </p>
@@ -331,7 +331,7 @@ const Pricing = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div>
               <h4 className="font-bold text-gray-900 mb-3 text-sm md:text-base">📋 Ce Includ Pachetele:</h4>
-              <ul className="space-y-2 text-gray-700 text-xs md:text-sm font-medium">
+              <ul className="space-y-2 text-gray-700 text-sm md:text-base font-medium">
                 <li>• O revizuire gratuită per material video, valabilă 48 de ore de la primire și efectuată cât mai rapid</li>
                 <li>• Livrare flexibilă comunicată în prealabil</li>
                 <li>• Format vertical 9:16 optimizat</li>
@@ -340,7 +340,7 @@ const Pricing = () => {
             </div>
             <div>
               <h4 className="font-bold text-gray-900 mb-3 text-sm md:text-base">⚠️ Note Importante:</h4>
-              <ul className="space-y-2 text-gray-700 text-xs md:text-sm font-medium">
+              <ul className="space-y-2 text-gray-700 text-sm md:text-base font-medium">
                 <li>• Materialele stock sunt oferite în limita disponibilității</li>
                 <li>• Voiceover AI — voce naturală, impact maxim</li>
                 <li>• Revizii suplimentare: 30-50 lei/video</li>
