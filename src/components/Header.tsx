@@ -100,7 +100,6 @@ const Header = () => {
             {/* FIX: dimensiuni corecte pentru logo redimensionat (600x200 -> afisat la 150x50 / 160x53) */}
             <img
               src="/logo.webp"
-              srcSet="/logo.webp 1x, /logo@2x.webp 2x"
               alt="VisionEdit România Logo"
               className="h-14 md:h-16 w-auto"
               width="294"
