@@ -5,7 +5,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Verificăm dacă suntem pe pagina de termeni
   const isTermsPage = window.location.hash === '#terms';
   const isPrivacyPage = window.location.hash === '#privacy';
   const isFaqPage = window.location.hash === '#faq';
@@ -36,7 +35,6 @@ const Header = () => {
       return;
     }
     if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      // Revenim la home fără reload — schimbăm hash-ul și scrollăm
       window.location.hash = '';
       setTimeout(() => {
         const element = document.querySelector(href) as HTMLElement;
@@ -86,14 +84,8 @@ const Header = () => {
     }
   };
 
-  const handleTermsClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.hash = '#terms';
-  };
-
-  // Pentru pagina de termeni, forțăm întotdeauna fundalul albastru închis
   const headerBackground = (isTermsPage || isPrivacyPage || isFaqPage || isMenuOpen)
-    ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' 
+    ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg'
     : (isScrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent');
 
   return (
@@ -101,17 +93,19 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo and Brand */}
-          <div 
+          <div
             className="flex items-center space-x-2 md:space-x-3 cursor-pointer"
             onClick={handleLogoClick}
           >
-            <img 
-              src="/logo.webp" 
-              alt="VisionEdit România Logo" 
+            {/* FIX: dimensiuni corecte pentru logo redimensionat (600x200 -> afisat la 150x50 / 160x53) */}
+            <img
+              src="/logo.webp"
+              alt="VisionEdit România Logo"
               className="h-14 md:h-16 w-auto"
-              width="150"
-              height="50"
+              width="294"
+              height="98"
               loading="eager"
+              fetchPriority="high"
             />
             <div className="text-white">
               <div className="text-lg md:text-xl font-bold text-shadow-sm">VisionEdit</div>
@@ -130,7 +124,7 @@ const Header = () => {
                 {item.name}
               </button>
             ))}
-            <button 
+            <button
               onClick={handleContactClick}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg font-bold text-sm xl:text-base transition-colors duration-200 flex items-center space-x-2 shadow-lg"
               aria-label="Începe proiectul tău"
@@ -156,14 +150,12 @@ const Header = () => {
           <div className="lg:hidden shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
             style={{ background: 'linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)' }}
           >
-            {/* Menu Header */}
             <div className="px-5 py-4 border-b border-white/10"
               style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.15) 0%, rgba(147,51,234,0.15) 100%)' }}
             >
               <p className="text-xs font-bold text-blue-400 uppercase tracking-widest">Navigare</p>
             </div>
 
-            {/* Nav Items */}
             <div className="py-1">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
@@ -174,9 +166,9 @@ const Header = () => {
                     className="group flex items-center w-full px-5 py-3 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
                     <div className="flex items-center justify-center w-8 h-8 rounded-xl mr-3 transition-all duration-200 group-hover:scale-110"
-                      style={{ background: index % 2 === 0 
-                        ? 'linear-gradient(135deg, rgba(37,99,235,0.3), rgba(37,99,235,0.1))' 
-                        : 'linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1))' 
+                      style={{ background: index % 2 === 0
+                        ? 'linear-gradient(135deg, rgba(37,99,235,0.3), rgba(37,99,235,0.1))'
+                        : 'linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1))'
                       }}
                     >
                       <Icon className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-400' : 'text-purple-400'}`} />

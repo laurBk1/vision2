@@ -16,18 +16,18 @@
     <!-- Preload Syne font local - CRITIC pentru Hero -->
     <link rel="preload" href="/fonts/Syne-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
 
-    <!-- Declară Syne imediat după preload - font-display: block previne FOUT -->
+    <!-- FIX 1: font-display: swap in loc de block — nu mai blochează randarea -->
     <style>
       @font-face {
         font-family: 'Syne';
         src: url('/fonts/Syne-VariableFont_wght.ttf') format('truetype');
         font-weight: 100 900;
         font-style: normal;
-        font-display: block;
+        font-display: swap;
       }
     </style>
 
-    <!-- Preload logo -->
+    <!-- FIX 2: Logo preload cu dimensiunile corecte -->
     <link rel="preload" href="/logo.webp" as="image" type="image/webp" fetchpriority="high">
 
     <!-- Preconnect Google Fonts -->
@@ -35,9 +35,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.pexels.com" crossorigin>
 
-    <!-- Inter font - non-render-blocking -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <!-- FIX 3: Inter font - non-render-blocking (pattern corect, eliminat apelurile duplicate) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 
     <!-- Trusted Types Policy -->
     <script>
