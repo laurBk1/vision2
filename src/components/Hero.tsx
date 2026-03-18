@@ -14,8 +14,6 @@ const Hero = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Inter:wght@300;400;500&display=swap');
-
         .h-root *, .h-root *::before, .h-root *::after {
           box-sizing: border-box; margin: 0; padding: 0;
         }
