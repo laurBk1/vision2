@@ -59,7 +59,7 @@ const WhatsAppButton = () => {
     return () => clearTimeout(fabTimer);
   }, []);
 
-  // FAB: dispare la scroll, reapare după 3 secunde de inactivitate
+  // FAB: dispare la scroll, reapare după 8 secunde de inactivitate
   useEffect(() => {
     const handleScroll = () => {
       setFabVisible(false);
@@ -118,7 +118,7 @@ const WhatsAppButton = () => {
   return (
     <>
       <style>{`
-        /* ===================== POPUP CARD (neschimbat) ===================== */
+        /* ===================== POPUP CARD ===================== */
         .wa-popup {
           position: fixed;
           bottom: 24px;
@@ -149,25 +149,64 @@ const WhatsAppButton = () => {
           position: relative;
         }
 
+        /* ===================== BUTON X — mai mare, mai agresiv ===================== */
         .wa-close {
           position: absolute;
-          top: -10px; right: -10px;
-          width: 26px; height: 26px;
-          background: #ef4444;
-          border: 2px solid #0D1525;
+          top: -16px;
+          right: -16px;
+          width: 38px;
+          height: 38px;
+          background: linear-gradient(135deg, #ff2d2d 0%, #c0000a 100%);
+          border: 3px solid #0D1525;
           border-radius: 50%;
           cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 11px; color: #fff; font-weight: 700;
-          transition: background 0.2s, transform 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          color: #fff;
+          font-weight: 900;
           line-height: 1;
-          box-shadow: 0 2px 8px rgba(239,68,68,0.5);
-          animation: pulse-red 2s ease-in-out infinite;
+          transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
+          box-shadow:
+            0 0 0 0 rgba(255, 45, 45, 0.5),
+            0 4px 12px rgba(255, 45, 45, 0.55);
+          animation: x-attention 1.8s ease-in-out infinite;
+          z-index: 10;
         }
-        .wa-close:hover { background: #dc2626; transform: scale(1.15); animation: none; }
-        @keyframes pulse-red {
-          0%,100% { box-shadow: 0 2px 8px rgba(239,68,68,0.4); }
-          50% { box-shadow: 0 2px 16px rgba(239,68,68,0.8), 0 0 0 4px rgba(239,68,68,0.15); }
+        .wa-close:hover {
+          background: linear-gradient(135deg, #ff5555 0%, #e0000f 100%);
+          transform: scale(1.25) rotate(90deg) !important;
+          animation: none;
+          box-shadow: 0 0 0 6px rgba(255,45,45,0.2), 0 6px 18px rgba(255,45,45,0.6);
+        }
+        .wa-close:active {
+          transform: scale(0.92) !important;
+        }
+
+        /* Animație: pulsează + ușor bounce — atrage ochiul */
+        @keyframes x-attention {
+          0%   { transform: scale(1);    box-shadow: 0 0 0 0   rgba(255,45,45,0.6), 0 4px 12px rgba(255,45,45,0.4); }
+          30%  { transform: scale(1.18); box-shadow: 0 0 0 8px rgba(255,45,45,0.0), 0 6px 18px rgba(255,45,45,0.6); }
+          60%  { transform: scale(1);    box-shadow: 0 0 0 0   rgba(255,45,45,0.0), 0 4px 12px rgba(255,45,45,0.4); }
+          80%  { transform: scale(1.08); box-shadow: 0 0 0 4px rgba(255,45,45,0.1), 0 4px 12px rgba(255,45,45,0.5); }
+          100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(255,45,45,0.0), 0 4px 12px rgba(255,45,45,0.4); }
+        }
+
+        /* Inel puls în spatele X-ului */
+        .wa-close::before {
+          content: '';
+          position: absolute;
+          inset: -6px;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 45, 45, 0.6);
+          animation: x-ring 1.8s ease-out infinite;
+          pointer-events: none;
+        }
+        @keyframes x-ring {
+          0%   { transform: scale(1);    opacity: 0.8; }
+          70%  { transform: scale(1.7);  opacity: 0; }
+          100% { transform: scale(1.7);  opacity: 0; }
         }
 
         .wa-header {
@@ -183,20 +222,19 @@ const WhatsAppButton = () => {
           border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
-          box-shadow: 0 4px 12px rgba(37,211,102,0.35);
         }
-        .wa-avatar svg { width: 22px; height: 22px; fill: #fff; }
+        .wa-avatar svg { width: 24px; height: 24px; fill: #fff; }
         .wa-name {
-          font-family: 'Syne', 'Inter', sans-serif;
-          font-size: 14px; font-weight: 700;
-          color: #EFF6FF; line-height: 1.3;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px; font-weight: 700; color: #F1F5F9;
         }
         .wa-status {
-          font-size: 11.5px; color: #25D366; font-weight: 400;
-          display: flex; align-items: center; gap: 4px;
+          font-family: 'Inter', sans-serif;
+          font-size: 11.5px; color: #64748B;
+          display: flex; align-items: center; gap: 5px; margin-top: 2px;
         }
         .wa-status-dot {
-          width: 6px; height: 6px; border-radius: 50%;
+          width: 7px; height: 7px; border-radius: 50%;
           background: #25D366;
           animation: blink-green 2s ease-in-out infinite;
         }
@@ -290,7 +328,6 @@ const WhatsAppButton = () => {
           100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Wobble subtil — atrage atenția fără să deranjeze */
         @keyframes fab-wobble {
           0%   { transform: scale(1) rotate(0deg); }
           10%  { transform: scale(1.08) rotate(-8deg); }
@@ -301,7 +338,6 @@ const WhatsAppButton = () => {
           100% { transform: scale(1) rotate(0deg); }
         }
 
-        /* Inel 1 — puls principal */
         .wa-fab::before {
           content: '';
           position: absolute;
@@ -310,7 +346,6 @@ const WhatsAppButton = () => {
           border: 2px solid rgba(37,211,102,0.5);
           animation: ring-pulse 2.8s ease-out infinite;
         }
-        /* Inel 2 — puls întârziat */
         .wa-fab::after {
           content: '';
           position: absolute;
@@ -325,15 +360,25 @@ const WhatsAppButton = () => {
           100% { transform: scale(1.55); opacity: 0; }
         }
 
+        /* ===================== RESPONSIVE ===================== */
         @media (max-width: 400px) {
           .wa-popup { bottom: 16px; right: 16px; left: 16px; }
           .wa-card { max-width: 100%; }
+          /* X mai mare și pe mobil */
+          .wa-close {
+            width: 44px;
+            height: 44px;
+            font-size: 18px;
+            top: -18px;
+            right: -14px;
+            border-width: 3px;
+          }
           .wa-fab { bottom: 18px; left: 14px; width: 42px; height: 42px; }
           .wa-fab svg { width: 20px; height: 20px; }
         }
       `}</style>
 
-      {/* ---- POPUP CARD (neschimbat) ---- */}
+      {/* ---- POPUP CARD ---- */}
       {!isDismissed && (
         <div className={`wa-popup ${isVisible ? 'visible' : ''}`}>
           <div className="wa-card">
