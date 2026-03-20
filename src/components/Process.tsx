@@ -54,23 +54,23 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
       }}
     >
       <div className={`md:flex md:items-center ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
-        <div className={`md:w-5/12 ${isEven ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'}`}>
+        <div className={`md:w-5/12 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
           <div className="proc-card">
 
             {/* Icon */}
-            <div className={`flex items-center mb-4 md:mb-6 ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
+            <div className="flex items-center mb-4 md:mb-6">
               <div className="bg-blue-100 rounded-lg p-3">
                 <Icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
               </div>
             </div>
 
             {/* Title */}
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 text-left">
               {title}
             </h3>
 
             {/* Description */}
-            <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-sm md:text-base">
+            <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-sm md:text-base text-left">
               {description}
             </p>
 
@@ -79,15 +79,9 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
               {details.map((detail, idx) => (
                 <li
                   key={idx}
-                  className={`flex items-center text-xs md:text-sm text-gray-500 font-medium ${
-                    isEven ? 'md:justify-end' : 'md:justify-start'
-                  }`}
+                  className="flex items-center text-xs md:text-sm text-gray-500 font-medium"
                 >
-                  <div
-                    className={`w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 mr-2 ${
-                      isEven ? 'md:order-2 md:ml-3 md:mr-0' : 'md:mr-3'
-                    }`}
-                  />
+                  <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 mr-2 md:mr-3" />
                   {detail}
                 </li>
               ))}
