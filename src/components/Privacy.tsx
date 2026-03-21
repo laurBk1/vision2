@@ -41,7 +41,7 @@ const Privacy = () => {
         '',
         '• La prima vizită pe site vi se afișează un banner de consimțământ — puteți accepta sau refuza cookie-urile de analiză. Refuzul nu afectează funcționarea site-ului.',
         '• Puteți modifica preferințele oricând din setările browserului dumneavoastră (secțiunea "Opțiuni" sau "Preferințe").',
-        '• Puteți dezactiva Google Analytics accesând: https://tools.google.com/dlpage/gaoptout',
+        '• Puteți dezactiva Google Analytics accesând: GAOPTOUT_LINK',
         '• Dezactivarea cookie-urilor poate limita unele funcționalități ale site-ului.',
         '',
         'Datele colectate prin Google Analytics sunt anonimizate, nu includ informații de identificare personală și nu sunt partajate cu terți în scopuri de marketing.',
@@ -207,13 +207,30 @@ const Privacy = () => {
               </div>
               
               <div className="space-y-3">
-                {section.content.map((paragraph, idx) => (
-                  <p key={idx} className={`text-gray-700 leading-relaxed ${
-                    paragraph.startsWith('•') ? 'ml-4' : ''
-                  } ${paragraph === '' ? 'h-2' : ''}`}>
-                    {paragraph}
-                  </p>
-                ))}
+                {section.content.map((paragraph, idx) => {
+                  if (paragraph.includes('GAOPTOUT_LINK')) {
+                    return (
+                      <p key={idx} className="text-gray-700 leading-relaxed ml-4">
+                        • Puteți dezactiva Google Analytics accesând:{' '}
+                        <a
+                          href="https://tools.google.com/dlpage/gaoptout"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline break-all"
+                        >
+                          tools.google.com/dlpage/gaoptout
+                        </a>
+                      </p>
+                    );
+                  }
+                  return (
+                    <p key={idx} className={`text-gray-700 leading-relaxed ${
+                      paragraph.startsWith('•') ? 'ml-4' : ''
+                    } ${paragraph === '' ? 'h-2' : ''}`}>
+                      {paragraph}
+                    </p>
+                  );
+                })}
               </div>
             </div>
           ))}
