@@ -11,7 +11,7 @@
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 
       https://www.googletagmanager.com 
       https://*.googletagmanager.com 
-      https://tagmanager.google.com               # ← esențial, adaugă-l aici
+      https://tagmanager.google.com 
       https://ssl.google-analytics.com 
       https://www.google-analytics.com 
       https://*.google-analytics.com 
@@ -20,7 +20,7 @@
     script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 
       https://www.googletagmanager.com 
       https://*.googletagmanager.com 
-      https://tagmanager.google.com               # ← și aici (pentru siguranță)
+      https://tagmanager.google.com 
       https://ssl.google-analytics.com 
       https://www.google-analytics.com 
       https://*.google-analytics.com 
@@ -31,7 +31,9 @@
     img-src 'self' data: https: blob: 
       https://www.googletagmanager.com 
       https://*.google-analytics.com 
-      https://*.googletagmanager.com;
+      https://*.googletagmanager.com 
+      https://www.google.com 
+      https://stats.g.doubleclick.net;
     connect-src 'self' https: 
       https://formsubmit.co 
       https://www.google-analytics.com 
@@ -40,7 +42,8 @@
       https://www.googletagmanager.com 
       https://*.googletagmanager.com 
       https://stats.g.doubleclick.net 
-      https://region1.google-analytics.com;   # ← bun că-l ai deja
+      https://region1.google-analytics.com 
+      https://region*.google-analytics.com;  # wildcard pentru regiuni GA4
     frame-src 'self' https://www.google.com https://maps.google.com;
     frame-ancestors 'none';
     object-src 'none';
@@ -49,5 +52,12 @@
   X-Robots-Tag: index, follow
   Content-Language: ro-RO
 
-# Cache headers for static assets (rămâne neschimbat)
-...
+# Cache headers for static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
