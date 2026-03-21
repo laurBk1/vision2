@@ -123,7 +123,7 @@ const WhatsAppButton = () => {
           position: fixed;
           bottom: 24px;
           right: 24px;
-          z-index: 9999;
+          z-index: 9000;
           display: flex;
           flex-direction: column;
           align-items: flex-end;
@@ -279,7 +279,7 @@ const WhatsAppButton = () => {
           position: fixed;
           bottom: 24px;
           left: 22px;
-          z-index: 9998;
+          z-index: 8999;
           width: 46px;
           height: 46px;
           border-radius: 50%;

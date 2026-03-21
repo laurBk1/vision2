@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Shield, X, Cookie, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import { Shield, Cookie, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 
 const COOKIE_CONSENT_KEY = 'visionedit_cookie_consent';
 const COOKIE_CONSENT_DATE_KEY = 'visionedit_cookie_consent_date';
@@ -34,7 +34,6 @@ const CookieBanner = () => {
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
-      // Mică întârziere pentru a nu apărea instant
       const timer = setTimeout(() => setVisible(true), 800);
       return () => clearTimeout(timer);
     }
@@ -59,15 +58,21 @@ const CookieBanner = () => {
     setVisible(false);
   };
 
+  // Deschide pagina privacy fără a închide bannerul
+  const handlePrivacyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.open('https://visionedit.ro/#privacy', '_blank', 'noopener,noreferrer');
+  };
+
   if (!visible) return null;
 
   return (
     <>
-      {/* Overlay semi-transparent */}
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9998]" />
+      {/* Overlay semi-transparent — z-index mare ca să acopere WhatsApp */}
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[99998]" />
 
-      {/* Banner */}
-      <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-6">
+      {/* Banner — z-index și mai mare */}
+      <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6">
         <div className="max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden">
           
           {/* Header banner */}
@@ -94,8 +99,8 @@ const CookieBanner = () => {
               <span className="text-purple-400 font-semibold">Google Analytics</span> și pentru a îmbunătăți experiența ta. 
               Datele colectate sunt anonimizate și nu sunt vândute terților.{' '}
               <a
-                href="#privacy"
-                onClick={() => setVisible(false)}
+                href="https://visionedit.ro/#privacy"
+                onClick={handlePrivacyClick}
                 className="text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
               >
                 Politica de confidențialitate
@@ -114,7 +119,6 @@ const CookieBanner = () => {
 
             {showDetails && (
               <div className="bg-gray-800/60 rounded-xl p-4 mb-5 border border-gray-700/50 space-y-3">
-                {/* Cookie necesar */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
@@ -129,7 +133,6 @@ const CookieBanner = () => {
 
                 <div className="border-t border-gray-700/50" />
 
-                {/* Cookie analytics */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
@@ -163,11 +166,15 @@ const CookieBanner = () => {
             </div>
 
             <p className="text-gray-500 text-xs text-center mt-3">
-              Poți modifica preferințele oricând din{' '}
-              <a href="#privacy" onClick={() => setVisible(false)} className="text-purple-400 hover:text-purple-300 underline underline-offset-1">
+              Poți citi{' '}
+              <a
+                href="https://visionedit.ro/#privacy"
+                onClick={handlePrivacyClick}
+                className="text-purple-400 hover:text-purple-300 underline underline-offset-1"
+              >
                 Politica de Confidențialitate
               </a>
-              . Alegerea ta este stocată local pe dispozitivul tău.
+              {' '}înainte de a alege. Alegerea ta este stocată local pe dispozitivul tău.
             </p>
           </div>
         </div>
