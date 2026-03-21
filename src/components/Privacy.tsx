@@ -12,12 +12,35 @@ const Privacy = () => {
         '',
         'Această politică stabilește modul în care colectăm, utilizăm, stocăm și protejăm datele personale ale clienților și vizitatorilor site-ului nostru www.visionedit.ro.',
         '',
-        'Site-ul www.visionedit.ro nu utilizează tehnologii de tip cookies pentru colectarea datelor.'
+        'Site-ul www.visionedit.ro utilizează cookie-uri de tip analytics prin Google Analytics (GA4) pentru a colecta date statistice anonime despre vizitatori. Prin utilizarea site-ului și acceptarea cookie-urilor, sunteți de acord cu colectarea acestor date conform prezentei politici.'
+      ]
+    },
+    {
+      icon: Lock,
+      title: '2. Politica de Cookies',
+      content: [
+        'Ce sunt cookie-urile?',
+        'Cookie-urile sunt fișiere text de mici dimensiuni stocate pe dispozitivul dumneavoastră atunci când vizitați un site web. Acestea permit site-ului să colecteze date de utilizare anonime.',
+        '',
+        'Cookie-uri utilizate pe visionedit.ro:',
+        '',
+        '• _ga — Cookie Google Analytics. Înregistrează un identificator unic anonim pentru statistici despre vizite. Durata: 2 ani. Operator: Google LLC.',
+        '• _ga_* — Cookie Google Analytics GA4. Folosit pentru a persista starea sesiunii. Durata: 2 ani. Operator: Google LLC.',
+        '',
+        'Cum puteți controla cookie-urile?',
+        '',
+        '• La prima vizită pe site, vi se afișează un banner de consimțământ — puteți accepta sau refuza cookie-urile de analiză.',
+        '• Puteți modifica preferințele oricând din setările browserului dumneavoastră.',
+        '• Puteți opta pentru dezactivarea Google Analytics la: https://tools.google.com/dlpage/gaoptout',
+        '',
+        'Datele colectate prin Google Analytics sunt anonimizate, nu includ informații de identificare personală și nu sunt vândute terților.',
+        '',
+        'Temeiul juridic: consimțământul dumneavoastră explicit (art. 6 alin. (1) lit. a) GDPR).'
       ]
     },
     {
       icon: Users,
-      title: '2. Datele Operatorului',
+      title: '3. Datele Operatorului',
       content: [
         'Denumire: VISIONEDIT SRL',
         'Sediu social: București, România',
@@ -30,7 +53,7 @@ const Privacy = () => {
     },
     {
       icon: Eye,
-      title: '3. Categorii de Date Prelucrate',
+      title: '4. Categorii de Date Prelucrate',
       content: [
         'Prin formularul de contact de pe site, colectăm următoarele categorii de date:',
         '',
@@ -43,7 +66,7 @@ const Privacy = () => {
     },
     {
       icon: Scale,
-      title: '4. Scopurile și Bazele Juridice ale Prelucrării',
+      title: '5. Scopurile și Bazele Juridice ale Prelucrării',
       content: [
         'Prelucrăm datele personale în baza următoarelor temeiuri juridice:',
         '',
@@ -53,7 +76,7 @@ const Privacy = () => {
     },
     {
       icon: Users,
-      title: '5. Destinatarii Datelor',
+      title: '6. Destinatarii Datelor',
       content: [
         'Datele pot fi accesate de:',
         '',
@@ -65,7 +88,7 @@ const Privacy = () => {
     },
     {
       icon: AlertCircle,
-      title: '6. Durata Stocării',
+      title: '7. Durata Stocării',
       content: [
         'Datele sunt stocate:',
         '',
@@ -75,7 +98,7 @@ const Privacy = () => {
     },
     {
       icon: CheckCircle,
-      title: '7. Drepturile Persoanelor Vizate',
+      title: '8. Drepturile Persoanelor Vizate',
       content: [
         'Conform GDPR, beneficiați de următoarele drepturi:',
         '',
@@ -92,7 +115,7 @@ const Privacy = () => {
     },
     {
       icon: Shield,
-      title: '8. Măsuri de Securitate',
+      title: '9. Măsuri de Securitate',
       content: [
         'Implementăm măsuri tehnice și organizaționale adecvate, inclusiv:',
         '',
@@ -103,7 +126,7 @@ const Privacy = () => {
     },
     {
       icon: Scale,
-      title: '9. Reclamații',
+      title: '10. Reclamații',
       content: [
         'Dacă considerați că prelucrarea datelor dumneavoastră încalcă GDPR, aveți dreptul de a depune plângere la:',
         'Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)'
@@ -111,14 +134,14 @@ const Privacy = () => {
     },
     {
       icon: FileText,
-      title: '10. Modificări ale Politicii',
+      title: '11. Modificări ale Politicii',
       content: [
         'Orice modificare a acestei politici va fi publicată pe această pagină. Vă recomandăm să o consultați periodic.'
       ]
     },
     {
       icon: Mail,
-      title: '11. Contact',
+      title: '12. Contact',
       content: [
         'Pentru orice întrebări legate de protecția datelor, ne puteți contacta la:',
         '• Email: contact@visionedit.ro',

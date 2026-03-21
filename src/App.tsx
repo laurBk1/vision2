@@ -13,6 +13,7 @@ import Terms from './components/Terms';
 import Privacy from './components/Privacy';
 import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
+import CookieBanner from './components/CookieBanner';
 
 function App() {
   // Previne scroll orizontal global pe toate dispozitivele
@@ -87,6 +88,7 @@ function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <CookieBanner />
       </div>
     );
   }
@@ -100,6 +102,7 @@ function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <CookieBanner />
       </div>
     );
   }
@@ -113,6 +116,7 @@ function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <CookieBanner />
       </div>
     );
   }
@@ -132,6 +136,7 @@ function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <CookieBanner />
     </div>
   );
 }
