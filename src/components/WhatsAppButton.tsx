@@ -13,7 +13,7 @@ const WhatsAppButton = () => {
     const timer = setTimeout(() => {
       setIsVisible(true);
       playNotificationSound();
-    }, 30000);
+    }, 45000);
 
     return () => clearTimeout(timer);
   }, []);
