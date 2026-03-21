@@ -124,17 +124,17 @@ const CookieBanner = () => {
             {showDetails && (
               <div className="bg-gray-800/60 rounded-xl p-4 mb-5 border border-gray-700/50 space-y-3">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri strict necesare</span>
-                    <span className="bg-green-600/20 text-green-400 text-xs px-2 py-0.5 rounded-full border border-green-500/30">Mereu active</span>
+                    <span className="bg-green-600/20 text-green-400 text-xs px-2 py-0.5 rounded-full border border-green-500/30 whitespace-nowrap shrink-0">Mereu active</span>
                   </div>
                   <p className="text-gray-400 text-xs leading-relaxed">Necesare pentru funcționarea de bază a site-ului. Nu pot fi dezactivate.</p>
                 </div>
                 <div className="border-t border-gray-700/50" />
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri de analiză</span>
-                    <span className="bg-blue-600/20 text-blue-400 text-xs px-2 py-0.5 rounded-full border border-blue-500/30">Google Analytics</span>
+                    <span className="bg-blue-600/20 text-blue-400 text-xs px-2 py-0.5 rounded-full border border-blue-500/30 whitespace-nowrap shrink-0">Google Analytics</span>
                   </div>
                   <p className="text-gray-400 text-xs leading-relaxed">
                     Cookie-urile <code className="text-purple-300">_ga</code> și <code className="text-purple-300">_ga_*</code> colectează date anonime despre vizitatori (pagini vizitate, durata sesiunii, sursa traficului). Durata: 2 ani. Operator: Google LLC.
