@@ -12,7 +12,7 @@ const Privacy = () => {
         '',
         'Această politică stabilește modul în care colectăm, utilizăm, stocăm și protejăm datele personale ale clienților și vizitatorilor site-ului nostru www.visionedit.ro.',
         '',
-        'Site-ul www.visionedit.ro utilizează cookie-uri de tip analytics prin Google Analytics (GA4) pentru a colecta date statistice anonime despre vizitatori. Prin utilizarea site-ului și acceptarea cookie-urilor, sunteți de acord cu colectarea acestor date conform prezentei politici.'
+        'Site-ul www.visionedit.ro utilizează cookie-uri de tip analytics prin Google Analytics (GA4) și Microsoft Clarity pentru a colecta date statistice anonime despre vizitatori. Prin utilizarea site-ului și acceptarea cookie-urilor, sunteți de acord cu colectarea acestor date conform prezentei politici.'
       ]
     },
     {
@@ -20,7 +20,7 @@ const Privacy = () => {
       title: '2. Politica de Cookies',
       content: [
         'Ce sunt cookie-urile?',
-        'Un cookie este un mic fișier text stocat pe dispozitivul dumneavoastră (computer, telefon mobil etc.) atunci când vizitați un site web. Cookie-urile sunt complet pasive — nu conțin programe software, viruși sau spyware și nu pot accesa informațiile de pe dispozitivul dumneavoastră. În majoritatea cazurilor, cookie-urile nu identifică personal utilizatorii.',
+        'Un cookie este un mic fișier text stocat pe dispozitivul dumneavoastră (computer, telefon mobil etc.) atunci când vizitați un site web. Cookie-urile sunt complet pasive — nu conțin programe software, viruși sau spyware și nu pot accesa informațiile de pe dispozitivul dumneavoastră. În mod obișnuit, cookie-urile nu identifică direct utilizatorii.',
         '',
         'Tipuri de cookie-uri după durată:',
         '',
@@ -29,24 +29,48 @@ const Privacy = () => {
         '',
         'Cookie-uri utilizate pe visionedit.ro:',
         '',
-        '• Cookie-uri strict necesare — esențiale pentru funcționarea corectă a site-ului. Nu pot fi dezactivate și nu necesită consimțământul dumneavoastră.',
-        '• Cookie-uri de analiză (Google Analytics GA4) — folosite pentru a înțelege cum interacționează vizitatorii cu site-ul, în scopul îmbunătățirii conținutului. Datele sunt anonimizate.',
+        '• Cookie-uri strict necesare — esențiale pentru funcționarea corectă a site-ului. Nu pot fi dezactivate, fiind utilizate în baza interesului legitim al operatorului (art. 6 alin. (1) lit. f) GDPR).',
+        '• Cookie-uri de analiză (Google Analytics GA4) — folosite pentru a înțelege cum interacționează vizitatorii cu site-ul, în scopul îmbunătățirii conținutului. Datele sunt pseudonimizate. Google Analytics utilizează anonimizarea adreselor IP.',
+        '• Cookie-uri de comportament (Microsoft Clarity) — folosite pentru înregistrarea sesiunilor pseudonimizate (heatmaps, replay-uri) în scopul optimizării experienței utilizatorilor. Microsoft Clarity utilizează mascarea automată a câmpurilor sensibile (parole, date introduse în formulare) — datele sensibile nu sunt niciodată transmise către serverele Microsoft.',
         '',
         'Detalii cookie-uri Google Analytics:',
         '',
-        '• _ga — identificator unic anonim pentru statistici despre vizite. Durata: 2 ani. Operator: Google LLC.',
+        '• _ga — identificator unic pseudonimizat pentru statistici despre vizite. Durata: 2 ani. Operator: Google LLC.',
         '• _ga_* — persistă starea sesiunii pentru GA4. Durata: 2 ani. Operator: Google LLC.',
+        '',
+        'Detalii cookie-uri Microsoft Clarity:',
+        '',
+        '• _clck — identificator unic pseudonimizat al vizitatorului pentru sesiuni Clarity. Durata: 1 an. Operator: Microsoft Corporation.',
+        '• _clsk — identifică sesiunea curentă de navigare. Durata: sesiune (se șterge la închiderea browserului). Operator: Microsoft Corporation.',
+        '',
+        'CLARITY_PRIVACY_LINK',
         '',
         'Cum puteți controla cookie-urile?',
         '',
         '• La prima vizită pe site vi se afișează un banner de consimțământ — puteți accepta sau refuza cookie-urile de analiză. Refuzul nu afectează funcționarea site-ului.',
-        '• Puteți modifica preferințele oricând din setările browserului dumneavoastră (secțiunea "Opțiuni" sau "Preferințe").',
+        '• Vă puteți modifica preferințele privind cookie-urile oricând, revenind pe site și ștergând cookie-urile din setările browserului (secțiunea „Setări" → „Confidențialitate" → „Șterge datele de navigare") — bannerul de consimțământ va reapărea.',
         '• Puteți dezactiva Google Analytics accesând: GAOPTOUT_LINK',
-        '• Dezactivarea cookie-urilor poate limita unele funcționalități ale site-ului.',
+        '• Puteți dezactiva Microsoft Clarity accesând: CLARITYOPTOUT_LINK',
+        '• Dezactivarea cookie-urilor de analiză nu afectează funcționarea site-ului.',
         '',
-        'Datele colectate prin Google Analytics sunt anonimizate, nu includ informații de identificare personală și nu sunt partajate cu terți în scopuri de marketing.',
+        'Datele colectate prin Google Analytics și Microsoft Clarity sunt pseudonimizate — nu includ informații care să permită identificarea directă a utilizatorilor și nu sunt partajate cu terți în scopuri de marketing.',
         '',
-        'Temeiul juridic: consimțământul dumneavoastră explicit (art. 6 alin. (1) lit. a) GDPR).'
+        'Transferuri internaționale de date:',
+        '',
+        '• Google LLC și Microsoft Corporation sunt furnizori stabiliți în SUA. Datele colectate prin Google Analytics și Microsoft Clarity pot fi transferate în afara Spațiului Economic European, în baza unor garanții adecvate — Clauze Contractuale Standard (art. 46 GDPR) și EU-US Data Privacy Framework.',
+        '• Google: https://policies.google.com/privacy',
+        '• Microsoft: https://privacy.microsoft.com/privacystatement',
+        '',
+        'Retragerea consimțământului:',
+        '',
+        '• Vă puteți retrage consimțământul în orice moment, ștergând cookie-urile din setările browserului dumneavoastră (secțiunea „Setări" → „Confidențialitate" → „Șterge datele de navigare") — bannerul va reapărea la următoarea vizită.',
+        '• Puteți dezactiva Google Analytics accesând: GAOPTOUT_LINK',
+        '• Puteți dezactiva Microsoft Clarity accesând: CLARITYOPTOUT_LINK',
+        '• Retragerea consimțământului nu afectează legalitatea prelucrărilor efectuate anterior retragerii.',
+        '',
+        'Temeiul juridic al prelucrării:',
+        '• consimțământul dumneavoastră (art. 6 alin. (1) lit. a) GDPR) — pentru cookie-uri de analiză (Google Analytics) și de comportament (Microsoft Clarity)',
+        '• interesul legitim al operatorului (art. 6 alin. (1) lit. f) GDPR) — pentru cookie-uri strict necesare funcționării site-ului'
       ]
     },
     {
@@ -208,17 +232,53 @@ const Privacy = () => {
               
               <div className="space-y-3">
                 {section.content.map((paragraph, idx) => {
+                  if (paragraph.includes('CLARITY_PRIVACY_LINK')) {
+                    return (
+                      <p key={idx} className="text-gray-700 leading-relaxed">
+                        Microsoft Clarity procesează datele în conformitate cu EU-US Data Privacy Framework. Informații complete:{' '}
+                        <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline break-all">
+                          privacy.microsoft.com/privacystatement
+                        </a>
+                      </p>
+                    );
+                  }
                   if (paragraph.includes('GAOPTOUT_LINK')) {
                     return (
                       <p key={idx} className="text-gray-700 leading-relaxed ml-4">
                         • Puteți dezactiva Google Analytics accesând:{' '}
-                        <a
-                          href="https://tools.google.com/dlpage/gaoptout"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800 underline break-all"
-                        >
+                        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline break-all">
                           tools.google.com/dlpage/gaoptout
+                        </a>
+                      </p>
+                    );
+                  }
+                  if (paragraph.includes('CLARITYOPTOUT_LINK')) {
+                    return (
+                      <p key={idx} className="text-gray-700 leading-relaxed ml-4">
+                        • Puteți dezactiva Microsoft Clarity accesând Digital Advertising Alliance:{' '}
+                        <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline break-all">
+                          optout.aboutads.info
+                        </a>
+                        {' '}(selectați „Microsoft")
+                      </p>
+                    );
+                  }
+                  if (paragraph === '• Google: https://policies.google.com/privacy') {
+                    return (
+                      <p key={idx} className="text-gray-700 leading-relaxed ml-4">
+                        • Google:{' '}
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline break-all">
+                          policies.google.com/privacy
+                        </a>
+                      </p>
+                    );
+                  }
+                  if (paragraph === '• Microsoft: https://privacy.microsoft.com/privacystatement') {
+                    return (
+                      <p key={idx} className="text-gray-700 leading-relaxed ml-4">
+                        • Microsoft:{' '}
+                        <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline break-all">
+                          privacy.microsoft.com/privacystatement
                         </a>
                       </p>
                     );

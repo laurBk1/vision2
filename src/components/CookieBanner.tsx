@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Shield, Cookie, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import { Shield, Cookie, ChevronDown, ChevronUp } from 'lucide-react';
 
 const COOKIE_CONSENT_KEY = 'visionedit_cookie_consent';
 const COOKIE_CONSENT_DATE_KEY = 'visionedit_cookie_consent_date';
@@ -8,6 +8,10 @@ declare global {
   interface Window {
     dataLayer: unknown[];
     gtag: (...args: unknown[]) => void;
+    clarity: (...args: unknown[]) => void;
+    enableClarity: () => void;
+    disableClarity: () => void;
+    _clarityEnabled: boolean;
   }
 }
 
@@ -20,6 +24,20 @@ function enableGoogleAnalytics() {
 function disableGoogleAnalytics() {
   if (typeof window.gtag === 'function') {
     window.gtag('consent', 'update', { analytics_storage: 'denied' });
+  }
+}
+
+function enableAllAnalytics() {
+  enableGoogleAnalytics();
+  if (typeof window.enableClarity === 'function') {
+    window.enableClarity();
+  }
+}
+
+function disableAllAnalytics() {
+  disableGoogleAnalytics();
+  if (typeof window.disableClarity === 'function') {
+    window.disableClarity();
   }
 }
 
@@ -53,9 +71,9 @@ const CookieBanner = () => {
     } else {
       setVisible(false);
       if (consent === 'accepted') {
-        enableGoogleAnalytics();
+        enableAllAnalytics();
       } else {
-        disableGoogleAnalytics();
+        disableAllAnalytics();
       }
     }
   }, [isPrivacyPage]);
@@ -63,14 +81,14 @@ const CookieBanner = () => {
   const handleAccept = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
     localStorage.setItem(COOKIE_CONSENT_DATE_KEY, new Date().toISOString());
-    enableGoogleAnalytics();
+    enableAllAnalytics();
     setVisible(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'declined');
     localStorage.setItem(COOKIE_CONSENT_DATE_KEY, new Date().toISOString());
-    disableGoogleAnalytics();
+    disableAllAnalytics();
     setVisible(false);
   };
 
@@ -107,9 +125,14 @@ const CookieBanner = () => {
           {/* Conținut */}
           <div className="px-6 py-5">
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
-              Folosim cookie-uri esențiale pentru funcționarea site-ului și cookie-uri de analiză (
+              Folosim cookie-uri esențiale pentru funcționarea site-ului și, cu consimțământul tău, cookie-uri de analiză (
               <span className="text-purple-400 font-semibold">Google Analytics</span>
-              ) pentru a înțelege cum este folosit site-ul și pentru a-l îmbunătăți. Datele sunt anonimizate și nu sunt partajate cu terți în scopuri de marketing.
+              {' '}și{' '}
+              <span className="text-purple-400 font-semibold">Microsoft Clarity</span>
+              ) pentru a înțelege modul în care este utilizat site-ul și pentru a-l îmbunătăți.
+              Datele sunt colectate într-o formă pseudonimizată și nu sunt utilizate pentru identificarea directă a utilizatorilor.
+              Cookie-urile de analiză sunt utilizate doar pe baza consimțământului tău și pot fi dezactivate în orice moment.
+              Furnizorii acestor servicii (Google LLC, Microsoft Corporation) pot transfera date în afara Spațiului Economic European, în baza unor garanții adecvate (Clauze Contractuale Standard).
             </p>
 
             {/* Detalii expandabile */}
@@ -123,6 +146,7 @@ const CookieBanner = () => {
 
             {showDetails && (
               <div className="bg-gray-800/60 rounded-xl p-4 mb-5 border border-gray-700/50 space-y-3">
+                {/* Esențiale */}
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri strict necesare</span>
@@ -130,7 +154,10 @@ const CookieBanner = () => {
                   </div>
                   <p className="text-gray-400 text-xs leading-relaxed">Necesare pentru funcționarea de bază a site-ului. Nu pot fi dezactivate.</p>
                 </div>
+
                 <div className="border-t border-gray-700/50" />
+
+                {/* Google Analytics */}
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri de analiză</span>
@@ -140,10 +167,23 @@ const CookieBanner = () => {
                     Cookie-urile <code className="text-purple-300">_ga</code> și <code className="text-purple-300">_ga_*</code> colectează date anonime despre vizitatori (pagini vizitate, durata sesiunii, sursa traficului). Durata: 2 ani. Operator: Google LLC.
                   </p>
                 </div>
+
+                <div className="border-t border-gray-700/50" />
+
+                {/* Microsoft Clarity */}
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <span className="text-white text-sm font-semibold">Cookie-uri de comportament</span>
+                    <span className="bg-cyan-600/20 text-cyan-400 text-xs px-2 py-0.5 rounded-full border border-cyan-500/30 whitespace-nowrap shrink-0">Microsoft Clarity</span>
+                  </div>
+                  <p className="text-gray-400 text-xs leading-relaxed">
+                    Cookie-urile <code className="text-purple-300">_clsk</code> și <code className="text-purple-300">_clck</code> înregistrează sesiunile anonime (heatmaps, înregistrări) pentru optimizarea experienței utilizatorilor. Durata: 1 an. Operator: Microsoft Corporation. Datele nu includ informații de identificare personală.
+                  </p>
+                </div>
               </div>
             )}
 
-            {/* Butoane — egale ca dimensiune și vizibilitate */}
+            {/* Butoane */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAccept}
@@ -160,7 +200,7 @@ const CookieBanner = () => {
             </div>
 
             <p className="text-gray-500 text-xs text-center mt-3">
-              Poți folosi site-ul și fără cookie-uri de analiză. Alegerea ta este înregistrată local pe dispozitivul tău.{' '}
+              Poți folosi site-ul și fără cookie-uri de analiză. Alegerea ta este înregistrată local pe dispozitivul tău și o poți modifica oricând ștergând cookie-urile din setările browserului.{' '}
               <a href="#privacy" onClick={handlePrivacyClick} className="text-purple-400 hover:text-purple-300 underline underline-offset-1">
                 Politica de Confidențialitate
               </a>
