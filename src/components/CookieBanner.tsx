@@ -32,12 +32,20 @@ function enableAllAnalytics() {
   if (typeof window.enableClarity === 'function') {
     window.enableClarity();
   }
+  // Clarity Consent V2 — necesar din oct 2025 pentru EEA
+  if (typeof window.clarity === 'function') {
+    window.clarity('consent', true);
+  }
 }
 
 function disableAllAnalytics() {
   disableGoogleAnalytics();
   if (typeof window.disableClarity === 'function') {
     window.disableClarity();
+  }
+  // Clarity Consent V2 — refuz explicit
+  if (typeof window.clarity === 'function') {
+    window.clarity('consent', false);
   }
 }
 
