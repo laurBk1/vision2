@@ -95,6 +95,16 @@ const CookieBanner = () => {
     };
   }, []);
 
+  // Blochează scroll-ul pe pagina din spate când bannerul e vizibil
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [visible]);
+
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
@@ -137,7 +147,7 @@ const CookieBanner = () => {
   return (
     <>
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[99998]" />
-      <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6">
+      <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
         <div className="max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden">
 
           {/* Header */}
