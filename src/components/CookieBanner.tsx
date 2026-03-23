@@ -55,6 +55,33 @@ const CookieBanner = () => {
   const [isPrivacyPage, setIsPrivacyPage] = useState(false);
 
   useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes cookieSpin {
+        0%   { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes cookieGlow {
+        0%, 100% { box-shadow: 0 0 6px 2px rgba(147,51,234,0.4); }
+        50%       { box-shadow: 0 0 18px 6px rgba(147,51,234,0.9); }
+      }
+      @keyframes cookieIdle {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        50%       { transform: rotate(8deg) scale(1.05); }
+      }
+      .cookie-icon-wrap {
+        animation: cookieSpin 1.8s ease-in-out 2, cookieGlow 1.2s ease-in-out 3;
+        animation-fill-mode: forwards;
+      }
+      .cookie-icon-wrap:hover {
+        animation: cookieIdle 0.6s ease-in-out infinite !important;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => { document.head.removeChild(style); };
+  }, []);
+
+  useEffect(() => {
     const checkPage = () => {
       const onPrivacy = window.location.hash === '#privacy' || window.location.pathname === '/privacy';
       setIsPrivacyPage(onPrivacy);
@@ -116,7 +143,7 @@ const CookieBanner = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-purple-900/80 to-slate-900/80 px-6 py-4 flex items-center justify-between border-b border-purple-500/20">
             <div className="flex items-center space-x-3">
-              <div className="bg-purple-600 rounded-lg p-2">
+              <div className="cookie-icon-wrap bg-purple-600 rounded-lg p-2">
                 <Cookie className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -125,7 +152,6 @@ const CookieBanner = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <Shield className="h-5 w-5 text-purple-400" />
               <span className="text-purple-400 text-sm font-medium hidden sm:block">Protejat GDPR</span>
             </div>
           </div>
@@ -133,14 +159,11 @@ const CookieBanner = () => {
           {/* Conținut */}
           <div className="px-6 py-5">
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
-              Folosim cookie-uri esențiale pentru funcționarea site-ului și, cu consimțământul tău, cookie-uri de analiză (
+              Folosim cookie-uri esențiale pentru funcționarea site-ului și, cu acordul tău, cookie-uri de analiză (
               <span className="text-purple-400 font-semibold">Google Analytics</span>
               {' '}și{' '}
               <span className="text-purple-400 font-semibold">Microsoft Clarity</span>
-              ) pentru a înțelege modul în care este utilizat site-ul și pentru a-l îmbunătăți.
-              Datele sunt colectate într-o formă pseudonimizată și nu sunt utilizate pentru identificarea directă a utilizatorilor.
-              Cookie-urile de analiză sunt utilizate doar pe baza consimțământului tău și pot fi dezactivate în orice moment.
-              Furnizorii acestor servicii (Google LLC, Microsoft Corporation) pot transfera date în afara Spațiului Economic European, în baza unor garanții adecvate (Clauze Contractuale Standard).
+              ) pentru a înțelege cum vizitatorii interacționează cu noi. Datele sunt colectate în mod pseudonim și nu sunt utilizate pentru a te identifica personal.
             </p>
 
             {/* Detalii expandabile */}
@@ -201,17 +224,17 @@ const CookieBanner = () => {
               </button>
               <button
                 onClick={handleDecline}
-                className="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 text-sm sm:text-base"
+                className="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 text-sm sm:text-base border border-purple-600"
               >
                 Doar esențiale
               </button>
             </div>
 
             <p className="text-gray-500 text-xs text-center mt-3">
-              Poți folosi site-ul și fără cookie-uri de analiză. Alegerea ta este înregistrată local pe dispozitivul tău și o poți modifica oricând ștergând cookie-urile din setările browserului.{' '}
+              Poți utiliza site-ul și fără cookie-uri de analiză. Preferințele tale sunt salvate local pe dispozitiv și pot fi modificate oricând din setările browserului. Pentru mai multe informații, consultă{' '}
               <a href="#privacy" onClick={handlePrivacyClick} className="text-purple-400 hover:text-purple-300 underline underline-offset-1">
                 Politica de Confidențialitate
-              </a>
+              </a>.
             </p>
           </div>
         </div>
