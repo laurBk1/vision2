@@ -12,6 +12,10 @@ const Header = () => {
 
   useEffect(() => {
     const updateHash = () => setCurrentHash(window.location.hash);
+
+    // Re-citim hash-ul după ce browserul a procesat complet URL-ul (fix Firefox)
+    requestAnimationFrame(() => setCurrentHash(window.location.hash));
+
     window.addEventListener('popstate', updateHash);
     window.addEventListener('hashchange', updateHash);
     return () => {

@@ -28,19 +28,20 @@ function App() {
     };
   }, []);
 
-  const [location, setLocation] = useState({
+  const getLocation = () => ({
     hash: window.location.hash,
     path: window.location.pathname,
   });
 
+  const [location, setLocation] = useState(getLocation);
+
   // Ascultăm popstate (înapoi/înainte) ȘI hashchange (click pe linkuri cu #)
   useEffect(() => {
-    const updateLocation = () => {
-      setLocation({
-        hash: window.location.hash,
-        path: window.location.pathname,
-      });
-    };
+    const updateLocation = () => setLocation(getLocation());
+
+    // Re-citim hash-ul după ce browserul a procesat complet URL-ul (fix Firefox)
+    requestAnimationFrame(() => setLocation(getLocation()));
+
     window.addEventListener('popstate', updateLocation);
     window.addEventListener('hashchange', updateLocation);
     return () => {
