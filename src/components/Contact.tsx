@@ -332,7 +332,7 @@ const Contact: React.FC = () => {
         {/* Main Contact Section */}
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Map - Hidden on Mobile */}
-          <div className="hidden lg:block bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white/50">
+          <div className="hidden lg:flex flex-col bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white/50">
             <div className="p-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
               <h3 className="text-xl font-semibold mb-2">Unde ne găsești?</h3>
               <p className="text-blue-100">București, România</p>
@@ -349,7 +349,7 @@ const Contact: React.FC = () => {
             ></iframe>
             
             {/* Mesaj informativ sub hartă - Design Premium */}
-            <div className="p-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 border-t-4 border-gradient-to-r from-blue-500 to-purple-500 relative overflow-hidden">
+            <div className="flex-1 p-5 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 border-t-4 border-gradient-to-r from-blue-500 to-purple-500 relative overflow-hidden">
               {/* Background Pattern */}
               <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23blue%22 fill-opacity=%220.03%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
               
@@ -369,10 +369,6 @@ const Contact: React.FC = () => {
                   <div className="space-y-4 text-white/90">
                     <p className="text-base leading-relaxed font-medium">
                       <strong className="text-white">La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.</strong> Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
-                    </p>
-                    
-                    <p className="text-base leading-relaxed font-medium">
-                      <strong className="text-white"></strong>
                     </p>
                     
                     {/* Call to Action */}
