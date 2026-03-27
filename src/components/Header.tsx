@@ -3,30 +3,13 @@ import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users
 
 const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 
-const Header = () => {
+interface HeaderProps {
+  isSpecialPage?: boolean;
+}
+
+const Header = ({ isSpecialPage = false }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  // Lazy initializer — citește hash-ul SINCRON la primul render, fără useLayoutEffect
-  // Rezolvă bug-ul Firefox: primul render știe deja dacă suntem pe #faq/#terms/#privacy
-  const [currentHash, setCurrentHash] = useState<string>(() => {
-    if (typeof window !== 'undefined') return window.location.hash;
-    return '';
-  });
-
-  const isTermsPage = currentHash === '#terms';
-  const isPrivacyPage = currentHash === '#privacy';
-  const isFaqPage = currentHash === '#faq';
-  const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage;
-
-  useEffect(() => {
-    const updateHash = () => setCurrentHash(window.location.hash);
-    window.addEventListener('popstate', updateHash);
-    window.addEventListener('hashchange', updateHash);
-    return () => {
-      window.removeEventListener('popstate', updateHash);
-      window.removeEventListener('hashchange', updateHash);
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -46,14 +29,12 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     if (SPECIAL_HASHES.includes(href)) {
-      setCurrentHash(href);
       history.pushState(null, '', href);
       window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
       return;
     }
     if (SPECIAL_HASHES.includes(window.location.hash)) {
-      setCurrentHash('');
       window.location.hash = '';
       setTimeout(() => {
         const element = document.querySelector(href) as HTMLElement;
@@ -74,7 +55,6 @@ const Header = () => {
 
   const handleContactClick = () => {
     if (SPECIAL_HASHES.includes(window.location.hash)) {
-      setCurrentHash('');
       window.location.hash = '';
       setTimeout(() => {
         const el = document.getElementById('contact');
@@ -89,7 +69,6 @@ const Header = () => {
 
   const handleLogoClick = () => {
     if (SPECIAL_HASHES.includes(window.location.hash)) {
-      setCurrentHash('');
       window.location.hash = '';
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     } else {

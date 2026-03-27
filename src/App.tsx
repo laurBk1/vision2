@@ -16,7 +16,6 @@ import WhatsAppButton from './components/WhatsAppButton';
 import CookieBanner from './components/CookieBanner';
 
 function App() {
-  // Previne scroll orizontal global pe toate dispozitivele
   useEffect(() => {
     document.documentElement.style.overflowX = 'hidden';
     document.body.style.overflowX = 'hidden';
@@ -28,20 +27,18 @@ function App() {
     };
   }, []);
 
-  const getLocation = () => ({
+  // Lazy initializer SINCRON — citește hash-ul direct la primul render
+  // Fără requestAnimationFrame, fără delay — fix Firefox
+  const [location, setLocation] = useState(() => ({
     hash: window.location.hash,
     path: window.location.pathname,
-  });
+  }));
 
-  const [location, setLocation] = useState(getLocation);
-
-  // Ascultăm popstate (înapoi/înainte) ȘI hashchange (click pe linkuri cu #)
   useEffect(() => {
-    const updateLocation = () => setLocation(getLocation());
-
-    // Re-citim hash-ul după ce browserul a procesat complet URL-ul (fix Firefox)
-    requestAnimationFrame(() => setLocation(getLocation()));
-
+    const updateLocation = () => setLocation({
+      hash: window.location.hash,
+      path: window.location.pathname,
+    });
     window.addEventListener('popstate', updateLocation);
     window.addEventListener('hashchange', updateLocation);
     return () => {
@@ -55,17 +52,17 @@ function App() {
   const isTermsPage = hash === '#terms' || path === '/terms';
   const isPrivacyPage = hash === '#privacy' || path === '/privacy';
   const isFaqPage = hash === '#faq' || path === '/faq';
+  const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage;
 
-  // Scroll la top pentru Terms/Privacy/FAQ — se declanșează la orice schimbare de hash
+  // Scroll la top pentru Terms/Privacy/FAQ
   useEffect(() => {
     if (isTermsPage || isPrivacyPage || isFaqPage) {
-      // Dublu scroll: imediat + după un frame, pentru a anula orice scroll rezidual din alte efecte
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       requestAnimationFrame(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       });
     }
-  }, [hash, path]); // Depinde de hash/path, nu de booleans — se re-declanșează și la FAQ→alt→FAQ
+  }, [hash, path]);
 
   // Scroll la secțiune pentru link-urile din meniu
   useEffect(() => {
@@ -87,10 +84,8 @@ function App() {
   if (isTermsPage) {
     return (
       <div className="min-h-screen">
-        <Header />
-        <main>
-          <Terms />
-        </main>
+        <Header isSpecialPage={true} />
+        <main><Terms /></main>
         <Footer />
         <WhatsAppButton />
         <CookieBanner />
@@ -101,10 +96,8 @@ function App() {
   if (isFaqPage) {
     return (
       <div className="min-h-screen">
-        <Header />
-        <main>
-          <FAQ />
-        </main>
+        <Header isSpecialPage={true} />
+        <main><FAQ /></main>
         <Footer />
         <WhatsAppButton />
         <CookieBanner />
@@ -115,10 +108,8 @@ function App() {
   if (isPrivacyPage) {
     return (
       <div className="min-h-screen">
-        <Header />
-        <main>
-          <Privacy />
-        </main>
+        <Header isSpecialPage={true} />
+        <main><Privacy /></main>
         <Footer />
         <WhatsAppButton />
         <CookieBanner />
@@ -128,7 +119,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header isSpecialPage={false} />
       <main>
         <div id="home"><Hero /></div>
         <div id="services"><Services /></div>
