@@ -56,12 +56,16 @@ function App() {
   const isPrivacyPage = hash === '#privacy' || path === '/privacy';
   const isFaqPage = hash === '#faq' || path === '/faq';
 
-  // Scroll la top pentru Terms/Privacy/FAQ
+  // Scroll la top pentru Terms/Privacy/FAQ — se declanșează la orice schimbare de hash
   useEffect(() => {
     if (isTermsPage || isPrivacyPage || isFaqPage) {
+      // Dublu scroll: imediat + după un frame, pentru a anula orice scroll rezidual din alte efecte
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      });
     }
-  }, [isTermsPage, isPrivacyPage, isFaqPage]);
+  }, [hash, path]); // Depinde de hash/path, nu de booleans — se re-declanșează și la FAQ→alt→FAQ
 
   // Scroll la secțiune pentru link-urile din meniu
   useEffect(() => {
