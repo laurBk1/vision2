@@ -67,12 +67,15 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
       history.pushState(null, '', href);
       window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
-      // Scroll 1px + înapoi — forțează repaint Firefox pe position:fixed
+      // Forțează repaint direct pe header — fără scroll, fără flicker
       requestAnimationFrame(() => {
-        window.scrollTo({ top: 1, behavior: 'instant' });
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        });
+        const header = document.querySelector('header') as HTMLElement;
+        if (header) {
+          header.style.transform = 'translateZ(0.0001px)';
+          requestAnimationFrame(() => {
+            header.style.transform = 'translateZ(0)';
+          });
+        }
       });
       return;
     }
