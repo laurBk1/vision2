@@ -4,17 +4,23 @@ import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentHash, setCurrentHash] = useState(window.location.hash);
+  const [currentHash, setCurrentHash] = useState(() => window.location.hash);
 
   const isTermsPage = currentHash === '#terms';
   const isPrivacyPage = currentHash === '#privacy';
   const isFaqPage = currentHash === '#faq';
 
-  useEffect(() => {
-    const updateHash = () => setCurrentHash(window.location.hash);
+  // Verificare directă pe URL (fără state) pentru a elimina flickerul la primul render în Firefox
+  const isSpecialPageDirect = ['#faq', '#terms', '#privacy'].includes(window.location.hash);
 
-    // Re-citim hash-ul după ce browserul a procesat complet URL-ul (fix Firefox)
-    requestAnimationFrame(() => setCurrentHash(window.location.hash));
+  useEffect(() => {
+    // Citim imediat hash-ul real la mount (fix Firefox care poate rata hash-ul inițial)
+    setCurrentHash(window.location.hash);
+
+    const updateHash = () => {
+      // Folosim requestAnimationFrame pentru a ne asigura că Firefox a procesat complet URL-ul
+      requestAnimationFrame(() => setCurrentHash(window.location.hash));
+    };
 
     window.addEventListener('popstate', updateHash);
     window.addEventListener('hashchange', updateHash);
@@ -99,9 +105,11 @@ const Header = () => {
     }
   };
 
-  const headerBackground = (isTermsPage || isPrivacyPage || isFaqPage || isMenuOpen)
+  const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage || isSpecialPageDirect;
+
+  const headerBackground = (isSpecialPage || isMenuOpen || isScrolled)
     ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg'
-    : (isScrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent');
+    : 'bg-transparent';
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBackground}`}>
