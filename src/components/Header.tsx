@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
+
+const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentHash, setCurrentHash] = useState(() => window.location.hash);
+  const [currentHash, setCurrentHash] = useState('');
+
+  // useLayoutEffect rulează SINCRON înainte de paint — fix Firefox
+  // Firefox nu setează window.location.hash sincron la useState init
+  useLayoutEffect(() => {
+    setCurrentHash(window.location.hash);
+  }, []);
 
   const isTermsPage = currentHash === '#terms';
   const isPrivacyPage = currentHash === '#privacy';
   const isFaqPage = currentHash === '#faq';
-
-  // Verificare directă pe URL (fără state) pentru a elimina flickerul la primul render în Firefox
-  const isSpecialPageDirect = ['#faq', '#terms', '#privacy'].includes(window.location.hash);
+  const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage;
 
   useEffect(() => {
-    // Citim imediat hash-ul real la mount (fix Firefox care poate rata hash-ul inițial)
-    setCurrentHash(window.location.hash);
-
-    const updateHash = () => {
-      // Folosim requestAnimationFrame pentru a ne asigura că Firefox a procesat complet URL-ul
-      requestAnimationFrame(() => setCurrentHash(window.location.hash));
-    };
-
+    const updateHash = () => setCurrentHash(window.location.hash);
     window.addEventListener('popstate', updateHash);
     window.addEventListener('hashchange', updateHash);
     return () => {
@@ -31,9 +30,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -49,16 +46,15 @@ const Header = () => {
   ];
 
   const handleNavClick = (href: string) => {
-    if (href === '#faq') {
-      history.pushState(null, '', '#faq');
-      // Actualizăm statul imediat (nu așteptăm evenimentul) — fix Firefox
-      setCurrentHash('#faq');
+    if (SPECIAL_HASHES.includes(href)) {
+      setCurrentHash(href);
+      history.pushState(null, '', href);
       window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
       return;
     }
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      setCurrentHash(''); // Actualizăm statul imediat — fix Firefox flicker
+    if (SPECIAL_HASHES.includes(window.location.hash)) {
+      setCurrentHash('');
       window.location.hash = '';
       setTimeout(() => {
         const element = document.querySelector(href) as HTMLElement;
@@ -78,39 +74,29 @@ const Header = () => {
   };
 
   const handleContactClick = () => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      setCurrentHash(''); // fix Firefox
+    if (SPECIAL_HASHES.includes(window.location.hash)) {
+      setCurrentHash('');
       window.location.hash = '';
       setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-          const top = contactSection.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
+        const el = document.getElementById('contact');
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
       }, 50);
     } else {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        const top = contactSection.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
+      const el = document.getElementById('contact');
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
     }
     setIsMenuOpen(false);
   };
 
   const handleLogoClick = () => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      setCurrentHash(''); // fix Firefox
+    if (SPECIAL_HASHES.includes(window.location.hash)) {
+      setCurrentHash('');
       window.location.hash = '';
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 50);
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
-
-  const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage || isSpecialPageDirect;
 
   const headerBackground = (isSpecialPage || isMenuOpen || isScrolled)
     ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg'
@@ -120,12 +106,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBackground}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
-          {/* Logo and Brand */}
-          <div
-            className="flex items-center space-x-2 md:space-x-3 cursor-pointer"
-            onClick={handleLogoClick}
-          >
-            {/* FIX: dimensiuni corecte pentru logo redimensionat (600x200 -> afisat la 150x50 / 160x53) */}
+          <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
             <img
               src="/logo.webp"
               alt="VisionEdit România Logo"
@@ -141,7 +122,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item) => (
               <button
@@ -162,7 +142,6 @@ const Header = () => {
             </button>
           </nav>
 
-          {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -173,7 +152,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
             style={{ background: 'linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)' }}
@@ -183,7 +161,6 @@ const Header = () => {
             >
               <p className="text-xs font-bold text-blue-400 uppercase tracking-widest">Navigare</p>
             </div>
-
             <div className="py-1">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
