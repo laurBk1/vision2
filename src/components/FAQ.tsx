@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HelpCircle, CreditCard, Clock, RefreshCw, Package, Video, Shield, Users, Phone, ChevronDown, ChevronUp } from 'lucide-react';
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
+
+  // Fix Firefox: forțează repaint header la mount
+  useEffect(() => {
+    window.scrollTo({ top: 1, behavior: 'instant' });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  }, []);
 
   const toggleItem = (key: string) => {
     setOpenItems(prev => ({ ...prev, [key]: !prev[key] }));

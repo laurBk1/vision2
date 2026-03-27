@@ -81,7 +81,7 @@ const Header = ({ isSpecialPage = false }: HeaderProps) => {
     : 'bg-transparent';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-150 ${headerBackground}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-150 ${headerBackground}`} style={{ transform: 'translateZ(0)', willChange: 'background-color' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
