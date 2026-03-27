@@ -3,13 +3,32 @@ import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users
 
 const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 
-const Header = () => {
+const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentHash, setCurrentHash] = useState(window.location.hash);
 
+  // Fix 1: La montare, dacă suntem deja pe o pagină specială, forțăm solid imediat
   useEffect(() => {
-    const updateHash = () => setCurrentHash(window.location.hash);
+    if (SPECIAL_HASHES.includes(window.location.hash) || isSpecialPage) {
+      setIsScrolled(true);
+      setCurrentHash(window.location.hash);
+    }
+  }, [isSpecialPage]);
+
+  // Fix 2: La fiecare schimbare de hash, forțăm solid + repaint Firefox
+  useEffect(() => {
+    const updateHash = () => {
+      setCurrentHash(window.location.hash);
+      if (SPECIAL_HASHES.includes(window.location.hash)) {
+        setIsScrolled(true);
+        // Forțează repaint pe Firefox pentru position:fixed
+        document.documentElement.style.setProperty('--force-repaint', '1');
+        setTimeout(() => {
+          document.documentElement.style.removeProperty('--force-repaint');
+        }, 10);
+      }
+    };
     window.addEventListener('popstate', updateHash);
     window.addEventListener('hashchange', updateHash);
     return () => {
@@ -24,7 +43,12 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isSpecialPage = SPECIAL_HASHES.includes(currentHash);
+  // Fix 3: isSolid citește direct window.location.hash + prop + state
+  const isSolid =
+    isSpecialPage ||
+    SPECIAL_HASHES.includes(window.location.hash) ||
+    isMenuOpen ||
+    isScrolled;
 
   const navItems = [
     { name: 'Servicii', href: '#services', icon: Clapperboard },
@@ -38,17 +62,18 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     if (SPECIAL_HASHES.includes(href)) {
-      // Forțăm isScrolled=true ÎNAINTE de navigare — fix Firefox
-      setIsScrolled(true);
+      setIsScrolled(true); // Fix 4: forțăm solid ÎNAINTE de navigare
       setCurrentHash(href);
       history.pushState(null, '', href);
       window.dispatchEvent(new PopStateEvent('popstate'));
+      setTimeout(() => setIsScrolled(true), 0); // Fix 5: și după, pentru siguranță
       setIsMenuOpen(false);
       return;
     }
     if (SPECIAL_HASHES.includes(window.location.hash)) {
       window.location.hash = '';
       setCurrentHash('');
+      setIsScrolled(false);
       setTimeout(() => {
         const element = document.querySelector(href) as HTMLElement;
         if (element) {
@@ -85,14 +110,13 @@ const Header = () => {
     if (SPECIAL_HASHES.includes(window.location.hash)) {
       window.location.hash = '';
       setCurrentHash('');
+      setIsScrolled(false);
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  // Citim hash-ul DIRECT la fiecare render — fără state, fără delay, fără Firefox bugs
-  const isSolid = SPECIAL_HASHES.includes(window.location.hash) || isMenuOpen || isScrolled;
   const headerStyle: React.CSSProperties = {
     backgroundColor: isSolid ? 'rgba(15, 23, 42, 0.95)' : 'transparent',
     backdropFilter: isSolid ? 'blur(8px)' : 'none',
@@ -100,6 +124,8 @@ const Header = () => {
     boxShadow: isSolid ? '0 4px 24px rgba(0,0,0,0.3)' : 'none',
     transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
     transform: 'translateZ(0)',
+    willChange: 'background-color, backdrop-filter',
+    contain: 'layout style paint',
   };
 
   return (
