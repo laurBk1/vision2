@@ -263,29 +263,37 @@ const Hero = () => {
 
         .h-card-thumb {
           width: 100%; aspect-ratio: 16/9;
-          background: linear-gradient(135deg, #0F1A2E, #1A2A44);
           border-radius: 14px;
-          display: flex; align-items: center; justify-content: center;
           margin-bottom: 20px;
-          position: relative; overflow-x: hidden;
+          position: relative; overflow: hidden;
           border: 1px solid rgba(255,255,255,0.06);
         }
-        .h-card-thumb::before {
-          content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.1));
+        .h-card-thumb img {
+          width: 100%; height: 100%;
+          object-fit: cover; object-position: center;
+          display: block;
+          border-radius: 14px;
         }
-
-        .h-play-btn {
-          width: 52px; height: 52px;
-          background: rgba(255,255,255,0.12);
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          position: relative; z-index: 1;
-          cursor: pointer;
-          transition: background 0.2s, transform 0.2s;
+        .h-thumb-fade-left {
+          position: absolute; inset: 0;
+          background: linear-gradient(to right, #0D1525 0%, rgba(13,21,37,0.6) 30%, transparent 65%);
+          pointer-events: none; border-radius: 14px;
         }
-        .h-play-btn:hover { background: rgba(255,255,255,0.22); transform: scale(1.1); }
+        .h-thumb-fade-bottom {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, #0D1525 0%, rgba(13,21,37,0.5) 20%, transparent 50%);
+          pointer-events: none; border-radius: 14px;
+        }
+        .h-thumb-fade-top {
+          position: absolute; inset: 0;
+          background: linear-gradient(to bottom, #0D1525 0%, transparent 30%);
+          pointer-events: none; border-radius: 14px;
+        }
+        .h-thumb-fade-right {
+          position: absolute; inset: 0;
+          background: linear-gradient(to left, #0D1525 0%, transparent 35%);
+          pointer-events: none; border-radius: 14px;
+        }
 
         .h-card-title {
           font-family: 'Outfit', sans-serif;
@@ -565,9 +573,15 @@ const Hero = () => {
               <div className="h-card-outer">
                 <div className="h-card-inner">
                   <div className="h-card-thumb">
-                    <div className="h-play-btn">
-                      <Play size={20} color="#fff" fill="#fff" />
-                    </div>
+                    <img
+                      src="/workspace-visionedit.jpg"
+                      alt="VisionEdit — Studio editare video profesional"
+                      loading="eager"
+                    />
+                    <div className="h-thumb-fade-left" />
+                    <div className="h-thumb-fade-bottom" />
+                    <div className="h-thumb-fade-top" />
+                    <div className="h-thumb-fade-right" />
                   </div>
                   <div className="h-card-title">Editare Video Profesională</div>
                   <p className="h-card-desc">
