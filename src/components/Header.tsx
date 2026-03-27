@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
@@ -6,13 +6,12 @@ const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentHash, setCurrentHash] = useState('');
-
-  // useLayoutEffect rulează SINCRON înainte de paint — fix Firefox
-  // Firefox nu setează window.location.hash sincron la useState init
-  useLayoutEffect(() => {
-    setCurrentHash(window.location.hash);
-  }, []);
+  // Lazy initializer — citește hash-ul SINCRON la primul render, fără useLayoutEffect
+  // Rezolvă bug-ul Firefox: primul render știe deja dacă suntem pe #faq/#terms/#privacy
+  const [currentHash, setCurrentHash] = useState<string>(() => {
+    if (typeof window !== 'undefined') return window.location.hash;
+    return '';
+  });
 
   const isTermsPage = currentHash === '#terms';
   const isPrivacyPage = currentHash === '#privacy';
@@ -103,7 +102,7 @@ const Header = () => {
     : 'bg-transparent';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBackground}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-150 ${headerBackground}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
