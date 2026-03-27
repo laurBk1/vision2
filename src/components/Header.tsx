@@ -76,12 +76,20 @@ const Header = ({ isSpecialPage = false }: HeaderProps) => {
     }
   };
 
-  const headerBackground = (isSpecialPage || isMenuOpen || isScrolled)
-    ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg'
-    : 'bg-transparent';
+  // Inline style — evită bug-ul Firefox cu Tailwind CSS classes pe position:fixed
+  // Firefox uneori nu repaintează elementele fixed când className se schimbă sincron
+  const isSolid = isSpecialPage || isMenuOpen || isScrolled;
+  const headerStyle: React.CSSProperties = {
+    backgroundColor: isSolid ? 'rgba(15, 23, 42, 0.95)' : 'transparent',
+    backdropFilter: isSolid ? 'blur(8px)' : 'none',
+    WebkitBackdropFilter: isSolid ? 'blur(8px)' : 'none',
+    boxShadow: isSolid ? '0 4px 24px rgba(0,0,0,0.3)' : 'none',
+    transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
+    transform: 'translateZ(0)',
+  };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-150 ${headerBackground}`} style={{ transform: 'translateZ(0)', willChange: 'background-color' }}>
+    <header className="fixed top-0 left-0 right-0 z-50" style={headerStyle}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
