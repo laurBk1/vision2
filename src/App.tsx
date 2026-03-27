@@ -27,8 +27,6 @@ function App() {
     };
   }, []);
 
-  // Lazy initializer SINCRON — citește hash-ul direct la primul render
-  // Fără requestAnimationFrame, fără delay — fix Firefox
   const [location, setLocation] = useState(() => ({
     hash: window.location.hash,
     path: window.location.pathname,
@@ -39,11 +37,13 @@ function App() {
       hash: window.location.hash,
       path: window.location.pathname,
     });
-    window.addEventListener('popstate', updateLocation);
+    // hashchange se declanșează nativ când folosim window.location.hash = '...'
+    // popstate se declanșează la history.pushState — ascultăm ambele
     window.addEventListener('hashchange', updateLocation);
+    window.addEventListener('popstate', updateLocation);
     return () => {
-      window.removeEventListener('popstate', updateLocation);
       window.removeEventListener('hashchange', updateLocation);
+      window.removeEventListener('popstate', updateLocation);
     };
   }, []);
 

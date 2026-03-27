@@ -1,21 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 
-interface HeaderProps {
-  isSpecialPage?: boolean;
-}
-
-const Header = ({ isSpecialPage = false }: HeaderProps) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [, forceRender] = useState(0);
+  const hashRef = useRef(window.location.hash);
+
+  // Sincronizăm hashRef la orice schimbare și forțăm re-render
+  useEffect(() => {
+    const sync = () => {
+      hashRef.current = window.location.hash;
+      forceRender(n => n + 1);
+    };
+    window.addEventListener('popstate', sync);
+    window.addEventListener('hashchange', sync);
+    return () => {
+      window.removeEventListener('popstate', sync);
+      window.removeEventListener('hashchange', sync);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Citim hash-ul DIRECT — fără state intermediar, fără delay
+  const currentHash = window.location.hash;
+  const isSpecialPage = SPECIAL_HASHES.includes(currentHash);
 
   const navItems = [
     { name: 'Servicii', href: '#services', icon: Clapperboard },
@@ -29,8 +45,7 @@ const Header = ({ isSpecialPage = false }: HeaderProps) => {
 
   const handleNavClick = (href: string) => {
     if (SPECIAL_HASHES.includes(href)) {
-      history.pushState(null, '', href);
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.location.hash = href;
       setIsMenuOpen(false);
       return;
     }
@@ -76,8 +91,6 @@ const Header = ({ isSpecialPage = false }: HeaderProps) => {
     }
   };
 
-  // Inline style — evită bug-ul Firefox cu Tailwind CSS classes pe position:fixed
-  // Firefox uneori nu repaintează elementele fixed când className se schimbă sincron
   const isSolid = isSpecialPage || isMenuOpen || isScrolled;
   const headerStyle: React.CSSProperties = {
     backgroundColor: isSolid ? 'rgba(15, 23, 42, 0.95)' : 'transparent',
