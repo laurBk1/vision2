@@ -4,12 +4,12 @@ import { HelpCircle, CreditCard, Clock, RefreshCw, Package, Video, Shield, Users
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
 
-  // Fix Firefox: forțează repaint header la mount
+  // Fix Firefox: forțează repaint compositor pe position:fixed
+  // Fără acest trigger, Firefox nu repaintează headerul fixed la primul render
   useEffect(() => {
-    window.scrollTo({ top: 1, behavior: 'instant' });
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    });
+    const el = document.documentElement;
+    el.style.overflowY = 'scroll';
+    return () => { el.style.overflowY = ''; };
   }, []);
 
   const toggleItem = (key: string) => {

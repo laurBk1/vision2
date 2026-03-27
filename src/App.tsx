@@ -54,20 +54,6 @@ function App() {
   const isFaqPage = hash === '#faq' || path === '/faq';
   const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage;
 
-  // Fix Firefox: forțează overflow-y: scroll pe <html> pentru paginile speciale
-  // Firefox nu activează compositor thread pentru position:fixed fără scrollbar activ
-  // Asta cauzează că headerul apare invizibil până la primul scroll/hover
-  useEffect(() => {
-    if (isSpecialPage) {
-      document.documentElement.style.overflowY = 'scroll';
-    } else {
-      document.documentElement.style.overflowY = '';
-    }
-    return () => {
-      document.documentElement.style.overflowY = '';
-    };
-  }, [isSpecialPage]);
-
   // Scroll la top pentru Terms/Privacy/FAQ
   useEffect(() => {
     if (isTermsPage || isPrivacyPage || isFaqPage) {
