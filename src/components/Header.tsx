@@ -51,11 +51,14 @@ const Header = () => {
   const handleNavClick = (href: string) => {
     if (href === '#faq') {
       history.pushState(null, '', '#faq');
+      // Actualizăm statul imediat (nu așteptăm evenimentul) — fix Firefox
+      setCurrentHash('#faq');
       window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
       return;
     }
     if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
+      setCurrentHash(''); // Actualizăm statul imediat — fix Firefox flicker
       window.location.hash = '';
       setTimeout(() => {
         const element = document.querySelector(href) as HTMLElement;
@@ -76,6 +79,7 @@ const Header = () => {
 
   const handleContactClick = () => {
     if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
+      setCurrentHash(''); // fix Firefox
       window.location.hash = '';
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
@@ -96,6 +100,7 @@ const Header = () => {
 
   const handleLogoClick = () => {
     if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
+      setCurrentHash(''); // fix Firefox
       window.location.hash = '';
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
