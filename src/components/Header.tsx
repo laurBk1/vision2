@@ -4,10 +4,21 @@ import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
 
-  const isTermsPage = window.location.hash === '#terms';
-  const isPrivacyPage = window.location.hash === '#privacy';
-  const isFaqPage = window.location.hash === '#faq';
+  const isTermsPage = currentHash === '#terms';
+  const isPrivacyPage = currentHash === '#privacy';
+  const isFaqPage = currentHash === '#faq';
+
+  useEffect(() => {
+    const updateHash = () => setCurrentHash(window.location.hash);
+    window.addEventListener('popstate', updateHash);
+    window.addEventListener('hashchange', updateHash);
+    return () => {
+      window.removeEventListener('popstate', updateHash);
+      window.removeEventListener('hashchange', updateHash);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
