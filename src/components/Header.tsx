@@ -62,12 +62,18 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
 
   const handleNavClick = (href: string) => {
     if (SPECIAL_HASHES.includes(href)) {
-      setIsScrolled(true); // Fix 4: forțăm solid ÎNAINTE de navigare
+      setIsScrolled(true);
       setCurrentHash(href);
       history.pushState(null, '', href);
       window.dispatchEvent(new PopStateEvent('popstate'));
-      setTimeout(() => setIsScrolled(true), 0); // Fix 5: și după, pentru siguranță
       setIsMenuOpen(false);
+      // Scroll 1px + înapoi — forțează repaint Firefox pe position:fixed
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 1, behavior: 'instant' });
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        });
+      });
       return;
     }
     if (SPECIAL_HASHES.includes(window.location.hash)) {
