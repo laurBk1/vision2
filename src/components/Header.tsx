@@ -91,7 +91,8 @@ const Header = () => {
     }
   };
 
-  const isSolid = isSpecialPage || isMenuOpen || isScrolled;
+  // Citim hash-ul DIRECT la fiecare render — fără state, fără delay, fără Firefox bugs
+  const isSolid = SPECIAL_HASHES.includes(window.location.hash) || isMenuOpen || isScrolled;
   const headerStyle: React.CSSProperties = {
     backgroundColor: isSolid ? 'rgba(15, 23, 42, 0.95)' : 'transparent',
     backdropFilter: isSolid ? 'blur(8px)' : 'none',
