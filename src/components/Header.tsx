@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
@@ -6,20 +6,15 @@ const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [, forceRender] = useState(0);
-  const hashRef = useRef(window.location.hash);
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
 
-  // Sincronizăm hashRef la orice schimbare și forțăm re-render
   useEffect(() => {
-    const sync = () => {
-      hashRef.current = window.location.hash;
-      forceRender(n => n + 1);
-    };
-    window.addEventListener('popstate', sync);
-    window.addEventListener('hashchange', sync);
+    const updateHash = () => setCurrentHash(window.location.hash);
+    window.addEventListener('popstate', updateHash);
+    window.addEventListener('hashchange', updateHash);
     return () => {
-      window.removeEventListener('popstate', sync);
-      window.removeEventListener('hashchange', sync);
+      window.removeEventListener('popstate', updateHash);
+      window.removeEventListener('hashchange', updateHash);
     };
   }, []);
 
@@ -29,8 +24,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Citim hash-ul DIRECT — fără state intermediar, fără delay
-  const currentHash = window.location.hash;
   const isSpecialPage = SPECIAL_HASHES.includes(currentHash);
 
   const navItems = [
@@ -45,12 +38,17 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     if (SPECIAL_HASHES.includes(href)) {
-      window.location.hash = href;
+      // Forțăm isScrolled=true ÎNAINTE de navigare — fix Firefox
+      setIsScrolled(true);
+      setCurrentHash(href);
+      history.pushState(null, '', href);
+      window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
       return;
     }
     if (SPECIAL_HASHES.includes(window.location.hash)) {
       window.location.hash = '';
+      setCurrentHash('');
       setTimeout(() => {
         const element = document.querySelector(href) as HTMLElement;
         if (element) {
@@ -71,6 +69,7 @@ const Header = () => {
   const handleContactClick = () => {
     if (SPECIAL_HASHES.includes(window.location.hash)) {
       window.location.hash = '';
+      setCurrentHash('');
       setTimeout(() => {
         const el = document.getElementById('contact');
         if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
@@ -85,6 +84,7 @@ const Header = () => {
   const handleLogoClick = () => {
     if (SPECIAL_HASHES.includes(window.location.hash)) {
       window.location.hash = '';
+      setCurrentHash('');
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
