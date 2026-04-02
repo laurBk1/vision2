@@ -1,6 +1,24 @@
 import React from 'react';
 import { Check, Star, Zap, AlertCircle, Clock } from 'lucide-react';
 
+const subtitleGlowStyle = `
+  @keyframes subtitlePulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.0),
+                  0 0 12px 2px rgba(99, 102, 241, 0.18),
+                  inset 0 0 0 0 rgba(99,102,241,0.0);
+    }
+    50% {
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.10),
+                  0 0 22px 6px rgba(99, 102, 241, 0.28),
+                  inset 0 0 8px 0px rgba(99,102,241,0.07);
+    }
+  }
+  .subtitle-badge {
+    animation: subtitlePulse 2.8s ease-in-out infinite;
+  }
+`;
+
 const Pricing = () => {
   const handleContactClick = () => {
     const contactSection = document.getElementById('contact');
@@ -19,14 +37,14 @@ const Pricing = () => {
       description: '(249 lei — 1.245 lei / lună)',
       features: [
         <>
-        Tot ce găsești în secțiunea „Servicii”<br />
+        Tot ce găsești în secțiunea „<strong>Servicii</strong>”<br />
         este inclus în editarea ta
       </>,
         'Montaj complet și optimizat',
         'Tranziții și efecte vizuale',
         'Subtitrări și texte personalizate',
         'Sound Design & Efecte Sonore',
-        'O revizuire gratuită / video',
+        'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Alege Editare Simplă',
@@ -44,7 +62,7 @@ const Pricing = () => {
         'Preț redus per videoclip',
         'Suport prioritar',
         'Feedback rapid pe materialele trimise',
-        'O revizuire gratuită / video',
+        'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Cel Mai Popular',
@@ -62,7 +80,7 @@ const Pricing = () => {
         'Cel mai bun preț per videoclip',
         'Suport prioritar și comunicare directă',
         'Plan de editare video personalizat',
-        'O revizuire gratuită / video',
+        'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil',
         'Raport lunar cu feedback și recomandări'
       ],
@@ -89,7 +107,7 @@ const Pricing = () => {
         'Avatar UGC profesional inclus',
         'Voiceover AI Premium',
         'Script adaptat conținutului',
-        'O revizuire gratuită / video',
+        'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Pachet Complet',
@@ -111,7 +129,7 @@ const Pricing = () => {
         'Preț redus per videoclip',
         'Suport prioritar',
         'Plan de editare video personalizat',
-        'O revizuire gratuită / video',
+        'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
       buttonText: 'Cel Mai Popular Complet',
@@ -133,7 +151,7 @@ const Pricing = () => {
         'Cel mai bun preț per videoclip',
         'Suport prioritar și comunicare directă',
         'Strategie de conținut inclusă',
-        'O revizuire gratuită / video',
+        'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil',
         'Analiză performanță lunară'
       ],
@@ -161,9 +179,12 @@ const Pricing = () => {
           <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight">
             {pkg.name}
           </h3>
-          <p className="text-blue-600 font-bold mb-2 text-sm md:text-base">
-            {pkg.subtitle}
-          </p>
+          {/* Premium subtitle badge with pulse glow */}
+          <div className="subtitle-badge inline-flex items-center justify-center mx-auto mb-3 px-4 py-1.5 rounded-full border border-indigo-300 bg-gradient-to-r from-indigo-50 via-white to-purple-50 cursor-default select-none">
+            <span className="text-indigo-700 font-bold text-sm md:text-base tracking-wide">
+              {pkg.subtitle}
+            </span>
+          </div>
           <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
             {pkg.price}
           </div>
@@ -211,6 +232,7 @@ const Pricing = () => {
 
   return (
     <section id="pricing" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+      <style>{subtitleGlowStyle}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-4xl mx-auto shadow-md mb-8">
@@ -244,17 +266,17 @@ const Pricing = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-white font-bold text-sm md:text-base leading-snug">
-                  Prețurile afișate sunt finale
+                <p className="text-white font-bold text-base md:text-lg leading-snug tracking-wide">
+                  Prețuri finale. Fără TVA. Fără costuri ascunse.
                 </p>
-                <p className="text-slate-200 text-sm md:text-base mt-0.5 leading-relaxed">
-                  Agenția VisionEdit România nu e plătitoare de TVA – plătești exact prețurile afișate.
+                <p className="text-slate-300 text-xs md:text-sm mt-1 leading-relaxed">
+                  Nu suntem plătitori de TVA – plătești exact suma afișată, fără costuri suplimentare.
                 </p>
               </div>
             </div>
             <div className="flex-shrink-0 bg-white/10 rounded-xl px-4 py-2 text-center">
-              <p className="text-white font-bold text-sm tracking-wide">Fără TVA</p>
-              <p className="text-slate-300 text-sm">0% taxe suplimentare</p>
+              <p className="text-white font-bold text-sm tracking-widest uppercase">Fără TVA</p>
+              <p className="text-green-400 text-xs font-semibold mt-0.5">0% taxe extra</p>
             </div>
           </div>
         </div>
@@ -332,7 +354,7 @@ const Pricing = () => {
             <div>
               <h4 className="font-bold text-gray-900 mb-3 text-sm md:text-base">📋 Ce Includ Pachetele:</h4>
               <ul className="space-y-2 text-gray-700 text-sm md:text-base font-medium">
-                <li>• O revizuire gratuită per material video, valabilă 48 de ore de la primire și efectuată cât mai rapid</li>
+                <li>• O revizie gratuită per video, valabilă 48h de la primirea materialului editat</li>
                 <li>• Livrare flexibilă comunicată în prealabil</li>
                 <li>• Format vertical 9:16 optimizat</li>
                 <li>• Suport tehnic complet</li>
