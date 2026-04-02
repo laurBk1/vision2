@@ -1,7 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { HelpCircle, CreditCard, Clock, RefreshCw, Package, Video, Shield, Users, Phone, ChevronDown, ChevronUp } from 'lucide-react';
 
+
+const copyProtectionStyle = `
+  .no-copy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;
+
+const useCopyProtection = () => {
+  React.useEffect(() => {
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+    };
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('a')) e.preventDefault();
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 'u'].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+};
+
+
 const FAQ = () => {
+  useCopyProtection();
   const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
 
   // Fix Firefox: forțează repaint compositor pe position:fixed
@@ -89,19 +127,19 @@ const FAQ = () => {
     },
     {
       icon: RefreshCw,
-      title: 'Revizuiri și Modificări',
+      title: 'Revizii și Modificări',
       faqs: [
         {
-          q: 'Câte revizuiri sunt incluse în tarif?',
-          a: 'Fiecare videoclip include o rundă de revizuiri gratuite. Feedback-ul trebuie transmis integral, într-un singur mesaj consolidat, în termen de 48 de ore de la primirea versiunii inițiale. Feedback-ul fragmentat sau transmis în etape succesive este contabilizat ca runde separate de revizuire.'
+          q: 'Câte revizii sunt incluse în tarif?',
+          a: 'Fiecare videoclip include o rundă de revizii gratuite. Feedback-ul trebuie transmis integral, într-un singur mesaj consolidat, în termen de 48 de ore de la primirea versiunii inițiale. Feedback-ul fragmentat sau transmis în etape succesive este contabilizat ca runde separate de revizie.'
         },
         {
-          q: 'Ce este inclus într-o rundă de revizuire?',
-          a: 'O rundă de revizuire acoperă orice modificare de ordin editorial: înlocuirea muzicii, ajustarea efectelor vizuale, modificarea tranzițiilor, actualizarea subtitrărilor sau a elementelor grafice. Solicitările care implică schimbarea conceptului inițial sau introducerea de materiale sursă noi sunt tratate ca proiecte distincte și se tarifează separat.'
+          q: 'Ce este inclus într-o rundă de revizie?',
+          a: 'O rundă de revizie acoperă orice modificare de ordin editorial: înlocuirea muzicii, ajustarea efectelor vizuale, modificarea tranzițiilor, actualizarea subtitrărilor sau a elementelor grafice. Solicitările care implică schimbarea conceptului inițial sau introducerea de materiale sursă noi sunt tratate ca proiecte distincte și se tarifează separat.'
         },
         {
-          q: 'Cât costă o rundă de revizuire suplimentară?',
-          a: '• Revizie simplă: 30–50 lei/video;\n• Revizie complexă (modificări orare): 50–100 lei/oră;\n• Revizuiri solicitate după termenul de 48 de ore: tarif suplimentar;\n• Modificări care implică schimbarea conceptului inițial: proiect nou, tarif separat.\n\nNicio lucrare suplimentară nu este executată fără aprobarea dumneavoastră scrisă.'
+          q: 'Cât costă o rundă de revizie suplimentară?',
+          a: '• Revizie simplă: 30–50 lei/video;\n• Revizie complexă (modificări orare): 50–100 lei/oră;\n• Revizii solicitate după termenul de 48 de ore: tarif suplimentar;\n• Modificări care implică schimbarea conceptului inițial: proiect nou, tarif separat.\n\nNicio lucrare suplimentară nu este executată fără aprobarea dumneavoastră scrisă.'
         }
       ]
     },
@@ -176,7 +214,9 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <>
+      <style>{copyProtectionStyle}</style>
+      <section className="no-copy pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -283,6 +323,7 @@ const FAQ = () => {
 
       </div>
     </section>
+    </>
   );
 };
 

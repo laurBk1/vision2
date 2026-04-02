@@ -1,7 +1,45 @@
 import React from 'react';
 import { Shield, Lock, Eye, FileText, Users, AlertCircle, CheckCircle, Scale, Mail, Phone } from 'lucide-react';
 
+
+const copyProtectionStyle = `
+  .no-copy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;
+
+const useCopyProtection = () => {
+  React.useEffect(() => {
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+    };
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('a')) e.preventDefault();
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 'u'].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+};
+
+
 const Privacy = () => {
+  useCopyProtection();
 
   const sections = [
     {
@@ -190,7 +228,9 @@ const Privacy = () => {
   ];
 
   return (
-    <section className="pt-28 pb-20 bg-gray-50 min-h-screen">
+    <>
+      <style>{copyProtectionStyle}</style>
+      <section className="no-copy pt-28 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -323,6 +363,7 @@ const Privacy = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

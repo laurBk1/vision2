@@ -1,7 +1,45 @@
 import React from 'react';
 import { FileText, Shield, Clock, CreditCard, Users, AlertCircle, CheckCircle, Scale, Trash2, Lock, Network } from 'lucide-react';
 
+
+const copyProtectionStyle = `
+  .no-copy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;
+
+const useCopyProtection = () => {
+  React.useEffect(() => {
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+    };
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('a')) e.preventDefault();
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 'u'].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+};
+
+
 const Terms = () => {
+  useCopyProtection();
 
   const sections = [
     {
@@ -171,7 +209,9 @@ const Terms = () => {
   ];
 
   return (
-    <section className="pt-28 pb-20 bg-gray-50 min-h-screen">
+    <>
+      <style>{copyProtectionStyle}</style>
+      <section className="no-copy pt-28 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -229,6 +269,7 @@ const Terms = () => {
 
       </div>
     </section>
+    </>
   );
 };
 
