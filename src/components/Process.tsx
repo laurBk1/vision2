@@ -124,8 +124,8 @@ const Process = () => {
     {
       icon: CheckCircle,
       title: 'Livrare',
-      description: 'Revizuire finală, modificări și livrarea proiectului video finalizat.',
-      details: ['Revizuire calitate', 'Feedback client', 'Livrare finală'],
+      description: 'Revizie finală, modificări și livrarea proiectului video finalizat.',
+      details: ['Revizie calitate', 'Feedback client', 'Livrare finală'],
     },
   ];
 

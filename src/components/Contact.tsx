@@ -697,7 +697,7 @@ const Contact: React.FC = () => {
                 {[
                   'Calitate profesională garantată',
                   'Termene de livrare rapide',
-                  'O revizuire gratuită',
+                  'O revizuire gratuită / video',
                   'Soluții personalizate'
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-3">
