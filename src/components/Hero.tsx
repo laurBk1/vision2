@@ -517,7 +517,7 @@ const Hero = () => {
             <div className="h-checks">
               {[
                 'Conținut livrat gata de publicat',
-                'O revizuire gratuită la fiecare video',
+                'O revizie gratuită la fiecare video',
                 '100% remote — livrăm oriunde în România',
               ].map((t) => (
                 <div className="h-check" key={t}>
