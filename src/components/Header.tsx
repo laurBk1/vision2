@@ -1,6 +1,83 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
+
+const menuButtonStyle = `
+  @keyframes menuPulseRing {
+    0%   { transform: scale(1);    opacity: 0; }
+    15%  { transform: scale(1.05); opacity: 0.65; }
+    70%  { transform: scale(1.5);  opacity: 0.15; }
+    100% { transform: scale(1.6);  opacity: 0; }
+  }
+    70% { transform: scale(1.55); opacity: 0.2; }
+    100% { transform: scale(1.55); opacity: 0.2; }
+  }
+    60% { transform: scale(1.5); opacity: 0.15; }
+    100% { transform: scale(1.6); opacity: 0.15; }
+  }
+  @keyframes menuFadeOut {
+    0% { opacity: 0.15; }
+    100% { opacity: 0; }
+  }
+    70% { transform: scale(1.55); opacity: 0; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+  @keyframes menuBorderSpin {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .menu-btn-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 1024px) {
+    .menu-btn-wrapper {
+      display: none !important;
+    }
+  }
+  .menu-btn-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed, #2563eb);
+    background-size: 200% 200%;
+    animation: menuBorderSpin 2.5s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.85;
+  }
+  .menu-btn-wrapper.open::before {
+    opacity: 0;
+  }
+  .menu-pulse-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 14px;
+    border: 2px solid rgba(99, 102, 241, 0.7);
+    animation: menuPulseRing 2s ease-out 3;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+  .menu-pulse-ring.open {
+    display: none;
+  }
+  .menu-close-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 14px;
+    border: 2px solid rgba(239, 68, 68, 0.65);
+    animation: menuPulseRing 2s ease-out 3;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+`;
+
 const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
 
 const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
@@ -139,6 +216,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50" style={headerStyle}>
+      <style>{menuButtonStyle}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
@@ -177,25 +255,39 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
             </button>
           </nav>
 
-          <button
-            className="lg:hidden text-white p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Închide meniul' : 'Deschide meniul'}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className={`menu-btn-wrapper lg:hidden ${isMenuOpen ? 'open' : ''}`}>
+            {!isMenuOpen && <div className="menu-pulse-ring" />}
+            {isMenuOpen && <div className="menu-close-ring" />}
+            <button
+              className="relative text-white p-2 rounded-lg transition-all duration-200"
+              style={{ background: isMenuOpen ? 'rgba(255,255,255,0.08)' : 'rgba(37,99,235,0.12)' }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Închide meniul' : 'Deschide meniul'}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
+          <div
+            className="lg:hidden mb-3 shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
             style={{ background: 'linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)' }}
           >
-            <div className="px-5 py-4 border-b border-white/10"
+            {/* Header meniu */}
+            <div
+              className="px-5 py-3 border-b border-white/10 flex items-center justify-between"
               style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.15) 0%, rgba(147,51,234,0.15) 100%)' }}
             >
               <p className="text-xs font-bold text-blue-400 uppercase tracking-widest">Navigare</p>
+              <div className="flex items-center space-x-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-80" />
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 opacity-80" />
+              </div>
             </div>
+
+            {/* Nav items */}
             <div className="py-1">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
@@ -203,12 +295,14 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="group flex items-center w-full px-5 py-3 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
+                    className="group flex items-center w-full px-5 py-3.5 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-xl mr-3 transition-all duration-200 group-hover:scale-110"
-                      style={{ background: index % 2 === 0
-                        ? 'linear-gradient(135deg, rgba(37,99,235,0.3), rgba(37,99,235,0.1))'
-                        : 'linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1))'
+                    <div
+                      className="flex items-center justify-center w-8 h-8 rounded-xl mr-3 flex-shrink-0 transition-all duration-200 group-hover:scale-110"
+                      style={{
+                        background: index % 2 === 0
+                          ? 'linear-gradient(135deg, rgba(37,99,235,0.35), rgba(37,99,235,0.12))'
+                          : 'linear-gradient(135deg, rgba(147,51,234,0.35), rgba(147,51,234,0.12))'
                       }}
                     >
                       <Icon className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-400' : 'text-purple-400'}`} />
@@ -216,10 +310,28 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
                     <span className="flex-1 text-left text-gray-200 font-semibold text-sm group-hover:text-white transition-colors duration-200">
                       {item.name === 'FAQ' ? 'FAQ — Întrebări frecvente' : item.name}
                     </span>
-                    <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-gray-400 group-hover:translate-x-1 transition-all duration-200" />
+                    <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-gray-300 group-hover:translate-x-1 transition-all duration-200" />
                   </button>
                 );
               })}
+            </div>
+
+            {/* Footer meniu — CTA premium */}
+            <div
+              className="px-5 py-4 border-t border-white/10"
+              style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(147,51,234,0.08) 100%)' }}
+            >
+              <button
+                onClick={handleContactClick}
+                className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 active:scale-95"
+                style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)', boxShadow: '0 4px 16px rgba(37,99,235,0.35)' }}
+              >
+                <span>Începe Proiectul</span>
+                <Zap className="h-4 w-4" />
+              </button>
+              <p className="text-center text-gray-500 text-xs mt-3 font-medium">
+                Tot ce ai nevoie, într-un singur loc
+              </p>
             </div>
           </div>
         )}
