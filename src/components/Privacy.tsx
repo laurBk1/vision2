@@ -115,8 +115,10 @@ const Privacy = () => {
       icon: Users,
       title: '3. Datele Operatorului',
       content: [
-        'Denumire: VISIONEDIT SRL',
-        'Sediu social: București, România',
+        'Denumire: VISIONEDIT S.R.L.',
+        'Sediu social: Jud. Ilfov, Oraș Popești Leordeni',
+        'Cod unic de înregistrare (CUI): 54406122',
+        '',
         'Date de contact:',
         '',
         '• Telefon: +40 767 082 106',
@@ -220,7 +222,7 @@ const Privacy = () => {
         '• Email: contact@visionedit.ro',
         '• Telefon: +40 767 082 106',
         '',
-        'Această politică este efectivă începând cu 28.02.2026.',
+        'Această politică este efectivă începând cu 03.04.2026.',
         '',
         'VISIONEDIT SRL se angajează să respecte cele mai înalte standarde de protecție a datelor personale în conformitate cu legislația europeană și românească.'
       ]
