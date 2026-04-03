@@ -338,7 +338,7 @@ const Contact: React.FC = () => {
               <p className="text-blue-100">București, România</p>
             </div>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.1140727925717!2d26.12335581568054!3d44.432758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff7c9c96b83f%3A0x0!2sBucurești%2C+România!5e0!3m2!1sro!2sro!4v1716125954280!5m2!1sro!2sro"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91800!2d26.0974779!3d44.4267674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3d5f89%3A0xac0632b7d5e21dc7!2sBucure%C8%99ti!5e0!3m2!1sro!2sro!4v1716125954280!5m2!1sro!2sro"
               width="100%"
               height="400"
               style={{ border: 0 }}
