@@ -15,6 +15,19 @@ import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 import CookieBanner from './components/CookieBanner';
 
+// Helper: determină pagina curentă din URL (path SAU hash)
+function getCurrentPage() {
+  const path = window.location.pathname;
+  const hash = window.location.hash;
+
+  if (path === '/terms' || hash === '#terms') return 'terms';
+  if (path === '/privacy' || hash === '#privacy') return 'privacy';
+  if (path === '/faq' || hash === '#faq') return 'faq';
+  if (path === '/pricing' || hash === '#pricing') return 'pricing';
+  if (path === '/contact' || hash === '#contact') return 'contact';
+  return 'home';
+}
+
 function App() {
   useEffect(() => {
     document.documentElement.style.overflowX = 'hidden';
@@ -27,61 +40,45 @@ function App() {
     };
   }, []);
 
-  const [location, setLocation] = useState(() => ({
-    hash: window.location.hash,
-    path: window.location.pathname,
-  }));
+  const [page, setPage] = useState(() => getCurrentPage());
 
   useEffect(() => {
-    const updateLocation = () => setLocation({
-      hash: window.location.hash,
-      path: window.location.pathname,
-    });
-    // hashchange se declanșează nativ când folosim window.location.hash = '...'
-    // popstate se declanșează la history.pushState — ascultăm ambele
-    window.addEventListener('hashchange', updateLocation);
-    window.addEventListener('popstate', updateLocation);
+    const updatePage = () => setPage(getCurrentPage());
+    window.addEventListener('hashchange', updatePage);
+    window.addEventListener('popstate', updatePage);
     return () => {
-      window.removeEventListener('hashchange', updateLocation);
-      window.removeEventListener('popstate', updateLocation);
+      window.removeEventListener('hashchange', updatePage);
+      window.removeEventListener('popstate', updatePage);
     };
   }, []);
 
-  const { hash, path } = location;
+  const isSpecialPage = page === 'terms' || page === 'privacy' || page === 'faq';
 
-  const isTermsPage = hash === '#terms' || path === '/terms';
-  const isPrivacyPage = hash === '#privacy' || path === '/privacy';
-  const isFaqPage = hash === '#faq' || path === '/faq';
-  const isSpecialPage = isTermsPage || isPrivacyPage || isFaqPage;
-
-  // Scroll la top pentru Terms/Privacy/FAQ
+  // Scroll la top pentru paginile speciale
   useEffect(() => {
-    if (isTermsPage || isPrivacyPage || isFaqPage) {
+    if (isSpecialPage) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
-  }, [hash, path]);
+  }, [page]);
 
-  // Scroll la secțiune pentru link-urile din meniu
+  // Scroll la secțiune pentru paginile cu anchor (pricing, contact)
   useEffect(() => {
-    if (!isTermsPage && !isPrivacyPage && !isFaqPage) {
-      const targetId = hash ? hash.replace('#', '') : (path !== '/' ? path.replace('/', '') : null);
-      if (targetId) {
-        const timer = setTimeout(() => {
-          const element = document.getElementById(targetId);
-          if (element) {
-            const top = element.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top, behavior: 'smooth' });
-          }
-        }, 300);
-        return () => clearTimeout(timer);
-      }
+    if (page === 'pricing' || page === 'contact') {
+      const timer = setTimeout(() => {
+        const element = document.getElementById(page);
+        if (element) {
+          const top = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
     }
-  }, [hash, path, isTermsPage, isPrivacyPage, isFaqPage]);
+  }, [page]);
 
-  if (isTermsPage) {
+  if (page === 'terms') {
     return (
       <div className="min-h-screen">
-        <Header isSpecialPage={true} />
+        <Header isSpecialPage={true} currentPage="terms" />
         <main><Terms /></main>
         <Footer />
         <WhatsAppButton />
@@ -90,10 +87,10 @@ function App() {
     );
   }
 
-  if (isFaqPage) {
+  if (page === 'faq') {
     return (
       <div className="min-h-screen">
-        <Header isSpecialPage={true} />
+        <Header isSpecialPage={true} currentPage="faq" />
         <main><FAQ /></main>
         <Footer />
         <WhatsAppButton />
@@ -102,10 +99,10 @@ function App() {
     );
   }
 
-  if (isPrivacyPage) {
+  if (page === 'privacy') {
     return (
       <div className="min-h-screen">
-        <Header isSpecialPage={true} />
+        <Header isSpecialPage={true} currentPage="privacy" />
         <main><Privacy /></main>
         <Footer />
         <WhatsAppButton />
@@ -114,9 +111,10 @@ function App() {
     );
   }
 
+  // Pagina principală
   return (
     <div className="min-h-screen">
-      <Header isSpecialPage={false} />
+      <Header isSpecialPage={false} currentPage={page} />
       <main>
         <div id="home"><Hero /></div>
         <div id="services"><Services /></div>

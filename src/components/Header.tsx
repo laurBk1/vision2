@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
-
 const menuButtonStyle = `
   @keyframes menuPulseRing {
     0%   { transform: scale(1);    opacity: 0; }
     15%  { transform: scale(1.05); opacity: 0.65; }
     70%  { transform: scale(1.5);  opacity: 0.15; }
     100% { transform: scale(1.6);  opacity: 0; }
-  }
-    70% { transform: scale(1.55); opacity: 0.2; }
-    100% { transform: scale(1.55); opacity: 0.2; }
-  }
-    60% { transform: scale(1.5); opacity: 0.15; }
-    100% { transform: scale(1.6); opacity: 0.15; }
-  }
-  @keyframes menuFadeOut {
-    0% { opacity: 0.15; }
-    100% { opacity: 0; }
-  }
-    70% { transform: scale(1.55); opacity: 0; }
-    100% { transform: scale(1.55); opacity: 0; }
   }
   @keyframes menuBorderSpin {
     0% { background-position: 0% 50%; }
@@ -78,126 +64,102 @@ const menuButtonStyle = `
   }
 `;
 
-const SPECIAL_HASHES = ['#faq', '#terms', '#privacy'];
+const SPECIAL_PAGES = ['terms', 'privacy', 'faq'];
 
-const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [currentHash, setCurrentHash] = useState(window.location.hash);
+// Determină dacă suntem pe o pagină specială (nu pagina principală)
+function isOnSpecialPage() {
+  const path = window.location.pathname;
+  const hash = window.location.hash;
+  return (
+    path === '/terms' || hash === '#terms' ||
+    path === '/privacy' || hash === '#privacy' ||
+    path === '/faq' || hash === '#faq'
+  );
+}
 
-  // Fix 1: La montare, dacă suntem deja pe o pagină specială, forțăm solid imediat
-  useEffect(() => {
-    if (SPECIAL_HASHES.includes(window.location.hash) || isSpecialPage) {
-      setIsScrolled(true);
-      setCurrentHash(window.location.hash);
-    }
-  }, [isSpecialPage]);
+// Navighează la o secțiune din pagina principală
+function navigateToSection(sectionId: string) {
+  const onSpecial = isOnSpecialPage();
 
-  // Fix 2: La fiecare schimbare de hash, forțăm solid + repaint Firefox
-  useEffect(() => {
-    const updateHash = () => {
-      setCurrentHash(window.location.hash);
-      if (SPECIAL_HASHES.includes(window.location.hash)) {
-        setIsScrolled(true);
-        // Forțează repaint pe Firefox pentru position:fixed
-        document.documentElement.style.setProperty('--force-repaint', '1');
-        setTimeout(() => {
-          document.documentElement.style.removeProperty('--force-repaint');
-        }, 10);
-      }
-    };
-    window.addEventListener('popstate', updateHash);
-    window.addEventListener('hashchange', updateHash);
-    return () => {
-      window.removeEventListener('popstate', updateHash);
-      window.removeEventListener('hashchange', updateHash);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Fix 3: isSolid citește direct window.location.hash + prop + state
-  const isSolid =
-    isSpecialPage ||
-    SPECIAL_HASHES.includes(window.location.hash) ||
-    isMenuOpen ||
-    isScrolled;
-
-  const navItems = [
-    { name: 'Servicii', href: '#services', icon: Clapperboard },
-    { name: 'Portofoliu', href: '#portfolio', icon: BookImage },
-    { name: 'Proces', href: '#process', icon: GitMerge },
-    { name: 'Prețuri', href: '#pricing', icon: BadgeDollarSign },
-    { name: 'Despre', href: '#about', icon: Users },
-    { name: 'FAQ', href: '#faq', icon: HelpCircle },
-    { name: 'Contact', href: '#contact', icon: Mail }
-  ];
-
-  const handleNavClick = (href: string) => {
-    if (SPECIAL_HASHES.includes(href)) {
-      setIsScrolled(true);
-      setCurrentHash(href);
-      history.pushState(null, '', href);
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      setIsMenuOpen(false);
-      // Forțează repaint direct pe header — fără scroll, fără flicker
-      requestAnimationFrame(() => {
-        const header = document.querySelector('header') as HTMLElement;
-        if (header) {
-          header.style.transform = 'translateZ(0.0001px)';
-          requestAnimationFrame(() => {
-            header.style.transform = 'translateZ(0)';
-          });
-        }
-      });
-      return;
-    }
-    if (SPECIAL_HASHES.includes(window.location.hash)) {
-      window.location.hash = '';
-      setCurrentHash('');
-      setIsScrolled(false);
-      setTimeout(() => {
-        const element = document.querySelector(href) as HTMLElement;
-        if (element) {
-          const top = element.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }, 50);
-    } else {
-      const element = document.querySelector(href) as HTMLElement;
+  if (onSpecial) {
+    // Suntem pe o pagină specială — trebuie să mergem înapoi la home
+    // Folosim history.pushState pentru a evita reload complet
+    history.pushState(null, '', '/');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    // Așteptăm ca React să redea pagina principală, apoi facem scroll
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
       if (element) {
         const top = element.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
       }
+    }, 350);
+  } else {
+    // Suntem pe pagina principală — doar scroll
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const top = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
+  }
+}
+
+// Navighează la o pagină specială (terms, privacy, faq)
+function navigateToSpecialPage(page: string) {
+  const newPath = `/${page}`;
+  history.pushState(null, '', newPath);
+  window.dispatchEvent(new PopStateEvent('popstate'));
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+}
+
+const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage?: boolean; currentPage?: string }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    if (isSpecialPage) {
+      setIsScrolled(true);
+    }
+  }, [isSpecialPage]);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isSolid = isSpecialPage || isMenuOpen || isScrolled;
+
+  const navItems = [
+    { name: 'Servicii', sectionId: 'services', icon: Clapperboard, isSpecial: false },
+    { name: 'Portofoliu', sectionId: 'portfolio', icon: BookImage, isSpecial: false },
+    { name: 'Proces', sectionId: 'process', icon: GitMerge, isSpecial: false },
+    { name: 'Prețuri', sectionId: 'pricing', icon: BadgeDollarSign, isSpecial: false },
+    { name: 'Despre', sectionId: 'about', icon: Users, isSpecial: false },
+    { name: 'FAQ', sectionId: 'faq', icon: HelpCircle, isSpecial: true },
+    { name: 'Contact', sectionId: 'contact', icon: Mail, isSpecial: false },
+  ];
+
+  const handleNavClick = (item: typeof navItems[0]) => {
     setIsMenuOpen(false);
+    if (item.isSpecial) {
+      navigateToSpecialPage(item.sectionId);
+    } else {
+      navigateToSection(item.sectionId);
+    }
   };
 
   const handleContactClick = () => {
-    if (SPECIAL_HASHES.includes(window.location.hash)) {
-      window.location.hash = '';
-      setCurrentHash('');
-      setTimeout(() => {
-        const el = document.getElementById('contact');
-        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-      }, 50);
-    } else {
-      const el = document.getElementById('contact');
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-    }
     setIsMenuOpen(false);
+    navigateToSection('contact');
   };
 
   const handleLogoClick = () => {
-    if (SPECIAL_HASHES.includes(window.location.hash)) {
-      window.location.hash = '';
-      setCurrentHash('');
-      setIsScrolled(false);
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+    setIsMenuOpen(false);
+    if (isOnSpecialPage()) {
+      history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -211,7 +173,6 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
     transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
     transform: 'translateZ(0)',
     willChange: 'background-color, backdrop-filter',
-    contain: 'layout style paint',
   };
 
   return (
@@ -239,7 +200,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => handleNavClick(item.href)}
+                onClick={() => handleNavClick(item)}
                 className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold text-sm xl:text-base"
               >
                 {item.name}
@@ -275,7 +236,6 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
             className="lg:hidden mb-3 shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
             style={{ background: 'linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)' }}
           >
-            {/* Header meniu */}
             <div
               className="px-5 py-3 border-b border-white/10 flex items-center justify-between"
               style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.15) 0%, rgba(147,51,234,0.15) 100%)' }}
@@ -287,14 +247,13 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
               </div>
             </div>
 
-            {/* Nav items */}
             <div className="py-1">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <button
                     key={item.name}
-                    onClick={() => handleNavClick(item.href)}
+                    onClick={() => handleNavClick(item)}
                     className="group flex items-center w-full px-5 py-3.5 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
                     <div
@@ -316,7 +275,6 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean }) => {
               })}
             </div>
 
-            {/* Footer meniu — CTA premium */}
             <div
               className="px-5 py-4 border-t border-white/10"
               style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(147,51,234,0.08) 100%)' }}

@@ -1,40 +1,69 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 
-const Footer = () => {
-  const handleNavClick = (href: string) => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      window.location.hash = '';
-      setTimeout(() => {
-        const element = document.querySelector(href) as HTMLElement;
-        if (element) {
-          const top = element.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }, 50);
-    } else {
-      const element = document.querySelector(href) as HTMLElement;
+// Determină dacă suntem pe o pagină specială
+function isOnSpecialPage() {
+  const path = window.location.pathname;
+  const hash = window.location.hash;
+  return (
+    path === '/terms' || hash === '#terms' ||
+    path === '/privacy' || hash === '#privacy' ||
+    path === '/faq' || hash === '#faq'
+  );
+}
+
+// Navighează la o secțiune din pagina principală
+function navigateToSection(sectionId: string) {
+  if (isOnSpecialPage()) {
+    history.pushState(null, '', '/');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
       if (element) {
         const top = element.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
       }
+    }, 350);
+  } else {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const top = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
+  }
+}
+
+// Navighează la o pagină specială
+function navigateToSpecialPage(page: string) {
+  history.pushState(null, '', `/${page}`);
+  window.dispatchEvent(new PopStateEvent('popstate'));
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+}
+
+const Footer = () => {
+  const handleNavClick = (sectionId: string) => {
+    navigateToSection(sectionId);
   };
 
   const handleTermsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.hash = '#terms';
+    navigateToSpecialPage('terms');
   };
 
   const handlePrivacyClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.hash = '#privacy';
+    navigateToSpecialPage('privacy');
+  };
+
+  const handleFaqClick = () => {
+    navigateToSpecialPage('faq');
   };
 
   const handleLogoClick = () => {
-    if (window.location.hash === '#terms' || window.location.hash === '#privacy' || window.location.hash === '#faq') {
-      window.location.hash = '';
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+    if (isOnSpecialPage()) {
+      history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -92,7 +121,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <button 
-                  onClick={() => handleNavClick('#services')}
+                  onClick={() => handleNavClick('services')}
                   className="hover:text-white transition-colors text-left"
                 >
                   Servicii
@@ -100,7 +129,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleNavClick('#portfolio')}
+                  onClick={() => handleNavClick('portfolio')}
                   className="hover:text-white transition-colors text-left"
                 >
                   Portofoliu
@@ -108,7 +137,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleNavClick('#process')}
+                  onClick={() => handleNavClick('process')}
                   className="hover:text-white transition-colors text-left"
                 >
                   Proces
@@ -116,7 +145,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleNavClick('#about')}
+                  onClick={() => handleNavClick('about')}
                   className="hover:text-white transition-colors text-left"
                 >
                   Despre
@@ -124,7 +153,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => { history.pushState(null, '', '#faq'); window.dispatchEvent(new PopStateEvent('popstate')); }}
+                  onClick={handleFaqClick}
                   className="hover:text-white transition-colors text-left"
                 >
                   FAQ
@@ -132,7 +161,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleNavClick('#contact')}
+                  onClick={() => handleNavClick('contact')}
                   className="hover:text-white transition-colors text-left"
                 >
                   Contact
@@ -146,7 +175,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <button 
-                  onClick={() => { history.pushState(null, '', '#faq'); window.dispatchEvent(new PopStateEvent('popstate')); }}
+                  onClick={handleFaqClick}
                   className="hover:text-white transition-colors text-left"
                 >
                   FAQ
@@ -181,7 +210,6 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Urmărește-ne pe Social Media</h3>
             
             <div className="flex space-x-6">
-              {/* Facebook */}
               <a 
                 href="https://www.facebook.com/share/1b1MVuEKH2/?mibextid=wwXIfr" 
                 target="_blank" 
@@ -192,7 +220,6 @@ const Footer = () => {
                 <Facebook className="h-6 w-6 text-white group-hover:animate-pulse" />
               </a>
 
-              {/* Instagram */}
               <a 
                 href="https://www.instagram.com/laur_visionedit?igsh=MXRjbHozY3NidW1rdg%3D%3D&utm_source=qr" 
                 target="_blank" 
@@ -203,7 +230,6 @@ const Footer = () => {
                 <Instagram className="h-6 w-6 text-white group-hover:animate-pulse" />
               </a>
 
-              {/* TikTok */}
               <a 
                 href="https://www.tiktok.com/@laur_visionedit.ro" 
                 target="_blank" 
@@ -216,7 +242,6 @@ const Footer = () => {
                 </svg>
               </a>
 
-              {/* YouTube */}
               <a 
                 href="https://youtube.com/@laur_visionedit?si=FsGDHSF9gbsEjUwR" 
                 target="_blank" 
@@ -242,7 +267,6 @@ const Footer = () => {
             <p className="text-gray-400 text-xs mb-4">Protecția Consumatorului - Conform legislației din România și UE</p>
             
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              {/* ANPC Link */}
               <a 
                 href="https://reclamatiisal.anpc.ro/" 
                 target="_blank" 
@@ -260,7 +284,6 @@ const Footer = () => {
                 />
               </a>
 
-              {/* SOL Link */}
               <a 
                 href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO" 
                 target="_blank" 
