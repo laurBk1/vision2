@@ -6,7 +6,6 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      // GDPR Consent Mode - implicit denied până utilizatorul acceptă
       gtag('consent', 'default', {
         analytics_storage: 'denied',
         wait_for_update: 500
@@ -42,14 +41,41 @@
     <meta name="apple-mobile-web-app-title" content="VisionEdit" />
     <meta name="theme-color" content="#7c3aed" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VisionEdit România - Professional Video Editing Services</title>
-    <meta name="description" content="Professional video editing services in Romania. Corporate videos, social media content, marketing videos, and creative editing solutions. Transform your vision into stunning visual stories.">
-    <meta name="keywords" content="video editing, Romania, corporate videos, social media content, professional editing, visionedit">
 
-    <!-- Preload Syne font local - CRITIC pentru Hero -->
+    <!-- SEO Primar -->
+    <title>VisionEdit România - Editare Video Profesională | YouTube Shorts, Reels, TikTok</title>
+    <meta name="description" content="VisionEdit oferă servicii profesionale de editare video în România: YouTube Shorts, Instagram Reels, TikTok. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage și vinde.">
+    <meta name="keywords" content="editare video Romania, video marketing, YouTube Shorts editare, Instagram Reels editare, TikTok editare, videoclipuri corporate, visionedit, editare video profesionala">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="VisionEdit România">
+    <meta name="language" content="Romanian">
+    <meta name="geo.region" content="RO">
+    <meta name="geo.placename" content="București, România">
+
+    <!-- Canonical (actualizat dinamic per pagină în App.tsx) -->
+    <link rel="canonical" href="https://visionedit.ro/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VisionEdit România" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:url" content="https://visionedit.ro/" />
+    <meta property="og:title" content="VisionEdit România - Editare Video Profesională | YouTube Shorts, Reels, TikTok" />
+    <meta property="og:description" content="VisionEdit oferă servicii profesionale de editare video în România: YouTube Shorts, Instagram Reels, TikTok. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage și vinde." />
+    <meta property="og:image" content="https://visionedit.ro/logo.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="VisionEdit România - Editare Video Profesională" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@laur_visionedit" />
+    <meta name="twitter:title" content="VisionEdit România - Editare Video Profesională | YouTube Shorts, Reels, TikTok" />
+    <meta name="twitter:description" content="VisionEdit oferă servicii profesionale de editare video în România: YouTube Shorts, Instagram Reels, TikTok. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage și vinde." />
+    <meta name="twitter:image" content="https://visionedit.ro/logo.webp" />
+
+    <!-- Preload fonturi -->
     <link rel="preload" href="/fonts/Syne-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-
-    <!-- FIX 1: font-display: swap in loc de block — nu mai blochează randarea -->
     <style>
       @font-face {
         font-family: 'Syne';
@@ -60,22 +86,19 @@
       }
     </style>
 
-    <!-- FIX 2: Logo preload cu dimensiunile corecte -->
     <link rel="preload" href="/logo.webp" as="image" type="image/webp" fetchpriority="high">
 
-    <!-- Preconnect Google Fonts -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.pexels.com" crossorigin>
 
-    <!-- FIX 3: Inter font - non-render-blocking (pattern corect, eliminat apelurile duplicate) -->
-    <!-- Outfit: blocking pentru a evita FOUT pe heading-ul principal -->
+    <!-- Fonturi Google -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap">
-    <!-- Inter: non-blocking, folosit pentru text secundar -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
-    <!-- Schema markup LocalBusiness -->
+    <!-- Schema: LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -93,20 +116,13 @@
         "postalCode": "010101",
         "addressCountry": "RO"
       },
-      "description": "VisionEdit oferă servicii profesionale de video marketing, specializat în videoclipuri scurte pentru YouTube Shorts, Instagram Reels și TikTok. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage, conectează și vinde.",
+      "description": "VisionEdit oferă servicii profesionale de video marketing, specializat în videoclipuri scurte pentru YouTube Shorts, Instagram Reels și TikTok.",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
           "opens": "09:00",
           "closes": "18:00"
-        }
-      ],
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Weekend Urgente",
-          "value": "Servicii disponibile doar pentru urgențe"
         }
       ],
       "sameAs": [
@@ -116,27 +132,45 @@
         "https://youtube.com/@laur_visionedit?si=FsGDHSF9gbsEjUwR"
       ],
       "makesOffer": [
-        {
-          "@type": "Service",
-          "name": "Editare video YouTube Shorts",
-          "description": "La VisionEdit, transformăm materialele tale brute în videoclipuri scurte și captivante pentru YouTube Shorts, optimizate pentru storytelling autentic și trend-uri actuale, maximizând engagement-ul și vizibilitatea canalului tău."
-        },
-        {
-          "@type": "Service",
-          "name": "Editare video Instagram Reels",
-          "description": "Creăm conținut video profesional pentru Instagram Reels, adaptat pentru orice nișă și destinat să atragă, conecteze și convertească publicul țintă, transformând ideile tale în videoclipuri care vând."
-        },
-        {
-          "@type": "Service",
-          "name": "Editare video TikTok",
-          "description": "Serviciile noastre de editare video pentru TikTok includ conținut vertical 9:16, optimizat global, estetic și gata de publicare, menit să genereze viralitate și să amplifice impactul campaniilor tale digitale."
-        }
+        {"@type": "Service","name": "Editare video YouTube Shorts","description": "Transformăm materialele tale brute în videoclipuri scurte și captivante pentru YouTube Shorts, optimizate pentru storytelling și trend-uri actuale."},
+        {"@type": "Service","name": "Editare video Instagram Reels","description": "Conținut video profesional pentru Instagram Reels, adaptat pentru orice nișă, menit să atragă, conecteze și convertească publicul țintă."},
+        {"@type": "Service","name": "Editare video TikTok","description": "Conținut vertical 9:16 optimizat global, estetic și gata de publicare, menit să genereze viralitate și să amplifice impactul campaniilor tale."}
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
         "reviewCount": "23"
       }
+    }
+    </script>
+
+    <!-- Schema: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VisionEdit România",
+      "url": "https://visionedit.ro",
+      "description": "Servicii profesionale de editare video în România: YouTube Shorts, Instagram Reels, TikTok.",
+      "inLanguage": "ro-RO"
+    }
+    </script>
+
+    <!-- Schema: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Acasă","item":"https://visionedit.ro/"},
+        {"@type":"ListItem","position":2,"name":"Servicii","item":"https://visionedit.ro/services"},
+        {"@type":"ListItem","position":3,"name":"Portofoliu","item":"https://visionedit.ro/portfolio"},
+        {"@type":"ListItem","position":4,"name":"Proces","item":"https://visionedit.ro/process"},
+        {"@type":"ListItem","position":5,"name":"Prețuri","item":"https://visionedit.ro/pricing"},
+        {"@type":"ListItem","position":6,"name":"Despre Noi","item":"https://visionedit.ro/about"},
+        {"@type":"ListItem","position":7,"name":"Contact","item":"https://visionedit.ro/contact"},
+        {"@type":"ListItem","position":8,"name":"FAQ","item":"https://visionedit.ro/faq"}
+      ]
     }
     </script>
   </head>

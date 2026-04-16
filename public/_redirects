@@ -1,1 +1,16 @@
-/* /index.html  200
+# Redirect HTTP -> HTTPS
+http://visionedit.ro/* https://visionedit.ro/:splat 301!
+
+# Toate rutele React Router — servesc index.html cu status 200
+/services  /index.html 200
+/portfolio /index.html 200
+/process   /index.html 200
+/pricing   /index.html 200
+/about     /index.html 200
+/contact   /index.html 200
+/faq       /index.html 200
+/terms     /index.html 200
+/privacy   /index.html 200
+
+# Fallback general SPA
+/* /index.html 200

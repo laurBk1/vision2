@@ -1,72 +1,27 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 
-// Determină dacă suntem pe o pagină specială
-function isOnSpecialPage() {
-  const path = window.location.pathname;
-  const hash = window.location.hash;
-  return (
-    path === '/terms' || hash === '#terms' ||
-    path === '/privacy' || hash === '#privacy' ||
-    path === '/faq' || hash === '#faq'
-  );
-}
+const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-// Navighează la o secțiune din pagina principală
-function navigateToSection(sectionId: string) {
-  if (isOnSpecialPage()) {
-    history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const top = element.getBoundingClientRect().top + window.scrollY - 80;
+  // Navighează la o secțiune: dacă suntem pe home → scroll, altfel → mergi la pagina dedicată
+  const handleSectionNav = (path: string, sectionId: string) => {
+    if (location.pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
       }
-    }, 350);
-  } else {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
+    } else {
+      navigate(path);
     }
-  }
-}
-
-// Navighează la o pagină specială
-function navigateToSpecialPage(page: string) {
-  history.pushState(null, '', `/${page}`);
-  window.dispatchEvent(new PopStateEvent('popstate'));
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-}
-
-const Footer = () => {
-  const handleNavClick = (sectionId: string) => {
-    navigateToSection(sectionId);
-  };
-
-  const handleTermsClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigateToSpecialPage('terms');
-  };
-
-  const handlePrivacyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigateToSpecialPage('privacy');
-  };
-
-  const handleFaqClick = () => {
-    navigateToSpecialPage('faq');
   };
 
   const handleLogoClick = () => {
-    if (isOnSpecialPage()) {
-      history.pushState(null, '', '/');
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -74,13 +29,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <div 
+            <div
               className="flex items-center space-x-3 mb-4 cursor-pointer"
               onClick={handleLogoClick}
             >
-              <img 
-                src="/logo.webp" 
-                alt="VisionEdit România Logo" 
+              <img
+                src="/logo.webp"
+                alt="VisionEdit România Logo"
                 className="h-11 md:h-14 w-auto"
                 width="170"
                 height="54"
@@ -91,11 +46,11 @@ const Footer = () => {
                 <div className="text-sm text-blue-300 font-medium">România</div>
               </div>
             </div>
-            
+
             <p className="text-gray-300 mb-6 leading-relaxed">
-            Partenerul tău de încredere în video marketing: creăm și edităm videoclipuri profesionale, strategice și orientate spre rezultate, care cresc vizibilitatea și atrag clienți noi.
+              Partenerul tău de încredere în video marketing: creăm și edităm videoclipuri profesionale, strategice și orientate spre rezultate, care cresc vizibilitatea și atrag clienți noi.
             </p>
-            
+
             <div className="space-y-2">
               <div className="flex items-center text-gray-300">
                 <Phone className="h-4 w-4 mr-2" />
@@ -120,50 +75,32 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Link-uri rapide</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <button 
-                  onClick={() => handleNavClick('services')}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => handleSectionNav('/services', 'services')} className="hover:text-white transition-colors text-left">
                   Servicii
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('portfolio')}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => handleSectionNav('/portfolio', 'portfolio')} className="hover:text-white transition-colors text-left">
                   Portofoliu
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('process')}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => handleSectionNav('/process', 'process')} className="hover:text-white transition-colors text-left">
                   Proces
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('about')}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => handleSectionNav('/about', 'about')} className="hover:text-white transition-colors text-left">
                   Despre
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={handleFaqClick}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => navigate('/faq')} className="hover:text-white transition-colors text-left">
                   FAQ
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('contact')}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => handleSectionNav('/contact', 'contact')} className="hover:text-white transition-colors text-left">
                   Contact
                 </button>
               </li>
@@ -174,26 +111,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Informații utile</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <button 
-                  onClick={handleFaqClick}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => navigate('/faq')} className="hover:text-white transition-colors text-left">
                   FAQ
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={handlePrivacyClick}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => navigate('/privacy')} className="hover:text-white transition-colors text-left">
                   Confidențialitate și GDPR
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={handleTermsClick}
-                  className="hover:text-white transition-colors text-left"
-                >
+                <button onClick={() => navigate('/terms')} className="hover:text-white transition-colors text-left">
                   Termeni și condiții
                 </button>
               </li>
@@ -208,11 +136,11 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col items-center space-y-6">
             <h3 className="text-lg font-semibold text-white">Urmărește-ne pe Social Media</h3>
-            
+
             <div className="flex space-x-6">
-              <a 
-                href="https://www.facebook.com/share/1b1MVuEKH2/?mibextid=wwXIfr" 
-                target="_blank" 
+              <a
+                href="https://www.facebook.com/share/1b1MVuEKH2/?mibextid=wwXIfr"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
                 aria-label="Urmărește-ne pe Facebook"
@@ -220,9 +148,9 @@ const Footer = () => {
                 <Facebook className="h-6 w-6 text-white group-hover:animate-pulse" />
               </a>
 
-              <a 
-                href="https://www.instagram.com/laur_visionedit?igsh=MXRjbHozY3NidW1rdg%3D%3D&utm_source=qr" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/laur_visionedit?igsh=MXRjbHozY3NidW1rdg%3D%3D&utm_source=qr"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
                 aria-label="Urmărește-ne pe Instagram"
@@ -230,9 +158,9 @@ const Footer = () => {
                 <Instagram className="h-6 w-6 text-white group-hover:animate-pulse" />
               </a>
 
-              <a 
-                href="https://www.tiktok.com/@laur_visionedit.ro" 
-                target="_blank" 
+              <a
+                href="https://www.tiktok.com/@laur_visionedit.ro"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black hover:bg-gray-800 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
                 aria-label="Urmărește-ne pe TikTok"
@@ -242,9 +170,9 @@ const Footer = () => {
                 </svg>
               </a>
 
-              <a 
-                href="https://youtube.com/@laur_visionedit?si=FsGDHSF9gbsEjUwR" 
-                target="_blank" 
+              <a
+                href="https://youtube.com/@laur_visionedit?si=FsGDHSF9gbsEjUwR"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-red-600 hover:bg-red-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110 group"
                 aria-label="Urmărește-ne pe YouTube"
@@ -265,18 +193,18 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-6">
           <div className="text-center">
             <p className="text-gray-400 text-xs mb-4">Protecția Consumatorului - Conform legislației din România și UE</p>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <a 
-                href="https://reclamatiisal.anpc.ro/" 
-                target="_blank" 
+              <a
+                href="https://reclamatiisal.anpc.ro/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity duration-200"
                 aria-label="ANPC - Soluționarea alternativă a litigiilor"
               >
-                <img 
-                  src="/anpc-visionedit.ro.webp" 
-                  alt="ANPC - Soluționarea alternativă a litigiilor" 
+                <img
+                  src="/anpc-visionedit.ro.webp"
+                  alt="ANPC - Soluționarea alternativă a litigiilor"
                   className="h-10 w-auto object-contain"
                   loading="lazy"
                   width="120"
@@ -284,16 +212,16 @@ const Footer = () => {
                 />
               </a>
 
-              <a 
-                href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO" 
-                target="_blank" 
+              <a
+                href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity duration-200"
                 aria-label="SOL - Soluționarea online a litigiilor UE"
               >
-                <img 
-                  src="/sol-visionedit.ro.png" 
-                  alt="SOL - Soluționarea online a litigiilor UE" 
+                <img
+                  src="/sol-visionedit.ro.png"
+                  alt="SOL - Soluționarea online a litigiilor UE"
                   className="h-10 w-auto object-contain"
                   loading="lazy"
                   width="120"
@@ -306,7 +234,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-          © 2026 VISIONEDIT SRL. Toate drepturile rezervate.<br />
+            © 2026 VISIONEDIT SRL. Toate drepturile rezervate.<br />
             Creat cu <span className="text-red-500">♥</span> de Laur Bk.
           </p>
         </div>

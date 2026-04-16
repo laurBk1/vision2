@@ -71,9 +71,43 @@
   force = true
 
 # ============================================================
-# PAGINILE STATICE — servite direct de React SPA
-# Aceste rute sunt gestionate de App.tsx, deci servim index.html
+# TOATE RUTELE REACT ROUTER — servesc index.html (SPA)
 # ============================================================
+[[redirects]]
+  from = "/services"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/process"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pricing"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/index.html"
+  status = 200
+
 [[redirects]]
   from = "/terms"
   to = "/index.html"
@@ -84,30 +118,10 @@
   to = "/index.html"
   status = 200
 
-[[redirects]]
-  from = "/faq"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/pricing"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/index.html"
-  status = 200
-
 # ============================================================
 # FALLBACK SPA — toate celelalte rute
 # ============================================================
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
   status = 200

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const menuButtonStyle = `
@@ -64,62 +65,24 @@ const menuButtonStyle = `
   }
 `;
 
-const SPECIAL_PAGES = ['terms', 'privacy', 'faq'];
+const navItems = [
+  { name: 'Servicii',  path: '/services',  icon: Clapperboard  },
+  { name: 'Portofoliu',path: '/portfolio', icon: BookImage      },
+  { name: 'Proces',    path: '/process',   icon: GitMerge       },
+  { name: 'Prețuri',   path: '/pricing',   icon: BadgeDollarSign},
+  { name: 'Despre',    path: '/about',     icon: Users          },
+  { name: 'FAQ',       path: '/faq',       icon: HelpCircle     },
+  { name: 'Contact',   path: '/contact',   icon: Mail           },
+];
 
-// Determină dacă suntem pe o pagină specială (nu pagina principală)
-function isOnSpecialPage() {
-  const path = window.location.pathname;
-  const hash = window.location.hash;
-  return (
-    path === '/terms' || hash === '#terms' ||
-    path === '/privacy' || hash === '#privacy' ||
-    path === '/faq' || hash === '#faq'
-  );
-}
-
-// Navighează la o secțiune din pagina principală
-function navigateToSection(sectionId: string) {
-  const onSpecial = isOnSpecialPage();
-
-  if (onSpecial) {
-    // Suntem pe o pagină specială — trebuie să mergem înapoi la home
-    // Folosim history.pushState pentru a evita reload complet
-    history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
-    // Așteptăm ca React să redea pagina principală, apoi facem scroll
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const top = element.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    }, 350);
-  } else {
-    // Suntem pe pagina principală — doar scroll
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  }
-}
-
-// Navighează la o pagină specială (terms, privacy, faq)
-function navigateToSpecialPage(page: string) {
-  const newPath = `/${page}`;
-  history.pushState(null, '', newPath);
-  window.dispatchEvent(new PopStateEvent('popstate'));
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-}
-
-const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage?: boolean; currentPage?: string }) => {
+const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPage?: string }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (isSpecialPage) {
-      setIsScrolled(true);
-    }
+    if (isSpecialPage) setIsScrolled(true);
   }, [isSpecialPage]);
 
   useEffect(() => {
@@ -130,39 +93,26 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
 
   const isSolid = isSpecialPage || isMenuOpen || isScrolled;
 
-  const navItems = [
-    { name: 'Servicii', sectionId: 'services', icon: Clapperboard, isSpecial: false },
-    { name: 'Portofoliu', sectionId: 'portfolio', icon: BookImage, isSpecial: false },
-    { name: 'Proces', sectionId: 'process', icon: GitMerge, isSpecial: false },
-    { name: 'Prețuri', sectionId: 'pricing', icon: BadgeDollarSign, isSpecial: false },
-    { name: 'Despre', sectionId: 'about', icon: Users, isSpecial: false },
-    { name: 'FAQ', sectionId: 'faq', icon: HelpCircle, isSpecial: true },
-    { name: 'Contact', sectionId: 'contact', icon: Mail, isSpecial: false },
-  ];
-
-  const handleNavClick = (item: typeof navItems[0]) => {
+  // Navighează la o secțiune din homepage
+  const handleSectionNav = (path: string, sectionId: string) => {
     setIsMenuOpen(false);
-    if (item.isSpecial) {
-      navigateToSpecialPage(item.sectionId);
+    if (location.pathname === '/') {
+      // Suntem deja pe home — scroll direct
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     } else {
-      navigateToSection(item.sectionId);
+      // Navigăm la pagina dedicată
+      navigate(path);
     }
-  };
-
-  const handleContactClick = () => {
-    setIsMenuOpen(false);
-    navigateToSection('contact');
   };
 
   const handleLogoClick = () => {
     setIsMenuOpen(false);
-    if (isOnSpecialPage()) {
-      history.pushState(null, '', '/');
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const headerStyle: React.CSSProperties = {
@@ -180,6 +130,7 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
       <style>{menuButtonStyle}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
+          {/* Logo */}
           <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
             <img
               src="/logo.webp"
@@ -196,18 +147,19 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
             </div>
           </div>
 
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                onClick={() => handleSectionNav(item.path, item.path.replace('/', ''))}
                 className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold text-sm xl:text-base"
               >
                 {item.name}
               </button>
             ))}
             <button
-              onClick={handleContactClick}
+              onClick={() => handleSectionNav('/contact', 'contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg font-bold text-sm xl:text-base transition-colors duration-200 flex items-center space-x-2 shadow-lg"
               aria-label="Începe proiectul tău"
             >
@@ -216,6 +168,7 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
             </button>
           </nav>
 
+          {/* Mobile menu button */}
           <div className={`menu-btn-wrapper lg:hidden ${isMenuOpen ? 'open' : ''}`}>
             {!isMenuOpen && <div className="menu-pulse-ring" />}
             {isMenuOpen && <div className="menu-close-ring" />}
@@ -231,6 +184,7 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
           </div>
         </div>
 
+        {/* Mobile menu */}
         {isMenuOpen && (
           <div
             className="lg:hidden mb-3 shadow-2xl border border-white/10 rounded-2xl overflow-hidden"
@@ -253,7 +207,7 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
                 return (
                   <button
                     key={item.name}
-                    onClick={() => handleNavClick(item)}
+                    onClick={() => handleSectionNav(item.path, item.path.replace('/', ''))}
                     className="group flex items-center w-full px-5 py-3.5 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
                     <div
@@ -280,7 +234,7 @@ const Header = ({ isSpecialPage = false, currentPage = 'home' }: { isSpecialPage
               style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(147,51,234,0.08) 100%)' }}
             >
               <button
-                onClick={handleContactClick}
+                onClick={() => handleSectionNav('/contact', 'contact')}
                 className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 active:scale-95"
                 style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)', boxShadow: '0 4px 16px rgba(37,99,235,0.35)' }}
               >
