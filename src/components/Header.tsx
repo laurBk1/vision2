@@ -93,18 +93,28 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
 
   const isSolid = isSpecialPage || isMenuOpen || isScrolled;
 
-  // Navighează la o secțiune din homepage
+  // Paginile care NU există ca secțiuni pe homepage — navighează mereu direct
+  const standalonePages = ['/faq', '/privacy', '/terms'];
+
+  // Navighează la o secțiune din homepage sau la o pagină dedicată
   const handleSectionNav = (path: string, sectionId: string) => {
     setIsMenuOpen(false);
+    // Pagini standalone (nu sunt secțiuni pe homepage) — navighează direct mereu
+    if (standalonePages.includes(path)) {
+      navigate(path);
+      return;
+    }
     if (location.pathname === '/') {
-      // Suntem deja pe home — scroll direct
+      // Suntem pe home — scroll direct la secțiune
       const el = document.getElementById(sectionId);
       if (el) {
         const top = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
+      } else {
+        navigate(path);
       }
     } else {
-      // Navigăm la pagina dedicată
+      // Pe o altă pagină — navighează la pagina dedicată
       navigate(path);
     }
   };

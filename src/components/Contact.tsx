@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, Clock, ChevronDown, Check, Star, Zap, X, CheckCircle } from 'lucide-react';
 
 type Package = {
@@ -11,6 +12,7 @@ type Package = {
 };
 
 const Contact: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -27,7 +29,7 @@ const Contact: React.FC = () => {
   const nameInputRef = useRef<HTMLInputElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Restaurează datele formularului dacă clientul a revenit de pe Terms/Privacy
+  // Restaurează datele formularului + scroll dacă clientul a revenit de pe Terms/Privacy
   useEffect(() => {
     const saved = sessionStorage.getItem('contact_form_data');
     if (saved) {
@@ -35,15 +37,26 @@ const Contact: React.FC = () => {
         const parsed = JSON.parse(saved);
         setFormData(parsed.formData || formData);
         setGdprAccepted(parsed.gdprAccepted || false);
+        const scrollY = parsed.scrollY || 0;
         sessionStorage.removeItem('contact_form_data');
+        // Restaurează scroll-ul după ce componenta s-a randat
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: scrollY, behavior: 'instant' });
+          });
+        });
       } catch (e) {}
     }
   }, []);
 
-  // Salvează datele și navighează fără reload
-  const navigateToPage = (hash: string) => {
-    sessionStorage.setItem('contact_form_data', JSON.stringify({ formData, gdprAccepted }));
-    window.location.hash = hash;
+  // Salvează datele formularului + poziția de scroll și navighează cu React Router
+  const navigateToPage = (path: string) => {
+    sessionStorage.setItem('contact_form_data', JSON.stringify({
+      formData,
+      gdprAccepted,
+      scrollY: window.scrollY,
+    }));
+    navigate(path);
   };
 
   const packages: Package[] = [
@@ -651,7 +664,7 @@ const Contact: React.FC = () => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigateToPage('#privacy');
+                      navigateToPage('/privacy');
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >
@@ -662,7 +675,7 @@ const Contact: React.FC = () => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigateToPage('#terms');
+                      navigateToPage('/terms');
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >
