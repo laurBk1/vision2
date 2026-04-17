@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Shield, Cookie, ChevronDown, ChevronUp } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const COOKIE_CONSENT_KEY = 'visionedit_cookie_consent';
 const COOKIE_CONSENT_DATE_KEY = 'visionedit_cookie_consent_date';
@@ -32,7 +33,6 @@ function enableAllAnalytics() {
   if (typeof window.enableClarity === 'function') {
     window.enableClarity();
   }
-  // Clarity Consent V2 — necesar din oct 2025 pentru EEA
   if (typeof window.clarity === 'function') {
     window.clarity('consent', true);
   }
@@ -43,7 +43,6 @@ function disableAllAnalytics() {
   if (typeof window.disableClarity === 'function') {
     window.disableClarity();
   }
-  // Clarity Consent V2 — refuz explicit
   if (typeof window.clarity === 'function') {
     window.clarity('consent', false);
   }
@@ -52,67 +51,44 @@ function disableAllAnalytics() {
 const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [isPrivacyPage, setIsPrivacyPage] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @keyframes cookieSpin {
-        0%   { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      @keyframes cookieGlow {
-        0%, 100% { box-shadow: 0 0 6px 2px rgba(147,51,234,0.4); }
-        50%       { box-shadow: 0 0 18px 6px rgba(147,51,234,0.9); }
-      }
-      @keyframes cookieIdle {
-        0%, 100% { transform: rotate(0deg) scale(1); }
-        50%       { transform: rotate(8deg) scale(1.05); }
-      }
-      .cookie-icon-wrap {
-        animation: cookieSpin 1.8s ease-in-out 2, cookieGlow 1.2s ease-in-out 3;
-        animation-fill-mode: forwards;
-      }
-      .cookie-icon-wrap:hover {
-        animation: cookieIdle 0.6s ease-in-out infinite !important;
-      }
-    `;
-    document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
-  }, []);
-
-  useEffect(() => {
-    const checkPage = () => {
-      const onPrivacy = window.location.hash === '#privacy' || window.location.pathname === '/privacy';
-      setIsPrivacyPage(onPrivacy);
-    };
-    checkPage();
-    window.addEventListener('hashchange', checkPage);
-    window.addEventListener('popstate', checkPage);
-    return () => {
-      window.removeEventListener('hashchange', checkPage);
-      window.removeEventListener('popstate', checkPage);
-    };
-  }, []);
-
-  // Blochează scroll-ul pe pagina din spate când bannerul e vizibil
-  useEffect(() => {
-    if (visible) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (!document.getElementById('cookie-banner-styles')) {
+      const style = document.createElement('style');
+      style.id = 'cookie-banner-styles';
+      style.innerHTML = `
+        @keyframes cookieSpin {
+          0%   { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes cookieGlow {
+          0%, 100% { box-shadow: 0 0 6px 2px rgba(147,51,234,0.4); }
+          50%       { box-shadow: 0 0 18px 6px rgba(147,51,234,0.9); }
+        }
+        @keyframes cookieIdle {
+          0%, 100% { transform: rotate(0deg) scale(1); }
+          50%       { transform: rotate(8deg) scale(1.05); }
+        }
+        .cookie-icon-wrap {
+          animation: cookieSpin 1.8s ease-in-out 2, cookieGlow 1.2s ease-in-out 3;
+          animation-fill-mode: forwards;
+        }
+        .cookie-icon-wrap:hover {
+          animation: cookieIdle 0.6s ease-in-out infinite !important;
+        }
+      `;
+      document.head.appendChild(style);
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [visible]);
+  }, []);
 
+  // Verifică consimțământul la fiecare schimbare de pagină
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
-      if (!isPrivacyPage) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
+      // Fără consimțământ → afișează bannerul pe ORICE pagină, inclusiv /privacy
+      setVisible(true);
     } else {
       setVisible(false);
       if (consent === 'accepted') {
@@ -121,7 +97,19 @@ const CookieBanner = () => {
         disableAllAnalytics();
       }
     }
-  }, [isPrivacyPage]);
+  }, [location.pathname]);
+
+  // Blochează scroll-ul când bannerul e vizibil
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [visible]);
 
   const handleAccept = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
@@ -137,16 +125,28 @@ const CookieBanner = () => {
     setVisible(false);
   };
 
+  // Navighează la /privacy FĂRĂ a ascunde bannerul
+  // Bannerul rămâne vizibil peste pagina de Privacy Policy
   const handlePrivacyClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.hash = '#privacy';
+    e.stopPropagation();
+    navigate('/privacy');
   };
 
   if (!visible) return null;
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[99998]" />
+      {/* Overlay care blochează orice interacțiune cu pagina din spate */}
+      <div
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99998]"
+        onClick={(e) => e.stopPropagation()}
+        onMouseDown={(e) => e.stopPropagation()}
+        aria-hidden="true"
+        style={{ pointerEvents: 'all' }}
+      />
+
+      {/* Bannerul cookies */}
       <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
         <div className="max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden">
 
@@ -162,6 +162,7 @@ const CookieBanner = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
+              <Shield className="h-4 w-4 text-purple-400 hidden sm:block" />
               <span className="text-purple-400 text-sm font-medium hidden sm:block">Protejat GDPR</span>
             </div>
           </div>
@@ -176,7 +177,6 @@ const CookieBanner = () => {
               ) pentru a înțelege cum vizitatorii interacționează cu noi. Datele sunt colectate în mod pseudonim și nu sunt utilizate pentru a te identifica personal.
             </p>
 
-            {/* Detalii expandabile */}
             <button
               onClick={() => setShowDetails(!showDetails)}
               className="flex items-center space-x-2 text-gray-400 hover:text-purple-400 text-sm transition-colors mb-4"
@@ -187,7 +187,6 @@ const CookieBanner = () => {
 
             {showDetails && (
               <div className="bg-gray-800/60 rounded-xl p-4 mb-5 border border-gray-700/50 space-y-3">
-                {/* Esențiale */}
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri strict necesare</span>
@@ -195,10 +194,7 @@ const CookieBanner = () => {
                   </div>
                   <p className="text-gray-400 text-xs leading-relaxed">Necesare pentru funcționarea de bază a site-ului. Nu pot fi dezactivate.</p>
                 </div>
-
                 <div className="border-t border-gray-700/50" />
-
-                {/* Google Analytics */}
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri de analiză</span>
@@ -208,10 +204,7 @@ const CookieBanner = () => {
                     Cookie-urile <code className="text-purple-300">_ga</code> și <code className="text-purple-300">_ga_*</code> colectează date anonime despre vizitatori (pagini vizitate, durata sesiunii, sursa traficului). Durata: 2 ani. Operator: Google LLC.
                   </p>
                 </div>
-
                 <div className="border-t border-gray-700/50" />
-
-                {/* Microsoft Clarity */}
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className="text-white text-sm font-semibold">Cookie-uri de comportament</span>
@@ -224,7 +217,6 @@ const CookieBanner = () => {
               </div>
             )}
 
-            {/* Butoane */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAccept}
@@ -242,9 +234,13 @@ const CookieBanner = () => {
 
             <p className="text-gray-500 text-xs text-center mt-3">
               Poți utiliza site-ul și fără cookie-uri de analiză. Preferințele tale sunt salvate local pe dispozitiv și pot fi modificate oricând din setările browserului. Pentru mai multe informații, consultă{' '}
-              <a href="#privacy" onClick={handlePrivacyClick} className="text-purple-400 hover:text-purple-300 underline underline-offset-1">
+              <button
+                onClick={handlePrivacyClick}
+                className="text-purple-400 hover:text-purple-300 underline underline-offset-1 bg-transparent border-none cursor-pointer text-xs p-0"
+              >
                 Politica de Confidențialitate
-              </a>.
+              </button>
+              .
             </p>
           </div>
         </div>
