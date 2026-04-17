@@ -83,13 +83,19 @@ const CookieBanner = () => {
     }
   }, []);
 
-  // Verifică consimțământul la fiecare schimbare de pagină
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    if (!consent) {
-      // Fără consimțământ → afișează bannerul pe ORICE pagină, inclusiv /privacy
+    const isPrivacyPage = location.pathname === '/privacy';
+
+    if (isPrivacyPage) {
+      // Pe pagina /privacy: nu afișa bannerul și nu bloca pagina
+      // Vizitatorul poate citi politica în liniște
+      setVisible(false);
+    } else if (!consent) {
+      // Pe orice altă pagină, fără consimțământ → arată bannerul
       setVisible(true);
     } else {
+      // Are deja consimțământ salvat → nu mai afișa bannerul
       setVisible(false);
       if (consent === 'accepted') {
         enableAllAnalytics();
@@ -125,8 +131,9 @@ const CookieBanner = () => {
     setVisible(false);
   };
 
-  // Navighează la /privacy FĂRĂ a ascunde bannerul
-  // Bannerul rămâne vizibil peste pagina de Privacy Policy
+  // Navighează la /privacy — bannerul dispare automat (logica din useEffect)
+  // Când vizitatorul iese de pe /privacy și merge pe altă pagină,
+  // bannerul reapare automat dacă nu a acceptat/refuzat
   const handlePrivacyClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
