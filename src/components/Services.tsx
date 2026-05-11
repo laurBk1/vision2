@@ -1,8 +1,10 @@
-import React from 'react';
-import { Video, Scissors, Palette, Megaphone, Camera, Zap, Eye, Volume2, Type, Sparkles, Target, Layers } from 'lucide-react';
+import React, { useState } from 'react';
+import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp } from 'lucide-react';
 
 const Services = () => {
-  const handleLearnMore = (serviceTitle: string) => {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+
+  const handleLearnMore = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -11,13 +13,6 @@ const Services = () => {
 
   const services = [
     {
-      icon: Sparkles,
-      title: 'Tranziții și Efecte Vizuale Impactante',
-      description: 'Captăm atenția publicului tău din primele secunde, sporind considerabil șansele videoclipului tău de a devenir viral prin efecte vizuale spectaculoase și tranziții fluide.',
-      features: ['Efecte de tranziție cinematice', 'Animații captivante', 'Elemente vizuale virale'],
-      highlight: 'Viral Ready'
-    },
-    {
       icon: Scissors,
       title: 'Montaj Video și Editare Profesională',
       description: 'Asigurăm un flow dinamic și captivant, cu tăieturi precise, care menține interesul și implicarea publicului de la început până la sfârșit.',
@@ -25,11 +20,11 @@ const Services = () => {
       highlight: 'Pro Editing'
     },
     {
-      icon: Volume2,
-      title: 'Sound Design și Efecte Audio Profesionale',
-      description: 'Îmbogățim conținutul videoclipului tău cu sunete și efecte care intensifică emoția și completează perfect mesajul vizual.',
-      features: ['Efecte audio premium', 'Sincronizare audio-video', 'Mixaj profesional'],
-      highlight: 'Audio Pro'
+      icon: Flame,
+      title: 'Hook Viral în Primele 3 Secunde',
+      description: 'Algoritmul măsoară câți oameni rămân după primele 3 secunde. Dacă pleacă, videoclipul nu mai e promovat. Dacă rămân, explozia de views începe. Noi ne specializăm exact pe aceste 3 secunde.',
+      features: ['Hook vizual + text + audio în primele 3 secunde', 'Variante multiple testate pe trenduri actuale', 'Strategie bazată pe datele de retenție ale platformelor'],
+      highlight: 'Viral Trigger'
     },
     {
       icon: Type,
@@ -39,11 +34,25 @@ const Services = () => {
       highlight: 'Accessible'
     },
     {
-      icon: Target,
-      title: 'Branding și Elemente Grafice Integrate',
-      description: 'Întărim identitatea și prezența online a afacerii tale prin încorporarea strategică a logo-ului, watermark-ului și a elementelor grafice pe care ni le furnizezi.',
-      features: ['Integrare logo profesională', 'Watermark personalizat', 'Elemente de brand'],
-      highlight: 'Brand Focus'
+      icon: Volume2,
+      title: 'Sound Design și Efecte Audio Profesionale',
+      description: 'Îmbogățim conținutul videoclipului tău cu sunete și efecte care intensifică emoția și completează perfect mesajul vizual.',
+      features: ['Efecte audio premium', 'Sincronizare audio-video', 'Mixaj profesional'],
+      highlight: 'Audio Pro'
+    },
+    {
+      icon: Image,
+      title: 'Copertă Captivantă',
+      description: 'Înainte ca cineva să vadă videoclipul tău, vede imaginea de copertă. Dacă aceasta nu îl oprește din scroll în prima secundă, videoclipul tău nu există pentru el. Un thumbnail bun poate dubla sau tripla vizualizările fără să schimbi nimic altceva.',
+      features: ['Design custom adaptat nișei tale', 'Text emoțional și compoziție care oprește scroll-ul', '2-3 variante gata de testat, tu alegi câștigătoarea'],
+      highlight: 'Click Boost'
+    },
+    {
+      icon: Sparkles,
+      title: 'Tranziții și Efecte Vizuale Impactante',
+      description: 'Captăm atenția publicului tău din primele secunde, sporind considerabil șansele videoclipului tău de a devenir viral prin efecte vizuale spectaculoase și tranziții fluide.',
+      features: ['Efecte de tranziție cinematice', 'Animații captivante', 'Elemente vizuale virale'],
+      highlight: 'Viral Ready'
     },
     {
       icon: Palette,
@@ -53,11 +62,18 @@ const Services = () => {
       highlight: 'Visual Pro'
     },
     {
-      icon: Eye,
-      title: 'Stabilizare Video și Blur Selectiv',
-      description: 'Eliminăm tremurul pentru un aspect fluid și profesionist. Aplicăm estompare (blur) strategic, pentru a masca elemente nedorite sau a direcționa atenția către ceea ce contează cu adevărat.',
-      features: ['Stabilizare avansată', 'Blur selectiv strategic', 'Focus directing'],
-      highlight: 'Smooth Pro'
+      icon: Target,
+      title: 'Branding și Elemente Grafice Integrate',
+      description: 'Întărim identitatea și prezența online a afacerii tale prin încorporarea strategică a logo-ului, watermark-ului și a elementelor grafice pe care ni le furnizezi.',
+      features: ['Integrare logo profesională', 'Watermark personalizat', 'Elemente de brand'],
+      highlight: 'Brand Focus'
+    },
+    {
+      icon: RefreshCw,
+      title: 'Transformare Conținut Lung în Shorts',
+      description: 'Ai un podcast, un vlog lung, un interviu sau un live? Nu trebuie să filmezi nimic nou. Luăm ce ai deja și transformăm cele mai bune momente în Shorts separate, gata de postat pe toate platformele.',
+      features: ['Extragere manuală a celor mai bune momente', 'Hook, subtitrări și efecte pentru fiecare short', 'Același brand, conținut nou, fără filmare extra'],
+      highlight: 'Content x10'
     },
     {
       icon: Layers,
@@ -74,11 +90,11 @@ const Services = () => {
       highlight: 'Creative'
     },
     {
-      icon: Layers,
-      title: 'Green Screen & Keying',
-      description: 'Folosim tehnici avansate de chroma key pentru a elimina fundalul și a integra subiectul în scene mai dinamice, virale sau creative, oferind posibilități nelimitate de personalizare.',
-      features: ['Eliminare fundal cu keying curat', 'Adăugare fundaluri animate sau branded', 'Shadow + edge refinement pentru realism'],
-      highlight: 'Advanced'
+      icon: Eye,
+      title: 'Stabilizare Video și Blur Selectiv',
+      description: 'Eliminăm tremurul pentru un aspect fluid și profesionist. Aplicăm estompare (blur) strategic, pentru a masca elemente nedorite sau a direcționa atenția către ceea ce contează cu adevărat.',
+      features: ['Stabilizare avansată', 'Blur selectiv strategic', 'Focus directing'],
+      highlight: 'Smooth Pro'
     },
     {
       icon: Target,
@@ -86,6 +102,13 @@ const Services = () => {
       description: 'Adaptăm conținut filmat orizontal (landscape) pentru vertical (Shorts), păstrând subiectul clar și în centru. Evităm marginile negre și menținem aspectul profesional.',
       features: ['Reîncadrare dinamică (motion tracking pe subiect)', 'Zoom adaptiv pentru diferite scene', 'Eliminarea spațiilor moarte', 'Centrare automată pe acțiune'],
       highlight: 'Smart Crop'
+    },
+    {
+      icon: Layers,
+      title: 'Green Screen & Keying',
+      description: 'Folosim tehnici avansate de chroma key pentru a elimina fundalul și a integra subiectul în scene mai dinamice, virale sau creative, oferind posibilități nelimitate de personalizare.',
+      features: ['Eliminare fundal cu keying curat', 'Adăugare fundaluri animate sau branded', 'Shadow + edge refinement pentru realism'],
+      highlight: 'Advanced'
     },
     {
       icon: Zap,
@@ -120,7 +143,7 @@ const Services = () => {
   return (
     <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
@@ -131,37 +154,30 @@ const Services = () => {
               Ce Servicii Oferim?
             </h2>
           </div>
-
-          {/* Subheader - Textul tau profesional */}
           <div className="max-w-3xl mx-auto px-4 mt-6">
-          <p className="text-base md:text-lg text-gray-800 font-semibold leading-tight">
-  Editare profesională pentru <span className="text-blue-700">Shorts, Reels și TikTok</span> + alte formate scurte.
-</p>
-<p className="text-base md:text-lg text-gray-600 mt-4 leading-relaxed font-medium italic">
-      Edităm conținut video care construiește audiențe fidele, generează engagement real și 
-      <span className="text-indigo-600 font-bold not-italic"> transformă urmăritorii în clienți</span>, 
-      accelerând vânzările în mod organic.
-    </p>
-   
+            <p className="text-base md:text-lg text-gray-800 font-semibold leading-tight">
+              Editare profesională pentru <span className="text-blue-700">Shorts, Reels și TikTok</span> + alte formate scurte.
+            </p>
+            <p className="text-base md:text-lg text-gray-600 mt-4 leading-relaxed font-medium italic">
+              Edităm conținut video care construiește audiențe fidele, generează engagement real și
+              <span className="text-indigo-600 font-bold not-italic"> transformă urmăritorii în clienți</span>,
+              accelerând vânzările în mod organic.
+            </p>
           </div>
         </div>
 
         {/* Special Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
           {specialFeatures.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 md:p-8 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl"
             >
               <div className="bg-white/20 rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 flex items-center justify-center">
                 <feature.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-blue-100 mb-3 md:mb-4 leading-relaxed font-medium text-sm md:text-base">
-                {feature.description}
-              </p>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">{feature.title}</h3>
+              <p className="text-blue-100 mb-3 md:mb-4 leading-relaxed font-medium text-sm md:text-base">{feature.description}</p>
               <div className="bg-white/20 rounded-lg py-2 px-3 md:px-4 inline-block">
                 <span className="font-bold text-xs md:text-sm">{feature.stats}</span>
               </div>
@@ -171,44 +187,57 @@ const Services = () => {
 
         {/* Main Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
-            >
-              <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-blue-600 text-white text-xs font-bold px-2 md:px-3 py-1 rounded-full">
-                {service.highlight}
-              </div>
-              
-              <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-3 md:p-4 w-fit mb-4 md:mb-6 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
-                <service.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
-              </div>
-              
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-                {service.title}
-              </h3>
-              
-              <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-sm md:text-base">
-                {service.description}
-              </p>
-              
-              <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-xs md:text-sm text-gray-500">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-2 md:mr-3 flex-shrink-0"></div>
-                    <span className="group-hover:text-gray-700 transition-colors duration-200 font-medium">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <button 
-                onClick={() => handleLearnMore(service.title)}
-                className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-600 hover:to-purple-600 hover:text-white text-gray-700 font-bold py-2 md:py-3 rounded-lg transition-all duration-300 transform group-hover:scale-105 text-sm md:text-base"
+          {services.map((service, index) => {
+            const isOpen = expandedService === index;
+            return (
+              <div
+                key={index}
+                className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
               >
-                Află Mai Multe
-              </button>
-            </div>
-          ))}
+                <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-blue-600 text-white text-xs font-bold px-2 md:px-3 py-1 rounded-full">
+                  {service.highlight}
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-3 md:p-4 w-fit mb-4 md:mb-6 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
+                  <service.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+                </div>
+
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+                  {service.title}
+                </h3>
+
+                <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-sm md:text-base">
+                  {service.description}
+                </p>
+
+                <button
+                  onClick={() => setExpandedService(isOpen ? null : index)}
+                  className="flex items-center gap-1.5 text-blue-600 text-sm md:text-base font-bold mb-4 hover:text-blue-800 transition-colors w-fit"
+                >
+                  {isOpen ? 'Ascunde detalii' : 'Vezi ce include'}
+                  {isOpen ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
+                </button>
+
+                {isOpen && (
+                  <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start text-sm md:text-base text-gray-700">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-2 md:mr-3 flex-shrink-0 mt-1.5"></div>
+                        <span className="font-medium leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <button
+                  onClick={handleLearnMore}
+                  className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-600 hover:to-purple-600 hover:text-white text-gray-700 font-bold py-2 md:py-3 rounded-lg transition-all duration-300 transform group-hover:scale-105 text-sm md:text-base"
+                >
+                  Află Mai Multe
+                </button>
+              </div>
+            );
+          })}
         </div>
 
         {/* Process Overview */}
@@ -218,11 +247,10 @@ const Services = () => {
               Procesul Nostru de Lucru:
             </h3>
             <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium italic">
-  Fiecare proiect urmează un <span className="text-indigo-600 font-bold not-italic">proces structurat</span> pentru a asigura 
-  <span className="text-gray-900 font-bold not-italic"> calitatea și satisfacția clientului</span>.
-</p>
+              Fiecare proiect urmează un <span className="text-indigo-600 font-bold not-italic">proces structurat</span> pentru a asigura
+              <span className="text-gray-900 font-bold not-italic"> calitatea și satisfacția clientului</span>.
+            </p>
           </div>
-          
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
               { step: '01', title: 'Briefing', desc: 'Înțelegem viziunea ta' },
@@ -234,12 +262,8 @@ const Services = () => {
                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-3 md:mb-4 font-bold text-sm md:text-lg shadow-lg">
                   {item.step}
                 </div>
-                <h4 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">
-                  {item.title}
-                </h4>
-                <p className="text-gray-600 text-xs md:text-sm font-medium">
-                  {item.desc}
-                </p>
+                <h4 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">{item.title}</h4>
+                <p className="text-gray-600 text-xs md:text-sm font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -252,11 +276,11 @@ const Services = () => {
               Vrei conținut care aduce rezultate?
             </h3>
             <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto font-medium">
-              Alege din serviciile noastre profesionale și vezi cum videoclipurile tale 
+              Alege din serviciile noastre profesionale și vezi cum videoclipurile tale
               devin virale și aduc rezultate reale pentru afacerea ta.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => {
                   const pricingSection = document.getElementById('pricing');
                   if (pricingSection) pricingSection.scrollIntoView({ behavior: 'smooth' });
@@ -265,7 +289,7 @@ const Services = () => {
               >
                 Vezi Prețurile
               </button>
-              <button 
+              <button
                 onClick={() => {
                   const contactSection = document.getElementById('contact');
                   if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
