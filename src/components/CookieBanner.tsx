@@ -165,7 +165,7 @@ const CookieBanner = () => {
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg">Confidențialitate & Cookies</h3>
-                <p className="text-purple-300 text-sm">VisionEdit SRL — Politică Cookies</p>
+                <p className="text-purple-300 text-sm">VisionEdit România — Politică de Cookie-uri</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
