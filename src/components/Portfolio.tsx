@@ -71,7 +71,7 @@ const Portfolio = () => {
 
   const achievements = [
     { number: '150+', label: 'Clienți Mulțumiți' },
-    { number: '1345+', label: 'Proiecte Finalizate' },
+    { number: '2.340+', label: 'Proiecte Finalizate' },
     { number: '3+', label: 'Ani Experiență' },
     { number: '100%', label: 'Confidențialitate' }
   ];

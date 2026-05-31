@@ -185,7 +185,7 @@ const FAQ = () => {
       faqs: [
         {
           q: 'Pot consulta exemple din portofoliu anterior colaborării?',
-          a: 'Din considerente de confidențialitate față de clienții noștri, nu facem public portofoliul nostru. Fiecare proiect rămâne proprietatea exclusivă a clientului și nu este utilizat în scop promoțional fără acordul scris explicit al acestuia. Calitatea serviciilor noastre este reflectată de cei 150+ clienți mulțumiți și 1.345+ proiecte finalizate.'
+          a: 'Din considerente de confidențialitate față de clienții noștri, nu facem public portofoliul nostru. Fiecare proiect rămâne proprietatea exclusivă a clientului și nu este utilizat în scop promoțional fără acordul scris explicit al acestuia. Calitatea serviciilor noastre este reflectată de cei 150+ clienți mulțumiți și 2.340+ proiecte finalizate.'
         },
         {
           q: 'Datele mele cu caracter personal sunt protejate?',

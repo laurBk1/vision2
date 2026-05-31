@@ -542,7 +542,7 @@ const Hero = () => {
             <div className="h-stats">
               <div className="h-stat">
                 <div className="h-stat-icon"><Video size={28} color="#60A5FA" /></div>
-                <div className="h-stat-num">1345+</div>
+                <div className="h-stat-num">2.340+</div>
                 <div className="h-stat-lbl">Proiecte Finalizate</div>
               </div>
               <div className="h-stat">
