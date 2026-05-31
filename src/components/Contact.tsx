@@ -264,11 +264,11 @@ const Contact: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 border-2 border-purple-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
-            <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</h2>
+            <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</h2>
           </div>
           <div className="max-w-3xl mx-auto px-4 text-center">
-  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic">
+  <p className="text-lg text-gray-600 leading-relaxed font-medium italic">
     Ești gata să-ți transformi ideile în videoclipuri care 
     <span className="text-indigo-600 font-bold not-italic"> atrag și convertesc</span>?
   </p>
@@ -302,7 +302,7 @@ const Contact: React.FC = () => {
               <h2 className="text-blue-700 text-base font-semibold mb-2">
                 Cum lucrăm împreună?
               </h2>
-              <p className="text-gray-700 text-sm leading-relaxed font-medium">
+              <p className="text-base text-gray-700 leading-relaxed font-medium">
                 La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.
               </p>
               <p className="text-gray-700 text-sm leading-relaxed font-medium mt-2">

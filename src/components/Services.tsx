@@ -147,15 +147,15 @@ const Services = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
-            <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
+            <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Servicii Complete
             </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
               Ce Servicii Oferim?
             </h2>
           </div>
           <div className="max-w-3xl mx-auto px-4 mt-6">
-            <p className="text-base md:text-lg text-gray-800 font-semibold leading-tight">
+            <p className="text-lg md:text-xl text-gray-800 font-semibold leading-tight">
               Editare profesională pentru <span className="text-blue-700">Shorts, Reels și TikTok</span> + alte formate scurte.
             </p>
             <p className="text-base md:text-lg text-gray-600 mt-4 leading-relaxed font-medium italic">
@@ -176,10 +176,10 @@ const Services = () => {
               <div className="bg-white/20 rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 flex items-center justify-center">
                 <feature.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">{feature.title}</h3>
-              <p className="text-blue-100 mb-3 md:mb-4 leading-relaxed font-medium text-sm md:text-base">{feature.description}</p>
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{feature.title}</h3>
+              <p className="text-blue-100 mb-3 md:mb-4 leading-relaxed font-medium text-base">{feature.description}</p>
               <div className="bg-white/20 rounded-lg py-2 px-3 md:px-4 inline-block">
-                <span className="font-bold text-xs md:text-sm">{feature.stats}</span>
+                <span className="font-bold text-sm">{feature.stats}</span>
               </div>
             </div>
           ))}
@@ -202,17 +202,17 @@ const Services = () => {
                   <service.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
                 </div>
 
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-sm md:text-base">
+                <p className="text-base text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium">
                   {service.description}
                 </p>
 
                 <button
                   onClick={() => setExpandedService(isOpen ? null : index)}
-                  className="flex items-center gap-1.5 text-blue-600 text-sm md:text-base font-bold mb-4 hover:text-blue-800 transition-colors w-fit"
+                  className="flex items-center gap-1.5 text-blue-600 text-base font-bold mb-4 hover:text-blue-800 transition-colors w-fit"
                 >
                   {isOpen ? 'Ascunde detalii' : 'Vezi ce include'}
                   {isOpen ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
@@ -221,7 +221,7 @@ const Services = () => {
                 {isOpen && (
                   <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-sm md:text-base text-gray-700">
+                      <li key={idx} className="flex items-start text-base text-gray-700">
                         <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-2 md:mr-3 flex-shrink-0 mt-1.5"></div>
                         <span className="font-medium leading-relaxed">{feature}</span>
                       </li>
@@ -231,7 +231,7 @@ const Services = () => {
 
                 <button
                   onClick={handleLearnMore}
-                  className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-600 hover:to-purple-600 hover:text-white text-gray-700 font-bold py-2 md:py-3 rounded-lg transition-all duration-300 transform group-hover:scale-105 text-sm md:text-base"
+                  className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-600 hover:to-purple-600 hover:text-white text-gray-700 font-bold py-3 rounded-lg transition-all duration-300 transform group-hover:scale-105 text-base"
                 >
                   Află Mai Multe
                 </button>
@@ -246,7 +246,7 @@ const Services = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
               Procesul Nostru de Lucru:
             </h3>
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium italic">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium italic">
               Fiecare proiect urmează un <span className="text-indigo-600 font-bold not-italic">proces structurat</span> pentru a asigura
               <span className="text-gray-900 font-bold not-italic"> calitatea și satisfacția clientului</span>.
             </p>
@@ -259,11 +259,11 @@ const Services = () => {
               { step: '04', title: 'Livrare', desc: 'Rezultat final perfect' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-3 md:mb-4 font-bold text-sm md:text-lg shadow-lg">
+                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-3 md:mb-4 font-bold text-base md:text-lg shadow-lg">
                   {item.step}
                 </div>
-                <h4 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">{item.title}</h4>
-                <p className="text-gray-600 text-xs md:text-sm font-medium">{item.desc}</p>
+                <h4 className="font-bold text-gray-900 mb-1 md:mb-2 text-base">{item.title}</h4>
+                <p className="text-sm text-gray-600 font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -285,7 +285,7 @@ const Services = () => {
                   const pricingSection = document.getElementById('pricing');
                   if (pricingSection) pricingSection.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
               >
                 Vezi Prețurile
               </button>
@@ -294,7 +294,7 @@ const Services = () => {
                   const contactSection = document.getElementById('contact');
                   if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-200"
+                className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-lg transition-all duration-200"
               >
                 Contactează-ne!
               </button>

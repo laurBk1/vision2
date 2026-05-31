@@ -221,10 +221,10 @@ const FAQ = () => {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Întrebări Frecvente
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Găsiți aici răspunsuri la cele mai frecvente întrebări despre serviciile noastre de editare video,
             tarife, termene de livrare și procesul de colaborare cu VisionEdit SRL.
           </p>
@@ -235,7 +235,7 @@ const FAQ = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             Cum vă putem sprijini?
           </h3>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-base text-gray-700 leading-relaxed">
             La VisionEdit, transparența și comunicarea clară sunt standarde ale fiecărei colaborări.
             Indiferent că este primul dumneavoastră proiect video sau că vizați un parteneriat de lungă durată
             pentru promovarea afacerii, suntem disponibili să răspundem oricărei întrebări anterior demarării colaborării.
@@ -269,7 +269,7 @@ const FAQ = () => {
                         onClick={() => toggleItem(key)}
                         className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors duration-200"
                       >
-                        <span className="font-medium text-gray-900 pr-4">{faq.q}</span>
+                        <span className="text-base font-medium text-gray-900 pr-4">{faq.q}</span>
                         {isOpen
                           ? <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
                           : <ChevronDown className="h-5 w-5 text-blue-400 flex-shrink-0" />

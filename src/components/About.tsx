@@ -38,19 +38,19 @@ const About = () => {
         {/* Header */}
         <div className="text-center mb-12 md:mb-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-green-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
-            <span className="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
+            <span className="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Despre VisionEdit
             </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent leading-tight">
               Cu ce ne ocupăm?
             </h2>
           </div>
           <div className="max-w-3xl mx-auto px-4 py-6 text-center">
-  <p className="text-gray-700 leading-relaxed text-base md:text-xl font-medium">
+  <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
     Creăm și edităm videoclipuri scurte, captivante și optimizate pentru 
     <strong> Reels, TikTok, Shorts</strong> și alte platforme.
   </p>
-  <p className="text-gray-500 text-sm md:text-lg mt-4 leading-relaxed italic">
+  <p className="text-base md:text-lg text-gray-500 mt-4 leading-relaxed italic">
     Combinăm storytelling-ul autentic și trendurile actuale pentru a transforma 
     ideile tale în conținut video care atrage și convertește.
   </p>
@@ -85,10 +85,10 @@ const About = () => {
                     <service.icon className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 md:mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed font-medium text-sm md:text-base">
+                    <p className="text-base text-gray-600 leading-relaxed font-medium">
                       {service.description}
                     </p>
                   </div>
@@ -108,7 +108,7 @@ const About = () => {
               <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">
                 {achievement.value}
               </div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">
+              <div className="text-sm text-gray-600 font-medium">
                 {achievement.label}
               </div>
             </div>
@@ -127,7 +127,7 @@ const About = () => {
 
             <div className="relative z-10 max-w-4xl mx-auto">
               <div className="mb-10">
-                <h3 className="text-2xl md:text-4xl font-extrabold mb-4 leading-tight tracking-tight">
+                <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight tracking-tight">
                   Concurența ta se folosește deja de video marketing ca soluție de promovare!
                 </h3>
                 <h3 className="text-xl md:text-2xl font-semibold text-blue-100/90 uppercase tracking-widest">
@@ -137,7 +137,7 @@ const About = () => {
 
               <div className="w-20 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-10"></div>
 
-              <p className="text-lg md:text-xl mb-12 text-white/90 font-medium leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl mb-12 text-white/90 font-medium leading-relaxed max-w-3xl mx-auto">
                 Contactează-ne astăzi și du-ți afacerea la următorul nivel!{" "}
                 <span className="md:block mt-2 font-normal text-white/80">
                   Împreună, creăm videoclipuri care atrag clienți și aduc rezultate reale.

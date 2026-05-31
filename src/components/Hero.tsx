@@ -1,10 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react';
 
 const Hero = () => {
+  const navigate = useNavigate();
   const handleFAQ = () => {
-    history.pushState(null, '', '#faq');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    navigate('/faq');
   };
   const handleViewPortfolio = () => {
     const el = document.getElementById('portfolio');

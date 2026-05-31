@@ -176,7 +176,7 @@ const Pricing = () => {
       <div className={`p-6 md:p-8 ${pkg.popular ? 'pt-12 md:pt-16' : ''}`}>
         <div className="text-center mb-6 md:mb-8">
           <div className="text-3xl md:text-4xl mb-3 md:mb-4">{pkg.icon}</div>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">
             {pkg.name}
           </h3>
           {/* Premium subtitle badge with pulse glow */}
@@ -202,7 +202,7 @@ const Pricing = () => {
             </div>
           )}
           
-          <p className={`text-sm md:text-base font-bold ${isComplete ? 'text-green-800' : 'text-gray-800'} leading-tight`}>
+          <p className={`text-base font-bold ${isComplete ? 'text-green-800' : 'text-gray-800'} leading-tight`}>
             {pkg.description}
           </p>
         </div>
@@ -211,7 +211,7 @@ const Pricing = () => {
           {pkg.features.map((feature: string, idx: number) => (
             <li key={idx} className="flex items-start">
               <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-              <span className="text-gray-700 text-sm md:text-base leading-relaxed font-medium">
+              <span className="text-gray-700 text-base leading-relaxed font-medium">
                 {feature}
               </span>
             </li>
@@ -221,7 +221,7 @@ const Pricing = () => {
         <button 
           onClick={handleContactClick}
           aria-label={`Alege pachetul ${pkg.buttonText}`}
-          className={`w-full text-white font-bold py-3 md:py-4 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 text-sm md:text-base ${pkg.buttonColor}`}
+          className={`w-full text-white font-bold py-4 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 text-base ${pkg.buttonColor}`}
         >
           <span>{pkg.buttonText}</span>
           <Zap className="h-4 w-4 md:h-5 md:w-5" />
@@ -236,20 +236,20 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-4xl mx-auto shadow-md mb-8">
-            <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
+            <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Pachete Video
             </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
             Pachete Editare Video<br className="sm:hidden" />
               <span className="block mt-1">pentru Promovarea Afacerii Tale!</span>
             </h2>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">
-  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic">
+  <p className="text-lg text-gray-600 leading-relaxed font-medium italic">
     Alege planul care îți va <span className="text-indigo-600 font-bold not-italic">transforma conținutul</span> și îți va 
     <span className="text-gray-900 font-bold not-italic"> crește vizibilitatea online</span>.
   </p>
-  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mt-3 italic">
+  <p className="text-lg text-gray-600 leading-relaxed font-medium mt-3 italic">
     Pachete <span className="text-blue-700 font-bold not-italic">flexibile</span> adaptate nevoilor tale de business.
   </p>
 

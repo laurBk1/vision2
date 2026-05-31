@@ -70,7 +70,7 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
             </h3>
 
             {/* Description */}
-            <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-sm md:text-base text-left">
+            <p className="text-base text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium text-left">
               {description}
             </p>
 
@@ -79,7 +79,7 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
               {details.map((detail, idx) => (
                 <li
                   key={idx}
-                  className="flex items-center text-xs md:text-sm text-gray-500 font-medium"
+                  className="flex items-center text-sm text-gray-500 font-medium"
                 >
                   <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 mr-2 md:mr-3" />
                   {detail}
@@ -177,16 +177,16 @@ const Process = () => {
           }}
         >
           <div className="bg-gradient-to-r from-gray-50 via-white to-slate-50 border-2 border-gray-300 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
-            <span className="inline-block bg-gradient-to-r from-gray-700 to-slate-700 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
+            <span className="inline-block bg-gradient-to-r from-gray-700 to-slate-700 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Proces Creativ
             </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
               Procesul Nostru Creativ
             </h2>
           </div>
 
           <div className="max-w-3xl mx-auto px-4 mt-4">
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic">
+            <p className="text-lg text-gray-600 leading-relaxed font-medium italic">
               De la conceptul inițial la livrarea finală, urmăm un
               <span className="text-indigo-600 font-bold not-italic"> proces dovedit </span>
               care asigură rezultate de calitate și
