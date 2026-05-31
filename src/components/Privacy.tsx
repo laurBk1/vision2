@@ -46,7 +46,7 @@ const Privacy = () => {
       icon: FileText,
       title: '1. Introducere',
       content: [
-        'VISIONEDIT SRL ("noi", "compania") respectă prevederile Regulamentului General privind Protecția Datelor (GDPR) (UE) 2016/679 și ale legislației românești aplicabile în domeniul protecției datelor cu caracter personal.',
+        'VisionEdit România (denumită în continuare "Prestatorul", "noi") respectă prevederile Regulamentului General privind Protecția Datelor (GDPR) (UE) 2016/679 și ale legislației românești aplicabile în domeniul protecției datelor cu caracter personal.',
         '',
         'Această politică stabilește modul în care colectăm, utilizăm, stocăm și protejăm datele personale ale clienților și vizitatorilor site-ului nostru www.visionedit.ro.',
         '',
@@ -115,7 +115,7 @@ const Privacy = () => {
       icon: Users,
       title: '3. Datele Operatorului',
       content: [
-        'Denumire: VISIONEDIT S.R.L.',
+        'Denumire: VISIONEDIT S.R.L. (VisionEdit România)',
         'Sediu social: Jud. Ilfov, Oraș Popești Leordeni',
         'Cod unic de înregistrare (CUI): 54406122',
         '',
@@ -153,12 +153,16 @@ const Privacy = () => {
       icon: Users,
       title: '6. Destinatarii Datelor',
       content: [
-        'Datele pot fi accesate de:',
+        'Datele tale pot fi accesate de:',
         '',
-        '• Personalul autorizat al companiei noastre',
-        '• Furnizori de servicii IT (doar în măsura necesară pentru funcționarea site-ului)',
+        '• Personalul autorizat al VisionEdit România',
+        '• Furnizori de servicii IT parteneri (doar în măsura strict necesară pentru funcționarea site-ului)',
+        '• Google LLC — prin Google Analytics, pentru statistici anonime despre vizite',
+        '• Microsoft Corporation — prin Microsoft Clarity, pentru optimizarea experienței utilizatorilor',
         '',
-        'Nu facem transferuri internaționale de date și nu vindem sau partajăm datele cu terți în alte scopuri decât cele menționate.'
+        'Atât Google LLC cât și Microsoft Corporation sunt stabiliți în SUA. Datele transferate sunt pseudonimizate și protejate prin Clauze Contractuale Standard (art. 46 GDPR) și EU-US Data Privacy Framework.',
+        '',
+        'Nu vindem și nu partajăm datele tale cu terți în scopuri de marketing sau publicitate.'
       ]
     },
     {
@@ -224,7 +228,7 @@ const Privacy = () => {
         '',
         'Această politică este efectivă începând cu 03.04.2026.',
         '',
-        'VISIONEDIT SRL se angajează să respecte cele mai înalte standarde de protecție a datelor personale în conformitate cu legislația europeană și românească.'
+        'VisionEdit România se angajează să respecte cele mai înalte standarde de protecție a datelor personale, în conformitate cu legislația europeană și românească. Dacă ai întrebări, suntem oricând disponibili.'
       ]
     }
   ];
@@ -239,8 +243,7 @@ const Privacy = () => {
             Politică de Confidențialitate și Protecția Datelor (GDPR)
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            VISIONEDIT SRL respectă prevederile GDPR și ale legislației românești pentru protecția 
-            datelor personale. Află cum colectăm, utilizăm și protejăm informațiile tale.
+            La VisionEdit România luăm confidențialitatea datelor tale în serios. Află cum colectăm, utilizăm și protejăm informațiile tale, în deplină conformitate cu GDPR.
           </p>
         </div>
 
@@ -254,9 +257,7 @@ const Privacy = () => {
             </h3>
           </div>
           <p className="text-gray-700 leading-relaxed">
-            VISIONEDIT SRL se angajează să protejeze confidențialitatea și securitatea datelor personale 
-            ale clienților săi, în conformitate cu Regulamentul General privind Protecția Datelor (GDPR) 
-            și legislația națională aplicabilă.
+            VisionEdit România se angajează să protejeze confidențialitatea și securitatea datelor tale personale, în conformitate cu Regulamentul General privind Protecția Datelor (GDPR) (UE) 2016/679 și legislația românească aplicabilă. Această politică îți explică clar ce date colectăm, de ce le colectăm și cum le protejăm.
           </p>
         </div>
 

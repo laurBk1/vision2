@@ -48,7 +48,7 @@ const Footer = () => {
             </div>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Partenerul tău de încredere în video marketing: creăm și edităm videoclipuri profesionale, strategice și orientate spre rezultate, care cresc vizibilitatea și atrag clienți noi.
+                VisionEdit – Viziunea ta, editată.
             </p>
 
             <div className="space-y-2">
