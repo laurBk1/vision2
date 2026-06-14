@@ -13,7 +13,7 @@ const About = () => {
     {
       icon: Video,
       title: 'Editare Video Profesionistă',
-      description: 'La VisionEdit, suntem experți în a transforma materialele tale brute în videoclipuri scurte, captivante și de impact, perfect optimizate pentru platformele sociale. Misiunea noastră este să te ajutăm să captezi rapid atenția publicului, să crești engagement-ul și să îți transformi mesajul într-un succes viral.'
+      description: 'Transformăm materialele brute în clipuri scurte, clare și captivante. Optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads. Creștem engagement-ul, vizibilitatea și impactul videoclipurilor tale.'
     },
     {
       icon: Target,
@@ -23,12 +23,12 @@ const About = () => {
     {
       icon: Globe,
       title: 'Conținut Vertical, Optimizat Global',
-      description: 'Suntem specializați în formatul vertical 9:16, ideal pentru platforme precum TikTok, Instagram Reels și YouTube Shorts. Ne asigurăm că videoclipurile tale sunt nu doar estetice, ci și perfect adaptate pentru a fi gata de publicare oriunde, maximizând vizibilitatea și impactul.'
+      description: 'Specializați în format 9:16 pentru toate platformele sociale majore. Videoclipuri gata de publicare, optimizate pentru vizibilitate și impact maxim.'
     },
     {
       icon: CheckCircle,
       title: 'Proces Simplificat, Rezultate Excepționale',
-      description: 'Ne dedicăm să-ți oferim servicii de editare video rapide și profesionale, susținute de o comunicare clară și constantă. De la primele discuții până la livrarea finală, ne ocupăm de fiecare detaliu pentru a-ți oferi un conținut video care face diferența și aduce rezultatele dorite.'
+      description: 'Fără complicații, fără pierdere de timp. Tu trimiți materialele — noi livrăm clipurile editate, gata de publicat.'
     }
   ];
 
