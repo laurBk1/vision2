@@ -1,28 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react';
 
 const Hero = () => {
   const navigate = useNavigate();
-  const cardRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    let raf: number;
-    const start = performance.now();
-    const amplitude = 12; // px up/down
-    const period = 6000;  // ms per full cycle
-    const animate = (now: number) => {
-      const t = (now - start) / period;
-      const y = -amplitude * Math.sin(2 * Math.PI * t);
-      if (cardRef.current) {
-        cardRef.current.style.transform = `translate3d(0, ${y.toFixed(3)}px, 0)`;
-      }
-      raf = requestAnimationFrame(animate);
-    };
-    raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  const handleFAQ = () => {
+    const handleFAQ = () => {
     navigate('/faq');
   };
   const handleViewPortfolio = () => {
@@ -262,34 +244,15 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          /* animation handled by JS */
+          animation: float 5s ease-in-out infinite;
           will-change: transform;
           transition: transform 0.6s ease;
           transform-origin: center center;
           isolation: isolate;
         }
         @keyframes float {
-          0%  { transform: translateY(-0.00px); }
-          5%  { transform: translateY(-1.88px); }
-          10%  { transform: translateY(-3.71px); }
-          15%  { transform: translateY(-5.45px); }
-          20%  { transform: translateY(-7.05px); }
-          25%  { transform: translateY(-8.49px); }
-          30%  { transform: translateY(-9.71px); }
-          35%  { transform: translateY(-10.69px); }
-          40%  { transform: translateY(-11.41px); }
-          45%  { transform: translateY(-11.85px); }
-          50%  { transform: translateY(-12.00px); }
-          55%  { transform: translateY(-11.85px); }
-          60%  { transform: translateY(-11.41px); }
-          65%  { transform: translateY(-10.69px); }
-          70%  { transform: translateY(-9.71px); }
-          75%  { transform: translateY(-8.49px); }
-          80%  { transform: translateY(-7.05px); }
-          85%  { transform: translateY(-5.45px); }
-          90%  { transform: translateY(-3.71px); }
-          95%  { transform: translateY(-1.88px); }
-          100%  { transform: translateY(-0.00px); }
+          0%, 100% { transform: translateY(0px); }
+          50%      { transform: translateY(-12px); }
         }
         .h-card-outer:hover {
           animation: none;
@@ -611,7 +574,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="h-card-outer" ref={cardRef}>
+              <div className="h-card-outer">
                 <div className="h-card-inner">
                   <div className="h-card-thumb">
                     <img
