@@ -244,20 +244,16 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          animation: float 4s ease-in-out infinite;
+          animation: float 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
           transition: transform 0.4s ease;
-          will-change: transform;
-          transform: translateZ(0);
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
         }
         @keyframes float {
-          0%,100% { transform: translateY(0) translateZ(0); }
-          50%      { transform: translateY(-10px) translateZ(0); }
+          0%,100% { transform: translateY(0); }
+          50%      { transform: translateY(-10px); }
         }
         .h-card-outer:hover {
           animation: none;
-          transform: translateY(-4px) translateZ(0) !important;
+          transform: translateY(-4px) !important;
         }
 
         .h-card-inner {
