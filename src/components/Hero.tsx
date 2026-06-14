@@ -244,15 +244,15 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          animation: float 5s ease-in-out infinite;
+          animation: float 2.5s ease-in-out infinite;
           will-change: transform;
           transition: transform 0.6s ease;
           transform-origin: center center;
           isolation: isolate;
         }
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50%      { transform: translateY(-12px); }
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-5px); }
         }
         .h-card-outer:hover {
           animation: none;
