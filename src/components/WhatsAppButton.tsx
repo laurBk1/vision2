@@ -157,7 +157,7 @@ const WhatsAppButton = () => {
           width: 38px;
           height: 38px;
           background: linear-gradient(135deg, #ff2d2d 0%, #c0000a 100%);
-          border: 3px solid #0D1525;
+          border: none;
           border-radius: 50%;
           cursor: pointer;
           display: flex;
@@ -371,7 +371,7 @@ const WhatsAppButton = () => {
             font-size: 18px;
             top: -18px;
             right: -14px;
-            border-width: 3px;
+
           }
           .wa-fab { bottom: 18px; left: 14px; width: 42px; height: 42px; }
           .wa-fab svg { width: 20px; height: 20px; }
