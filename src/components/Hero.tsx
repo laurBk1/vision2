@@ -244,23 +244,33 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          animation: float 4s linear infinite;
+          animation: float 6s linear infinite;
           transition: transform 0.6s ease;
           transform-origin: center center;
           isolation: isolate;
         }
         @keyframes float {
-          0%   { transform: translateY(0px); }
-          10%  { transform: translateY(-2px); }
-          20%  { transform: translateY(-5px); }
-          30%  { transform: translateY(-8px); }
-          40%  { transform: translateY(-11px); }
-          50%  { transform: translateY(-12px); }
-          60%  { transform: translateY(-11px); }
-          70%  { transform: translateY(-8px); }
-          80%  { transform: translateY(-5px); }
-          90%  { transform: translateY(-2px); }
-          100% { transform: translateY(0px); }
+          0%  { transform: translateY(-0.00px); }
+          5%  { transform: translateY(-1.88px); }
+          10%  { transform: translateY(-3.71px); }
+          15%  { transform: translateY(-5.45px); }
+          20%  { transform: translateY(-7.05px); }
+          25%  { transform: translateY(-8.49px); }
+          30%  { transform: translateY(-9.71px); }
+          35%  { transform: translateY(-10.69px); }
+          40%  { transform: translateY(-11.41px); }
+          45%  { transform: translateY(-11.85px); }
+          50%  { transform: translateY(-12.00px); }
+          55%  { transform: translateY(-11.85px); }
+          60%  { transform: translateY(-11.41px); }
+          65%  { transform: translateY(-10.69px); }
+          70%  { transform: translateY(-9.71px); }
+          75%  { transform: translateY(-8.49px); }
+          80%  { transform: translateY(-7.05px); }
+          85%  { transform: translateY(-5.45px); }
+          90%  { transform: translateY(-3.71px); }
+          95%  { transform: translateY(-1.88px); }
+          100%  { transform: translateY(-0.00px); }
         }
         .h-card-outer:hover {
           animation: none;
