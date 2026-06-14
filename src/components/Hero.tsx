@@ -244,16 +244,21 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          animation: float 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-          transition: transform 0.4s ease;
+          animation: float 5s ease-in-out infinite;
+          transition: transform 0.6s ease;
+          transform-origin: center center;
+          isolation: isolate;
         }
         @keyframes float {
-          0%,100% { transform: translateY(0); }
-          50%      { transform: translateY(-10px); }
+          0%   { transform: translateY(0px); }
+          25%  { transform: translateY(-6px); }
+          50%  { transform: translateY(-12px); }
+          75%  { transform: translateY(-6px); }
+          100% { transform: translateY(0px); }
         }
         .h-card-outer:hover {
           animation: none;
-          transform: translateY(-4px) !important;
+          transform: translateY(-6px) !important;
         }
 
         .h-card-inner {
@@ -298,18 +303,18 @@ const Hero = () => {
 
         .h-card-title {
           font-family: 'Outfit', sans-serif;
-          font-size: 16px; font-weight: 700; color: #EFF6FF; margin-bottom: 8px;
+          font-size: 19px; font-weight: 700; color: #EFF6FF; margin-bottom: 10px;
         }
         .h-card-desc {
-          font-size: 13px; font-weight: 300; color: #94A3B8;
-          line-height: 1.6; margin-bottom: 16px;
+          font-size: 15px; font-weight: 400; color: #BAC8D8;
+          line-height: 1.65; margin-bottom: 16px;
         }
         .h-card-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
         .h-badge {
           background: rgba(56,189,248,0.08);
           border: 1px solid rgba(56,189,248,0.18);
-          border-radius: 6px; padding: 4px 10px;
-          font-size: 11.5px; font-weight: 500; color: #7DD3FC;
+          border-radius: 6px; padding: 6px 12px;
+          font-size: 13px; font-weight: 500; color: #7DD3FC;
         }
 
         /* INLINE BADGES inside card */
@@ -341,9 +346,9 @@ const Hero = () => {
         .h-float-strong {
           display: block;
           font-family: 'Outfit', sans-serif;
-          font-size: 12px; font-weight: 700; color: #EFF6FF;
+          font-size: 14px; font-weight: 700; color: #EFF6FF;
         }
-        .h-float-sub { font-size: 10.5px; color: #94A3B8; }
+        .h-float-sub { font-size: 12px; color: #94A3B8; }
 
         /* CARD WRAPPER */
         .h-card-wrapper {
