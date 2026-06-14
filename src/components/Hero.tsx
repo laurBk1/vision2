@@ -246,14 +246,18 @@ const Hero = () => {
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
           animation: float 4s ease-in-out infinite;
           transition: transform 0.4s ease;
+          will-change: transform;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         @keyframes float {
-          0%,100% { transform: rotate(2deg) translateY(0); }
-          50%      { transform: rotate(2deg) translateY(-10px); }
+          0%,100% { transform: translateY(0) translateZ(0); }
+          50%      { transform: translateY(-10px) translateZ(0); }
         }
         .h-card-outer:hover {
           animation: none;
-          transform: rotate(0deg) translateY(-4px) !important;
+          transform: translateY(-4px) translateZ(0) !important;
         }
 
         .h-card-inner {
