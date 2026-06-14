@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react';
 
 const Hero = () => {
   const navigate = useNavigate();
+  const cardRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let raf: number;
+    const start = performance.now();
+    const amplitude = 12; // px up/down
+    const period = 6000;  // ms per full cycle
+    const animate = (now: number) => {
+      const t = (now - start) / period;
+      const y = -amplitude * Math.sin(2 * Math.PI * t);
+      if (cardRef.current) {
+        cardRef.current.style.transform = `translate3d(0, ${y.toFixed(3)}px, 0)`;
+      }
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   const handleFAQ = () => {
     navigate('/faq');
   };
@@ -244,7 +262,8 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          animation: float 6s linear infinite;
+          /* animation handled by JS */
+          will-change: transform;
           transition: transform 0.6s ease;
           transform-origin: center center;
           isolation: isolate;
@@ -592,7 +611,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="h-card-outer">
+              <div className="h-card-outer" ref={cardRef}>
                 <div className="h-card-inner">
                   <div className="h-card-thumb">
                     <img
