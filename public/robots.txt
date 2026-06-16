@@ -1,7 +1,14 @@
+# VisionEdit România — robots.txt
+# https://visionedit.ro/robots.txt
+
+# ============================================================
+# REGULI GENERALE
+# ============================================================
+
 User-agent: *
 Allow: /
 
-# Zone restricționate pentru securitate
+# Zone restricționate
 Disallow: /admin/
 Disallow: /tmp/
 Disallow: /cgi-bin/
@@ -9,13 +16,87 @@ Disallow: /private/
 Disallow: /.well-known/
 Disallow: /api/
 
-# Permisiuni pentru resurse esențiale (ajută Google să vadă designul corect)
+# Resurse permise explicit
 Allow: /sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai.txt
 Allow: /robots.txt
 Allow: /favicon.ico
 Allow: /logo.webp
 Allow: /*.css
 Allow: /*.js
+Allow: /*.webp
+Allow: /*.png
+Allow: /*.jpg
 
-# Locația sitemap-ului
+# ============================================================
+# AGENȚI AI — PERMISIUNI EXPLICITE (toți sunt bineveniți)
+# ============================================================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Microsoft / Copilot
+User-agent: bingbot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# ByteDance
+User-agent: Bytespider
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# ============================================================
+# RESURSE PRINCIPALE
+# ============================================================
+
 Sitemap: https://visionedit.ro/sitemap.xml
+
+# Resurse AI (standard emergent llmstxt.org)
+LLMs: https://visionedit.ro/llms.txt
+LLMs-Full: https://visionedit.ro/llms-full.txt
+AI-Discovery: https://visionedit.ro/ai.txt
