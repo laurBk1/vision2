@@ -15,6 +15,7 @@ import Privacy from './components/Privacy';
 import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 import CookieBanner from './components/CookieBanner';
+import NotFound from './components/NotFound';
 
 // ─── Meta tags per pagină ────────────────────────────────────────────────────
 const PAGE_META: Record<string, { title: string; description: string }> = {
@@ -273,8 +274,8 @@ function App() {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
-        {/* Fallback: orice altă rută → Home */}
-        <Route path="*" element={<HomePage />} />
+        {/* Pagina 404 custom */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
