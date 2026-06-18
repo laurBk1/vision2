@@ -99,6 +99,7 @@ type ViewChoice = 'both' | 'editing' | 'complete';
 
 const Pricing = () => {
   const [step, setStep] = useState<Step>('intro');
+  const [previousStep, setPreviousStep] = useState<Step>('intro');
   const [viewChoice, setViewChoice] = useState<ViewChoice>('both');
   const [videoCount, setVideoCount] = useState<string | null>(null);
 
@@ -107,11 +108,16 @@ const Pricing = () => {
     if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const goToStep = (next: Step) => {
+    setPreviousStep(step);
+    setStep(next);
+  };
+
   const scrollToPricing = () => {
     const el = document.getElementById('pricing');
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
+      window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
     }
   };
 
@@ -332,7 +338,7 @@ const Pricing = () => {
         <div className="grid md:grid-cols-2 gap-6 mb-10">
           {/* Card Editare — clickable */}
           <div
-            onClick={() => { setViewChoice('editing'); setStep('quiz-videos'); }}
+            onClick={() => { setViewChoice('editing'); goToStep('quiz-videos'); }}
             className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
           >
             <div className="text-3xl mb-3">✂️</div>
@@ -347,7 +353,7 @@ const Pricing = () => {
           </div>
           {/* Card Complet — clickable */}
           <div
-            onClick={() => { setViewChoice('complete'); setStep('quiz-videos'); }}
+            onClick={() => { setViewChoice('complete'); goToStep('quiz-videos'); }}
             className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
           >
             <div className="text-3xl mb-3">🎬</div>
@@ -362,7 +368,7 @@ const Pricing = () => {
           </div>
         </div>
         <button
-          onClick={() => setStep('view-choice')}
+          onClick={() => goToStep('view-choice')}
           className="btn-pulse bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold px-10 py-4 rounded-xl text-lg hover:opacity-90 transition-all duration-200 flex items-center gap-2 mx-auto shadow-lg"
         >
           Vreau să văd prețurile <ChevronRight className="h-5 w-5" />
@@ -384,7 +390,7 @@ const Pricing = () => {
         ].map(opt => (
           <button
             key={opt.value}
-            onClick={() => { setViewChoice(opt.value); setStep('quiz-videos'); }}
+            onClick={() => { setViewChoice(opt.value); goToStep('quiz-videos'); }}
             className="bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl px-6 py-4 text-left font-semibold text-gray-800 text-base transition-all duration-200 flex items-center justify-between group shadow-sm"
           >
             <span>{opt.label}</span>
@@ -392,7 +398,7 @@ const Pricing = () => {
           </button>
         ))}
       </div>
-      <button onClick={() => { setStep('intro'); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
+      <button onClick={() => { setStep(previousStep); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
         <ArrowLeft className="back-arrow h-5 w-5" /> Înapoi
       </button>
     </div>
@@ -411,7 +417,7 @@ const Pricing = () => {
         ].map(opt => (
           <button
             key={opt.value}
-            onClick={() => { setVideoCount(opt.value); setStep('results'); }}
+            onClick={() => { setVideoCount(opt.value); goToStep('results'); }}
             className="bg-white border-2 border-gray-200 hover:border-purple-500 hover:bg-purple-50 rounded-xl px-6 py-4 text-left transition-all duration-200 flex items-center justify-between group shadow-sm"
           >
             <div>
@@ -422,7 +428,7 @@ const Pricing = () => {
           </button>
         ))}
         <button
-          onClick={() => { setVideoCount(null); setStep('results'); }}
+          onClick={() => { setVideoCount(null); goToStep('results'); }}
           className="bg-white border-2 border-gray-200 hover:border-gray-400 rounded-xl px-6 py-4 text-left transition-all duration-200 flex items-center justify-between group shadow-sm"
         >
           <div>
@@ -432,7 +438,7 @@ const Pricing = () => {
           <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
         </button>
       </div>
-      <button onClick={() => { setStep('intro'); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
+      <button onClick={() => { setStep(previousStep); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
         <ArrowLeft className="back-arrow h-5 w-5" /> Înapoi
       </button>
     </div>
