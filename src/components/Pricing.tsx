@@ -24,35 +24,35 @@ const subtitleGlowStyle = `
   .fade-in-up {
     animation: fadeInUp 0.45s ease both;
   }
-  @keyframes btn-ring {
-    0%   { transform: scale(1);    opacity: 0.7; }
-    80%  { transform: scale(1.7);  opacity: 0; }
-    100% { transform: scale(1.7);  opacity: 0; }
-  }
-  @keyframes btn-ring2 {
-    0%   { transform: scale(1);    opacity: 0.5; }
-    80%  { transform: scale(1.7);  opacity: 0; }
-    100% { transform: scale(1.7);  opacity: 0; }
-  }
   .btn-pulse {
     position: relative;
-    z-index: 0;
-  }
-  .btn-pulse::before,
-  .btn-pulse::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 0.75rem;
-    border: 2px solid rgba(139, 92, 246, 0.6);
-    pointer-events: none;
-    z-index: -1;
+    overflow: hidden;
+    transition: all 0.3s ease;
   }
   .btn-pulse::before {
-    animation: btn-ring 3.5s ease-out infinite;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.15) 40%,
+      rgba(255,255,255,0.35) 50%,
+      rgba(255,255,255,0.15) 60%,
+      transparent 100%
+    );
+    animation: shimmer-btn 2.5s ease-in-out infinite;
   }
-  .btn-pulse::after {
-    animation: btn-ring2 3.5s ease-out 1.75s infinite;
+  @keyframes shimmer-btn {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+  }
+  .btn-pulse:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(99,102,241,0.45);
   }
   @keyframes arrowBounce {
     0%, 100% { transform: translateY(0px); opacity: 0.4; }

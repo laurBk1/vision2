@@ -1,15 +1,133 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp } from 'lucide-react';
 
-const Services = () => {
-  const [expandedService, setExpandedService] = useState<number | null>(null);
+const shimmerStyle = `
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 50%, #7c3aed 100%);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .btn-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.15) 40%,
+      rgba(255,255,255,0.35) 50%,
+      rgba(255,255,255,0.15) 60%,
+      transparent 100%
+    );
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+  }
+  .btn-shimmer:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(99,102,241,0.45);
+  }
+  .btn-shimmer-close {
+    position: relative;
+    background: linear-gradient(135deg, #374151, #6b7280);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .btn-shimmer-close:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(107,114,128,0.4);
+  }
+`;
 
-  const handleLearnMore = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+function useInView(threshold = 0.15) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) { setVisible(true); return; }
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold, rootMargin: '0px 0px -40px 0px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, setExpandedFeatures, setExpandedDesc }) {
+  const { ref, visible } = useInView(0.1);
+  const Icon = service.icon;
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0px)' : 'translateY(35px)',
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+      }}
+      className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
+    >
+      <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-blue-600 text-white text-xs font-bold px-2 md:px-3 py-1 rounded-full">
+        {service.highlight}
+      </div>
+      <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-3 md:p-4 w-fit mb-4 md:mb-6 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
+        <Icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+        {service.title}
+      </h3>
+      <button
+        onClick={() => setExpandedFeatures(expandedFeatures === index ? null : index)}
+        className="flex items-center gap-1.5 text-blue-600 text-base font-bold mb-4 hover:text-blue-800 transition-colors w-fit"
+      >
+        {expandedFeatures === index ? 'Ascunde detalii' : 'Vezi ce include'}
+        {expandedFeatures === index ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
+      </button>
+      {expandedFeatures === index && (
+        <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+          {service.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start text-base text-gray-700">
+              <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-2 md:mr-3 flex-shrink-0 mt-1.5"></div>
+              <span className="font-medium leading-relaxed">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <button
+        onClick={() => {
+          const isOpen = expandedDesc === index;
+          setExpandedDesc(isOpen ? null : index);
+          if (!isOpen) setExpandedFeatures(index);
+          else setExpandedFeatures(null);
+        }}
+        className={`w-full font-bold py-3 rounded-lg text-base ${expandedDesc === index ? 'btn-shimmer-close' : 'btn-shimmer'}`}
+      >
+        {expandedDesc === index ? '✕ Ascunde' : '✦ Află Mai Multe'}
+      </button>
+      {expandedDesc === index && (
+        <div className="mt-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
+          <p className="text-gray-700 text-base leading-relaxed font-medium">
+            {service.description}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const Services = () => {
+  const [expandedFeatures, setExpandedFeatures] = useState(null);
+  const [expandedDesc, setExpandedDesc] = useState(null);
 
   const services = [
     {
@@ -50,7 +168,7 @@ const Services = () => {
     {
       icon: Sparkles,
       title: 'Tranziții și Efecte Vizuale Impactante',
-      description: 'Captăm atenția publicului tău din primele secunde, sporind considerabil șansele videoclipului tău de a devenir viral prin efecte vizuale spectaculoase și tranziții fluide.',
+      description: 'Captăm atenția publicului tău din primele secunde, sporind considerabil șansele videoclipului tău de a deveni viral prin efecte vizuale spectaculoase și tranziții fluide.',
       features: ['Efecte de tranziție cinematice', 'Animații captivante', 'Elemente vizuale virale'],
       highlight: 'Viral Ready'
     },
@@ -142,6 +260,7 @@ const Services = () => {
 
   return (
     <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+      <style>{shimmerStyle}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Section */}
@@ -168,76 +287,40 @@ const Services = () => {
 
         {/* Special Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
-          {specialFeatures.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 md:p-8 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl"
-            >
-              <div className="bg-white/20 rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 flex items-center justify-center">
-                <feature.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
+          {specialFeatures.map((feature, index) => {
+            const FIcon = feature.icon;
+            return (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 md:p-8 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl"
+              >
+                <div className="bg-white/20 rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 flex items-center justify-center">
+                  <FIcon className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{feature.title}</h3>
+                <p className="text-blue-100 mb-3 md:mb-4 leading-relaxed font-medium text-base">{feature.description}</p>
+                <div className="bg-white/20 rounded-lg py-2 px-3 md:px-4 inline-block">
+                  <span className="font-bold text-sm">{feature.stats}</span>
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{feature.title}</h3>
-              <p className="text-blue-100 mb-3 md:mb-4 leading-relaxed font-medium text-base">{feature.description}</p>
-              <div className="bg-white/20 rounded-lg py-2 px-3 md:px-4 inline-block">
-                <span className="font-bold text-sm">{feature.stats}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Main Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-          {services.map((service, index) => {
-            const isOpen = expandedService === index;
-            return (
-              <div
-                key={index}
-                className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
-              >
-                <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-blue-600 text-white text-xs font-bold px-2 md:px-3 py-1 rounded-full">
-                  {service.highlight}
-                </div>
-
-                <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-3 md:p-4 w-fit mb-4 md:mb-6 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
-                  <service.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
-                </div>
-
-                <h3 className="text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-                  {service.title}
-                </h3>
-
-                <p className="text-base text-gray-600 mb-4 md:mb-6 leading-relaxed font-medium">
-                  {service.description}
-                </p>
-
-                <button
-                  onClick={() => setExpandedService(isOpen ? null : index)}
-                  className="flex items-center gap-1.5 text-blue-600 text-base font-bold mb-4 hover:text-blue-800 transition-colors w-fit"
-                >
-                  {isOpen ? 'Ascunde detalii' : 'Vezi ce include'}
-                  {isOpen ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
-                </button>
-
-                {isOpen && (
-                  <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-base text-gray-700">
-                        <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-2 md:mr-3 flex-shrink-0 mt-1.5"></div>
-                        <span className="font-medium leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                <button
-                  onClick={handleLearnMore}
-                  className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-600 hover:to-purple-600 hover:text-white text-gray-700 font-bold py-3 rounded-lg transition-all duration-300 transform group-hover:scale-105 text-base"
-                >
-                  Află Mai Multe
-                </button>
-              </div>
-            );
-          })}
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              service={service}
+              index={index}
+              delay={(index % 3) * 0.12}
+              expandedFeatures={expandedFeatures}
+              expandedDesc={expandedDesc}
+              setExpandedFeatures={setExpandedFeatures}
+              setExpandedDesc={setExpandedDesc}
+            />
+          ))}
         </div>
 
         {/* Process Overview */}
@@ -282,8 +365,8 @@ const Services = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => {
-                  const pricingSection = document.getElementById('pricing');
-                  if (pricingSection) pricingSection.scrollIntoView({ behavior: 'smooth' });
+                  const el = document.getElementById('pricing');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
               >
@@ -291,8 +374,8 @@ const Services = () => {
               </button>
               <button
                 onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-lg transition-all duration-200"
               >
