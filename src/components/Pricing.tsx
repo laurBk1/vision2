@@ -99,7 +99,6 @@ type ViewChoice = 'both' | 'editing' | 'complete';
 
 const Pricing = () => {
   const [step, setStep] = useState<Step>('intro');
-  const [previousStep, setPreviousStep] = useState<Step>('intro');
   const [viewChoice, setViewChoice] = useState<ViewChoice>('both');
   const [videoCount, setVideoCount] = useState<string | null>(null);
 
@@ -108,24 +107,39 @@ const Pricing = () => {
     if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const goToStep = (next: Step) => {
-    setPreviousStep(step);
-    setStep(next);
+  const [history, setHistory] = useState<Step[]>([]);
+
+  const scrollToWizard = () => {
+    setTimeout(() => {
+      const el = document.getElementById('pricing-wizard') || document.getElementById('pricing');
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
+      }
+    }, 30);
   };
 
-  const scrollToPricing = () => {
-    const el = document.getElementById('pricing-wizard');
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 90;
-      window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
+  const goToStep = (next: Step) => {
+    setHistory(prev => [...prev, step]);
+    setStep(next);
+    scrollToWizard();
+  };
+
+  const goBack = () => {
+    const prev = history[history.length - 1];
+    if (prev) {
+      setHistory(h => h.slice(0, -1));
+      setStep(prev);
+      scrollToWizard();
     }
   };
 
   const reset = () => {
+    setHistory([]);
     setStep('intro');
     setViewChoice('both');
     setVideoCount(null);
-    setTimeout(() => scrollToPricing(), 50);
+    scrollToWizard();
   };
 
   // Which tier is recommended
@@ -398,7 +412,7 @@ const Pricing = () => {
           </button>
         ))}
       </div>
-      <button onClick={() => { setStep(previousStep); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
+      <button onClick={goBack} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
         <ArrowLeft className="back-arrow h-5 w-5" /> Înapoi
       </button>
     </div>
@@ -438,7 +452,7 @@ const Pricing = () => {
           <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
         </button>
       </div>
-      <button onClick={() => { setStep(previousStep); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
+      <button onClick={goBack} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
         <ArrowLeft className="back-arrow h-5 w-5" /> Înapoi
       </button>
     </div>
