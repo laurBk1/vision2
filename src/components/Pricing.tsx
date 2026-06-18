@@ -111,9 +111,9 @@ const Pricing = () => {
 
   const scrollToWizard = () => {
     setTimeout(() => {
-      const el = document.getElementById('pricing-wizard') || document.getElementById('pricing');
+      const el = document.getElementById('pricing');
       if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 90;
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
       }
     }, 30);
