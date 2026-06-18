@@ -66,6 +66,14 @@ const subtitleGlowStyle = `
     display: block;
     text-align: center;
   }
+  @keyframes backArrowPulse {
+    0%, 100% { transform: translateX(0px); color: #ef4444; }
+    50%       { transform: translateX(-5px); color: #dc2626; }
+  }
+  .back-arrow {
+    animation: backArrowPulse 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
 `;
 
 function useInView(threshold = 0.15) {
@@ -99,10 +107,19 @@ const Pricing = () => {
     if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToPricing = () => {
+    const el = document.getElementById('pricing');
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
   const reset = () => {
     setStep('intro');
     setViewChoice('both');
     setVideoCount(null);
+    setTimeout(() => scrollToPricing(), 50);
   };
 
   // Which tier is recommended
@@ -313,26 +330,34 @@ const Pricing = () => {
           Înainte să vezi prețurile, află că avem <span className="font-bold text-gray-900">2 tipuri de pachete</span> — fiecare gândit pentru nevoi diferite:
         </p>
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {/* Card Editare */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left">
+          {/* Card Editare — clickable */}
+          <div
+            onClick={() => { setViewChoice('editing'); setStep('quiz-videos'); }}
+            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
+          >
             <div className="text-3xl mb-3">✂️</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Editare cu materialele tale</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Editare cu materialele tale</h3>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
               Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Reels, Shorts și Facebook Ads.
             </p>
-            <div className="bg-blue-50 rounded-lg px-4 py-2 inline-block">
-              <span className="text-blue-700 font-bold text-base">De la 185 lei/video</span>
+            <div className="bg-blue-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-blue-600 transition-colors duration-200">
+              <span className="text-blue-700 font-bold text-base group-hover:text-white transition-colors">De la 185 lei/video</span>
+              <ChevronRight className="h-4 w-4 text-blue-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
             </div>
           </div>
-          {/* Card Complet */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left">
+          {/* Card Complet — clickable */}
+          <div
+            onClick={() => { setViewChoice('complete'); setStep('quiz-videos'); }}
+            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
+          >
             <div className="text-3xl mb-3">🎬</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Pachete Complete — de la A la Z</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
               Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover AI, avatar UGC, materiale stock și editare profesională — gata de publicat.
             </p>
-            <div className="bg-purple-50 rounded-lg px-4 py-2 inline-block">
-              <span className="text-purple-700 font-bold text-base">De la 240 lei/video</span>
+            <div className="bg-purple-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-purple-600 transition-colors duration-200">
+              <span className="text-purple-700 font-bold text-base group-hover:text-white transition-colors">De la 240 lei/video</span>
+              <ChevronRight className="h-4 w-4 text-purple-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
             </div>
           </div>
         </div>
@@ -367,8 +392,8 @@ const Pricing = () => {
           </button>
         ))}
       </div>
-      <button onClick={() => setStep('intro')} className="mt-6 text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1 mx-auto transition-colors">
-        <ArrowLeft className="h-4 w-4" /> Înapoi
+      <button onClick={() => { setStep('intro'); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
+        <ArrowLeft className="back-arrow h-5 w-5" /> Înapoi
       </button>
     </div>
   );
@@ -407,8 +432,8 @@ const Pricing = () => {
           <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
         </button>
       </div>
-      <button onClick={() => setStep('view-choice')} className="mt-6 text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1 mx-auto transition-colors">
-        <ArrowLeft className="h-4 w-4" /> Înapoi
+      <button onClick={() => { setStep('intro'); setTimeout(() => scrollToPricing(), 50); }} className="mt-6 flex items-center gap-2 mx-auto px-5 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700 hover:text-red-600 font-semibold text-base transition-all duration-200 group">
+        <ArrowLeft className="back-arrow h-5 w-5" /> Înapoi
       </button>
     </div>
   );
@@ -553,7 +578,7 @@ const Pricing = () => {
             {/* Reset + CTA */}
             <div className="text-center">
               <div className="flex flex-col items-center gap-1 mb-6">
-                <span className="arrow-hint">↓</span>
+                <span className="arrow-hint" style={{fontSize:"2.5rem"}}>↓</span>
               <button
                 onClick={reset}
                 className="inline-flex items-center gap-2 bg-white border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 text-gray-700 hover:text-blue-700 font-semibold px-6 py-3 rounded-xl text-base md:text-lg transition-all duration-200 shadow-sm mx-auto group"
