@@ -145,13 +145,14 @@ const Hero = () => {
           flex-direction: column;
           gap: 12px;
           margin-bottom: 36px;
+          align-items: flex-start;
         }
         .h-check {
           display: flex;
           align-items: center;
           gap: 10px;
-          font-size: 14px;
-          font-weight: 400;
+          font-size: 16px;
+          font-weight: 500;
           color: #CBD5E1;
         }
         .h-check svg { color: #34D399; flex-shrink: 0; }
@@ -367,7 +368,7 @@ const Hero = () => {
           .h-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
           .h-left { align-items: center; text-align: center; }
           .h-body { max-width: 100%; }
-          .h-checks { align-items: center; }
+          .h-checks { align-items: flex-start; }
           .h-cta { justify-content: center; }
           .h-stats { justify-content: center; max-width: 400px; margin: 0 auto; }
           .h-right { padding: 40px 24px 48px; }
@@ -427,7 +428,7 @@ const Hero = () => {
           .h-heading-accent { margin-bottom: 32px; }
           .h-body { margin-bottom: 32px; line-height: 1.9; }
           .h-checks { gap: 16px; margin-bottom: 40px; }
-          .h-check { font-size: 14px; }
+          .h-check { font-size: 15px; }
           .h-cta { flex-direction: column; align-items: stretch; gap: 14px; margin-bottom: 48px; }
           .h-btn-primary, .h-btn-secondary { justify-content: center; width: 100%; padding: 16px 28px; }
           .h-right { padding: 20px; }
@@ -513,10 +514,6 @@ const Hero = () => {
               <span style={{color:'#38BDF8'}}>Video marketingul</span>
               <span style={{color:'#FBBF24'}}> e soluția!</span>
             </span>
-
-            <p className="h-body h-body-mobile-hidden">
-              Noi îți edităm videoclipurile scurte, dinamice și optimizate pentru Reels, TikTok, Shorts și alte formate scurte, exact ce ai nevoie pentru a atrage atenția și a-ți crește vânzările.
-            </p>
 
             <div className="h-checks">
               {[
