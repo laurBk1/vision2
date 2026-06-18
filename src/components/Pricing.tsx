@@ -114,9 +114,9 @@ const Pricing = () => {
   };
 
   const scrollToPricing = () => {
-    const el = document.getElementById('pricing');
+    const el = document.getElementById('pricing-wizard');
     if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - 90;
       window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
     }
   };
@@ -449,7 +449,8 @@ const Pricing = () => {
       <style>{subtitleGlowStyle}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header — mereu vizibil */}
+        {/* Header — vizibil doar pe intro si results */}
+        {(step === 'intro' || step === 'results') && (
         <div className="text-center mb-12 md:mb-16">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-4xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
@@ -467,10 +468,11 @@ const Pricing = () => {
             </p>
           </div>
         </div>
+        )}
 
         {/* ── WIZARD ── */}
         {step !== 'results' && (
-          <div className="max-w-4xl mx-auto mb-16">
+          <div id="pricing-wizard" className="max-w-4xl mx-auto mb-16">
             {step === 'intro' && <StepIntro />}
             {step === 'view-choice' && <StepViewChoice />}
             {step === 'quiz-videos' && <StepQuizVideos />}
