@@ -208,7 +208,6 @@ const Portfolio = () => {
                 <p>
                   <strong className="text-gray-900">Calitatea vorbește de la sine.</strong> În loc să ne bazăm pe un portofoliu public, 
                   ne concentrăm pe livrarea de rezultate excepționale pentru fiecare client în parte. 
-                  Testimonialele și recomandările sunt cea mai bună dovadă a calității muncii noastre.
                 </p>
               </div>
             </div>
@@ -236,25 +235,23 @@ const Portfolio = () => {
         </div>
 
         {/* Achievements */}
-        <div className="bg-slate-900 rounded-2xl p-8 md:p-12 text-white mb-12 md:mb-16 shadow-2xl">
-          <div className="text-center mb-8 md:mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-shadow">
-              Rezultatele Noastre<br className="sm:hidden" />
-              <span className="block mt-1">Vorbesc de La Sine!</span>
+        <div className="bg-slate-900 rounded-2xl p-6 md:p-12 text-white mb-8 md:mb-12 shadow-2xl">
+          <div className="text-center mb-8 md:mb-10">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-snug">
+              Rezultatele Noastre Vorbesc de La Sine!
             </h3>
-            <p className="text-gray-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed font-medium">
-              Chiar dacă nu afișăm portofoliul public, rezultatele noastre demonstrează 
-              calitatea și profesionalismul serviciilor oferite.
+            <p className="text-gray-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium">
+              Chiar dacă nu afișăm portofoliul public, rezultatele noastre demonstrează calitatea și profesionalismul serviciilor oferite.
             </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {achievements.map((achievement, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2 text-shadow">
+              <div key={index} className="text-center bg-white/5 rounded-xl py-4 px-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-400 mb-1">
                   {achievement.number}
                 </div>
-                <div className="text-gray-300 text-xs md:text-sm font-medium">
+                <div className="text-gray-300 text-xs sm:text-sm font-medium leading-tight">
                   {achievement.label}
                 </div>
               </div>
@@ -264,32 +261,27 @@ const Portfolio = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-shadow">
-              Vrei un partener de încredere pentru<br className="sm:hidden" />
-              <span className="block mt-1">proiectul tău?</span>
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 md:p-12 text-white shadow-2xl">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-snug">
+              Vrei un partener de încredere pentru proiectul tău?
             </h3>
-            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed font-medium"> 
+            <p className="text-base md:text-lg mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed font-medium">
               Hai să vorbim! Confidențialitate 100%, rezultate clare.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => {
                   const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="bg-white text-blue-600 hover:bg-gray-100 px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
               >
                 Discută Confidențial
               </button>
-              <button 
+              <button
                 onClick={() => {
                   const servicesSection = document.getElementById('services');
-                  if (servicesSection) {
-                    servicesSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  if (servicesSection) servicesSection.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-200"
               >

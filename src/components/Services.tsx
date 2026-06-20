@@ -354,13 +354,12 @@ const Services = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">
+          <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-6 md:p-12 text-white shadow-2xl">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-snug">
               Vrei conținut care aduce rezultate?
             </h3>
-            <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto font-medium">
-              Alege din serviciile noastre profesionale și vezi cum videoclipurile tale
-              devin virale și aduc rezultate reale pentru afacerea ta.
+            <p className="text-base md:text-lg mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto font-medium leading-relaxed">
+              Alege din serviciile noastre profesionale și vezi cum videoclipurile tale devin virale și aduc rezultate reale pentru afacerea ta.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
