@@ -1,6 +1,41 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Shield, Lock, Eye, CheckCircle, Play, Star } from 'lucide-react';
 
+function useInView(threshold = 0.15) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) { setVisible(true); return; }
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold, rootMargin: '0px 0px -40px 0px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function Reveal({ children, delay = 0, className = '' }) {
+  const { ref, visible } = useInView(0.12);
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0px)' : 'translateY(35px)',
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 const Portfolio = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -208,6 +243,7 @@ const Portfolio = () => {
                 <p>
                   <strong className="text-gray-900">Calitatea vorbește de la sine.</strong> În loc să ne bazăm pe un portofoliu public, 
                   ne concentrăm pe livrarea de rezultate excepționale pentru fiecare client în parte. 
+                  Testimonialele și recomandările sunt cea mai bună dovadă a calității muncii noastre.
                 </p>
               </div>
             </div>
@@ -217,24 +253,24 @@ const Portfolio = () => {
         {/* Confidentiality Features */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16">
           {confidentialityFeatures.map((feature, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-gray-100"
-            >
-              <div className="bg-blue-100 rounded-lg p-3 w-fit mx-auto mb-4">
-                <feature.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+            <Reveal key={index} delay={(index % 4) * 0.1}>
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-gray-100 h-full">
+                <div className="bg-blue-100 rounded-lg p-3 w-fit mx-auto mb-4">
+                  <feature.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+                </div>
+                <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 leading-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed font-medium">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 leading-tight">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed font-medium">
-                {feature.description}
-              </p>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* Achievements */}
+        <Reveal>
         <div className="bg-slate-900 rounded-2xl p-6 md:p-12 text-white mb-8 md:mb-12 shadow-2xl">
           <div className="text-center mb-8 md:mb-10">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-snug">
@@ -247,19 +283,23 @@ const Portfolio = () => {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {achievements.map((achievement, index) => (
-              <div key={index} className="text-center bg-white/5 rounded-xl py-4 px-2">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-400 mb-1">
-                  {achievement.number}
+              <Reveal key={index} delay={(index % 4) * 0.1}>
+                <div className="text-center bg-white/5 rounded-xl py-4 px-2">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-400 mb-1">
+                    {achievement.number}
+                  </div>
+                  <div className="text-gray-300 text-xs sm:text-sm font-medium leading-tight">
+                    {achievement.label}
+                  </div>
                 </div>
-                <div className="text-gray-300 text-xs sm:text-sm font-medium leading-tight">
-                  {achievement.label}
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
+        </Reveal>
 
         {/* Call to Action */}
+        <Reveal delay={0.1}>
         <div className="text-center">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 md:p-12 text-white shadow-2xl">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-snug">
@@ -290,6 +330,7 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

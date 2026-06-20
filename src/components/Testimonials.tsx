@@ -1,5 +1,70 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Star, Quote } from 'lucide-react';
+
+function useInView(threshold = 0.15) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) { setVisible(true); return; }
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold, rootMargin: '0px 0px -40px 0px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function TestimonialCard({ testimonial, delay }) {
+  const { ref, visible } = useInView(0.12);
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0px)' : 'translateY(35px)',
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+      }}
+      className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/20 transition-colors duration-300 border border-white/20 shadow-xl"
+    >
+      <div className="flex items-center mb-6">
+        <img
+          src={testimonial.image}
+          alt={testimonial.name}
+          className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover mr-4 border-2 border-white/20"
+        />
+        <div>
+          <h3 className="font-bold text-white text-base md:text-lg">
+            {testimonial.name}
+          </h3>
+          <p className="text-sm md:text-base text-gray-300 font-medium">
+            {testimonial.role}
+          </p>
+          <p className="text-sm md:text-base text-blue-300 font-medium">
+            {testimonial.company}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center mb-4">
+        {[...Array(testimonial.rating)].map((_, i) => (
+          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+        ))}
+      </div>
+
+      <div className="relative">
+        <Quote className="h-8 w-8 text-blue-400 absolute -top-2 -left-2 opacity-50" />
+        <p className="text-gray-100 leading-relaxed pl-6 font-medium text-sm md:text-base">
+          {testimonial.content}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 const Testimonials = () => {
   const testimonials = [
@@ -47,42 +112,7 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/20 transition-all duration-300 border border-white/20 shadow-xl"
-            >
-              <div className="flex items-center mb-6">
-                <img 
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover mr-4 border-2 border-white/20"
-                />
-                <div>
-                  <h3 className="font-bold text-white text-base md:text-lg">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-300 font-medium">
-                    {testimonial.role}
-                  </p>
-                  <p className="text-sm md:text-base text-blue-300 font-medium">
-                    {testimonial.company}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-
-              <div className="relative">
-                <Quote className="h-8 w-8 text-blue-400 absolute -top-2 -left-2 opacity-50" />
-                <p className="text-gray-100 leading-relaxed pl-6 font-medium text-sm md:text-base">
-                  {testimonial.content}
-                </p>
-              </div>
-            </div>
+            <TestimonialCard key={index} testimonial={testimonial} delay={(index % 3) * 0.15} />
           ))}
         </div>
       </div>
