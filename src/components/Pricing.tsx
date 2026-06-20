@@ -94,6 +94,22 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
+function IntroCard({ children, delay = 0 }) {
+  const { ref, visible } = useInView(0.15);
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0px)' : 'translateY(30px)',
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 type Step = 'intro' | 'view-choice' | 'quiz-videos' | 'results';
 type ViewChoice = 'both' | 'editing' | 'complete';
 
@@ -351,9 +367,10 @@ const Pricing = () => {
         </p>
         <div className="grid md:grid-cols-2 gap-6 mb-10">
           {/* Card Editare — clickable */}
+          <IntroCard delay={0}>
           <div
             onClick={() => { setViewChoice('editing'); goToStep('quiz-videos'); }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
+            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-full"
           >
             <div className="text-3xl mb-3">✂️</div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Editare cu materialele tale</h3>
@@ -365,10 +382,12 @@ const Pricing = () => {
               <ChevronRight className="h-4 w-4 text-blue-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
             </div>
           </div>
+          </IntroCard>
           {/* Card Complet — clickable */}
+          <IntroCard delay={0.12}>
           <div
             onClick={() => { setViewChoice('complete'); goToStep('quiz-videos'); }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
+            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-full"
           >
             <div className="text-3xl mb-3">🎬</div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
@@ -380,6 +399,7 @@ const Pricing = () => {
               <ChevronRight className="h-4 w-4 text-purple-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
             </div>
           </div>
+          </IntroCard>
         </div>
         <button
           onClick={() => goToStep('view-choice')}
