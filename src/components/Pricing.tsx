@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft } from 'lucide-react';
+import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, Clapperboard, BarChart2, Rocket, Wand2, Layers, Crown, Scissors, Film } from 'lucide-react';
 
 const subtitleGlowStyle = `
   @keyframes subtitlePulse {
@@ -165,7 +165,7 @@ const Pricing = () => {
     {
       name: 'Start Smart',
       subtitle: '1-5 videoclipuri pe lună',
-      icon: '🚀',
+      icon: Clapperboard,
       popular: false,
       price: '249 lei/video',
       description: '(249 lei — 1.245 lei / lună)',
@@ -187,7 +187,7 @@ const Pricing = () => {
     {
       name: 'Creștere Accelerată',
       subtitle: '6-12 videoclipuri pe lună',
-      icon: '💡',
+      icon: BarChart2,
       popular: true,
       price: '210 lei/video',
       description: '(1.260 lei — 2.520 lei / lună)',
@@ -205,7 +205,7 @@ const Pricing = () => {
     {
       name: 'Vizibilitate Max',
       subtitle: '13+ videoclipuri pe lună',
-      icon: '🔥',
+      icon: Rocket,
       popular: false,
       price: '185 lei/video',
       description: '(de la 2.405 lei / lună)',
@@ -227,7 +227,7 @@ const Pricing = () => {
     {
       name: 'Start Smart Complet',
       subtitle: '1-5 videoclipuri pe lună',
-      icon: '🎬',
+      icon: Wand2,
       popular: false,
       price: '280-350 lei/video',
       priceDetails: [
@@ -250,7 +250,7 @@ const Pricing = () => {
     {
       name: 'Creștere Accelerată Complet',
       subtitle: '6-12 videoclipuri pe lună',
-      icon: '🎯',
+      icon: Layers,
       popular: true,
       price: '255-315 lei/video',
       priceDetails: [
@@ -272,7 +272,7 @@ const Pricing = () => {
     {
       name: 'Vizibilitate Max Complet',
       subtitle: '13+ videoclipuri pe lună',
-      icon: '🏆',
+      icon: Crown,
       popular: false,
       price: '240-295 lei/video',
       priceDetails: [
@@ -319,7 +319,11 @@ const Pricing = () => {
       )}
       <div className={`p-6 md:p-8 ${(isRecommended || pkg.popular) ? 'pt-12 md:pt-14' : ''}`}>
         <div className="text-center mb-6 md:mb-8">
-          <div className="text-3xl md:text-4xl mb-3 md:mb-4">{pkg.icon}</div>
+          <div className="flex justify-center mb-4">
+            <div className={`rounded-2xl p-4 w-16 h-16 flex items-center justify-center shadow-md transition-colors duration-300 ${isComplete ? 'bg-gradient-to-br from-purple-100 to-indigo-100 hover:from-purple-200 hover:to-indigo-200' : 'bg-gradient-to-br from-blue-100 to-cyan-100 hover:from-blue-200 hover:to-cyan-200'}`}>
+              {React.createElement(pkg.icon, { className: `h-8 w-8 ${isComplete ? 'text-purple-600' : 'text-blue-600'}` })}
+            </div>
+          </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">{pkg.name}</h3>
           <div className="subtitle-badge inline-flex items-center justify-center mx-auto mb-3 px-4 py-1.5 rounded-full border border-indigo-300 bg-gradient-to-r from-indigo-50 via-white to-purple-50 cursor-default select-none">
             <span className="text-indigo-700 font-bold text-base md:text-lg tracking-wide">{pkg.subtitle}</span>
@@ -372,7 +376,9 @@ const Pricing = () => {
             onClick={() => { setViewChoice('editing'); goToStep('quiz-videos'); }}
             className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-full"
           >
-            <div className="text-3xl mb-3">✂️</div>
+            <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-3">
+              <Scissors className="h-6 w-6 text-blue-600" />
+            </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Editare cu materialele tale</h3>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
               Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Reels, Shorts și Facebook Ads.
@@ -389,7 +395,9 @@ const Pricing = () => {
             onClick={() => { setViewChoice('complete'); goToStep('quiz-videos'); }}
             className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-full"
           >
-            <div className="text-3xl mb-3">🎬</div>
+            <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-3">
+              <Film className="h-6 w-6 text-purple-600" />
+            </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
               Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover AI, avatar UGC, materiale stock și editare profesională — gata de publicat.

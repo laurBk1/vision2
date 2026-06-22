@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp } from 'lucide-react';
+import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle } from 'lucide-react';
 
 const shimmerStyle = `
   .btn-shimmer {
@@ -324,31 +324,97 @@ const Services = () => {
         </div>
 
         {/* Process Overview */}
-        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl mb-12 md:mb-16">
+        <div className="bg-white rounded-2xl p-6 md:p-12 shadow-xl mb-12 md:mb-16">
+          <style>{`
+            @keyframes arrowFlow {
+              0%, 100% { opacity: 0.4; transform: translateX(0); }
+              50% { opacity: 1; transform: translateX(4px); }
+            }
+            .proc-arrow { animation: arrowFlow 1.5s ease-in-out infinite; }
+            .proc-arrow-down { animation: arrowFlow 1.5s ease-in-out infinite; transform-origin: center; }
+            @keyframes arrowFlowDown {
+              0%, 100% { opacity: 0.4; transform: translateY(0); }
+              50% { opacity: 1; transform: translateY(4px); }
+            }
+            .proc-arrow-down { animation: arrowFlowDown 1.5s ease-in-out infinite; }
+          `}</style>
+
           <div className="text-center mb-8 md:mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
               Procesul Nostru de Lucru:
             </h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium italic">
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium italic">
               Fiecare proiect urmează un <span className="text-indigo-600 font-bold not-italic">proces structurat</span> pentru a asigura
               <span className="text-gray-900 font-bold not-italic"> calitatea și satisfacția clientului</span>.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+
+          {/* Desktop: row cu sageti orizontale */}
+          <div className="hidden md:flex items-center justify-between gap-2">
             {[
-              { step: '01', title: 'Briefing', desc: 'Înțelegem viziunea ta' },
-              { step: '02', title: 'Planificare', desc: 'Creăm strategia video' },
-              { step: '03', title: 'Producție', desc: 'Editare profesională' },
-              { step: '04', title: 'Livrare', desc: 'Rezultat final perfect' }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-3 md:mb-4 font-bold text-base md:text-lg shadow-lg">
-                  {item.step}
+              { step: '01', title: 'Briefing', desc: 'Înțelegem viziunea ta', icon: MessageSquare },
+              { step: '02', title: 'Planificare', desc: 'Creăm strategia video', icon: FileText },
+              { step: '03', title: 'Producție', desc: 'Editare profesională', icon: Scissors },
+              { step: '04', title: 'Livrare', desc: 'Rezultat final perfect', icon: CheckCircle }
+            ].map((item, index, arr) => {
+              const StepIcon = item.icon;
+              return (
+              <React.Fragment key={index}>
+                <div className="flex-1 text-center group">
+                  <div className="bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3 font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-200">
+                    {item.step}
+                  </div>
+                  <div className="flex justify-center mb-2">
+                    <StepIcon className="h-5 w-5 text-blue-500" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-1 text-base">{item.title}</h4>
+                  <p className="text-sm text-gray-500 font-medium leading-snug">{item.desc}</p>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-1 md:mb-2 text-base">{item.title}</h4>
-                <p className="text-sm text-gray-600 font-medium">{item.desc}</p>
-              </div>
-            ))}
+                {index < arr.length - 1 && (
+                  <div className="flex-shrink-0 flex flex-col items-center gap-1 px-1">
+                    <svg className="proc-arrow w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                )}
+              </React.Fragment>
+            );
+            })}
+          </div>
+
+          {/* Mobile: coloana cu sageti verticale */}
+          <div className="flex md:hidden flex-col items-center gap-0">
+            {[
+              { step: '01', title: 'Briefing', desc: 'Înțelegem viziunea ta', icon: MessageSquare },
+              { step: '02', title: 'Planificare', desc: 'Creăm strategia video', icon: FileText },
+              { step: '03', title: 'Producție', desc: 'Editare profesională', icon: Scissors },
+              { step: '04', title: 'Livrare', desc: 'Rezultat final perfect', icon: CheckCircle }
+            ].map((item, index, arr) => {
+              const MIcon = item.icon;
+              return (
+              <React.Fragment key={index}>
+                <div className="w-full flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                  <div className="bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-xl w-12 h-12 flex-shrink-0 flex items-center justify-center font-bold text-base shadow-md">
+                    {item.step}
+                  </div>
+                  <div className="text-left">
+                    <div className="flex items-center gap-2">
+                      <MIcon className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                      <h4 className="font-bold text-gray-900 text-base">{item.title}</h4>
+                    </div>
+                    <p className="text-sm text-gray-500 font-medium">{item.desc}</p>
+                  </div>
+                </div>
+                {index < arr.length - 1 && (
+                  <div className="py-1">
+                    <svg className="proc-arrow-down w-6 h-6 text-blue-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                )}
+              </React.Fragment>
+            );
+            })}
           </div>
         </div>
 
