@@ -231,7 +231,7 @@ const FAQ = () => {
         </div>
 
         {/* Intro card */}
-        <div className="bg-white rounded-xl p-8 shadow-lg mb-12 border-l-6 border-blue-600">
+        <div className="bg-white rounded-xl p-8 shadow-lg mb-12 border-l-[6px] border-blue-600">
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             Cum vă putem sprijini?
           </h3>
@@ -298,7 +298,7 @@ const FAQ = () => {
         </div>
 
         {/* CTA bottom */}
-        <div className="mt-12 bg-white rounded-xl p-8 shadow-lg text-center border-l-6 border-blue-600">
+        <div className="mt-12 bg-white rounded-xl p-8 shadow-lg text-center border-l-[6px] border-blue-600">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
             Nu ați identificat răspunsul căutat?
           </h3>
