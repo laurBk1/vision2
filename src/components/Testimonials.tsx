@@ -35,7 +35,7 @@ function TestimonialCard({ testimonial, delay }) {
         <img
           src={testimonial.image}
           alt={testimonial.name}
-          className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover mr-4 border-2 border-white/20"
+          className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover object-center mr-4 border-2 border-white/30 flex-shrink-0"
         />
         <div>
           <h3 className="font-bold text-white text-base md:text-lg">
@@ -69,28 +69,28 @@ function TestimonialCard({ testimonial, delay }) {
 const Testimonials = () => {
   const testimonials = [
     {
-      name: 'Ana Popescu',
+      name: 'Andrei Popescu',
       role: 'Director Marketing',
       company: 'TechFlow Solutions',
       content: 'VisionEdit a transformat videoclipul de lansare al produsului nostru dincolo de așteptări. Atenția la detalii și viziunea creativă au dat viață poveștii brandului nostru în mod frumos.',
       rating: 5,
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: '/testimonial-1.jpg'
     },
     {
-      name: 'Alexandru Petrescu',
-      role: 'Fotograf',
+      name: 'Ana Petrescu',
+      role: 'Fotografă',
       company: 'Studio Creative',
       content: 'Serviciile sunt adaptate perfect nevoilor noastre și comunicarea a fost impecabilă. Recomand cu încredere pentru profesionalism și rezultate de calitate.',
       rating: 5,
-      image: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: '/testimonial-2.jpg'
     },
     {
-      name: 'Maria Dumitrescu',
-      role: 'Antreprenoare',
+      name: 'Mihai Dumitrescu',
+      role: 'Antreprenor',
       company: 'Beauty Studio',
       content: 'Echipa oferă un serviciu profesional care aduce valoare reală pentru orice tip de proiect video. Colaborarea a fost ușoară și rezultatele au depășit așteptările.',
       rating: 5,
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: '/testimonial-3.jpg'
     }
   ];
 

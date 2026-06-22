@@ -63,10 +63,10 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start mb-16 md:mb-20">
           {/* Left Side - Image */}
           <div className="relative order-2 lg:order-1">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Spațiu de lucru editare video"
+            <div className="rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio: '3/2'}}>
+              <img
+                src="/team.jpeg"
+                alt="Echipa VisionEdit București"
                 className="w-full h-full object-cover"
               />
             </div>
