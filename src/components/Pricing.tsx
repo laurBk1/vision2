@@ -17,6 +17,21 @@ const subtitleGlowStyle = `
   .subtitle-badge {
     animation: subtitlePulse 2.8s ease-in-out infinite;
   }
+  @keyframes pillPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.0); transform: scale(1); }
+    50% { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18); transform: scale(1.04); }
+  }
+  @keyframes pillPulsePurple {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.0); transform: scale(1); }
+    50% { box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.18); transform: scale(1.04); }
+  }
+  @keyframes pillPulseOrange {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.0); transform: scale(1); }
+    50% { box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18); transform: scale(1.04); }
+  }
+  .pill-pulse-blue { animation: pillPulse 2.5s ease-in-out infinite; }
+  .pill-pulse-purple { animation: pillPulsePurple 2.5s ease-in-out infinite; }
+  .pill-pulse-orange { animation: pillPulseOrange 2.5s ease-in-out infinite; }
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -555,7 +570,7 @@ const Pricing = () => {
                         <AlertCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-600 flex-shrink-0" />
                         <span className="text-xl md:text-2xl font-bold text-gray-900">Tu Filmezi, Noi Edităm</span>
                       </div>
-                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700'}`}>
+                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
                         {openInfo === 'editing-info' ? 'Închide' : 'Detalii'}
                         <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'editing-info' ? 'rotate-90' : ''}`} />
                       </span>
@@ -600,7 +615,7 @@ const Pricing = () => {
                         <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 flex-shrink-0" />
                         <span className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Pachete Complete — Videoclipuri de la A la Z</span>
                       </div>
-                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-white text-purple-700 shadow-md' : 'bg-white/80 text-purple-700 shadow'}`}>
+                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-white text-purple-700 shadow-md' : 'bg-white/80 text-purple-700 shadow pill-pulse-purple'}`}>
                         {openInfo === 'complete-info' ? 'Închide' : 'Detalii'}
                         <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'complete-info' ? 'rotate-90' : ''}`} />
                       </span>
@@ -642,7 +657,7 @@ const Pricing = () => {
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
                     <Clapperboard className="h-5 w-5 text-blue-600 flex-shrink-0" />Ce Includ Pachetele
                   </h4>
-                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700'}`}>
+                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
                     {openInfo === 'ce-includ' ? 'Închide' : 'Vezi detalii'}
                     <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'ce-includ' ? 'rotate-90' : ''}`} />
                   </span>
@@ -667,7 +682,7 @@ const Pricing = () => {
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
                     <Info className="h-5 w-5 text-orange-500 flex-shrink-0" />Note Importante
                   </h4>
-                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700'}`}>
+                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700 pill-pulse-orange'}`}>
                     {openInfo === 'note-importante' ? 'Închide' : 'Vezi detalii'}
                     <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'note-importante' ? 'rotate-90' : ''}`} />
                   </span>
