@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle } from 'lucide-react';
+import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle, Clapperboard, Music2, ImagePlus, Stamp, Repeat2, ZoomIn, Wand2, ScanLine, Crop, Smartphone, TrendingUp, BarChart2 } from 'lucide-react';
 
 const shimmerStyle = `
   .btn-shimmer {
@@ -112,7 +112,7 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
         }}
         className={`w-full font-bold py-3 rounded-lg text-base ${expandedDesc === index ? 'btn-shimmer-close' : 'btn-shimmer'}`}
       >
-        {expandedDesc === index ? '✕ Ascunde' : '✦ Află Mai Multe'}
+        {expandedDesc === index ? 'Ascunde' : 'Află Mai Multe'}
       </button>
       {expandedDesc === index && (
         <div className="mt-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
@@ -131,7 +131,7 @@ const Services = () => {
 
   const services = [
     {
-      icon: Scissors,
+      icon: Clapperboard,
       title: 'Montaj Video și Editare Profesională',
       description: 'Asigurăm un flow dinamic și captivant, cu tăieturi precise, care menține interesul și implicarea publicului de la început până la sfârșit.',
       features: ['Tăieturi precise și ritmice', 'Flow dinamic optimizat', 'Sincronizare perfectă'],
@@ -152,14 +152,14 @@ const Services = () => {
       highlight: 'Accessible'
     },
     {
-      icon: Volume2,
+      icon: Music2,
       title: 'Sound Design și Efecte Audio Profesionale',
       description: 'Îmbogățim conținutul videoclipului tău cu sunete și efecte care intensifică emoția și completează perfect mesajul vizual.',
       features: ['Efecte audio premium', 'Sincronizare audio-video', 'Mixaj profesional'],
       highlight: 'Audio Pro'
     },
     {
-      icon: Image,
+      icon: ImagePlus,
       title: 'Copertă Captivantă',
       description: 'Înainte ca cineva să vadă videoclipul tău, vede imaginea de copertă. Dacă aceasta nu îl oprește din scroll în prima secundă, videoclipul tău nu există pentru el. Un thumbnail bun poate dubla sau tripla vizualizările fără să schimbi nimic altceva.',
       features: ['Design custom adaptat nișei tale', 'Text emoțional și compoziție care oprește scroll-ul', '2-3 variante gata de testat, tu alegi câștigătoarea'],
@@ -180,42 +180,42 @@ const Services = () => {
       highlight: 'Visual Pro'
     },
     {
-      icon: Target,
+      icon: Stamp,
       title: 'Branding și Elemente Grafice Integrate',
       description: 'Întărim identitatea și prezența online a afacerii tale prin încorporarea strategică a logo-ului, watermark-ului și a elementelor grafice pe care ni le furnizezi.',
       features: ['Integrare logo profesională', 'Watermark personalizat', 'Elemente de brand'],
       highlight: 'Brand Focus'
     },
     {
-      icon: RefreshCw,
+      icon: Repeat2,
       title: 'Transformare Conținut Lung în Shorts',
       description: 'Ai un podcast, un vlog lung, un interviu sau un live? Nu trebuie să filmezi nimic nou. Luăm ce ai deja și transformăm cele mai bune momente în Shorts separate, gata de postat pe toate platformele.',
       features: ['Extragere manuală a celor mai bune momente', 'Hook, subtitrări și efecte pentru fiecare short', 'Același brand, conținut nou, fără filmare extra'],
       highlight: 'Content x10'
     },
     {
-      icon: Layers,
+      icon: ZoomIn,
       title: 'Efecte de Zoom Dinamice',
       description: 'Intensificăm impactul vizual și menținem publicul angajat prin utilizarea strategică a efectelor de zoom in/out, evidențiind detalii esențiale și oferind context exact când este nevoie.',
       features: ['Zoom cinematografic', 'Focus dinamic', 'Evidențiere strategică'],
       highlight: 'Dynamic'
     },
     {
-      icon: Sparkles,
+      icon: Wand2,
       title: 'Animații și Efecte Grafice Creative',
       description: 'Îmbogățim vizual videoclipul tău cu emoji-uri animate, stickere, texte dinamice și alte elemente grafice, transformându-l într-o experiență mai atractivă și memorabilă pentru public.',
       features: ['Emoji-uri animate', 'Stickere personalizate', 'Grafică dinamică'],
       highlight: 'Creative'
     },
     {
-      icon: Eye,
+      icon: ScanLine,
       title: 'Stabilizare Video și Blur Selectiv',
       description: 'Eliminăm tremurul pentru un aspect fluid și profesionist. Aplicăm estompare (blur) strategic, pentru a masca elemente nedorite sau a direcționa atenția către ceea ce contează cu adevărat.',
       features: ['Stabilizare avansată', 'Blur selectiv strategic', 'Focus directing'],
       highlight: 'Smooth Pro'
     },
     {
-      icon: Target,
+      icon: Crop,
       title: 'Crop & Reframe',
       description: 'Adaptăm conținut filmat orizontal (landscape) pentru vertical (Shorts), păstrând subiectul clar și în centru. Evităm marginile negre și menținem aspectul profesional.',
       features: ['Reîncadrare dinamică (motion tracking pe subiect)', 'Zoom adaptiv pentru diferite scene', 'Eliminarea spațiilor moarte', 'Centrare automată pe acțiune'],
@@ -239,19 +239,19 @@ const Services = () => {
 
   const specialFeatures = [
     {
-      icon: Video,
+      icon: Smartphone,
       title: 'Format Vertical 9:16 Optimizat',
       description: 'Specializați în formatul vertical perfect pentru TikTok, Instagram Reels, YouTube Shorts și alte platforme sociale moderne.',
       stats: '100% Optimizat Social'
     },
     {
-      icon: Target,
+      icon: TrendingUp,
       title: 'Strategii de Engagement',
       description: 'Implementăm tehnici dovedite pentru a maximiza rata de vizionare, like-uri, share-uri și comentarii.',
       stats: '3x Mai Mult Engagement'
     },
     {
-      icon: Megaphone,
+      icon: BarChart2,
       title: 'Optimizare pentru Algoritmi',
       description: 'Creăm conținut adaptat algoritmilor platformelor sociale pentru a maximiza reach-ul organic.',
       stats: '5x Mai Multă Vizibilitate'

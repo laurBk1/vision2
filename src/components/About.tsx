@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Clock, Users, Zap, Video, Target, Globe, CheckCircle } from 'lucide-react';
+import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket, GitBranch } from 'lucide-react';
 
 const About = () => {
   const achievements = [
@@ -11,22 +11,27 @@ const About = () => {
 
   const services = [
     {
-      icon: Video,
+      icon: Clapperboard,
       title: 'Editare Video Profesionistă',
       description: 'Transformăm materialele brute în clipuri scurte, clare și captivante. Optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads. Creștem engagement-ul, vizibilitatea și impactul videoclipurilor tale.'
     },
     {
-      icon: Target,
+      icon: Film,
       title: 'Edităm pentru Orice Nișă',
-      description: 'De la servicii și comerț la beauty, educație, sănătate, evenimente și imobiliare — sau orice altă nișă care își dorește promovare prin video marketing.\n\nLucrăm alături de antreprenori, business-uri, influenceri și creatori de conținut. Fiecare video este adaptat pentru publicul tău și obiectivul tău de marketing.'
+      description: 'De la servicii și comerț la beauty, educație, sănătate, evenimente și imobiliare — sau orice altă nișă care își dorește promovare prin video marketing.'
     },
     {
-      icon: Globe,
+      icon: GitBranch,
+      title: 'Construim Relații, Nu Doar Edităm Videoclipuri',
+      description: 'Lucrăm alături de antreprenori, business-uri, influenceri și creatori de conținut. Fiecare video este adaptat pentru publicul tău și obiectivul tău de marketing.'
+    },
+    {
+      icon: Smartphone,
       title: 'Conținut Vertical, Optimizat Global',
       description: 'Specializați în format 9:16 pentru toate platformele sociale majore. Videoclipuri gata de publicare, optimizate pentru vizibilitate și impact maxim.'
     },
     {
-      icon: CheckCircle,
+      icon: Rocket,
       title: 'Proces Simplificat, Rezultate Excepționale',
       description: 'Fără complicații, fără pierdere de timp. Tu trimiți materialele — noi livrăm clipurile editate, gata de publicat.'
     }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, Clapperboard, BarChart2, Rocket, Wand2, Layers, Crown, Scissors, Film } from 'lucide-react';
+import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, Clapperboard, BarChart2, Rocket, PlayCircle, TrendingUp, Crown, Scissors, Film, Eye, Package, Info } from 'lucide-react';
 
 const subtitleGlowStyle = `
   @keyframes subtitlePulse {
@@ -124,6 +124,8 @@ const Pricing = () => {
   };
 
   const [history, setHistory] = useState<Step[]>([]);
+  const [openInfo, setOpenInfo] = useState<string | null>(null);
+  const toggleInfo = (key: string) => setOpenInfo(prev => prev === key ? null : key);
 
   const scrollToWizard = () => {
     setTimeout(() => {
@@ -165,7 +167,7 @@ const Pricing = () => {
     {
       name: 'Start Smart',
       subtitle: '1-5 videoclipuri pe lună',
-      icon: Clapperboard,
+      icon: PlayCircle,
       popular: false,
       price: '249 lei/video',
       description: '(249 lei — 1.245 lei / lună)',
@@ -181,13 +183,13 @@ const Pricing = () => {
         'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
-      buttonText: 'Alege Editare Simplă',
+      buttonText: 'Începe Colaborarea',
       buttonColor: 'bg-gray-600 hover:bg-gray-700'
     },
     {
       name: 'Creștere Accelerată',
       subtitle: '6-12 videoclipuri pe lună',
-      icon: BarChart2,
+      icon: TrendingUp,
       popular: true,
       price: '210 lei/video',
       description: '(1.260 lei — 2.520 lei / lună)',
@@ -227,7 +229,7 @@ const Pricing = () => {
     {
       name: 'Start Smart Complet',
       subtitle: '1-5 videoclipuri pe lună',
-      icon: Wand2,
+      icon: PlayCircle,
       popular: false,
       price: '280-350 lei/video',
       priceDetails: [
@@ -239,7 +241,7 @@ const Pricing = () => {
         'Videoclipuri personalizate de la A la Z',
         'Montaj complet profesional',
         'Avatar UGC profesional inclus',
-        'Voiceover AI Premium',
+        'Voiceover profesional',
         'Script adaptat conținutului',
         'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
@@ -250,7 +252,7 @@ const Pricing = () => {
     {
       name: 'Creștere Accelerată Complet',
       subtitle: '6-12 videoclipuri pe lună',
-      icon: Layers,
+      icon: TrendingUp,
       popular: true,
       price: '255-315 lei/video',
       priceDetails: [
@@ -309,7 +311,7 @@ const Pricing = () => {
     }`}>
       {isRecommended && (
         <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-center py-2 font-bold text-sm z-10">
-          ✨ Recomandat pentru tine
+          <Star className="inline h-4 w-4 mr-1 fill-white" />Recomandat pentru tine
         </div>
       )}
       {!isRecommended && pkg.popular && (
@@ -400,7 +402,7 @@ const Pricing = () => {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
-              Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover AI, avatar UGC, materiale stock și editare profesională — gata de publicat.
+              Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover profesional, avatar UGC, materiale stock și editare profesională — gata de publicat.
             </p>
             <div className="bg-purple-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-purple-600 transition-colors duration-200">
               <span className="text-purple-700 font-bold text-base group-hover:text-white transition-colors">De la 240 lei/video</span>
@@ -426,16 +428,19 @@ const Pricing = () => {
       <p className="text-gray-500 mb-8">Poți vedea ambele pachete sau doar cel care te interesează.</p>
       <div className="flex flex-col gap-4">
         {[
-          { label: '👀 Vreau să văd ambele pachete', value: 'both' as ViewChoice },
-          { label: '✂️ Doar Editare cu materialele mele', value: 'editing' as ViewChoice },
-          { label: '🎬 Doar Pachete Complete (de la A la Z)', value: 'complete' as ViewChoice },
+          { label: 'Vreau să văd ambele pachete', value: 'both' as ViewChoice, icon: Eye },
+          { label: 'Doar Editare cu materialele mele', value: 'editing' as ViewChoice, icon: Scissors },
+          { label: 'Doar Pachete Complete (de la A la Z)', value: 'complete' as ViewChoice, icon: Film },
         ].map(opt => (
           <button
             key={opt.value}
             onClick={() => { setViewChoice(opt.value); goToStep('quiz-videos'); }}
             className="bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl px-6 py-4 text-left font-semibold text-gray-800 text-base transition-all duration-200 flex items-center justify-between group shadow-sm"
           >
-            <span>{opt.label}</span>
+            <div className="flex items-center gap-3">
+              {opt.icon && React.createElement(opt.icon, { className: "h-5 w-5 text-blue-500 flex-shrink-0" })}
+              <span>{opt.label}</span>
+            </div>
             <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
           </button>
         ))}
@@ -527,7 +532,7 @@ const Pricing = () => {
             {/* Recommendation banner */}
             {recommendedTier !== null && (
               <div className="max-w-3xl mx-auto mb-10 bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-2xl px-6 py-4 flex items-center gap-4 shadow">
-                <span className="text-2xl">✨</span>
+                <Star className="h-6 w-6 text-orange-400 fill-orange-400 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-gray-900 text-lg">
                     Pe baza răspunsurilor tale, îți recomandăm pachetul <span className="text-orange-600">{recommendedTier === 0 ? 'Start Smart' : recommendedTier === 1 ? 'Creștere Accelerată' : 'Vizibilitate Max'}</span>!
@@ -541,24 +546,37 @@ const Pricing = () => {
             {(viewChoice === 'both' || viewChoice === 'editing') && (
               <div className="mb-16 md:mb-20">
                 <div className="text-center mb-8 md:mb-12">
-                  <div className="bg-gray-100 rounded-xl p-4 md:p-6 max-w-4xl mx-auto">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 flex items-center justify-center flex-wrap">
-                      <AlertCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-600 mr-2 flex-shrink-0" />
-                      <span className="text-center">Editare cu Materialele Tale</span>
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed mb-3 md:mb-4 text-base md:text-lg font-medium">
-                      Aceste pachete includ doar editarea profesională a materialelor pe care ni le furnizezi.
-                      <strong className="block mt-2">Editare 100% personalizată după nevoile tale.</strong>
-                    </p>
-                    <div className="bg-blue-50 rounded-lg p-3 md:p-4 border-l-4 border-blue-500">
-                      <div className="flex items-start">
-                        <Clock className="h-4 w-4 md:h-5 md:w-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <p className="text-blue-800 font-medium text-base md:text-lg leading-relaxed">
-                          <strong className="font-bold">Durată maximă:</strong> „Maxim 1 minut" se referă la durata videoclipului final editat, nu la durata materialelor raw trimise spre editare.
-                          <span className="block mt-2 font-semibold">Putem edita și clipuri care depășesc această durată, însă prețul se poate modifica în funcție de complexitatea și durata finală a proiectului.</span>
-                        </p>
+                  <div className="bg-gray-100 rounded-xl max-w-4xl mx-auto overflow-hidden">
+                    <button
+                      onClick={() => toggleInfo('editing-info')}
+                      className="w-full p-4 md:p-6 flex items-center justify-between gap-3 hover:bg-gray-200 transition-colors duration-200 text-left"
+                    >
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <AlertCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-600 flex-shrink-0" />
+                        <span className="text-xl md:text-2xl font-bold text-gray-900">Tu Filmezi, Noi Edităm</span>
                       </div>
-                    </div>
+                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700'}`}>
+                        {openInfo === 'editing-info' ? 'Închide' : 'Detalii'}
+                        <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'editing-info' ? 'rotate-90' : ''}`} />
+                      </span>
+                    </button>
+                    {openInfo === 'editing-info' && (
+                      <div className="px-4 md:px-6 pb-4 md:pb-6 fade-in-up">
+                        <p className="text-gray-700 leading-relaxed mb-3 md:mb-4 text-base md:text-lg font-medium">
+                          Aceste pachete includ doar editarea profesională a materialelor pe care ni le furnizezi.
+                          <strong className="block mt-2">Editare 100% personalizată după nevoile tale.</strong>
+                        </p>
+                        <div className="bg-blue-50 rounded-lg p-3 md:p-4 border-l-4 border-blue-500">
+                          <div className="flex items-start">
+                            <Clock className="h-4 w-4 md:h-5 md:w-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <p className="text-blue-800 font-medium text-base md:text-lg leading-relaxed">
+                              <strong className="font-bold">Durată maximă:</strong> „Maxim 1 minut" se referă la durata videoclipului final editat, nu la durata materialelor raw trimise spre editare.
+                              <span className="block mt-2 font-semibold">Putem edita și clipuri care depășesc această durată, însă prețul se poate modifica în funcție de complexitatea și durata finală a proiectului.</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -573,18 +591,31 @@ const Pricing = () => {
             {(viewChoice === 'both' || viewChoice === 'complete') && (
               <div className="mb-12 md:mb-16">
                 <div className="text-center mb-8 md:mb-12">
-                  <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl p-4 md:p-6 max-w-4xl mx-auto">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 flex items-center justify-center flex-wrap">
-                      <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 mr-2 flex-shrink-0" />
-                      <span className="text-center leading-tight">Pachete Complete —<br className="sm:hidden" /><span className="block sm:inline"> Videoclipuri de la A la Z</span></span>
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed text-base md:text-lg font-medium text-center">
-                      Aceste pachete includ tot ce ai nevoie:
-                      <span className="block mt-2 text-gray-900">
-                        <strong>editare profesională, voiceover AI premium, script personalizat și materiale video/foto stock (B-rolls), plus un avatar virtual UGC care transmite mesajul tău într-un mod natural și profesionist</strong>
+                  <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl max-w-4xl mx-auto overflow-hidden">
+                    <button
+                      onClick={() => toggleInfo('complete-info')}
+                      className="w-full p-4 md:p-6 flex items-center justify-between gap-3 hover:brightness-95 transition-all duration-200 text-left"
+                    >
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 flex-shrink-0" />
+                        <span className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Pachete Complete — Videoclipuri de la A la Z</span>
+                      </div>
+                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-white text-purple-700 shadow-md' : 'bg-white/80 text-purple-700 shadow'}`}>
+                        {openInfo === 'complete-info' ? 'Închide' : 'Detalii'}
+                        <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'complete-info' ? 'rotate-90' : ''}`} />
                       </span>
-                      <span className="block mt-2 text-sm text-gray-500 font-normal italic">— oferite în limita resurselor disponibile pentru fiecare proiect.</span>
-                    </p>
+                    </button>
+                    {openInfo === 'complete-info' && (
+                      <div className="px-4 md:px-6 pb-4 md:pb-6 fade-in-up">
+                        <p className="text-gray-700 leading-relaxed text-base md:text-lg font-medium text-center">
+                          Aceste pachete includ tot ce ai nevoie:
+                          <span className="block mt-2 text-gray-900">
+                            <strong>editare profesională, voiceover profesional, script personalizat și materiale video/foto stock (B-rolls), plus un avatar virtual UGC care transmite mesajul tău într-un mod natural și profesionist</strong>
+                          </span>
+                          <span className="block mt-2 text-sm text-gray-500 font-normal italic">— oferite în limita resurselor disponibile pentru fiecare proiect.</span>
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -596,32 +627,62 @@ const Pricing = () => {
             )}
 
             {/* Important Notes */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg mb-8 md:mb-12">
-              <div className="flex items-center justify-center gap-2 mb-4 md:mb-6">
-                <span className="text-green-600 font-bold text-sm md:text-base">✓ Prețuri fără TVA</span>
+            <div className="bg-white rounded-2xl shadow-lg mb-8 md:mb-12 overflow-hidden">
+              <div className="flex items-center justify-center gap-2 px-6 pt-5 pb-3">
+                <span className="text-green-600 font-bold text-sm md:text-base flex items-center gap-1"><Check className="h-4 w-4" />Prețuri fără TVA</span>
                 <span className="text-gray-300">|</span>
                 <span className="text-gray-500 text-sm md:text-base">Nu suntem plătitori de TVA — plătești exact suma afișată</span>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 text-center">Informații Importante</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-base md:text-lg">📋 Ce Includ Pachetele:</h4>
-                  <ul className="space-y-3 text-gray-700 text-base md:text-lg font-medium">
-                    <li>• O revizie gratuită per video, valabilă 48h de la primirea materialului editat</li>
-                    <li>• Livrare flexibilă comunicată în prealabil</li>
-                    <li>• Format vertical 9:16 optimizat</li>
-                    <li>• Suport tehnic complet</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-base md:text-lg">⚠️ Note Importante:</h4>
-                  <ul className="space-y-3 text-gray-700 text-base md:text-lg font-medium">
-                    <li>• Materialele stock sunt oferite în limita disponibilității</li>
-                    <li>• Voiceover AI — voce naturală, impact maxim</li>
-                    <li>• Revizii suplimentare: 30-50 lei/video</li>
-                    <li>• Prețurile pot varia în funcție de complexitate</li>
-                  </ul>
-                </div>
+              {/* Accordion: Ce Includ Pachetele */}
+              <div className="border-t border-gray-100">
+                <button
+                  onClick={() => toggleInfo('ce-includ')}
+                  className="w-full px-6 py-4 flex items-center justify-between gap-3 hover:bg-blue-50 transition-colors duration-200 text-left"
+                >
+                  <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
+                    <Clapperboard className="h-5 w-5 text-blue-600 flex-shrink-0" />Ce Includ Pachetele
+                  </h4>
+                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700'}`}>
+                    {openInfo === 'ce-includ' ? 'Închide' : 'Vezi detalii'}
+                    <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'ce-includ' ? 'rotate-90' : ''}`} />
+                  </span>
+                </button>
+                {openInfo === 'ce-includ' && (
+                  <div className="px-6 pb-5 fade-in-up">
+                    <ul className="space-y-3 text-gray-700 text-base md:text-lg font-medium">
+                      <li>• O revizie gratuită per video, valabilă 48h de la primirea materialului editat</li>
+                      <li>• Livrare flexibilă comunicată în prealabil</li>
+                      <li>• Format vertical 9:16 optimizat</li>
+                      <li>• Suport tehnic complet</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              {/* Accordion: Note Importante */}
+              <div className="border-t border-gray-100">
+                <button
+                  onClick={() => toggleInfo('note-importante')}
+                  className="w-full px-6 py-4 flex items-center justify-between gap-3 hover:bg-orange-50 transition-colors duration-200 text-left"
+                >
+                  <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
+                    <Info className="h-5 w-5 text-orange-500 flex-shrink-0" />Note Importante
+                  </h4>
+                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700'}`}>
+                    {openInfo === 'note-importante' ? 'Închide' : 'Vezi detalii'}
+                    <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'note-importante' ? 'rotate-90' : ''}`} />
+                  </span>
+                </button>
+                {openInfo === 'note-importante' && (
+                  <div className="px-6 pb-5 fade-in-up">
+                    <ul className="space-y-3 text-gray-700 text-base md:text-lg font-medium">
+                      <li>• <strong>Materialele B-roll (video/foto stock)</strong> — integrate în limita materialelor de care dispunem pentru nișa ta</li>
+                      <li>• Voiceover profesional — voce naturală, impact maxim</li>
+                      <li>• Revizie simplă: 30–50 RON / video</li>
+                      <li>• Revizie orară (modificări complexe): 50–100 RON / oră</li>
+                      <li>• Prețurile pot varia în funcție de complexitate</li>
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
 

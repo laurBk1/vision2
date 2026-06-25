@@ -564,7 +564,7 @@ const Hero = () => {
 
               {/* Badge sus-dreapta — doar pe mobile */}
               <div className="h-proof-float h-proof-top">
-                <div className="h-float-icon yellow">⭐</div>
+                <div className="h-float-icon yellow"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                 <div>
                   <strong className="h-float-strong">Calitate garantată</strong>
                   <span className="h-float-sub">Satisfacție 100%</span>
@@ -597,14 +597,14 @@ const Hero = () => {
                   {/* Badge-uri în interior — doar pe desktop */}
                   <div className="h-card-proofs h-proofs-desktop">
                     <div className="h-proof-item">
-                      <div className="h-float-icon yellow">⭐</div>
+                      <div className="h-float-icon yellow"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                       <div>
                         <strong className="h-float-strong">Calitate garantată</strong>
                         <span className="h-float-sub">Satisfacție 100%</span>
                       </div>
                     </div>
                     <div className="h-proof-item">
-                      <div className="h-float-icon green">🚀</div>
+                      <div className="h-float-icon green"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                       <div>
                         <strong className="h-float-strong">Livrare flexibilă</strong>
                         <span className="h-float-sub">Adaptată proiectului tău</span>
@@ -616,7 +616,7 @@ const Hero = () => {
 
               {/* Badge jos-stânga — doar pe mobile */}
               <div className="h-proof-float h-proof-bottom">
-                <div className="h-float-icon green">🚀</div>
+                <div className="h-float-icon green"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                 <div>
                   <strong className="h-float-strong">Livrare flexibilă</strong>
                   <span className="h-float-sub">Adaptată proiectului tău</span>
