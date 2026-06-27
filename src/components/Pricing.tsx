@@ -521,17 +521,18 @@ const Pricing = () => {
         <div className="text-center mb-12 md:mb-16">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-4xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
-              Pachete video
+              Prețuri
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
-              Pachete editare video<br className="sm:hidden" />
-              <span className="block mt-1">pentru promovarea afacerii tale!</span>
+              Pachete de editare video
             </h2>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">
-            <p className="text-lg text-gray-600 leading-relaxed font-medium italic">
-              Alege planul care îți va <span className="text-indigo-600 font-bold not-italic">transforma conținutul</span> și îți va
-              <span className="text-gray-900 font-bold not-italic"> crește vizibilitatea online</span>.
+            <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
+              Prețuri transparente, fără surprize.
+            </p>
+            <p className="text-base md:text-lg text-gray-500 mt-2 leading-relaxed font-medium italic">
+              Alege planul care îți va <span className="text-indigo-600 font-bold not-italic">transforma conținutul</span> și îți va <span className="text-gray-900 font-bold not-italic">crește vizibilitatea online</span>.
             </p>
           </div>
         </div>
