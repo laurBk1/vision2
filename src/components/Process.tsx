@@ -181,7 +181,7 @@ const Process = () => {
               Proces Creativ
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Procesul Nostru Creativ
+              Procesul nostru creativ
             </h2>
           </div>
 

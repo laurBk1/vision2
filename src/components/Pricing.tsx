@@ -199,11 +199,11 @@ const Pricing = () => {
         'Montaj complet și optimizat',
         'Tranziții și efecte vizuale',
         'Subtitrări și texte personalizate',
-        'Sound Design & Efecte Sonore',
+        'Sound design & efecte sonore',
         'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
-      buttonText: 'Începe Colaborarea',
+      buttonText: 'Începe colaborarea',
       buttonColor: 'bg-gray-600 hover:bg-gray-700'
     },
     {
@@ -221,7 +221,7 @@ const Pricing = () => {
         'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
-      buttonText: 'Cel Mai Popular',
+      buttonText: 'Cel mai popular',
       buttonColor: 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700'
     },
     {
@@ -240,7 +240,7 @@ const Pricing = () => {
         'Livrare flexibilă comunicată în prealabil',
         'Raport lunar cu feedback și recomandări'
       ],
-      buttonText: 'Maximizează Impactul',
+      buttonText: 'Maximizează impactul',
       buttonColor: 'bg-green-700 hover:bg-green-800'
     }
   ];
@@ -266,7 +266,7 @@ const Pricing = () => {
         'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
-      buttonText: 'Pachet Complet',
+      buttonText: 'Pachet complet',
       buttonColor: 'bg-blue-600 hover:bg-blue-700'
     },
     {
@@ -288,7 +288,7 @@ const Pricing = () => {
         'O revizie gratuită / video',
         'Livrare flexibilă comunicată în prealabil'
       ],
-      buttonText: 'Cel Mai Popular Complet',
+      buttonText: 'Cel mai popular complet',
       buttonColor: 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700'
     },
     {
@@ -311,7 +311,7 @@ const Pricing = () => {
         'Livrare flexibilă comunicată în prealabil',
         'Analiză performanță lunară'
       ],
-      buttonText: 'Maximizează Impactul Complet',
+      buttonText: 'Maximizează impactul complet',
       buttonColor: 'bg-green-700 hover:bg-green-800'
     }
   ];
@@ -336,7 +336,7 @@ const Pricing = () => {
       )}
       {!isRecommended && pkg.popular && (
         <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center py-2 font-bold text-sm">
-          <Star className="inline h-4 w-4 mr-1" />Cel Mai Popular
+          <Star className="inline h-4 w-4 mr-1" />Cel mai popular
         </div>
       )}
       <div className={`p-6 md:p-8 ${(isRecommended || pkg.popular) ? 'pt-12 md:pt-14' : ''}`}>
@@ -521,11 +521,11 @@ const Pricing = () => {
         <div className="text-center mb-12 md:mb-16">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-4xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
-              Pachete Video
+              Pachete video
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
-              Pachete Editare Video<br className="sm:hidden" />
-              <span className="block mt-1">pentru Promovarea Afacerii Tale!</span>
+              Pachete editare video<br className="sm:hidden" />
+              <span className="block mt-1">pentru promovarea afacerii tale!</span>
             </h2>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">
@@ -573,7 +573,7 @@ const Pricing = () => {
                     >
                       <div className="flex items-center gap-2 flex-wrap">
                         <AlertCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-600 flex-shrink-0" />
-                        <span className="text-xl md:text-2xl font-bold text-gray-900">Tu Filmezi, Noi Edităm</span>
+                        <span className="text-xl md:text-2xl font-bold text-gray-900">Tu filmezi, noi edităm</span>
                       </div>
                       <div className="flex items-center gap-1.5 flex-shrink-0">
                         {openInfo !== 'editing-info' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
@@ -621,7 +621,7 @@ const Pricing = () => {
                     >
                       <div className="flex items-center gap-2 flex-wrap">
                         <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 flex-shrink-0" />
-                        <span className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Pachete Complete — Videoclipuri de la A la Z</span>
+                        <span className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Pachete complete — videoclipuri de la A la Z</span>
                       </div>
                       <div className="flex items-center gap-1.5 flex-shrink-0">
                         {openInfo !== 'complete-info' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
@@ -659,14 +659,14 @@ const Pricing = () => {
                 <span className="text-gray-300">|</span>
                 <span className="text-gray-500 text-sm md:text-base">Nu suntem plătitori de TVA — plătești exact suma afișată</span>
               </div>
-              {/* Accordion: Ce Includ Pachetele */}
+              {/* Accordion: Ce includ pachetele */}
               <div className="border-t border-gray-100">
                 <button
                   onClick={() => toggleInfo('ce-includ')}
                   className="w-full px-6 py-4 flex items-center justify-between gap-3 hover:bg-blue-50 transition-colors duration-200 text-left"
                 >
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
-                    <Clapperboard className="h-5 w-5 text-blue-600 flex-shrink-0" />Ce Includ Pachetele
+                    <Clapperboard className="h-5 w-5 text-blue-600 flex-shrink-0" />Ce includ pachetele
                   </h4>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
                     {openInfo !== 'ce-includ' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
@@ -687,14 +687,14 @@ const Pricing = () => {
                   </div>
                 )}
               </div>
-              {/* Accordion: Note Importante */}
+              {/* Accordion: Note importante */}
               <div className="border-t border-gray-100">
                 <button
                   onClick={() => toggleInfo('note-importante')}
                   className="w-full px-6 py-4 flex items-center justify-between gap-3 hover:bg-orange-50 transition-colors duration-200 text-left"
                 >
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
-                    <Info className="h-5 w-5 text-orange-500 flex-shrink-0" />Note Importante
+                    <Info className="h-5 w-5 text-orange-500 flex-shrink-0" />Note importante
                   </h4>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
                     {openInfo !== 'note-importante' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}

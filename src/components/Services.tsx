@@ -112,7 +112,7 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
         }}
         className={`w-full font-bold py-3 rounded-lg text-base ${expandedDesc === index ? 'btn-shimmer-close' : 'btn-shimmer'}`}
       >
-        {expandedDesc === index ? 'Ascunde' : 'Află Mai Multe'}
+        {expandedDesc === index ? 'Ascunde' : 'Află mai multe'}
       </button>
       {expandedDesc === index && (
         <div className="mt-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
@@ -132,63 +132,63 @@ const Services = () => {
   const services = [
     {
       icon: Clapperboard,
-      title: 'Montaj Video și Editare Profesională',
+      title: 'Montaj video și editare profesională',
       description: 'Asigurăm un flow dinamic și captivant, cu tăieturi precise, care menține interesul și implicarea publicului de la început până la sfârșit.',
       features: ['Tăieturi precise și ritmice', 'Flow dinamic optimizat', 'Sincronizare perfectă'],
       highlight: 'Pro Editing'
     },
     {
       icon: Flame,
-      title: 'Hook Viral în Primele 3 Secunde',
+      title: 'Hook viral în primele 3 secunde',
       description: 'Algoritmul măsoară câți oameni rămân după primele 3 secunde. Dacă pleacă, videoclipul nu mai e promovat. Dacă rămân, explozia de views începe. Noi ne specializăm exact pe aceste 3 secunde.',
       features: ['Hook vizual + text + audio în primele 3 secunde', 'Variante multiple testate pe trenduri actuale', 'Strategie bazată pe datele de retenție ale platformelor'],
       highlight: 'Viral Trigger'
     },
     {
       icon: Type,
-      title: 'Subtitrare și Texte Personalizate',
+      title: 'Subtitrare și texte personalizate',
       description: 'Asigurăm accesibilitate și impact maxim prin texte clare și subtitrări complete, sincronizate perfect cu mesajul videoclipului tău.',
       features: ['Subtitrări sincronizate', 'Texte animate', 'Design tipografic'],
       highlight: 'Accessible'
     },
     {
       icon: Music2,
-      title: 'Sound Design și Efecte Audio Profesionale',
+      title: 'Sound design și efecte audio profesionale',
       description: 'Îmbogățim conținutul videoclipului tău cu sunete și efecte care intensifică emoția și completează perfect mesajul vizual.',
       features: ['Efecte audio premium', 'Sincronizare audio-video', 'Mixaj profesional'],
       highlight: 'Audio Pro'
     },
     {
       icon: ImagePlus,
-      title: 'Copertă Captivantă',
+      title: 'Copertă captivantă',
       description: 'Înainte ca cineva să vadă videoclipul tău, vede imaginea de copertă. Dacă aceasta nu îl oprește din scroll în prima secundă, videoclipul tău nu există pentru el. Un thumbnail bun poate dubla sau tripla vizualizările fără să schimbi nimic altceva.',
       features: ['Design custom adaptat nișei tale', 'Text emoțional și compoziție care oprește scroll-ul', '2-3 variante gata de testat, tu alegi câștigătoarea'],
       highlight: 'Click Boost'
     },
     {
       icon: Sparkles,
-      title: 'Tranziții și Efecte Vizuale Impactante',
+      title: 'Tranziții și efecte vizuale impactante',
       description: 'Captăm atenția publicului tău din primele secunde, sporind considerabil șansele videoclipului tău de a deveni viral prin efecte vizuale spectaculoase și tranziții fluide.',
       features: ['Efecte de tranziție cinematice', 'Animații captivante', 'Elemente vizuale virale'],
       highlight: 'Viral Ready'
     },
     {
       icon: Palette,
-      title: 'Corecție de Culori și Filtre Profesionale',
+      title: 'Corecție de culori și filtre profesionale',
       description: 'Transformăm estetic videoclipul tău prin ajustarea profesională a culorilor, luminozității și contrastului, asigurând un aspect vizual impecabil și captivant.',
       features: ['Color grading avansat', 'Filtre cinematice', 'Echilibrare cromatică'],
       highlight: 'Visual Pro'
     },
     {
       icon: Stamp,
-      title: 'Branding și Elemente Grafice Integrate',
+      title: 'Branding și elemente grafice integrate',
       description: 'Întărim identitatea și prezența online a afacerii tale prin încorporarea strategică a logo-ului, watermark-ului și a elementelor grafice pe care ni le furnizezi.',
       features: ['Integrare logo profesională', 'Watermark personalizat', 'Elemente de brand'],
       highlight: 'Brand Focus'
     },
     {
       icon: Repeat2,
-      title: 'Transformare Conținut Lung în Shorts',
+      title: 'Transformare conținut lung în Shorts',
       description: 'Ai un podcast, un vlog lung, un interviu sau un live? Nu trebuie să filmezi nimic nou. Luăm ce ai deja și transformăm cele mai bune momente în Shorts separate, gata de postat pe toate platformele.',
       features: ['Extragere manuală a celor mai bune momente', 'Hook, subtitrări și efecte pentru fiecare short', 'Același brand, conținut nou, fără filmare extra'],
       highlight: 'Content x10'
@@ -202,14 +202,14 @@ const Services = () => {
     },
     {
       icon: Wand2,
-      title: 'Animații și Efecte Grafice Creative',
+      title: 'Animații și efecte grafice creative',
       description: 'Îmbogățim vizual videoclipul tău cu emoji-uri animate, stickere, texte dinamice și alte elemente grafice, transformându-l într-o experiență mai atractivă și memorabilă pentru public.',
       features: ['Emoji-uri animate', 'Stickere personalizate', 'Grafică dinamică'],
       highlight: 'Creative'
     },
     {
       icon: ScanLine,
-      title: 'Stabilizare Video și Blur Selectiv',
+      title: 'Stabilizare video și blur selectiv',
       description: 'Eliminăm tremurul pentru un aspect fluid și profesionist. Aplicăm estompare (blur) strategic, pentru a masca elemente nedorite sau a direcționa atenția către ceea ce contează cu adevărat.',
       features: ['Stabilizare avansată', 'Blur selectiv strategic', 'Focus directing'],
       highlight: 'Smooth Pro'
@@ -230,9 +230,9 @@ const Services = () => {
     },
     {
       icon: Zap,
-      title: 'Livrare Rapidă',
+      title: 'Livrare rapidă',
       description: 'Proiecte urgente cu livrare în aceeași zi sau în 24 de ore pentru necesități de editare video urgente.',
-      features: ['Serviciu Express', 'Suport Prioritar', 'Program Flexibil'],
+      features: ['Serviciu express', 'Suport prioritar', 'Program flexibil'],
       highlight: 'Fast Track'
     }
   ];
@@ -240,7 +240,7 @@ const Services = () => {
   const specialFeatures = [
     {
       icon: Smartphone,
-      title: 'Format Vertical 9:16 Optimizat',
+      title: 'Format vertical 9:16 optimizat',
       description: 'Specializați în formatul vertical perfect pentru TikTok, Instagram Reels, YouTube Shorts și alte platforme sociale moderne.',
       stats: '100% Optimizat Social'
     },
@@ -248,13 +248,13 @@ const Services = () => {
       icon: TrendingUp,
       title: 'Strategii de Engagement',
       description: 'Implementăm tehnici dovedite pentru a maximiza rata de vizionare, like-uri, share-uri și comentarii.',
-      stats: '3x Mai Mult Engagement'
+      stats: '3x mai mult engagement'
     },
     {
       icon: BarChart2,
       title: 'Optimizare pentru Algoritmi',
       description: 'Creăm conținut adaptat algoritmilor platformelor sociale pentru a maximiza reach-ul organic.',
-      stats: '5x Mai Multă Vizibilitate'
+      stats: '5x mai multă vizibilitate'
     }
   ];
 
@@ -270,7 +270,7 @@ const Services = () => {
               Servicii Complete
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Ce Servicii Oferim?
+              Ce servicii oferim?
             </h2>
           </div>
           <div className="max-w-3xl mx-auto px-4 mt-6">
@@ -341,7 +341,7 @@ const Services = () => {
 
           <div className="text-center mb-8 md:mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
-              Procesul Nostru de Lucru:
+              Procesul nostru de lucru:
             </h3>
             <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium italic">
               Fiecare proiect urmează un <span className="text-indigo-600 font-bold not-italic">proces structurat</span> pentru a asigura

@@ -531,12 +531,12 @@ const Hero = () => {
 
             <div className="h-cta">
               <button onClick={handleFAQ} className="h-btn-primary">
-                <span>Întrebări Frecvente</span>
+                <span>Întrebări frecvente</span>
                 <ArrowRight size={16} />
               </button>
               <button onClick={handleViewPortfolio} className="h-btn-secondary" type="button">
                 <Play size={15} />
-                <span>Vezi Portofoliul</span>
+                <span>Vezi portofoliul</span>
               </button>
             </div>
 

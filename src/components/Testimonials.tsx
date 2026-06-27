@@ -102,7 +102,7 @@ const Testimonials = () => {
             De ce ne aleg clienții noștri?
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4 md:mb-6 text-shadow">
-            Ce Spun Clienții Noștri
+            Ce spun clienții noștri
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
             Nu e vorba doar despre videoclipuri, ci despre experiențe și rezultate.

@@ -173,7 +173,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg font-bold text-sm xl:text-base transition-colors duration-200 flex items-center space-x-2 shadow-lg"
               aria-label="Începe proiectul tău"
             >
-              <span>Începe Proiectul</span>
+              <span>Începe proiectul</span>
               <Zap className="h-4 w-4" />
             </button>
           </nav>
@@ -248,7 +248,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
                 className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 active:scale-95"
                 style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)', boxShadow: '0 4px 16px rgba(37,99,235,0.35)' }}
               >
-                <span>Începe Proiectul</span>
+                <span>Începe proiectul</span>
                 <Zap className="h-4 w-4" />
               </button>
               <p className="text-center text-gray-500 text-xs mt-3 font-medium">

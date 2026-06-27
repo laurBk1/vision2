@@ -409,7 +409,7 @@ const Contact: React.FC = () => {
           <div className="contact__form bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl border border-white/50">
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold text-gray-900 mb-3">
-                Să Începem Colaborarea!
+                Să începem colaborarea!
               </h3>
               <p className="text-gray-600">
                 Completează formularul și îți vom răspunde în cel mai scurt timp
@@ -705,7 +705,7 @@ const Contact: React.FC = () => {
         <div className="mt-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-2xl p-8 lg:p-12 text-white">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-6">De Ce să Alegi VisionEdit?</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold mb-6">De ce să alegi VisionEdit?</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   'Calitate profesională garantată',

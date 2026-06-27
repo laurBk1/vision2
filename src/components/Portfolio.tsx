@@ -82,7 +82,7 @@ const Portfolio = () => {
               Portofoliu Confidențial
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Portofoliul Nostru nu Este Public
+              Portofoliul nostru nu este public
             </h2>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
@@ -165,7 +165,7 @@ const Portfolio = () => {
         <Reveal>
           <div className="bg-slate-900 rounded-2xl p-6 md:p-12 text-white mb-8 shadow-2xl">
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-bold mb-3">Rezultatele Noastre Vorbesc de La Sine!</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">Rezultatele noastre vorbesc de la sine!</h3>
               <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
                 Chiar dacă nu afișăm portofoliul public, rezultatele demonstrează calitatea și profesionalismul nostru.
               </p>
@@ -196,13 +196,13 @@ const Portfolio = () => {
                   onClick={() => { const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
                   className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
                 >
-                  Discută Confidențial
+                  Discută confidențial
                 </button>
                 <button
                   onClick={() => { const el = document.getElementById('services'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
                   className="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-200"
                 >
-                  Vezi Serviciile
+                  Vezi serviciile
                 </button>
               </div>
             </div>

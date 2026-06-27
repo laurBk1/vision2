@@ -57,7 +57,7 @@ const FAQ = () => {
   const sections = [
     {
       icon: HelpCircle,
-      title: 'Proces și Colaborare',
+      title: 'Proces și colaborare',
       faqs: [
         {
           q: 'Cum decurge procesul de colaborare cu VisionEdit?',
@@ -79,7 +79,7 @@ const FAQ = () => {
     },
     {
       icon: CreditCard,
-      title: 'Prețuri și Plăți',
+      title: 'Prețuri și plăți',
       faqs: [
         {
           q: 'Cât costă editarea video la VisionEdit?',
@@ -105,7 +105,7 @@ const FAQ = () => {
     },
     {
       icon: Clock,
-      title: 'Termene și Livrare',
+      title: 'Termene și livrare',
       faqs: [
         {
           q: 'Cât durează livrarea unui videoclip?',
@@ -127,7 +127,7 @@ const FAQ = () => {
     },
     {
       icon: RefreshCw,
-      title: 'Revizii și Modificări',
+      title: 'Revizii și modificări',
       faqs: [
         {
           q: 'Câte revizii sunt incluse în tarif?',
@@ -145,7 +145,7 @@ const FAQ = () => {
     },
     {
       icon: Package,
-      title: 'Pachete și Servicii',
+      title: 'Pachete și servicii',
       faqs: [
         {
           q: 'Oferiți pachete complete, fără să furnizez materiale proprii?',
@@ -167,7 +167,7 @@ const FAQ = () => {
     },
     {
       icon: Video,
-      title: 'Avatar UGC și Personaje',
+      title: 'Avatar UGC și personaje',
       faqs: [
         {
           q: 'Ce este avatarul UGC și cum este integrat în producție?',
@@ -181,7 +181,7 @@ const FAQ = () => {
     },
     {
       icon: Shield,
-      title: 'Confidențialitate și Drepturi',
+      title: 'Confidențialitate și drepturi',
       faqs: [
         {
           q: 'Pot consulta exemple din portofoliu anterior colaborării?',
@@ -199,7 +199,7 @@ const FAQ = () => {
     },
     {
       icon: Phone,
-      title: 'Contact și Suport',
+      title: 'Contact și suport',
       faqs: [
         {
           q: 'Prin ce canale vă pot contacta?',

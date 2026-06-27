@@ -12,7 +12,7 @@ const About = () => {
   const services = [
     {
       icon: Clapperboard,
-      title: 'Editare Video Profesionistă',
+      title: 'Editare video profesionistă',
       description: 'Transformăm materialele brute în clipuri scurte, clare și captivante. Optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads. Creștem engagement-ul, vizibilitatea și impactul videoclipurilor tale.'
     },
     {
@@ -22,17 +22,17 @@ const About = () => {
     },
     {
       icon: GitBranch,
-      title: 'Construim Relații, Nu Doar Edităm Videoclipuri',
+      title: 'Construim relații, nu doar edităm videoclipuri',
       description: 'Lucrăm alături de antreprenori, business-uri, influenceri și creatori de conținut. Fiecare video este adaptat pentru publicul tău și obiectivul tău de marketing.'
     },
     {
       icon: Smartphone,
-      title: 'Conținut Vertical, Optimizat Global',
+      title: 'Conținut vertical, optimizat global',
       description: 'Specializați în format 9:16 pentru toate platformele sociale majore. Videoclipuri gata de publicare, optimizate pentru vizibilitate și impact maxim.'
     },
     {
       icon: Rocket,
-      title: 'Proces Simplificat, Rezultate Excepționale',
+      title: 'Proces simplificat, rezultate excepționale',
       description: 'Fără complicații, fără pierdere de timp. Tu trimiți materialele — noi livrăm clipurile editate, gata de publicat.'
     }
   ];

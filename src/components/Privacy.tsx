@@ -141,7 +141,7 @@ const Privacy = () => {
     },
     {
       icon: Scale,
-      title: '5. Scopurile și Bazele Juridice ale Prelucrării',
+      title: '5. Scopurile și bazele juridice ale prelucrării',
       content: [
         'Prelucrăm datele personale în baza următoarelor temeiuri juridice:',
         '',
@@ -177,7 +177,7 @@ const Privacy = () => {
     },
     {
       icon: CheckCircle,
-      title: '8. Drepturile Persoanelor Vizate',
+      title: '8. Drepturile persoanelor vizate',
       content: [
         'Conform GDPR, beneficiați de următoarele drepturi:',
         '',
@@ -240,7 +240,7 @@ const Privacy = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Politică de Confidențialitate și Protecția Datelor (GDPR)
+            Politică de confidențialitate și protecția datelor (GDPR)
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             La VisionEdit România luăm confidențialitatea datelor tale în serios. Află cum colectăm, utilizăm și protejăm informațiile tale, în deplină conformitate cu GDPR.
@@ -253,7 +253,7 @@ const Privacy = () => {
               <Shield className="h-6 w-6 text-blue-600" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900">
-              Protecția Datelor Personale
+              Protecția datelor personale
             </h3>
           </div>
           <p className="text-gray-700 leading-relaxed">
@@ -352,14 +352,14 @@ const Privacy = () => {
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
               >
                 <Mail className="h-5 w-5" />
-                <span>Trimite Email</span>
+                <span>Trimite email</span>
               </a>
               <a 
                 href="tel:+40767082106"
                 className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-200 flex items-center justify-center space-x-2"
               >
                 <Phone className="h-5 w-5" />
-                <span>Sună Acum</span>
+                <span>Sună acum</span>
               </a>
             </div>
           </div>
