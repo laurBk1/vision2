@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, Clapperboard, BarChart2, Rocket, PlayCircle, TrendingUp, Crown, Scissors, Film, Eye, Package, Info } from 'lucide-react';
+import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, ArrowRight, Clapperboard, BarChart2, Rocket, PlayCircle, TrendingUp, Crown, Scissors, Film, Eye, Package, Info } from 'lucide-react';
 
 const subtitleGlowStyle = `
   @keyframes subtitlePulse {
@@ -17,6 +17,11 @@ const subtitleGlowStyle = `
   .subtitle-badge {
     animation: subtitlePulse 2.8s ease-in-out infinite;
   }
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateX(0px); opacity: 0.5; }
+    50% { transform: translateX(6px); opacity: 1; }
+  }
+  .arrow-bounce { animation: arrowBounce 1s ease-in-out infinite; }
   @keyframes pillPulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.0); transform: scale(1); }
     50% { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18); transform: scale(1.04); }
@@ -570,10 +575,13 @@ const Pricing = () => {
                         <AlertCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-600 flex-shrink-0" />
                         <span className="text-xl md:text-2xl font-bold text-gray-900">Tu Filmezi, Noi Edităm</span>
                       </div>
-                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
-                        {openInfo === 'editing-info' ? 'Închide' : 'Detalii'}
-                        <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'editing-info' ? 'rotate-90' : ''}`} />
-                      </span>
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        {openInfo !== 'editing-info' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
+                        <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
+                          {openInfo === 'editing-info' ? 'Închide' : 'Detalii'}
+                          <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'editing-info' ? 'rotate-90' : ''}`} />
+                        </span>
+                      </div>
                     </button>
                     {openInfo === 'editing-info' && (
                       <div className="px-4 md:px-6 pb-4 md:pb-6 fade-in-up">
@@ -615,10 +623,13 @@ const Pricing = () => {
                         <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 flex-shrink-0" />
                         <span className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Pachete Complete — Videoclipuri de la A la Z</span>
                       </div>
-                      <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-white text-purple-700 shadow-md' : 'bg-white/80 text-purple-700 shadow pill-pulse-purple'}`}>
-                        {openInfo === 'complete-info' ? 'Închide' : 'Detalii'}
-                        <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'complete-info' ? 'rotate-90' : ''}`} />
-                      </span>
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        {openInfo !== 'complete-info' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
+                        <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-white text-purple-700 shadow-md' : 'bg-white/80 text-purple-700 shadow pill-pulse-purple'}`}>
+                          {openInfo === 'complete-info' ? 'Închide' : 'Detalii'}
+                          <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'complete-info' ? 'rotate-90' : ''}`} />
+                        </span>
+                      </div>
                     </button>
                     {openInfo === 'complete-info' && (
                       <div className="px-4 md:px-6 pb-4 md:pb-6 fade-in-up">
@@ -657,10 +668,13 @@ const Pricing = () => {
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
                     <Clapperboard className="h-5 w-5 text-blue-600 flex-shrink-0" />Ce Includ Pachetele
                   </h4>
-                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
-                    {openInfo === 'ce-includ' ? 'Închide' : 'Vezi detalii'}
-                    <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'ce-includ' ? 'rotate-90' : ''}`} />
-                  </span>
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    {openInfo !== 'ce-includ' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
+                    <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
+                      {openInfo === 'ce-includ' ? 'Închide' : 'Detalii'}
+                      <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'ce-includ' ? 'rotate-90' : ''}`} />
+                    </span>
+                  </div>
                 </button>
                 {openInfo === 'ce-includ' && (
                   <div className="px-6 pb-5 fade-in-up">
@@ -682,10 +696,13 @@ const Pricing = () => {
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
                     <Info className="h-5 w-5 text-orange-500 flex-shrink-0" />Note Importante
                   </h4>
-                  <span className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700 pill-pulse-orange'}`}>
-                    {openInfo === 'note-importante' ? 'Închide' : 'Vezi detalii'}
-                    <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'note-importante' ? 'rotate-90' : ''}`} />
-                  </span>
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    {openInfo !== 'note-importante' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
+                    <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700 pill-pulse-orange'}`}>
+                      {openInfo === 'note-importante' ? 'Închide' : 'Detalii'}
+                      <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'note-importante' ? 'rotate-90' : ''}`} />
+                    </span>
+                  </div>
                 </button>
                 {openInfo === 'note-importante' && (
                   <div className="px-6 pb-5 fade-in-up">
