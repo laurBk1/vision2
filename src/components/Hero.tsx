@@ -517,6 +517,7 @@ const Hero = () => {
 
             <div className="h-checks">
               {[
+                'Raport calitate-preț imbatabil',
                 'Conținut livrat gata de publicat',
                 'O revizie gratuită la fiecare video',
                 '100% remote — livrăm oriunde în România',
