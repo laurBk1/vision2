@@ -119,7 +119,7 @@ phone: +40-767-082-106
 email: contact@visionedit.ro
 website: https://visionedit.ro
 rating: 5.0/5.0
-reviews: 23+
+reviews: 1762+
 clients: 150+
 projects: 2340+
 experience-years: 3+
