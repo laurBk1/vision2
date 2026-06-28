@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket, GitBranch } from 'lucide-react';
+import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket } from 'lucide-react';
 
 const About = () => {
   const achievements = [
@@ -9,34 +9,6 @@ const About = () => {
     { icon: Zap, label: 'Ore Editare', value: '3000+' }
   ];
 
-  const services = [
-    {
-      icon: Clapperboard,
-      title: 'Editare video profesionistă',
-      description: 'Transformăm materialele brute în clipuri scurte, clare și captivante. Optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads. Creștem engagement-ul, vizibilitatea și impactul videoclipurilor tale.'
-    },
-    {
-      icon: Film,
-      title: 'Edităm pentru Orice Nișă',
-      description: 'De la servicii și comerț la beauty, educație, sănătate, evenimente și imobiliare — sau orice altă nișă care își dorește promovare prin video marketing.'
-    },
-    {
-      icon: GitBranch,
-      title: 'Construim relații, nu doar edităm videoclipuri',
-      description: 'Lucrăm alături de antreprenori, business-uri, influenceri și creatori de conținut. Fiecare video este adaptat pentru publicul tău și obiectivul tău de marketing.'
-    },
-    {
-      icon: Smartphone,
-      title: 'Conținut vertical, optimizat global',
-      description: 'Specializați în format 9:16 pentru toate platformele sociale majore. Videoclipuri gata de publicare, optimizate pentru vizibilitate și impact maxim.'
-    },
-    {
-      icon: Rocket,
-      title: 'Proces simplificat, rezultate excepționale',
-      description: 'Fără complicații, fără pierdere de timp. Tu trimiți materialele — noi livrăm clipurile editate, gata de publicat.'
-    }
-  ];
-
   return (
     <section id="about" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +16,7 @@ const About = () => {
         <div className="text-center mb-12 md:mb-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-green-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
-              Despre VisionEdit
+              Despre noi
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent leading-tight">
               Cu ce ne ocupăm?
@@ -70,7 +42,7 @@ const About = () => {
           <div className="relative order-2 lg:order-1">
             <div className="rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio: '3/2'}}>
               <img
-                src="/team.jpeg"
+                src="/team.jpg"
                 alt="Echipa VisionEdit București"
                 className="w-full h-full object-cover"
               />
@@ -81,25 +53,33 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Side - Services */}
-          <div className="space-y-6 md:space-y-8 order-1 lg:order-2">
-            {services.map((service, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-4 md:p-6 hover:bg-gray-100 transition-colors duration-300 shadow-sm">
-                <div className="flex items-start space-x-3 md:space-x-4">
-                  <div className="bg-blue-100 rounded-lg p-2 md:p-3 flex-shrink-0">
-                    <service.icon className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
+          {/* Right Side - Single Premium Text Block */}
+          <div className="order-1 lg:order-2 flex flex-col justify-center">
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-8 shadow-sm">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-4">
+                Transformăm <strong className="text-gray-900">clipurile tale</strong> în <strong className="text-gray-900">conținut scurt, clar și captivant</strong>, optimizat pentru <strong className="text-blue-600">TikTok, Instagram Reels, YouTube Shorts și Facebook Ads</strong> — indiferent de nișă.
+              </p>
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-4">
+                Lucrăm cu <strong className="text-gray-900">antreprenori, business-uri, influenceri și creatori de conținut</strong> din domenii precum beauty, educație, sănătate, imobiliare, comerț și multe altele. Fiecare video este adaptat pentru <strong className="text-gray-900">publicul tău și obiectivul tău de marketing</strong>.
+              </p>
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-6">
+                Suntem specializați în <strong className="text-gray-900">format vertical 9:16</strong>, gata de publicare pe toate platformele majore. Procesul nostru e simplu: <strong className="text-gray-900">tu trimiți materialele video — noi livrăm clipurile editate, gata de publicat</strong>. Fără complicații, fără pierdere de timp.
+              </p>
+              {/* Key points */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { icon: Clapperboard, text: 'Editare video profesionistă' },
+                  { icon: Film, text: 'Orice nișă, orice industrie' },
+                  { icon: Smartphone, text: 'Format 9:16 optimizat' },
+                  { icon: Rocket, text: 'Livrare rapidă, fără complicații' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-100">
+                    <item.icon className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                    <span className="text-sm font-semibold text-gray-800">{item.text}</span>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 md:mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-base text-gray-600 leading-relaxed font-medium whitespace-pre-line">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
