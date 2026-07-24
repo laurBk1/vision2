@@ -43,7 +43,7 @@ const About = () => {
             <div className="rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio: '3/2'}}>
               <img
                 src="/team.jpg"
-                alt="Echipa VisionEdit București"
+                alt="Echipa VisionEdit România"
                 className="w-full h-full object-cover"
               />
             </div>

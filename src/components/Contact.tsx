@@ -289,12 +289,12 @@ const Contact: React.FC = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Locația Noastră</h3>
             <p className="text-gray-600 mb-4">
               <a
-                href="https://www.google.com/maps/place/București,+România"
+                href="https://www.google.com/maps/place/București-Ilfov,+România"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-600 transition-colors font-medium"
               >
-                București, România
+                București - Ilfov, România
               </a>
             </p>
             {/* Mesaj pentru mobil */}
@@ -348,17 +348,17 @@ const Contact: React.FC = () => {
           <div className="hidden lg:flex flex-col bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white/50">
             <div className="p-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
               <h3 className="text-xl font-semibold mb-2">Unde ne găsești?</h3>
-              <p className="text-blue-100">București, România</p>
+              <p className="text-blue-100">București - Ilfov, România</p>
             </div>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91800!2d26.0974779!3d44.4267674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3d5f89%3A0xac0632b7d5e21dc7!2sBucure%C8%99ti!5e0!3m2!1sro!2sro!4v1716125954280!5m2!1sro!2sro"
+              src="https://www.google.com/maps?q=București-Ilfov,+România&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Locația VisionEdit în București"
+              title="Locația VisionEdit în București-Ilfov"
             ></iframe>
             
             {/* Mesaj informativ sub hartă - Design Premium */}
