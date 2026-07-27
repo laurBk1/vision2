@@ -141,20 +141,16 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
-          <div className="flex items-center space-x-2 md:space-x-3 cursor-pointer" onClick={handleLogoClick}>
+          <div className="flex items-center cursor-pointer" onClick={handleLogoClick}>
             <img
               src="/logo.webp"
               alt="VisionEdit România Logo"
-              className="h-14 md:h-16 w-auto"
+              className="h-16 md:h-20 w-auto"
               width="294"
               height="98"
               loading="eager"
               fetchPriority="high"
             />
-            <div className="text-white">
-              <div className="text-lg md:text-xl font-bold text-shadow-sm">VisionEdit</div>
-              <div className="text-xs md:text-sm text-blue-300 font-semibold">România</div>
-            </div>
           </div>
 
           {/* Desktop nav */}
