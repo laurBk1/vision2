@@ -61,6 +61,49 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
 };
 
+// ─── Nume afișate pentru breadcrumb, per rută ────────────────────────────────
+const PAGE_NAMES: Record<string, string> = {
+  '/services': 'Servicii',
+  '/portfolio': 'Portofoliu',
+  '/process': 'Proces',
+  '/pricing': 'Prețuri',
+  '/about': 'Despre Noi',
+  '/contact': 'Contact',
+  '/faq': 'FAQ',
+  '/terms': 'Termeni și Condiții',
+  '/privacy': 'Politica de Confidențialitate',
+};
+
+function updateBreadcrumb(pathname: string) {
+  const itemListElement: Array<Record<string, unknown>> = [
+    { '@type': 'ListItem', position: 1, name: 'Acasă', item: 'https://visionedit.ro/' },
+  ];
+
+  if (pathname !== '/' && PAGE_NAMES[pathname]) {
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: PAGE_NAMES[pathname],
+      item: `https://visionedit.ro${pathname}`,
+    });
+  }
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement,
+  };
+
+  let script = document.getElementById('breadcrumb-schema') as HTMLScriptElement | null;
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'breadcrumb-schema';
+    document.head.appendChild(script);
+  }
+  script.textContent = JSON.stringify(schema);
+}
+
 function updateHead(pathname: string) {
   const meta = PAGE_META[pathname] || PAGE_META['/'];
   const canonical = `https://visionedit.ro${pathname === '/' ? '/' : pathname}`;
@@ -85,6 +128,8 @@ function updateHead(pathname: string) {
   setMeta('meta[property="og:url"]', 'content', canonical);
   setMeta('meta[name="twitter:title"]', 'content', meta.title);
   setMeta('meta[name="twitter:description"]', 'content', meta.description);
+
+  updateBreadcrumb(pathname);
 }
 
 // ─── ScrollToTop: scroll sus la fiecare navigare ─────────────────────────────
