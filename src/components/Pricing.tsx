@@ -133,7 +133,8 @@ function IntroCard({ children, delay = 0 }) {
 type Step = 'intro' | 'view-choice' | 'quiz-videos' | 'results';
 type ViewChoice = 'both' | 'editing' | 'complete';
 
-const Pricing = () => {
+const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
+  const TitleTag = asH1 ? 'h1' : 'h2';
   const [step, setStep] = useState<Step>('intro');
   const [viewChoice, setViewChoice] = useState<ViewChoice>('both');
   const [videoCount, setVideoCount] = useState<string | null>(null);
@@ -403,7 +404,7 @@ const Pricing = () => {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Editare cu materialele tale</h3>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
-              Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Reels, Shorts și Facebook Ads.
+              Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads.
             </p>
             <div className="bg-blue-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-blue-600 transition-colors duration-200">
               <span className="text-blue-700 font-bold text-base group-hover:text-white transition-colors">De la 185 lei/video</span>
@@ -523,9 +524,9 @@ const Pricing = () => {
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Prețuri
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
               Pachete de editare video
-            </h2>
+            </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium">

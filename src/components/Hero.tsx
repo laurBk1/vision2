@@ -590,7 +590,7 @@ const Hero = () => {
                     Edităm conținut video profesional pentru orice platformă, gata de publicat.
                   </p>
                   <div className="h-card-badges">
-                    {['Instagram Reels', 'TikTok', 'YouTube Shorts', 'Facebook Ads', '+ Alte platforme sociale'].map((p) => (
+                    {['TikTok', 'Instagram Reels', 'YouTube Shorts', 'Facebook Ads', '+ Alte platforme sociale'].map((p) => (
                       <span className="h-badge" key={p}>{p}</span>
                     ))}
                   </div>

@@ -99,7 +99,8 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
   );
 }
 
-const Process = () => {
+const Process = ({ asH1 = false }: { asH1?: boolean }) => {
+  const TitleTag = asH1 ? 'h1' : 'h2';
   const header = useInView(0.1);
 
   const steps = [
@@ -180,9 +181,9 @@ const Process = () => {
             <span className="inline-block bg-gradient-to-r from-gray-700 to-slate-700 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Proces Creativ
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
               Procesul nostru creativ
-            </h2>
+            </TitleTag>
           </div>
 
           <div className="max-w-3xl mx-auto px-4 mt-4">

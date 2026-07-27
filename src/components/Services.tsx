@@ -125,9 +125,10 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
   );
 }
 
-const Services = () => {
+const Services = ({ asH1 = false }: { asH1?: boolean }) => {
   const [expandedFeatures, setExpandedFeatures] = useState(null);
   const [expandedDesc, setExpandedDesc] = useState(null);
+  const TitleTag = asH1 ? 'h1' : 'h2';
 
   const services = [
     {
@@ -269,13 +270,13 @@ const Services = () => {
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Servicii Complete
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
               Ce servicii oferim?
-            </h2>
+            </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 mt-6">
             <p className="text-lg md:text-xl text-gray-800 font-semibold leading-tight">
-              Editare profesională pentru <span className="text-blue-700">Shorts, Reels și TikTok</span> + alte formate scurte.
+              Editare profesională pentru <span className="text-blue-700">TikTok, Reels și Shorts</span> + alte formate scurte.
             </p>
             <p className="text-base md:text-lg text-gray-600 mt-4 leading-relaxed font-medium italic">
               Edităm conținut video care construiește audiențe fidele, generează engagement real și

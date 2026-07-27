@@ -50,6 +50,10 @@ const FAQ = () => {
     return () => { el.style.overflowY = ''; };
   }, []);
 
+  // Injectează schema FAQPage (JSON-LD) generată din datele existente,
+  // pentru eligibilitate rich snippets în Google. Se curăță la unmount.
+  // (efectul e mutat mai jos, după declararea `sections`)
+
   const toggleItem = (key: string) => {
     setOpenItems(prev => ({ ...prev, [key]: !prev[key] }));
   };
@@ -212,6 +216,36 @@ const FAQ = () => {
       ]
     }
   ];
+
+  // Injectează schema FAQPage (JSON-LD) generată din datele de mai sus,
+  // pentru eligibilitate rich snippets în Google. Se curăță la unmount.
+  useEffect(() => {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: sections.flatMap((section) =>
+        section.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.a.replace(/\n/g, ' '),
+          },
+        }))
+      ),
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-page-schema';
+    script.text = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.getElementById('faq-page-schema')?.remove();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

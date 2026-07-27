@@ -11,7 +11,8 @@ type Package = {
   popular?: boolean;
 };
 
-const Contact: React.FC = () => {
+const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
+  const TitleTag = asH1 ? 'h1' : 'h2';
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -265,7 +266,7 @@ const Contact: React.FC = () => {
         <div className="text-center mb-16">
           <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 border-2 border-purple-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</h2>
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 text-center">
   <p className="text-lg text-gray-600 leading-relaxed font-medium italic">

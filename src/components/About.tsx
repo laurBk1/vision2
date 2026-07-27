@@ -1,7 +1,8 @@
 import React from 'react';
 import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket } from 'lucide-react';
 
-const About = () => {
+const About = ({ asH1 = false }: { asH1?: boolean }) => {
+  const TitleTag = asH1 ? 'h1' : 'h2';
   const achievements = [
     { icon: Award, label: 'Ani Experiență', value: '3+' },
     { icon: Users, label: 'Clienți Mulțumiți', value: '150+' },
@@ -18,14 +19,14 @@ const About = () => {
             <span className="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Despre noi
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent leading-tight">
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent leading-tight">
               Cu ce ne ocupăm?
-            </h2>
+            </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 py-6 text-center">
   <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
     Creăm și edităm videoclipuri scurte, captivante și optimizate pentru 
-    <strong> Reels, TikTok, Shorts</strong> și alte platforme.
+    <strong> TikTok, Reels, Shorts</strong> și alte platforme.
   </p>
   <p className="text-base md:text-lg text-gray-500 mt-4 leading-relaxed italic">
     Combinăm storytelling-ul autentic și trendurile actuale pentru a transforma 

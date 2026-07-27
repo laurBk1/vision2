@@ -36,7 +36,8 @@ function Reveal({ children, delay = 0, className = '' }) {
   );
 }
 
-const Portfolio = () => {
+const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
+  const TitleTag = asH1 ? 'h1' : 'h2';
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -81,9 +82,9 @@ const Portfolio = () => {
             <span className="inline-block bg-gradient-to-r from-slate-700 to-blue-700 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Portofoliu Confidențial
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
               Portofoliul nostru nu este public
-            </h2>
+            </TitleTag>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
             La VisionEdit, <strong className="text-gray-900">confidențialitatea și discreția</strong> sunt fundamentale în relația cu clienții noștri.
