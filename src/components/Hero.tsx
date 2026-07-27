@@ -63,37 +63,7 @@ const Hero = () => {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-        }
-
-        .h-chip {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: rgba(56,189,248,0.07);
-          border: 1px solid rgba(56,189,248,0.18);
-          border-radius: 100px;
-          padding: 7px 16px;
-          margin-top: 24px;
-          margin-bottom: 28px;
-          max-width: 100%;
-        }
-        .h-chip-dot {
-          width: 7px; height: 7px; border-radius: 50%;
-          background: #38BDF8;
-          flex-shrink: 0;
-          animation: blink 2.2s ease-in-out infinite;
-        }
-        @keyframes blink {
-          0%,100% { opacity:1; } 50% { opacity: 0.3; }
-        }
-        .h-chip-text {
-          font-size: clamp(9px, 2.5vw, 11px);
-          font-weight: 500;
-          letter-spacing: 0.07em;
-          text-transform: uppercase;
-          color: #BAE6FD;
-          white-space: normal;
-          text-align: center;
+          padding-top: 48px;
         }
 
         .h-heading {
@@ -423,7 +393,6 @@ const Hero = () => {
         @media (max-width: 480px) {
           .h-section { padding: 64px 0 72px; }
           .h-inner { padding: 0 20px; }
-          .h-chip { margin-bottom: 32px; }
           .h-heading { margin-bottom: 12px; line-height: 1.25; }
           .h-heading-accent { margin-bottom: 32px; }
           .h-body { margin-bottom: 32px; line-height: 1.9; }
@@ -440,7 +409,6 @@ const Hero = () => {
 
         @media (max-width: 360px) {
           .h-inner { padding: 0 16px; }
-          .h-chip { padding: 6px 14px; }
           .h-stat + .h-stat { padding-left: 10px; margin-left: 10px; }
           .h-heading { font-size: clamp(1.4rem, 8vw, 1.8rem); }
           .h-heading-accent { font-size: clamp(1.4rem, 8vw, 1.8rem); }
@@ -451,7 +419,6 @@ const Hero = () => {
           .h-inner { padding: 0 12px; }
           .h-heading { font-size: clamp(1.2rem, 8vw, 1.5rem); }
           .h-heading-accent { font-size: clamp(1.2rem, 8vw, 1.5rem); }
-          .h-chip-text { font-size: 9px; }
           .h-stat + .h-stat { padding-left: 6px; margin-left: 6px; }
           .h-stat-num { font-size: 1.2rem; }
           .h-stat-lbl { font-size: 9px; }
@@ -502,11 +469,6 @@ const Hero = () => {
 
           {/* LEFT */}
           <div className="h-left">
-            <div className="h-chip">
-              <div className="h-chip-dot" />
-              <span className="h-chip-text">Editare Video · Formate Scurte</span>
-            </div>
-
             <h1 className="h-heading h-heading-mobile">
               Vrei mai multă vizibilitate pentru afacerea ta?
             </h1>

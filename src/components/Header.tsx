@@ -138,10 +138,10 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
   return (
     <header className="fixed top-0 left-0 right-0 z-50" style={headerStyle}>
       <style>{menuButtonStyle}</style>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-8 lg:pr-12">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer" onClick={handleLogoClick}>
+          <div className="flex items-center cursor-pointer lg:ml-[88px]" onClick={handleLogoClick}>
             <img
               src="/logo.webp"
               alt="VisionEdit România Logo"
