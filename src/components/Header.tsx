@@ -130,7 +130,8 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
     backdropFilter: isSolid ? 'blur(8px)' : 'none',
     WebkitBackdropFilter: isSolid ? 'blur(8px)' : 'none',
     boxShadow: isSolid ? '0 4px 24px rgba(0,0,0,0.3)' : 'none',
-    transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
+    borderBottom: isSolid ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+    transition: 'background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease',
     transform: 'translateZ(0)',
     willChange: 'background-color, backdrop-filter',
   };
@@ -141,11 +142,15 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer -ml-4 lg:ml-4" onClick={handleLogoClick}>
+          <div
+            className="flex items-center cursor-pointer -ml-6 lg:ml-0 transition-transform duration-300 hover:scale-[1.03]"
+            onClick={handleLogoClick}
+          >
             <img
               src="/logo.webp"
               alt="VisionEdit România Logo"
               className="h-16 md:h-20 w-auto"
+              style={{ filter: 'drop-shadow(0 2px 10px rgba(37,99,235,0.18))' }}
               width="294"
               height="98"
               loading="eager"
@@ -159,9 +164,10 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               <button
                 key={item.name}
                 onClick={() => handleSectionNav(item.path, item.path.replace('/', ''))}
-                className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold text-sm xl:text-base"
+                className="relative text-gray-300 hover:text-white transition-colors duration-200 font-semibold text-sm xl:text-base group/nav py-1"
               >
                 {item.name}
+                <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover/nav:w-full rounded-full" />
               </button>
             ))}
             <button
@@ -175,7 +181,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
           </nav>
 
           {/* Mobile menu button */}
-          <div className={`menu-btn-wrapper lg:hidden ${isMenuOpen ? 'open' : ''}`}>
+          <div className={`menu-btn-wrapper lg:hidden -mr-1 ${isMenuOpen ? 'open' : ''}`}>
             {!isMenuOpen && <div className="menu-pulse-ring" />}
             {isMenuOpen && <div className="menu-close-ring" />}
             <button
