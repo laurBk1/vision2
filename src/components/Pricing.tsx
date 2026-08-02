@@ -74,12 +74,12 @@ const subtitleGlowStyle = `
     transform: scale(1.03);
     box-shadow: 0 8px 25px rgba(99,102,241,0.45);
   }
-  @keyframes arrowBounce {
+  @keyframes arrowBounceVertical {
     0%, 100% { transform: translateY(0px); opacity: 0.4; }
     50%       { transform: translateY(7px); opacity: 1; }
   }
   .arrow-hint {
-    animation: arrowBounce 1s ease-in-out infinite;
+    animation: arrowBounceVertical 1s ease-in-out infinite;
     color: #ef4444;
     font-size: 2rem;
     line-height: 1;
