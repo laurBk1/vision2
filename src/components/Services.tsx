@@ -242,7 +242,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
     {
       icon: Smartphone,
       title: 'Orice format ai nevoie: 9:16, 1:1, 4:5, 16:9',
-      description: 'Livrăm în formatul potrivit pentru fiecare platformă și obiectiv de campanie — vertical 9:16 pentru TikTok, Instagram Reels și YouTube Shorts, pătrat 1:1 sau 4:5 pentru feed și Ads, ori orizontal 16:9 pentru YouTube și televizor.',
+      description: 'Vertical, pătrat sau orizontal — livrăm în formatul potrivit pentru fiecare platformă și obiectiv de campanie.',
       stats: '100% Optimizat Social'
     },
     {
