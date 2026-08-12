@@ -96,33 +96,32 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
   // Paginile care NU există ca secțiuni pe homepage — navighează mereu direct
   const standalonePages = ['/faq', '/privacy', '/terms'];
 
-  // Navighează la o secțiune din homepage sau la o pagină dedicată
-  const handleSectionNav = (path: string, sectionId: string) => {
+  // Navighează la o secțiune din homepage sau la o pagină dedicată.
+  // Folosim <Link> (deci există mereu un href real, crawlabil de Google),
+  // dar interceptăm click-ul ca să facem scroll instant dacă suntem deja pe home.
+  const handleSectionNav = (e: React.MouseEvent, path: string, sectionId: string) => {
     setIsMenuOpen(false);
-    // Pagini standalone (nu sunt secțiuni pe homepage) — navighează direct mereu
-    if (standalonePages.includes(path)) {
-      navigate(path);
-      return;
-    }
+    // Pagini standalone (nu sunt secțiuni pe homepage) — lăsăm Link-ul să navigheze normal
+    if (standalonePages.includes(path)) return;
+
     if (location.pathname === '/') {
-      // Suntem pe home — scroll direct la secțiune
+      // Suntem pe home — scroll direct la secțiune, fără navigare
       const el = document.getElementById(sectionId);
       if (el) {
+        e.preventDefault();
         const top = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
-      } else {
-        navigate(path);
       }
-    } else {
-      // Pe o altă pagină — navighează la pagina dedicată
-      navigate(path);
+      // dacă secțiunea nu există pe DOM, lăsăm Link-ul să navigheze normal la pagina dedicată
     }
+    // Pe altă pagină — lăsăm Link-ul să navigheze normal la pagina dedicată
   };
 
   const handleLogoClick = () => {
     setIsMenuOpen(false);
-    navigate('/');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const headerStyle: React.CSSProperties = {
@@ -141,7 +140,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer lg:ml-4" onClick={handleLogoClick}>
+          <Link to="/" className="flex items-center cursor-pointer lg:ml-4" onClick={handleLogoClick}>
             <img
               src="/logo.webp"
               alt="VisionEdit România Logo"
@@ -151,27 +150,29 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               loading="eager"
               fetchPriority="high"
             />
-          </div>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => handleSectionNav(item.path, item.path.replace('/', ''))}
+                to={item.path}
+                onClick={(e) => handleSectionNav(e, item.path, item.path.replace('/', ''))}
                 className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold text-sm xl:text-base"
               >
                 {item.name}
-              </button>
+              </Link>
             ))}
-            <button
-              onClick={() => handleSectionNav('/contact', 'contact')}
+            <Link
+              to="/contact"
+              onClick={(e) => handleSectionNav(e, '/contact', 'contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg font-bold text-sm xl:text-base transition-colors duration-200 flex items-center space-x-2 shadow-lg"
               aria-label="Începe proiectul tău"
             >
               <span>Începe proiectul</span>
               <Zap className="h-4 w-4" />
-            </button>
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -211,9 +212,10 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <button
+                  <Link
                     key={item.name}
-                    onClick={() => handleSectionNav(item.path, item.path.replace('/', ''))}
+                    to={item.path}
+                    onClick={(e) => handleSectionNav(e, item.path, item.path.replace('/', ''))}
                     className="group flex items-center w-full px-5 py-3.5 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
                     <div
@@ -230,7 +232,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
                       {item.name === 'FAQ' ? 'FAQ — Întrebări frecvente' : item.name}
                     </span>
                     <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-gray-300 group-hover:translate-x-1 transition-all duration-200" />
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -239,14 +241,15 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               className="px-5 py-4 border-t border-white/10"
               style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(147,51,234,0.08) 100%)' }}
             >
-              <button
-                onClick={() => handleSectionNav('/contact', 'contact')}
+              <Link
+                to="/contact"
+                onClick={(e) => handleSectionNav(e, '/contact', 'contact')}
                 className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 active:scale-95"
                 style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)', boxShadow: '0 4px 16px rgba(37,99,235,0.35)' }}
               >
                 <span>Începe proiectul</span>
                 <Zap className="h-4 w-4" />
-              </button>
+              </Link>
               <p className="text-center text-gray-500 text-xs mt-3 font-medium">
                 Tot ce ai nevoie, într-un singur loc
               </p>

@@ -1,12 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react';
 
 const Hero = () => {
-  const navigate = useNavigate();
-    const handleFAQ = () => {
-    navigate('/faq');
-  };
   const handleViewPortfolio = () => {
     const el = document.getElementById('portfolio');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -492,10 +488,10 @@ const Hero = () => {
             </div>
 
             <div className="h-cta">
-              <button onClick={handleFAQ} className="h-btn-primary">
+              <Link to="/faq" className="h-btn-primary">
                 <span>Întrebări frecvente</span>
                 <ArrowRight size={16} />
-              </button>
+              </Link>
               <button onClick={handleViewPortfolio} className="h-btn-secondary" type="button">
                 <Play size={15} />
                 <span>Vezi portofoliul</span>

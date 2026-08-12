@@ -1,27 +1,27 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
-  const navigate = useNavigate();
   const location = useLocation();
 
-  // Navighează la o secțiune: dacă suntem pe home → scroll, altfel → mergi la pagina dedicată
-  const handleSectionNav = (path: string, sectionId: string) => {
+  // Navighează la o secțiune folosind <Link> (href real, crawlabil de Google).
+  // Dacă suntem deja pe home, interceptăm click-ul și facem scroll în loc de navigare.
+  const handleSectionNav = (e: React.MouseEvent, path: string, sectionId: string) => {
     if (location.pathname === '/') {
       const el = document.getElementById(sectionId);
       if (el) {
+        e.preventDefault();
         const top = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
       }
-    } else {
-      navigate(path);
     }
   };
 
   const handleLogoClick = () => {
-    navigate('/');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -29,7 +29,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <div
+            <Link
+              to="/"
               className="flex items-center space-x-3 mb-4 cursor-pointer"
               onClick={handleLogoClick}
             >
@@ -45,7 +46,7 @@ const Footer = () => {
                 <div className="text-xl font-bold">VisionEdit</div>
                 <div className="text-sm text-blue-300 font-medium">România</div>
               </div>
-            </div>
+            </Link>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
                 VisionEdit – Viziunea ta, editată.
@@ -75,34 +76,39 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Link-uri rapide</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <button onClick={() => handleSectionNav('/services', 'services')} className="hover:text-white transition-colors text-left">
+                <Link to="/services" onClick={(e) => handleSectionNav(e, '/services', 'services')} className="hover:text-white transition-colors text-left">
                   Servicii
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleSectionNav('/portfolio', 'portfolio')} className="hover:text-white transition-colors text-left">
+                <Link to="/portfolio" onClick={(e) => handleSectionNav(e, '/portfolio', 'portfolio')} className="hover:text-white transition-colors text-left">
                   Portofoliu
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleSectionNav('/process', 'process')} className="hover:text-white transition-colors text-left">
+                <Link to="/process" onClick={(e) => handleSectionNav(e, '/process', 'process')} className="hover:text-white transition-colors text-left">
                   Proces
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleSectionNav('/about', 'about')} className="hover:text-white transition-colors text-left">
+                <Link to="/pricing" onClick={(e) => handleSectionNav(e, '/pricing', 'pricing')} className="hover:text-white transition-colors text-left">
+                  Prețuri
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" onClick={(e) => handleSectionNav(e, '/about', 'about')} className="hover:text-white transition-colors text-left">
                   Despre
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => navigate('/faq')} className="hover:text-white transition-colors text-left">
+                <Link to="/faq" className="hover:text-white transition-colors text-left">
                   FAQ
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleSectionNav('/contact', 'contact')} className="hover:text-white transition-colors text-left">
+                <Link to="/contact" onClick={(e) => handleSectionNav(e, '/contact', 'contact')} className="hover:text-white transition-colors text-left">
                   Contact
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -111,19 +117,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Informații utile</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <button onClick={() => navigate('/faq')} className="hover:text-white transition-colors text-left">
+                <Link to="/faq" className="hover:text-white transition-colors text-left">
                   FAQ
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => navigate('/privacy')} className="hover:text-white transition-colors text-left">
+                <Link to="/privacy" className="hover:text-white transition-colors text-left">
                   Confidențialitate și GDPR
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => navigate('/terms')} className="hover:text-white transition-colors text-left">
+                <Link to="/terms" className="hover:text-white transition-colors text-left">
                   Termeni și condiții
-                </button>
+                </Link>
               </li>
             </ul>
             <div className="mt-4 text-sm text-gray-400">

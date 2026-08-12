@@ -173,6 +173,7 @@ function ServicesPage() {
     <div className="min-h-screen">
       <Header isSpecialPage={true} />
       <main className="pt-24">
+        <h1 className="sr-only">Servicii de Editare Video Profesională | VisionEdit România</h1>
         <Services />
         <div id="pricing"><Pricing /></div>
         <div id="contact"><Contact /></div>
@@ -190,6 +191,7 @@ function PortfolioPage() {
     <div className="min-h-screen">
       <Header isSpecialPage={true} />
       <main className="pt-24">
+        <h1 className="sr-only">Portofoliu de Editare Video | Proiecte VisionEdit România</h1>
         <Portfolio />
         <div id="contact"><Contact /></div>
       </main>
@@ -206,6 +208,7 @@ function ProcessPage() {
     <div className="min-h-screen">
       <Header isSpecialPage={true} />
       <main className="pt-24">
+        <h1 className="sr-only">Cum Lucrăm | Procesul de Editare Video VisionEdit</h1>
         <Process />
         <div id="contact"><Contact /></div>
       </main>
@@ -222,6 +225,7 @@ function PricingPage() {
     <div className="min-h-screen">
       <Header isSpecialPage={true} />
       <main className="pt-24">
+        <h1 className="sr-only">Prețuri Editare Video | Pachete și Tarife VisionEdit România</h1>
         <Pricing />
         <div id="contact"><Contact /></div>
       </main>
@@ -238,6 +242,7 @@ function AboutPage() {
     <div className="min-h-screen">
       <Header isSpecialPage={true} />
       <main className="pt-24">
+        <h1 className="sr-only">Despre VisionEdit | Studio de Editare Video din România</h1>
         <About />
         <Testimonials />
         <div id="contact"><Contact /></div>
@@ -255,6 +260,7 @@ function ContactPage() {
     <div className="min-h-screen">
       <Header isSpecialPage={true} />
       <main className="pt-24">
+        <h1 className="sr-only">Contact VisionEdit | Solicită Ofertă de Editare Video</h1>
         <Contact />
       </main>
       <Footer />
