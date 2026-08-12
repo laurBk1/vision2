@@ -683,7 +683,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                     <ul className="space-y-3 text-gray-700 text-base md:text-lg font-medium">
                       <li>• O revizie gratuită per video, valabilă 48h de la primirea materialului editat</li>
                       <li>• Livrare flexibilă comunicată în prealabil</li>
-                      <li>• Format vertical 9:16 optimizat</li>
+                      <li>• Orice format necesar: 9:16, 1:1, 4:5, 16:9</li>
                       <li>• Suport tehnic complet</li>
                     </ul>
                   </div>

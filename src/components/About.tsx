@@ -64,14 +64,14 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
                 Lucrăm cu <strong className="text-gray-900">antreprenori, business-uri, influenceri și creatori de conținut</strong> din domenii precum beauty, educație, sănătate, imobiliare, comerț și multe altele. Fiecare video este adaptat pentru <strong className="text-gray-900">publicul tău și obiectivul tău de marketing</strong>.
               </p>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-6">
-                Suntem specializați în <strong className="text-gray-900">format vertical 9:16</strong>, gata de publicare pe toate platformele majore. Procesul nostru e simplu: <strong className="text-gray-900">tu trimiți materialele video — noi livrăm clipurile editate, gata de publicat</strong>. Fără complicații, fără pierdere de timp.
+                Livrăm în <strong className="text-gray-900">orice format ai nevoie</strong> — vertical 9:16, pătrat 1:1, 4:5 sau orizontal 16:9 — adaptat platformei și campaniei tale. Procesul nostru e simplu: <strong className="text-gray-900">tu trimiți materialele video — noi livrăm clipurile editate, gata de publicat</strong>. Fără complicații, fără pierdere de timp.
               </p>
               {/* Key points */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   { icon: Clapperboard, text: 'Editare video profesionistă' },
                   { icon: Film, text: 'Orice nișă, orice industrie' },
-                  { icon: Smartphone, text: 'Format 9:16 optimizat' },
+                  { icon: Smartphone, text: 'Orice format: 9:16, 1:1, 4:5, 16:9' },
                   { icon: Rocket, text: 'Livrare rapidă, fără complicații' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-100">

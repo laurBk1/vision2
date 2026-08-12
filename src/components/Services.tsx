@@ -217,8 +217,8 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
     },
     {
       icon: Crop,
-      title: 'Crop & Reframe',
-      description: 'Adaptăm conținut filmat orizontal (landscape) pentru vertical (Shorts), păstrând subiectul clar și în centru. Evităm marginile negre și menținem aspectul profesional.',
+      title: 'Crop & Reframe — orice format',
+      description: 'Adaptăm materialul filmat la formatul de care ai nevoie — vertical 9:16, pătrat 1:1 sau 4:5, ori orizontal 16:9 — păstrând subiectul clar și în centru. Evităm marginile negre și menținem aspectul profesional, indiferent de platformă.',
       features: ['Reîncadrare dinamică (motion tracking pe subiect)', 'Zoom adaptiv pentru diferite scene', 'Eliminarea spațiilor moarte', 'Centrare automată pe acțiune'],
       highlight: 'Smart Crop'
     },
@@ -241,8 +241,8 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
   const specialFeatures = [
     {
       icon: Smartphone,
-      title: 'Format vertical 9:16 optimizat',
-      description: 'Specializați în formatul vertical perfect pentru TikTok, Instagram Reels, YouTube Shorts și alte platforme sociale moderne.',
+      title: 'Orice format ai nevoie: 9:16, 1:1, 4:5, 16:9',
+      description: 'Livrăm în formatul potrivit pentru fiecare platformă și obiectiv de campanie — vertical 9:16 pentru TikTok, Instagram Reels și YouTube Shorts, pătrat 1:1 sau 4:5 pentru feed și Ads, ori orizontal 16:9 pentru YouTube și televizor.',
       stats: '100% Optimizat Social'
     },
     {

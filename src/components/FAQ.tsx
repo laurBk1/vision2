@@ -117,7 +117,7 @@ const FAQ = () => {
         },
         {
           q: 'Ce rezoluție și format primesc la final?',
-          a: 'Livrăm conținut video în format vertical 9:16, optimizat pentru TikTok, Instagram Reels și YouTube Shorts, la rezoluție HD/Full HD, finalizat pentru distribuție imediată pe orice platformă, fără procesare suplimentară din partea dumneavoastră.'
+          a: 'Livrăm conținut video în formatul de care aveți nevoie — vertical 9:16 pentru TikTok, Instagram Reels și YouTube Shorts, pătrat 1:1 sau 4:5 pentru feed și Ads, ori orizontal 16:9 pentru YouTube și alte platforme — la rezoluție HD/Full HD, finalizat pentru distribuție imediată, fără procesare suplimentară din partea dumneavoastră.'
         },
         {
           q: 'Cât timp sunt stocate materialele după livrare?',
