@@ -228,7 +228,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 <CheckCircle className="h-12 w-12 text-green-600" />
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Mesaj Trimis cu Succes!</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Mesaj trimis cu succes!</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Mulțumim pentru mesajul tău! Am primit cererea ta și îți vom răspunde în cel mai scurt timp posibil.
               </p>
@@ -287,7 +287,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <MapPin className="h-8 w-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Locația Noastră</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Locația noastră</h3>
             <p className="text-gray-600 mb-4">
               <a
                 href="https://www.google.com/maps/place/București-Ilfov,+România"
@@ -316,7 +316,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
             <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Phone className="h-8 w-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Sună-ne Acum</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Sună-ne acum</h3>
             <p className="text-gray-600">
               <a
                 href="tel:+40767082106"
@@ -331,7 +331,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Mail className="h-8 w-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Trimite Email</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Trimite email</h3>
             <p className="text-gray-600">
               <a
                 href="mailto:contact@visionedit.ro"
@@ -599,7 +599,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4">
                   <div className="flex items-center space-x-2 mb-2">
                     <Zap className="h-5 w-5 text-blue-600" />
-                    <span className="font-semibold text-gray-900">Pachet Selectat:</span>
+                    <span className="font-semibold text-gray-900">Pachet selectat:</span>
                     {selectedPackage.popular && (
                       <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
                         <Star className="h-3 w-3 mr-1" />
@@ -669,7 +669,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >
-                    Politica de Confidențialitate & GDPR
+                    Politica de confidențialitate & GDPR
                   </button>{' '}
                   și cu{' '}
                   <button
@@ -691,7 +691,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-bold py-5 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-[1.02] hover:shadow-2xl cursor-pointer"
               >
-                <span className="text-lg">Trimite Mesajul</span>
+                <span className="text-lg">Trimite mesajul</span>
                 <Send className="h-6 w-6" />
               </button>
 

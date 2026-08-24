@@ -67,11 +67,11 @@ const PAGE_NAMES: Record<string, string> = {
   '/portfolio': 'Portofoliu',
   '/process': 'Proces',
   '/pricing': 'Prețuri',
-  '/about': 'Despre Noi',
+  '/about': 'Despre noi',
   '/contact': 'Contact',
   '/faq': 'FAQ',
-  '/terms': 'Termeni și Condiții',
-  '/privacy': 'Politica de Confidențialitate',
+  '/terms': 'Termeni și condiții',
+  '/privacy': 'Politica de confidențialitate',
 };
 
 function updateBreadcrumb(pathname: string) {

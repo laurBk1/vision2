@@ -55,7 +55,7 @@ const Privacy = () => {
     },
     {
       icon: Lock,
-      title: '2. Politica de Cookies',
+      title: '2. Politica de cookies',
       content: [
         'Ce sunt cookie-urile?',
         'Un cookie este un mic fișier text stocat pe dispozitivul dumneavoastră (computer, telefon mobil etc.) atunci când vizitați un site web. Cookie-urile sunt complet pasive — nu conțin programe software, viruși sau spyware și nu pot accesa informațiile de pe dispozitivul dumneavoastră. În mod obișnuit, cookie-urile nu identifică direct utilizatorii.',
@@ -113,7 +113,7 @@ const Privacy = () => {
     },
     {
       icon: Users,
-      title: '3. Datele Operatorului',
+      title: '3. Datele operatorului',
       content: [
         'Denumire: VISIONEDIT S.R.L. (VisionEdit România)',
         'Sediu social: Jud. Ilfov, Oraș Popești Leordeni',
@@ -128,7 +128,7 @@ const Privacy = () => {
     },
     {
       icon: Eye,
-      title: '4. Categorii de Date Prelucrate',
+      title: '4. Categorii de date prelucrate',
       content: [
         'Prin formularul de contact de pe site, colectăm următoarele categorii de date:',
         '',
@@ -151,7 +151,7 @@ const Privacy = () => {
     },
     {
       icon: Users,
-      title: '6. Destinatarii Datelor',
+      title: '6. Destinatarii datelor',
       content: [
         'Datele tale pot fi accesate de:',
         '',
@@ -167,7 +167,7 @@ const Privacy = () => {
     },
     {
       icon: AlertCircle,
-      title: '7. Durata Stocării',
+      title: '7. Durata stocării',
       content: [
         'Datele sunt stocate:',
         '',
@@ -194,7 +194,7 @@ const Privacy = () => {
     },
     {
       icon: Shield,
-      title: '9. Măsuri de Securitate',
+      title: '9. Măsuri de securitate',
       content: [
         'Implementăm măsuri tehnice și organizaționale adecvate, inclusiv:',
         '',
@@ -213,7 +213,7 @@ const Privacy = () => {
     },
     {
       icon: FileText,
-      title: '11. Modificări ale Politicii',
+      title: '11. Modificări ale politicii',
       content: [
         'Orice modificare a acestei politici va fi publicată pe această pagină. Vă recomandăm să o consultați periodic.'
       ]
@@ -341,7 +341,7 @@ const Privacy = () => {
 
         <div className="mt-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-2xl p-8 lg:p-12 text-white">
           <div className="text-center">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-6">Ai Întrebări despre Protecția Datelor?</h3>
+            <h3 className="text-2xl lg:text-3xl font-bold mb-6">Ai întrebări despre protecția datelor?</h3>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
               Pentru orice întrebări legate de protecția datelor personale sau pentru exercitarea drepturilor tale GDPR, 
               nu ezita să ne contactezi.

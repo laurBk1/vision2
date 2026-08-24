@@ -141,7 +141,7 @@ const Footer = () => {
         {/* Iconițe Sociale */}
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col items-center space-y-6">
-            <h3 className="text-lg font-semibold text-white">Urmărește-ne pe Social Media</h3>
+            <h3 className="text-lg font-semibold text-white">Urmărește-ne pe social media</h3>
 
             <div className="flex space-x-6">
               <a
@@ -198,7 +198,7 @@ const Footer = () => {
         {/* Legal Compliance Section */}
         <div className="border-t border-gray-700 mt-8 pt-6">
           <div className="text-center">
-            <p className="text-gray-400 text-xs mb-4">Protecția Consumatorului - Conform legislației din România și UE</p>
+            <p className="text-gray-400 text-xs mb-4">Protecția consumatorului - Conform legislației din România și UE</p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
               <a

@@ -196,7 +196,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
     },
     {
       icon: ZoomIn,
-      title: 'Efecte de Zoom Dinamice',
+      title: 'Efecte de zoom dinamice',
       description: 'Intensificăm impactul vizual și menținem publicul angajat prin utilizarea strategică a efectelor de zoom in/out, evidențiind detalii esențiale și oferind context exact când este nevoie.',
       features: ['Zoom cinematografic', 'Focus dinamic', 'Evidențiere strategică'],
       highlight: 'Dynamic'
@@ -243,17 +243,17 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
       icon: Smartphone,
       title: 'Orice format ai nevoie: 9:16, 1:1, 4:5, 16:9',
       description: 'Vertical, pătrat sau orizontal — livrăm în formatul potrivit pentru fiecare platformă și obiectiv de campanie.',
-      stats: '100% Optimizat Social'
+      stats: '100% optimizat social'
     },
     {
       icon: TrendingUp,
-      title: 'Strategii de Engagement',
+      title: 'Strategii de engagement',
       description: 'Implementăm tehnici dovedite pentru a maximiza rata de vizionare, like-uri, share-uri și comentarii.',
       stats: '3x mai mult engagement'
     },
     {
       icon: BarChart2,
-      title: 'Optimizare pentru Algoritmi',
+      title: 'Optimizare pentru algoritmi',
       description: 'Creăm conținut adaptat algoritmilor platformelor sociale pentru a maximiza reach-ul organic.',
       stats: '5x mai multă vizibilitate'
     }
@@ -268,7 +268,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
         <div className="text-center mb-16">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
-              Servicii Complete
+              Servicii complete
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
               Ce servicii oferim?

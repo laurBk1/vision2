@@ -502,17 +502,17 @@ const Hero = () => {
               <div className="h-stat">
                 <div className="h-stat-icon"><Video size={28} color="#60A5FA" /></div>
                 <div className="h-stat-num">2.340+</div>
-                <div className="h-stat-lbl">Proiecte Finalizate</div>
+                <div className="h-stat-lbl">Proiecte finalizate</div>
               </div>
               <div className="h-stat">
                 <div className="h-stat-icon"><Users size={28} color="#FBBF24" /></div>
                 <div className="h-stat-num">150+</div>
-                <div className="h-stat-lbl">Clienți Mulțumiți</div>
+                <div className="h-stat-lbl">Clienți mulțumiți</div>
               </div>
               <div className="h-stat">
                 <div className="h-stat-icon"><Award size={28} color="#34D399" /></div>
                 <div className="h-stat-num">3+</div>
-                <div className="h-stat-lbl">Ani Experiență</div>
+                <div className="h-stat-lbl">Ani experiență</div>
               </div>
             </div>
           </div>
@@ -543,7 +543,7 @@ const Hero = () => {
                     <div className="h-thumb-fade-top" />
                     <div className="h-thumb-fade-right" />
                   </div>
-                  <div className="h-card-title">Editare Video Profesională</div>
+                  <div className="h-card-title">Editare video profesională</div>
                   <p className="h-card-desc">
                     Edităm conținut video profesional pentru orice platformă, gata de publicat.
                   </p>

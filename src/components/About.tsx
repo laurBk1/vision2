@@ -4,10 +4,10 @@ import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket } from
 const About = ({ asH1 = false }: { asH1?: boolean }) => {
   const TitleTag = asH1 ? 'h1' : 'h2';
   const achievements = [
-    { icon: Award, label: 'Ani Experiență', value: '3+' },
-    { icon: Users, label: 'Clienți Mulțumiți', value: '150+' },
-    { icon: Clock, label: 'Proiecte Finalizate', value: '2.340+' },
-    { icon: Zap, label: 'Ore Editare', value: '3000+' }
+    { icon: Award, label: 'Ani experiență', value: '3+' },
+    { icon: Users, label: 'Clienți mulțumiți', value: '150+' },
+    { icon: Clock, label: 'Proiecte finalizate', value: '2.340+' },
+    { icon: Zap, label: 'Ore editare', value: '3000+' }
   ];
 
   return (
@@ -50,7 +50,7 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
             </div>
             <div className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 bg-blue-600 rounded-xl p-4 md:p-6 text-white shadow-xl">
               <div className="text-2xl md:text-3xl font-bold text-white">2.340+</div>
-              <div className="text-xs md:text-sm text-white font-medium">Proiecte Finalizate</div>
+              <div className="text-xs md:text-sm text-white font-medium">Proiecte finalizate</div>
             </div>
           </div>
 

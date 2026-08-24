@@ -245,7 +245,7 @@ const CookieBanner = () => {
                 onClick={handlePrivacyClick}
                 className="text-purple-400 hover:text-purple-300 underline underline-offset-1 bg-transparent border-none cursor-pointer text-xs p-0"
               >
-                Politica de Confidențialitate
+                Politica de confidențialitate
               </button>
               .
             </p>

@@ -450,8 +450,8 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
       <div className="flex flex-col gap-4">
         {[
           { label: 'Vreau să văd ambele pachete', value: 'both' as ViewChoice, icon: Eye },
-          { label: 'Doar Editare cu materialele mele', value: 'editing' as ViewChoice, icon: Scissors },
-          { label: 'Doar Pachete Complete (de la A la Z)', value: 'complete' as ViewChoice, icon: Film },
+          { label: 'Doar editare cu materialele mele', value: 'editing' as ViewChoice, icon: Scissors },
+          { label: 'Doar pachete complete (de la A la Z)', value: 'complete' as ViewChoice, icon: Film },
         ].map(opt => (
           <button
             key={opt.value}
@@ -739,7 +739,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 onClick={handleContactClick}
                 className="bg-slate-900 hover:bg-slate-800 text-white px-8 md:px-10 py-4 md:py-5 rounded-lg font-bold transition-colors duration-200 text-base md:text-lg shadow-lg"
               >
-                Contactează-ne pentru Ofertă Personalizată!
+                Contactează-ne pentru o ofertă personalizată!
               </button>
             </div>
           </div>

@@ -66,9 +66,9 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
   };
 
   const achievements = [
-    { number: '150+', label: 'Clienți Mulțumiți' },
-    { number: '2.340+', label: 'Proiecte Finalizate' },
-    { number: '3+', label: 'Ani Experiență' },
+    { number: '150+', label: 'Clienți mulțumiți' },
+    { number: '2.340+', label: 'Proiecte finalizate' },
+    { number: '3+', label: 'Ani experiență' },
     { number: '100%', label: 'Confidențialitate' }
   ];
 
@@ -80,7 +80,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
         <div className="text-center mb-12 md:mb-16">
           <div className="bg-gradient-to-r from-slate-50 via-white to-blue-50 border-2 border-slate-300 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-6">
             <span className="inline-block bg-gradient-to-r from-slate-700 to-blue-700 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
-              Portofoliu Confidențial
+              Portofoliu confidențial
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
               Portofoliul nostru nu este public
@@ -99,7 +99,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
             <div className="relative bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-6 md:p-8 text-center shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl"></div>
               <div className="relative z-10">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Despre Noi</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Despre noi</h3>
                 <p className="text-blue-100 mb-6 font-medium text-base md:text-lg">Transformăm viziunea ta în conținut video de impact</p>
                 <div className="relative mx-auto max-w-xs">
                   <div className="aspect-[9/16] bg-slate-800 rounded-xl overflow-hidden shadow-2xl relative">
