@@ -144,9 +144,9 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
             <img
               src="/logo.webp"
               alt="VisionEdit România Logo"
-              className="h-16 md:h-20 w-auto"
-              width="294"
-              height="98"
+              className="h-20 md:h-24 w-auto"
+              width="274"
+              height="153"
               loading="eager"
               fetchPriority="high"
             />

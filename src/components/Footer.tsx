@@ -37,15 +37,11 @@ const Footer = () => {
               <img
                 src="/logo.webp"
                 alt="VisionEdit România Logo"
-                className="h-11 md:h-14 w-auto"
-                width="170"
-                height="54"
+                className="h-14 md:h-16 w-auto"
+                width="274"
+                height="153"
                 loading="lazy"
               />
-              <div className="text-white">
-                <div className="text-xl font-bold">VisionEdit</div>
-                <div className="text-sm text-blue-300 font-medium">România</div>
-              </div>
             </Link>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
