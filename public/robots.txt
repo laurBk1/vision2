@@ -95,8 +95,3 @@ Allow: /
 # ============================================================
 
 Sitemap: https://visionedit.ro/sitemap.xml
-
-# Resurse AI (standard emergent llmstxt.org)
-LLMs: https://visionedit.ro/llms.txt
-LLMs-Full: https://visionedit.ro/llms-full.txt
-AI-Discovery: https://visionedit.ro/ai.txt

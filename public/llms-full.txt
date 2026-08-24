@@ -375,16 +375,16 @@ La pachetele "cu materialele tale" (Tip A), tu filmezi și trimiți materialele 
 
 ## 17. LINKURI CANONICE
 
-- Acasă: https://visionedit.ro/
-- Servicii complete: https://visionedit.ro/services
-- Portofoliu: https://visionedit.ro/portfolio
-- Procesul de lucru: https://visionedit.ro/process
-- Prețuri și pachete: https://visionedit.ro/pricing
-- Despre VisionEdit: https://visionedit.ro/about
-- Contact: https://visionedit.ro/contact
-- FAQ complet: https://visionedit.ro/faq
-- Termeni și condiții: https://visionedit.ro/terms
-- Politică confidențialitate: https://visionedit.ro/privacy
+- [Acasă](https://visionedit.ro/)
+- [Servicii complete](https://visionedit.ro/services)
+- [Portofoliu](https://visionedit.ro/portfolio)
+- [Procesul de lucru](https://visionedit.ro/process)
+- [Prețuri și pachete](https://visionedit.ro/pricing)
+- [Despre VisionEdit](https://visionedit.ro/about)
+- [Contact](https://visionedit.ro/contact)
+- [FAQ complet](https://visionedit.ro/faq)
+- [Termeni și condiții](https://visionedit.ro/terms)
+- [Politică confidențialitate](https://visionedit.ro/privacy)
 
 ---
 

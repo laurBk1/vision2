@@ -20,16 +20,16 @@ import NotFound from './components/NotFound';
 // ─── Meta tags per pagină ────────────────────────────────────────────────────
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'VisionEdit România - Editare Video Profesională | YouTube Shorts, Reels, TikTok',
-    description: 'VisionEdit oferă servicii profesionale de editare video în România: YouTube Shorts, Instagram Reels, TikTok. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage și vinde.',
+    title: 'VisionEdit România - Editare Video Profesională | TikTok, Reels, FB Ads, Shorts',
+    description: 'VisionEdit oferă servicii profesionale de editare video în România: TikTok, Instagram Reels, Facebook Ads, YouTube Shorts. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage și vinde.',
   },
   '/services': {
     title: 'Servicii Editare Video Profesională | VisionEdit România',
-    description: 'Descoperă serviciile profesionale de editare video VisionEdit: YouTube Shorts, Instagram Reels, TikTok, videoclipuri corporate și conținut social media. Calitate premium la prețuri accesibile.',
+    description: 'Descoperă serviciile profesionale de editare video VisionEdit: TikTok, Instagram Reels, Facebook Ads, YouTube Shorts, videoclipuri corporate și conținut social media. Calitate premium la prețuri accesibile.',
   },
   '/portfolio': {
     title: 'Portofoliu Editare Video | Proiecte VisionEdit România',
-    description: 'Vezi portofoliul VisionEdit: proiecte de editare video pentru clienți din România. YouTube Shorts, Reels, TikTok și videoclipuri corporate realizate profesional.',
+    description: 'Vezi portofoliul VisionEdit: proiecte de editare video pentru clienți din România. TikTok, Reels, Facebook Ads, YouTube Shorts și videoclipuri corporate realizate profesional.',
   },
   '/process': {
     title: 'Cum Lucrăm | Procesul de Editare Video VisionEdit',
@@ -37,7 +37,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/pricing': {
     title: 'Prețuri Editare Video | Pachete și Tarife VisionEdit România',
-    description: 'Prețuri transparente pentru editare video profesională: pachete pentru YouTube Shorts, Instagram Reels, TikTok și conținut corporate. Alege pachetul potrivit pentru afacerea ta.',
+    description: 'Prețuri transparente pentru editare video profesională: pachete pentru TikTok, Instagram Reels, Facebook Ads, YouTube Shorts și conținut corporate. Alege pachetul potrivit pentru afacerea ta.',
   },
   '/about': {
     title: 'Despre VisionEdit | Studio de Editare Video din România',
