@@ -19,15 +19,17 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-function TestimonialCard({ testimonial, delay }) {
+function TestimonialCard({ testimonial, delay, index = 0 }) {
   const { ref, visible } = useInView(0.12);
+  const col = index % 3;
+  const hiddenTransform = col === 0 ? 'translate(-40px, 15px)' : col === 2 ? 'translate(40px, 15px)' : 'translateY(35px)';
   return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0px)' : 'translateY(35px)',
-        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+        transform: visible ? 'translate(0, 0)' : hiddenTransform,
+        transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
       }}
       className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/20 transition-colors duration-300 border border-white/20 shadow-xl"
     >
@@ -112,7 +114,7 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} delay={(index % 3) * 0.15} />
+            <TestimonialCard key={index} testimonial={testimonial} delay={(index % 3) * 0.15} index={index} />
           ))}
         </div>
       </div>

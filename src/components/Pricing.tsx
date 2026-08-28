@@ -317,14 +317,16 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
     }
   ];
 
-  const PackageCard = ({ pkg, isComplete = false, isRecommended = false, delay = 0 }: { pkg: any, isComplete?: boolean, isRecommended?: boolean, delay?: number }) => {
+  const PackageCard = ({ pkg, isComplete = false, isRecommended = false, delay = 0, index = 0 }: { pkg: any, isComplete?: boolean, isRecommended?: boolean, delay?: number, index?: number }) => {
     const { ref, visible } = useInView(0.15);
+    const col = index % 3;
+    const hiddenTransform = col === 0 ? 'translate(-40px, 20px)' : col === 2 ? 'translate(40px, 20px)' : 'translateY(40px)';
     return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(40px)',
+        transform: visible ? 'translate(0, 0)' : hiddenTransform,
         transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
       }}
       className={`relative bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition-transform duration-300 ${
@@ -636,7 +638,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                   {editingPackages.map((pkg, index) => (
-                    <PackageCard key={index} pkg={pkg} isComplete={false} isRecommended={recommendedTier === index} delay={index * 0.15} />
+                    <PackageCard key={index} pkg={pkg} isComplete={false} isRecommended={recommendedTier === index} delay={index * 0.15} index={index} />
                   ))}
                 </div>
               </div>
@@ -678,7 +680,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                   {completePackages.map((pkg, index) => (
-                    <PackageCard key={index} pkg={pkg} isComplete={true} isRecommended={recommendedTier === index} delay={index * 0.15} />
+                    <PackageCard key={index} pkg={pkg} isComplete={true} isRecommended={recommendedTier === index} delay={index * 0.15} index={index} />
                   ))}
                 </div>
               </div>

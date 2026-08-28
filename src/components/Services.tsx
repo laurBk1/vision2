@@ -67,13 +67,15 @@ function useInView(threshold = 0.15) {
 function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, setExpandedFeatures, setExpandedDesc }) {
   const { ref, visible } = useInView(0.1);
   const Icon = service.icon;
+  const col = index % 3;
+  const hiddenTransform = col === 0 ? 'translate(-40px, 15px)' : col === 2 ? 'translate(40px, 15px)' : 'translateY(35px)';
   return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0px)' : 'translateY(35px)',
-        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+        transform: visible ? 'translate(0, 0)' : hiddenTransform,
+        transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
       }}
       className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
     >

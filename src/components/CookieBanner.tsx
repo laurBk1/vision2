@@ -71,6 +71,20 @@ const CookieBanner = () => {
           0%, 100% { transform: rotate(0deg) scale(1); }
           50%       { transform: rotate(8deg) scale(1.05); }
         }
+        @keyframes cookieBannerSlideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes cookieOverlayFade {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        .cookie-banner-anim {
+          animation: cookieBannerSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .cookie-overlay-anim {
+          animation: cookieOverlayFade 0.4s ease both;
+        }
         .cookie-icon-wrap {
           animation: cookieSpin 1.8s ease-in-out 2, cookieGlow 1.2s ease-in-out 3;
           animation-fill-mode: forwards;
@@ -146,7 +160,7 @@ const CookieBanner = () => {
     <>
       {/* Overlay care blochează orice interacțiune cu pagina din spate */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99998]"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99998] cookie-overlay-anim"
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}
         aria-hidden="true"
@@ -155,7 +169,7 @@ const CookieBanner = () => {
 
       {/* Bannerul cookies */}
       <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
-        <div className="max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden cookie-banner-anim">
 
           {/* Header */}
           <div className="bg-gradient-to-r from-purple-900/80 to-slate-900/80 px-6 py-4 flex items-center justify-between border-b border-purple-500/20">

@@ -455,6 +455,27 @@ const Hero = () => {
         .h-check span { word-break: break-word; overflow-wrap: break-word; }
         .h-cta { width: 100%; max-width: 100%; }
         .h-btn-primary, .h-btn-secondary { max-width: 100%; box-sizing: border-box; }
+
+        /* Intrare premium la încărcarea paginii: stânga alunecă din stânga, dreapta din dreapta */
+        @keyframes heroLeftIn {
+          from { opacity: 0; transform: translateX(-36px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes heroRightIn {
+          from { opacity: 0; transform: translateX(36px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes heroUpIn {
+          from { opacity: 0; transform: translateY(18px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .h-left-anim { animation: heroLeftIn 0.8s ease both; }
+        .h-right-anim { animation: heroRightIn 0.9s ease 0.15s both; }
+        .h-stat-anim { animation: heroUpIn 0.7s ease both; }
+        .h-stat:nth-child(1).h-stat-anim { animation-delay: 0.5s; }
+        .h-stat:nth-child(2).h-stat-anim { animation-delay: 0.62s; }
+        .h-stat:nth-child(3).h-stat-anim { animation-delay: 0.74s; }
+        .h-check-anim { animation: heroLeftIn 0.6s ease both; }
       `}</style>
 
       <section className="h-root h-section" style={{maxWidth: '100%', width: '100%'}}>
@@ -464,7 +485,7 @@ const Hero = () => {
         <div className="h-inner">
 
           {/* LEFT */}
-          <div className="h-left">
+          <div className="h-left h-left-anim">
             <h1 className="h-heading h-heading-mobile">
               Vrei mai multă vizibilitate pentru afacerea ta?
             </h1>
@@ -479,8 +500,8 @@ const Hero = () => {
                 'Conținut livrat gata de publicat',
                 'O revizie gratuită la fiecare video',
                 '100% remote — livrăm oriunde în România',
-              ].map((t) => (
-                <div className="h-check" key={t}>
+              ].map((t, i) => (
+                <div className="h-check h-check-anim" style={{ animationDelay: `${0.25 + i * 0.08}s` }} key={t}>
                   <CheckCircle size={15} />
                   <span>{t}</span>
                 </div>
@@ -499,17 +520,17 @@ const Hero = () => {
             </div>
 
             <div className="h-stats">
-              <div className="h-stat">
+              <div className="h-stat h-stat-anim">
                 <div className="h-stat-icon"><Video size={28} color="#60A5FA" /></div>
                 <div className="h-stat-num">2.340+</div>
                 <div className="h-stat-lbl">Proiecte finalizate</div>
               </div>
-              <div className="h-stat">
+              <div className="h-stat h-stat-anim">
                 <div className="h-stat-icon"><Users size={28} color="#FBBF24" /></div>
                 <div className="h-stat-num">150+</div>
                 <div className="h-stat-lbl">Clienți mulțumiți</div>
               </div>
-              <div className="h-stat">
+              <div className="h-stat h-stat-anim">
                 <div className="h-stat-icon"><Award size={28} color="#34D399" /></div>
                 <div className="h-stat-num">3+</div>
                 <div className="h-stat-lbl">Ani experiență</div>
@@ -518,7 +539,7 @@ const Hero = () => {
           </div>
 
           {/* RIGHT — Card */}
-          <div className="h-right">
+          <div className="h-right h-right-anim">
             <div className="h-card-wrapper">
 
               {/* Badge sus-dreapta — doar pe mobile */}

@@ -49,7 +49,7 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
       className="relative mb-8 md:mb-16"
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(36px)',
+        transform: visible ? 'translate(0, 0)' : `translate(${isEven ? '40px' : '-40px'}, 24px)`,
         transition: `opacity 0.9s ease ${index * 0.15}s, transform 0.9s ease ${index * 0.15}s`,
       }}
     >

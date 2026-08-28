@@ -19,16 +19,17 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-function Reveal({ children, delay = 0, className = '' }) {
+function Reveal({ children, delay = 0, className = '', direction = 'up' as 'up' | 'left' | 'right' }) {
   const { ref, visible } = useInView(0.12);
+  const hidden = direction === 'left' ? 'translateX(-40px)' : direction === 'right' ? 'translateX(40px)' : 'translateY(35px)';
   return (
     <div
       ref={ref}
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0px)' : 'translateY(35px)',
-        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+        transform: visible ? 'translate(0, 0)' : hidden,
+        transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
       }}
     >
       {children}
@@ -77,7 +78,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <Reveal className="text-center mb-12 md:mb-16">
           <div className="bg-gradient-to-r from-slate-50 via-white to-blue-50 border-2 border-slate-300 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-6">
             <span className="inline-block bg-gradient-to-r from-slate-700 to-blue-700 text-white font-bold text-xs md:text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Portofoliu confidențial
@@ -89,13 +90,13 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
             La VisionEdit, <strong className="text-gray-900">confidențialitatea și discreția</strong> sunt fundamentale în relația cu clienții noștri.
           </p>
-        </div>
+        </Reveal>
 
         {/* Main Grid */}
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
 
           {/* Video */}
-          <div className="order-2 lg:order-1">
+          <Reveal direction="left" className="order-2 lg:order-1">
             <div className="relative bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-6 md:p-8 text-center shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl"></div>
               <div className="relative z-10">
@@ -139,10 +140,10 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Confidentiality Text */}
-          <div className="order-1 lg:order-2">
+          <Reveal direction="right" delay={0.1} className="order-1 lg:order-2">
             <div className="bg-white rounded-2xl p-6 md:p-10 shadow-xl">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                 Confidențialitatea este prioritatea noastră
@@ -159,7 +160,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Stats */}
@@ -173,7 +174,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {achievements.map((achievement, index) => (
-                <Reveal key={index} delay={(index % 4) * 0.1}>
+                <Reveal key={index} delay={(index % 4) * 0.1} direction={index % 2 === 0 ? 'left' : 'right'}>
                   <div className="text-center bg-white/5 rounded-xl py-5 px-2">
                     <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-1">{achievement.number}</div>
                     <div className="text-gray-300 text-sm md:text-base font-medium leading-tight">{achievement.label}</div>
