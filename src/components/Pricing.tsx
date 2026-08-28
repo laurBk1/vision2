@@ -403,9 +403,24 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               <Scissors className="h-6 w-6 text-blue-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Editare cu materialele tale</h3>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
-              Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads.
-            </p>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); toggleInfo('intro-editing'); }}
+              className="inline-flex items-center gap-1 text-blue-600 font-semibold text-sm mb-2 hover:text-blue-800 transition-colors"
+            >
+              {openInfo === 'intro-editing' ? 'Ascunde detaliile' : 'Află mai multe'}
+              <ChevronRight className={`h-3.5 w-3.5 transition-transform duration-300 ${openInfo === 'intro-editing' ? 'rotate-90' : ''}`} />
+            </button>
+            <div
+              className="grid transition-all duration-300 ease-in-out"
+              style={{ gridTemplateRows: openInfo === 'intro-editing' ? '1fr' : '0fr' }}
+            >
+              <div className="overflow-hidden">
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 pt-1">
+                  Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads.
+                </p>
+              </div>
+            </div>
             <div className="bg-blue-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-blue-600 transition-colors duration-200">
               <span className="text-blue-700 font-bold text-base group-hover:text-white transition-colors">De la 185 lei/video</span>
               <ChevronRight className="h-4 w-4 text-blue-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
@@ -422,9 +437,24 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               <Film className="h-6 w-6 text-purple-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
-              Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover profesional, avatar UGC, materiale stock și editare profesională — gata de publicat.
-            </p>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); toggleInfo('intro-complete'); }}
+              className="inline-flex items-center gap-1 text-purple-600 font-semibold text-sm mb-2 hover:text-purple-800 transition-colors"
+            >
+              {openInfo === 'intro-complete' ? 'Ascunde detaliile' : 'Detalii suplimentare'}
+              <ChevronRight className={`h-3.5 w-3.5 transition-transform duration-300 ${openInfo === 'intro-complete' ? 'rotate-90' : ''}`} />
+            </button>
+            <div
+              className="grid transition-all duration-300 ease-in-out"
+              style={{ gridTemplateRows: openInfo === 'intro-complete' ? '1fr' : '0fr' }}
+            >
+              <div className="overflow-hidden">
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 pt-1">
+                  Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover profesional, avatar UGC, materiale stock și editare profesională — gata de publicat.
+                </p>
+              </div>
+            </div>
             <div className="bg-purple-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-purple-600 transition-colors duration-200">
               <span className="text-purple-700 font-bold text-base group-hover:text-white transition-colors">De la 240 lei/video</span>
               <ChevronRight className="h-4 w-4 text-purple-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />

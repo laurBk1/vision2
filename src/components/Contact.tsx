@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, Clock, ChevronDown, Check, Star, Zap, X, CheckCircle } from 'lucide-react';
+import Reveal from '../hooks/Reveal';
 
 type Package = {
   id: string;
@@ -263,7 +264,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <Reveal direction="up" className="text-center mb-16">
           <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 border-2 border-purple-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</TitleTag>
@@ -279,11 +280,11 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
     <span className="text-gray-900 font-bold not-italic"> editare video profesionale</span>!
   </p>
 </div>
-</div>
+</Reveal>
 
         {/* Contact Info Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
-          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
+          <Reveal direction="left" className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <MapPin className="h-8 w-8 text-white" />
             </div>
@@ -310,9 +311,9 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
+          <Reveal direction="up" delay={0.1} className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
             <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Phone className="h-8 w-8 text-white" />
             </div>
@@ -325,9 +326,9 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 +40 767 082 106
               </a>
             </p>
-          </div>
+          </Reveal>
 
-          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
+          <Reveal direction="right" delay={0.2} className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-white/50 hover:border-blue-200">
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Mail className="h-8 w-8 text-white" />
             </div>
@@ -340,13 +341,13 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 contact@visionedit.ro
               </a>
             </p>
-          </div>
+          </Reveal>
         </div>
 
         {/* Main Contact Section */}
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Map - Hidden on Mobile */}
-          <div className="hidden lg:flex flex-col bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white/50">
+          <Reveal direction="left" className="hidden lg:flex flex-col bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white/50">
             <div className="p-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
               <h3 className="text-xl font-semibold mb-2">Unde ne găsești?</h3>
               <p className="text-blue-100">București - Ilfov, România</p>
@@ -404,10 +405,10 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Contact Form */}
-          <div className="contact__form bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl border border-white/50">
+          <Reveal direction="right" className="contact__form bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl border border-white/50">
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 Să începem colaborarea!
@@ -699,11 +700,11 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 * Câmpurile marcate sunt obligatorii. Îți vom răspunde în maxim 24 de ore.
               </p>
             </form>
-          </div>
+          </Reveal>
         </div>
 
         {/* Additional Info */}
-        <div className="mt-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-2xl p-8 lg:p-12 text-white">
+        <Reveal direction="up" className="mt-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-2xl p-8 lg:p-12 text-white">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl lg:text-3xl font-bold mb-6">De ce să alegi VisionEdit?</h3>
@@ -736,7 +737,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

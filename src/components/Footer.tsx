@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
+import Reveal from '../hooks/Reveal';
 
 const Footer = () => {
   const location = useLocation();
@@ -28,7 +29,7 @@ const Footer = () => {
     <footer className="bg-slate-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
+          <Reveal direction="left" className="md:col-span-2">
             <Link
               to="/"
               className="flex items-center space-x-3 mb-4 cursor-pointer"
@@ -66,9 +67,9 @@ const Footer = () => {
                 <span>București - Ilfov, România</span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal direction="right" delay={0.05}>
             <h3 className="text-lg font-semibold mb-4">Link-uri rapide</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
@@ -107,9 +108,9 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal direction="right" delay={0.1}>
             <h3 className="text-lg font-semibold mb-4">Informații utile</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
@@ -131,11 +132,11 @@ const Footer = () => {
             <div className="mt-4 text-sm text-gray-400">
               <p>Program: Luni - Vineri, 9:00 - 18:00</p>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Iconițe Sociale */}
-        <div className="border-t border-gray-700 mt-12 pt-8">
+        <Reveal direction="up" className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col items-center space-y-6">
             <h3 className="text-lg font-semibold text-white">Urmărește-ne pe social media</h3>
 
@@ -189,7 +190,7 @@ const Footer = () => {
               Conectează-te cu noi pentru ultimele noutăți!
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Legal Compliance Section */}
         <div className="border-t border-gray-700 mt-8 pt-6">

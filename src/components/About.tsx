@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket } from 'lucide-react';
+import Reveal from '../hooks/Reveal';
 
 const About = ({ asH1 = false }: { asH1?: boolean }) => {
   const TitleTag = asH1 ? 'h1' : 'h2';
@@ -14,7 +15,7 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
     <section id="about" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-20">
+        <Reveal direction="up" className="text-center mb-12 md:mb-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-green-50 border-2 border-blue-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Despre noi
@@ -33,14 +34,14 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
     ideile tale în conținut video care atrage și convertește.
   </p>
 </div>
-</div>
+</Reveal>
 
 
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start mb-16 md:mb-20">
           {/* Left Side - Image */}
-          <div className="relative order-2 lg:order-1">
+          <Reveal direction="left" className="relative order-2 lg:order-1">
             <div className="rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio: '3/2'}}>
               <img
                 src="/team.jpg"
@@ -52,10 +53,10 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
               <div className="text-2xl md:text-3xl font-bold text-white">2.340+</div>
               <div className="text-xs md:text-sm text-white font-medium">Proiecte finalizate</div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Side - Single Premium Text Block */}
-          <div className="order-1 lg:order-2 flex flex-col justify-center">
+          <Reveal direction="right" delay={0.1} className="order-1 lg:order-2 flex flex-col justify-center">
             <div className="bg-gray-50 rounded-2xl p-6 md:p-8 shadow-sm">
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-4">
                 Transformăm <strong className="text-gray-900">clipurile tale</strong> în <strong className="text-gray-900">conținut scurt, clar și captivant</strong>, optimizat pentru <strong className="text-blue-600">TikTok, Instagram Reels, YouTube Shorts și Facebook Ads</strong> — indiferent de nișă.
@@ -81,13 +82,13 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-16 md:mb-20">
           {achievements.map((achievement, index) => (
-            <div key={index} className="text-center bg-gray-50 rounded-xl p-4 md:p-6 hover:bg-gray-100 transition-colors duration-300 shadow-sm">
+            <Reveal key={index} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.1} className="text-center bg-gray-50 rounded-xl p-4 md:p-6 hover:bg-gray-100 transition-colors duration-300 shadow-sm">
               <div className="bg-blue-100 rounded-lg p-3 md:p-4 mb-3 md:mb-4 inline-block">
                 <achievement.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
               </div>
@@ -97,12 +98,12 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
               <div className="text-sm text-gray-600 font-medium">
                 {achievement.label}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
 {/* Call to Action */}
-        <div className="text-center mt-12 md:mt-16 px-4 sm:px-0">
+        <Reveal direction="up" className="text-center mt-12 md:mt-16 px-4 sm:px-0">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 md:p-12 text-white shadow-2xl max-w-4xl mx-auto">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4 leading-snug">
               Concurența ta se folosește deja de video marketing!
@@ -124,7 +125,7 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
               Contactează-ne!
             </button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

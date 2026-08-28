@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HelpCircle, CreditCard, Clock, RefreshCw, Package, Video, Shield, Users, Phone, ChevronDown, ChevronUp } from 'lucide-react';
+import Reveal from '../hooks/Reveal';
 
 
 const copyProtectionStyle = `
@@ -254,7 +255,7 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16">
+        <Reveal direction="up" className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Întrebări Frecvente
           </h1>
@@ -262,10 +263,10 @@ const FAQ = () => {
             Găsiți aici răspunsuri la cele mai frecvente întrebări despre serviciile noastre de editare video,
             tarife, termene de livrare și procesul de colaborare cu VisionEdit SRL.
           </p>
-        </div>
+        </Reveal>
 
         {/* Intro card */}
-        <div className="bg-white rounded-xl p-8 shadow-lg mb-12 border-l-[6px] border-blue-600">
+        <Reveal direction="up" className="bg-white rounded-xl p-8 shadow-lg mb-12 border-l-[6px] border-blue-600">
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             Cum vă putem sprijini?
           </h3>
@@ -278,12 +279,12 @@ const FAQ = () => {
             Dacă nu identificați răspunsul căutat în secțiunile de mai jos, nu ezitați să ne contactați
             direct pe WhatsApp sau prin formularul de contact — răspundem în maximum 24 de ore.
           </p>
-        </div>
+        </Reveal>
 
         {/* FAQ Sections */}
         <div className="space-y-8">
           {sections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Reveal key={sectionIndex} direction={sectionIndex % 2 === 0 ? 'left' : 'right'} delay={0.05} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-start space-x-4 mb-6">
                 <div className="bg-blue-100 rounded-lg p-3 flex-shrink-0">
                   <section.icon className="h-6 w-6 text-blue-600" />
@@ -327,12 +328,12 @@ const FAQ = () => {
                   );
                 })}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* CTA bottom */}
-        <div className="mt-12 bg-white rounded-xl p-8 shadow-lg text-center border-l-[6px] border-blue-600">
+        <Reveal direction="up" className="mt-12 bg-white rounded-xl p-8 shadow-lg text-center border-l-[6px] border-blue-600">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
             Nu ați identificat răspunsul căutat?
           </h3>
@@ -353,7 +354,7 @@ const FAQ = () => {
               Trimiteți Email
             </a>
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>
