@@ -94,6 +94,57 @@ const subtitleGlowStyle = `
     animation: backArrowPulse 1.2s ease-in-out infinite;
     display: inline-block;
   }
+  @keyframes detailsButtonGlow {
+    0%, 100% { 
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4),
+                  0 0 25px rgba(59, 130, 246, 0.2);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6),
+                  0 0 35px rgba(59, 130, 246, 0.3);
+      transform: scale(1.05);
+    }
+  }
+  .details-btn {
+    animation: detailsButtonGlow 2.5s ease-in-out infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .details-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.8),
+                0 0 40px rgba(59, 130, 246, 0.4) !important;
+  }
+  .details-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.2) 50%,
+      transparent 100%
+    );
+    transition: left 0.5s ease;
+  }
+  .details-btn:hover::before {
+    left: 100%;
+  }
+  /* Price pills: text stays readable unless THIS pill is hovered */
+  .price-pill-blue:hover span,
+  .price-pill-blue:hover svg {
+    color: #ffffff !important;
+  }
+  .price-pill-purple:hover span,
+  .price-pill-purple:hover svg {
+    color: #ffffff !important;
+  }
 `;
 
 function useInView(threshold = 0.15) {
@@ -399,19 +450,22 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
           <IntroCard delay={0}>
           <div
             onClick={() => { setViewChoice('editing'); goToStep('quiz-videos'); }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-full"
+            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group/card h-full"
           >
             <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-3">
               <Scissors className="h-6 w-6 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Editare cu materialele tale</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover/card:text-blue-700 transition-colors">Editare cu materialele tale</h3>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); toggleInfo('intro-editing'); }}
-              className="inline-flex items-center gap-1 text-blue-600 font-semibold text-sm mb-2 hover:text-blue-800 transition-colors"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 font-bold text-base md:text-lg px-5 py-2.5 md:px-7 md:py-3 rounded-full mb-3 hover:from-blue-600 hover:to-blue-700 hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-xl cursor-pointer"
+              style={{
+                boxShadow: '0 0 15px rgba(59, 130, 246, 0.4), 0 0 25px rgba(59, 130, 246, 0.2)'
+              }}
             >
               {openInfo === 'intro-editing' ? 'Ascunde detaliile' : 'Află mai multe'}
-              <ChevronRight className={`h-3.5 w-3.5 transition-transform duration-300 ${openInfo === 'intro-editing' ? 'rotate-90' : ''}`} />
+              <ChevronRight className={`h-5 w-5 md:h-6 md:w-6 font-bold transition-transform duration-300 ${openInfo === 'intro-editing' ? 'rotate-90' : ''}`} />
             </button>
             <div
               className="grid transition-all duration-300 ease-in-out"
@@ -423,9 +477,9 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 </p>
               </div>
             </div>
-            <div className="bg-blue-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-blue-600 transition-colors duration-200">
-              <span className="text-blue-700 font-bold text-base group-hover:text-white transition-colors">De la 185 lei/video</span>
-              <ChevronRight className="h-4 w-4 text-blue-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
+            <div className="price-pill-blue bg-blue-50 hover:bg-blue-600 rounded-lg px-6 py-3 md:px-8 md:py-4 inline-flex items-center gap-3 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:scale-105" style={{boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)'}}>
+              <span className="text-blue-700 font-bold text-lg md:text-xl transition-colors">De la 185 lei/video</span>
+              <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-blue-400 transition-all duration-200" />
             </div>
           </div>
           </IntroCard>
@@ -433,19 +487,22 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
           <IntroCard delay={0.12}>
           <div
             onClick={() => { setViewChoice('complete'); goToStep('quiz-videos'); }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-full"
+            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group/card h-full"
           >
             <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-3">
               <Film className="h-6 w-6 text-purple-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover/card:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); toggleInfo('intro-complete'); }}
-              className="inline-flex items-center gap-1 text-purple-600 font-semibold text-sm mb-2 hover:text-purple-800 transition-colors"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 font-bold text-base md:text-lg px-5 py-2.5 md:px-7 md:py-3 rounded-full mb-3 hover:from-purple-600 hover:to-purple-700 hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-xl cursor-pointer"
+              style={{
+                boxShadow: '0 0 15px rgba(147, 51, 234, 0.4), 0 0 25px rgba(147, 51, 234, 0.2)'
+              }}
             >
               {openInfo === 'intro-complete' ? 'Ascunde detaliile' : 'Detalii suplimentare'}
-              <ChevronRight className={`h-3.5 w-3.5 transition-transform duration-300 ${openInfo === 'intro-complete' ? 'rotate-90' : ''}`} />
+              <ChevronRight className={`h-5 w-5 md:h-6 md:w-6 font-bold transition-transform duration-300 ${openInfo === 'intro-complete' ? 'rotate-90' : ''}`} />
             </button>
             <div
               className="grid transition-all duration-300 ease-in-out"
@@ -457,9 +514,9 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 </p>
               </div>
             </div>
-            <div className="bg-purple-50 rounded-lg px-4 py-2 inline-flex items-center gap-2 group-hover:bg-purple-600 transition-colors duration-200">
-              <span className="text-purple-700 font-bold text-base group-hover:text-white transition-colors">De la 240 lei/video</span>
-              <ChevronRight className="h-4 w-4 text-purple-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
+            <div className="price-pill-purple bg-purple-50 hover:bg-purple-600 rounded-lg px-6 py-3 md:px-8 md:py-4 inline-flex items-center gap-3 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:scale-105" style={{boxShadow: '0 0 15px rgba(147, 51, 234, 0.3)'}}>
+              <span className="text-purple-700 font-bold text-lg md:text-xl transition-colors">De la 240 lei/video</span>
+              <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-purple-400 transition-all duration-200" />
             </div>
           </div>
           </IntroCard>
@@ -609,11 +666,11 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                         <AlertCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-600 flex-shrink-0" />
                         <span className="text-xl md:text-2xl font-bold text-gray-900">Tu filmezi, noi edităm</span>
                       </div>
-                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <div className="flex items-center gap-2 flex-shrink-0">
                         {openInfo !== 'editing-info' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
-                        <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
+                        <span className={`details-btn flex items-center gap-2 px-5 py-2.5 md:px-7 md:py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 ${openInfo === 'editing-info' ? 'bg-blue-600 text-white shadow-lg scale-110' : 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 shadow-md'}`}>
                           {openInfo === 'editing-info' ? 'Închide' : 'Detalii'}
-                          <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'editing-info' ? 'rotate-90' : ''}`} />
+                          <ChevronRight className={`h-5 w-5 md:h-6 md:w-6 font-bold transition-transform duration-300 ${openInfo === 'editing-info' ? 'rotate-90' : ''}`} />
                         </span>
                       </div>
                     </button>
@@ -657,11 +714,11 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                         <Star className="h-5 w-5 md:h-6 md:w-6 text-purple-600 flex-shrink-0" />
                         <span className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Pachete complete — videoclipuri de la A la Z</span>
                       </div>
-                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <div className="flex items-center gap-2 flex-shrink-0">
                         {openInfo !== 'complete-info' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
-                        <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-white text-purple-700 shadow-md' : 'bg-white/80 text-purple-700 shadow pill-pulse-purple'}`}>
+                        <span className={`details-btn flex items-center gap-2 px-5 py-2.5 md:px-7 md:py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 ${openInfo === 'complete-info' ? 'bg-purple-600 text-white shadow-lg scale-110' : 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 shadow-md'}`}>
                           {openInfo === 'complete-info' ? 'Închide' : 'Detalii'}
-                          <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'complete-info' ? 'rotate-90' : ''}`} />
+                          <ChevronRight className={`h-5 w-5 md:h-6 md:w-6 font-bold transition-transform duration-300 ${openInfo === 'complete-info' ? 'rotate-90' : ''}`} />
                         </span>
                       </div>
                     </button>
@@ -702,11 +759,11 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
                     <Clapperboard className="h-5 w-5 text-blue-600 flex-shrink-0" />Ce includ pachetele
                   </h4>
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     {openInfo !== 'ce-includ' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
-                    <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700 pill-pulse-blue'}`}>
+                    <span className={`details-btn flex items-center gap-2 px-5 py-2.5 md:px-7 md:py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 ${openInfo === 'ce-includ' ? 'bg-blue-600 text-white shadow-lg scale-110' : 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 shadow-md'}`}>
                       {openInfo === 'ce-includ' ? 'Închide' : 'Detalii'}
-                      <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'ce-includ' ? 'rotate-90' : ''}`} />
+                      <ChevronRight className={`h-5 w-5 md:h-6 md:w-6 font-bold transition-transform duration-300 ${openInfo === 'ce-includ' ? 'rotate-90' : ''}`} />
                     </span>
                   </div>
                 </button>
@@ -730,11 +787,11 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                   <h4 className="font-bold text-gray-900 text-base md:text-lg flex items-center gap-2">
                     <Info className="h-5 w-5 text-orange-500 flex-shrink-0" />Note importante
                   </h4>
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     {openInfo !== 'note-importante' && <ArrowRight className="arrow-bounce h-7 w-7 text-red-500" strokeWidth={2.5} />}
-                    <span className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700 pill-pulse-orange'}`}>
+                    <span className={`details-btn flex items-center gap-2 px-5 py-2.5 md:px-7 md:py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 ${openInfo === 'note-importante' ? 'bg-orange-500 text-white shadow-lg scale-110' : 'bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 shadow-md'}`}>
                       {openInfo === 'note-importante' ? 'Închide' : 'Detalii'}
-                      <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${openInfo === 'note-importante' ? 'rotate-90' : ''}`} />
+                      <ChevronRight className={`h-5 w-5 md:h-6 md:w-6 font-bold transition-transform duration-300 ${openInfo === 'note-importante' ? 'rotate-90' : ''}`} />
                     </span>
                   </div>
                 </button>
