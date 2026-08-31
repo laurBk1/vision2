@@ -450,16 +450,16 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
           <IntroCard delay={0}>
           <div
             onClick={() => { setViewChoice('editing'); goToStep('quiz-videos'); }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group/card h-full"
+            className="bg-white rounded-2xl shadow-lg p-7 md:p-8 border-2 border-blue-100 text-left cursor-pointer hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group/card h-full flex flex-col"
           >
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-3">
+            <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-4">
               <Scissors className="h-6 w-6 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover/card:text-blue-700 transition-colors">Editare cu materialele tale</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4 leading-snug group-hover/card:text-blue-700 transition-colors">Editare cu materialele tale</h3>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); toggleInfo('intro-editing'); }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 font-bold text-base md:text-lg px-5 py-2.5 md:px-7 md:py-3 rounded-full mb-3 hover:from-blue-600 hover:to-blue-700 hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 font-bold text-base md:text-lg px-5 py-2.5 md:px-7 md:py-3 rounded-full mb-5 hover:from-blue-600 hover:to-blue-700 hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-xl cursor-pointer w-fit"
               style={{
                 boxShadow: '0 0 15px rgba(59, 130, 246, 0.4), 0 0 25px rgba(59, 130, 246, 0.2)'
               }}
@@ -472,14 +472,16 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               style={{ gridTemplateRows: openInfo === 'intro-editing' ? '1fr' : '0fr' }}
             >
               <div className="overflow-hidden">
-                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 pt-1">
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-5 pt-1">
                   Tu filmezi, noi edităm. Trimiți materialele raw și noi le transformăm în clipuri profesionale, optimizate pentru TikTok, Instagram Reels, YouTube Shorts și Facebook Ads.
                 </p>
               </div>
             </div>
-            <div className="price-pill-blue bg-blue-50 hover:bg-blue-600 rounded-lg px-6 py-3 md:px-8 md:py-4 inline-flex items-center gap-3 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:scale-105" style={{boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)'}}>
-              <span className="text-blue-700 font-bold text-lg md:text-xl transition-colors">De la 185 lei/video</span>
-              <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-blue-400 transition-all duration-200" />
+            <div className="mt-auto pt-2">
+              <div className="price-pill-blue bg-blue-50 hover:bg-blue-600 rounded-lg px-6 py-3 md:px-8 md:py-4 inline-flex items-center gap-3 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:scale-105" style={{boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)'}}>
+                <span className="text-blue-700 font-bold text-lg md:text-xl transition-colors">De la 185 lei/video</span>
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-blue-400 transition-all duration-200" />
+              </div>
             </div>
           </div>
           </IntroCard>
@@ -487,16 +489,16 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
           <IntroCard delay={0.12}>
           <div
             onClick={() => { setViewChoice('complete'); goToStep('quiz-videos'); }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group/card h-full"
+            className="bg-white rounded-2xl shadow-lg p-7 md:p-8 border-2 border-purple-100 text-left cursor-pointer hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group/card h-full flex flex-col"
           >
-            <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-3">
+            <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl p-3 w-12 h-12 flex items-center justify-center mb-4">
               <Film className="h-6 w-6 text-purple-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover/card:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4 leading-snug group-hover/card:text-purple-700 transition-colors">Pachete Complete — de la A la Z</h3>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); toggleInfo('intro-complete'); }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 font-bold text-base md:text-lg px-5 py-2.5 md:px-7 md:py-3 rounded-full mb-3 hover:from-purple-600 hover:to-purple-700 hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 font-bold text-base md:text-lg px-5 py-2.5 md:px-7 md:py-3 rounded-full mb-5 hover:from-purple-600 hover:to-purple-700 hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-xl cursor-pointer w-fit"
               style={{
                 boxShadow: '0 0 15px rgba(147, 51, 234, 0.4), 0 0 25px rgba(147, 51, 234, 0.2)'
               }}
@@ -509,14 +511,16 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               style={{ gridTemplateRows: openInfo === 'intro-complete' ? '1fr' : '0fr' }}
             >
               <div className="overflow-hidden">
-                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 pt-1">
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-5 pt-1">
                   Nu ai materiale filmate? Nicio problemă. Noi ne ocupăm de tot: script, voiceover profesional, avatar UGC, materiale stock și editare profesională — gata de publicat.
                 </p>
               </div>
             </div>
-            <div className="price-pill-purple bg-purple-50 hover:bg-purple-600 rounded-lg px-6 py-3 md:px-8 md:py-4 inline-flex items-center gap-3 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:scale-105" style={{boxShadow: '0 0 15px rgba(147, 51, 234, 0.3)'}}>
-              <span className="text-purple-700 font-bold text-lg md:text-xl transition-colors">De la 240 lei/video</span>
-              <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-purple-400 transition-all duration-200" />
+            <div className="mt-auto pt-2">
+              <div className="price-pill-purple bg-purple-50 hover:bg-purple-600 rounded-lg px-6 py-3 md:px-8 md:py-4 inline-flex items-center gap-3 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:scale-105" style={{boxShadow: '0 0 15px rgba(147, 51, 234, 0.3)'}}>
+                <span className="text-purple-700 font-bold text-lg md:text-xl transition-colors">De la 240 lei/video</span>
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-purple-400 transition-all duration-200" />
+              </div>
             </div>
           </div>
           </IntroCard>
