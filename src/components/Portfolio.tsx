@@ -37,8 +37,7 @@ function Reveal({ children, delay = 0, className = '', direction = 'up' as 'up' 
   );
 }
 
-const YOUTUBE_VIDEO_ID = '4mWM--yw1MU';
-const YOUTUBE_EMBED_SRC = `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1`;
+const CLOUDINARY_VIDEO_URL = 'https://res.cloudinary.com/daxjtytdu/video/upload/v1788943646/vison2_lcm5yw.mp4';
 
 const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
   const TitleTag = asH1 ? 'h1' : 'h2';
@@ -78,22 +77,27 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
                 <p className="text-blue-100 mb-6 font-medium text-base md:text-lg">Transformăm viziunea ta în conținut video de impact</p>
                 <div className="relative mx-auto max-w-xs">
                   <div className="aspect-[9/16] bg-slate-800 rounded-xl overflow-hidden shadow-2xl relative">
-                    <iframe
+                    <video
                       title="VisionEdit — Despre noi"
-                      width="100%"
-                      height="100%"
-                      src={YOUTUBE_EMBED_SRC}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      frameBorder="0"
-                      className="w-full h-full"
+                      className="w-full h-full object-cover"
+                      controls
+                      controlsList="nodownload"
+                      playsInline
+                      preload="metadata"
                       style={{
                         border: 'none',
                         borderRadius: '0.75rem'
                       }}
-                    />
+                    >
+                      <source 
+                        src={CLOUDINARY_VIDEO_URL} 
+                        type="video/mp4"
+                        crossOrigin="anonymous"
+                      />
+                      <p className="text-white text-center p-4">
+                        Browser-ul tău nu suportă redarea video. Te rog actualizează-l.
+                      </p>
+                    </video>
                   </div>
                   <div className="absolute -top-4 -right-4 bg-yellow-400 rounded-full p-2 md:p-3 animate-bounce shadow-lg">
                     <Star className="h-4 w-4 md:h-6 md:w-6 text-slate-900" />
