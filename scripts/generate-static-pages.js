@@ -98,7 +98,8 @@ const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, 
 function fallbackContent(title, description) {
   const h1 = title.split('|')[0].trim();
   const links = NAV.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('');
-  return `<div id="root"><main><h1>${esc(h1)}</h1><p>${esc(description)}</p><nav aria-label="Navigare principală"><ul>${links}</ul></nav></main></div>`;
+  // În <noscript>: nu se afișează niciodată utilizatorilor cu JS (zero flash la încărcare), dar roboții fără JS îl citesc.
+  return `<div id="root"><noscript><main><h1>${esc(h1)}</h1><p>${esc(description)}</p><nav aria-label="Navigare principală"><ul>${links}</ul></nav></main></noscript></div>`;
 }
 
 const template = readFileSync(templatePath, 'utf-8');
