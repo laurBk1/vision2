@@ -1,8 +1,8 @@
 import React from 'react';
-import { useReveal } from './useReveal';
 
 interface RevealProps {
   children: React.ReactNode;
+  // Props păstrate pentru compatibilitate; animația la scroll a fost eliminată intenționat.
   direction?: 'up' | 'left' | 'right' | 'fade';
   distance?: number;
   duration?: number;
@@ -13,28 +13,12 @@ interface RevealProps {
 }
 
 /**
- * Componentă wrapper: animă fade + slide (stânga/dreapta/sus) când elementul
- * intră în viewport la scroll. Folosită pentru a da mișcare secțiunilor din
- * toate paginile, în același stil cu animațiile deja existente (Pricing, Process etc).
+ * Wrapper static (fără animație la scroll). Animațiile la scroll sunt păstrate
+ * doar pe cartonașele din Servicii, Prețuri și Testimoniale.
  */
-const Reveal = ({
-  children,
-  direction = 'up',
-  distance,
-  duration,
-  delay = 0,
-  threshold,
-  className = '',
-  as = 'div',
-}: RevealProps) => {
-  const { ref, style } = useReveal({ direction, distance, duration, delay, threshold });
+const Reveal = ({ children, className = '', as = 'div' }: RevealProps) => {
   const Tag = as as any;
-
-  return (
-    <Tag ref={ref} style={style} className={className}>
-      {children}
-    </Tag>
-  );
+  return <Tag className={className}>{children}</Tag>;
 };
 
 export default Reveal;

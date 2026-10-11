@@ -1,40 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { CheckCircle, Star } from 'lucide-react';
 
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.95) { setVisible(true); return; }
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold, rootMargin: '0px 0px -40px 0px' }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
-
-function Reveal({ children, delay = 0, className = '', direction = 'up' as 'up' | 'left' | 'right' }) {
-  const { ref, visible } = useInView(0.12);
-  const hidden = direction === 'left' ? 'translateX(-40px)' : direction === 'right' ? 'translateX(40px)' : 'translateY(35px)';
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translate(0, 0)' : hidden,
-        transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
-      }}
-    >
-      {children}
-    </div>
-  );
+function Reveal({ children, className = '' }: { children: React.ReactNode; delay?: number; className?: string; direction?: 'up' | 'left' | 'right' }) {
+  return <div className={className}>{children}</div>;
 }
 
 const CLOUDINARY_VIDEO_URL = 'https://res.cloudinary.com/daxjtytdu/video/upload/v1788943646/vison2_lcm5yw.mp4';
@@ -59,7 +27,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
               Portofoliu confidențial
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Portofoliul nostru nu este public
+              Portofoliu de editare video (nu este public)
             </TitleTag>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
@@ -99,10 +67,10 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
                       </p>
                     </video>
                   </div>
-                  <div className="absolute -top-4 -right-4 bg-yellow-400 rounded-full p-2 md:p-3 animate-bounce shadow-lg">
+                  <div className="absolute -top-4 -right-4 bg-yellow-400 rounded-full p-2 md:p-3 shadow-lg">
                     <Star className="h-4 w-4 md:h-6 md:w-6 text-slate-900" />
                   </div>
-                  <div className="absolute -bottom-4 -left-4 bg-green-400 rounded-full p-2 md:p-3 animate-pulse shadow-lg">
+                  <div className="absolute -bottom-4 -left-4 bg-green-400 rounded-full p-2 md:p-3 shadow-lg">
                     <CheckCircle className="h-4 w-4 md:h-6 md:w-6 text-slate-900" />
                   </div>
                 </div>

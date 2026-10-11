@@ -8,7 +8,7 @@
   <!-- Pagina principală -->
   <url>
     <loc>https://visionedit.ro/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -20,7 +20,7 @@
   <!-- Servicii -->
   <url>
     <loc>https://visionedit.ro/services</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -28,7 +28,7 @@
   <!-- Prețuri -->
   <url>
     <loc>https://visionedit.ro/pricing</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -36,7 +36,7 @@
   <!-- Portofoliu -->
   <url>
     <loc>https://visionedit.ro/portfolio</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -44,7 +44,7 @@
   <!-- Proces -->
   <url>
     <loc>https://visionedit.ro/process</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -52,7 +52,7 @@
   <!-- Despre noi -->
   <url>
     <loc>https://visionedit.ro/about</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -60,7 +60,7 @@
   <!-- Contact -->
   <url>
     <loc>https://visionedit.ro/contact</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -68,7 +68,7 @@
   <!-- FAQ -->
   <url>
     <loc>https://visionedit.ro/faq</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -76,7 +76,7 @@
   <!-- Termeni și condiții -->
   <url>
     <loc>https://visionedit.ro/terms</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.40</priority>
   </url>
@@ -84,31 +84,8 @@
   <!-- Politică confidențialitate -->
   <url>
     <loc>https://visionedit.ro/privacy</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.40</priority>
   </url>
-
-  <!-- Resurse AI (pentru crawlere AI) -->
-  <url>
-    <loc>https://visionedit.ro/llms.txt</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
-  </url>
-
-  <url>
-    <loc>https://visionedit.ro/llms-full.txt</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
-  </url>
-
-  <url>
-    <loc>https://visionedit.ro/ai.txt</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
-  </url>
-
 </urlset>

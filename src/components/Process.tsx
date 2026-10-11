@@ -1,36 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MessageSquare, FileText, Scissors, CheckCircle } from 'lucide-react';
 
-// Hook care returnează dacă elementul e vizibil în viewport
-function useInView(threshold = 0.2) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    // Dacă elementul e deja în viewport la mount (ex: primul card pe PC), îl facem vizibil imediat
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.95) {
-      setVisible(true);
-      return;
-    }
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold, rootMargin: '0px 0px -60px 0px' }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-
-  return { ref, visible };
-}
-
 interface StepProps {
   icon: React.ElementType;
   title: string;
@@ -40,18 +10,11 @@ interface StepProps {
 }
 
 function StepItem({ icon: Icon, title, description, details, index }: StepProps) {
-  const { ref, visible } = useInView(0.18);
   const isEven = index % 2 === 0;
 
   return (
     <div
-      ref={ref}
       className="relative mb-8 md:mb-16"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translate(0, 0)' : `translate(${isEven ? '40px' : '-40px'}, 24px)`,
-        transition: `opacity 0.9s ease ${index * 0.15}s, transform 0.9s ease ${index * 0.15}s`,
-      }}
     >
       <div className={`md:flex md:items-center ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
         <div className={`md:w-5/12 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
@@ -101,7 +64,6 @@ function StepItem({ icon: Icon, title, description, details, index }: StepProps)
 
 const Process = ({ asH1 = false }: { asH1?: boolean }) => {
   const TitleTag = asH1 ? 'h1' : 'h2';
-  const header = useInView(0.1);
 
   const steps = [
     {
@@ -169,20 +131,14 @@ const Process = ({ asH1 = false }: { asH1?: boolean }) => {
 
         {/* ── HEADER ── */}
         <div
-          ref={header.ref}
           className="text-center mb-12 md:mb-20"
-          style={{
-            opacity: header.visible ? 1 : 0,
-            transform: header.visible ? 'translateY(0)' : 'translateY(28px)',
-            transition: 'opacity 0.9s ease 0s, transform 0.9s ease 0s',
-          }}
         >
           <div className="bg-gradient-to-r from-gray-50 via-white to-slate-50 border-2 border-gray-300 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-gray-700 to-slate-700 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
               Proces Creativ
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Procesul nostru creativ
+              Procesul nostru de editare video
             </TitleTag>
           </div>
 

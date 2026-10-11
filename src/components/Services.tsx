@@ -24,7 +24,7 @@ const shimmerStyle = `
       rgba(255,255,255,0.15) 60%,
       transparent 100%
     );
-    animation: shimmer 2.5s ease-in-out infinite;
+    animation: none;
   }
   @keyframes shimmer {
     0%   { left: -100%; }
@@ -68,14 +68,14 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
   const { ref, visible } = useInView(0.1);
   const Icon = service.icon;
   const col = index % 3;
-  const hiddenTransform = col === 0 ? 'translate(-40px, 15px)' : col === 2 ? 'translate(40px, 15px)' : 'translateY(35px)';
+  const hiddenTransform = 'translateY(22px)';
   return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translate(0, 0)' : hiddenTransform,
-        transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
       }}
       className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
     >
@@ -273,7 +273,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
               Servicii complete
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Ce servicii oferim?
+              Servicii de editare video profesională
             </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 mt-6">
@@ -333,13 +333,13 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
               0%, 100% { opacity: 0.4; transform: translateX(0); }
               50% { opacity: 1; transform: translateX(4px); }
             }
-            .proc-arrow { animation: arrowFlow 1.5s ease-in-out infinite; }
-            .proc-arrow-down { animation: arrowFlow 1.5s ease-in-out infinite; transform-origin: center; }
+            .proc-arrow { animation: none; }
+            .proc-arrow-down { animation: none; transform-origin: center; }
             @keyframes arrowFlowDown {
               0%, 100% { opacity: 0.4; transform: translateY(0); }
               50% { opacity: 1; transform: translateY(4px); }
             }
-            .proc-arrow-down { animation: arrowFlowDown 1.5s ease-in-out infinite; }
+            .proc-arrow-down { animation: none; }
           `}</style>
 
           <div className="text-center mb-8 md:mb-12">

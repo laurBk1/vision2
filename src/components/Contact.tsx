@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, Clock, ChevronDown, Check, Star, Zap, X, CheckCircle } from 'lucide-react';
 import Reveal from '../hooks/Reveal';
+import { track } from '../lib/analytics';
 
 type Package = {
   id: string;
@@ -26,6 +27,8 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [gdprAccepted, setGdprAccepted] = useState(false);
   const [gdprPulse, setGdprPulse] = useState(false);
   const nameInputRef = useRef<HTMLInputElement | null>(null);
@@ -161,33 +164,36 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
       setTimeout(() => setGdprPulse(false), 1000);
       return;
     }
-    setShowConfirmation(true);
+    if (isSending) return;
+    setIsSending(true);
+    setSubmitError(false);
 
     try {
       const formEl = e.target as HTMLFormElement;
       const payload = new FormData(formEl);
-      // ensure pachet is included
       payload.set('pachet', formData.pachet || 'none');
-      await fetch('https://formsubmit.co/contact@visionedit.ro', {
+      // Endpoint AJAX FormSubmit: răspunde JSON cu CORS permis (endpoint-ul clasic e blocat de browser la fetch)
+      const res = await fetch('https://formsubmit.co/ajax/contact@visionedit.ro', {
         method: 'POST',
+        headers: { Accept: 'application/json' },
         body: payload
       });
-      // succes case handled by modal
-    } catch (err) {
-      console.error('Error submitting form', err);
-    } finally {
-      // reset form after small delay so user sees confirmation
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === 'false' || data.success === false) {
+        throw new Error('Trimitere eșuată');
+      }
+      track('generate_lead', { method: 'contact_form', package: formData.pachet || 'none' });
+      setShowConfirmation(true);
       setTimeout(() => {
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          website: '',
-          pachet: '',
-          message: ''
-        });
+        setFormData({ name: '', phone: '', email: '', website: '', pachet: '', message: '' });
         setGdprAccepted(false);
       }, 1500);
+    } catch (err) {
+      console.error('Error submitting form', err);
+      setSubmitError(true);
+      track('form_error', { method: 'contact_form' });
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -215,7 +221,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
       {/* Confirmation Message Overlay */}
       {showConfirmation && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl transform animate-in fade-in duration-300">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
             <div className="text-center relative">
               <button
                 onClick={closeConfirmation}
@@ -267,7 +273,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
         <Reveal direction="up" className="text-center mb-16">
           <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 border-2 border-purple-200 rounded-xl p-4 md:p-6 max-w-3xl mx-auto shadow-md mb-8">
             <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">Hai să Colaborăm</span>
-            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne!</TitleTag>
+            <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent leading-tight">Contactează-ne pentru o ofertă de editare video</TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 text-center">
   <p className="text-lg text-gray-600 leading-relaxed font-medium italic">
@@ -428,6 +434,14 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_next" value="https://visionedit.ro/" />
               <input type="hidden" name="_subject" value="Mesaj nou de pe VisionEdit.ro" />
+              <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: 'none' }} />
+              {submitError && (
+                <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+                  Nu am putut trimite mesajul. Te rugăm să încerci din nou sau să ne scrii direct la{' '}
+                  <a href="mailto:contact@visionedit.ro" className="font-semibold underline">contact@visionedit.ro</a>{' '}
+                  ori pe WhatsApp / telefon la <a href="tel:+40767082106" className="font-semibold underline">+40 767 082 106</a>.
+                </div>
+              )}
               
               {/* Name and Phone Row */}
               <div className="grid md:grid-cols-2 gap-6">

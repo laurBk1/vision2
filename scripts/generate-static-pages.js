@@ -87,6 +87,20 @@ const ROUTES = [
   },
 ];
 
+// Conținut HTML de bază injectat în #root (React îl înlocuiește la încărcare).
+// Dă crawlerilor fără JS un H1, o descriere și linkuri interne reale pe fiecare pagină.
+const NAV = [
+  ['/', 'Acasă'], ['/services', 'Servicii editare video'], ['/pricing', 'Prețuri'],
+  ['/portfolio', 'Portofoliu'], ['/process', 'Cum lucrăm'], ['/about', 'Despre noi'],
+  ['/faq', 'Întrebări frecvente'], ['/contact', 'Contact'],
+];
+const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+function fallbackContent(title, description) {
+  const h1 = title.split('|')[0].trim();
+  const links = NAV.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('');
+  return `<div id="root"><main><h1>${esc(h1)}</h1><p>${esc(description)}</p><nav aria-label="Navigare principală"><ul>${links}</ul></nav></main></div>`;
+}
+
 const template = readFileSync(templatePath, 'utf-8');
 
 function buildHtmlFor(route) {
@@ -123,7 +137,18 @@ function buildHtmlFor(route) {
     `<meta name="twitter:description" content="${route.description}" />`
   );
 
+  html = html.replace('<div id="root"></div>', fallbackContent(route.title, route.description));
+
   return html;
+}
+
+// Pagina principală: conținut de bază și în dist/index.html
+{
+  const home = template.replace('<div id="root"></div>', fallbackContent(
+    'Editare Video Profesională în România | VisionEdit',
+    'Servicii profesionale de editare video pentru TikTok, Instagram Reels, Facebook Ads și YouTube Shorts. Ofertă gratuită, livrare rapidă, 100% remote.'
+  ));
+  writeFileSync(templatePath, home, 'utf-8');
 }
 
 for (const route of ROUTES) {

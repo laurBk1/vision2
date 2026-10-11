@@ -22,14 +22,14 @@ function useInView(threshold = 0.15) {
 function TestimonialCard({ testimonial, delay, index = 0 }) {
   const { ref, visible } = useInView(0.12);
   const col = index % 3;
-  const hiddenTransform = col === 0 ? 'translate(-40px, 15px)' : col === 2 ? 'translate(40px, 15px)' : 'translateY(35px)';
+  const hiddenTransform = 'translateY(22px)';
   return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translate(0, 0)' : hiddenTransform,
-        transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
       }}
       className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/20 transition-colors duration-300 border border-white/20 shadow-xl"
     >

@@ -1,3 +1,4 @@
+import { track } from '../lib/analytics';
 import React, { useState, useEffect, useRef } from 'react';
 
 const WhatsAppButton = () => {
@@ -112,6 +113,7 @@ const WhatsAppButton = () => {
     const message = encodeURIComponent(
       'Salut! Aș dori informații despre serviciile de editare video și cum am putea începe colaborarea.'
     );
+    track('click_whatsapp', { location: 'floating_button' });
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 

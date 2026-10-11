@@ -15,13 +15,13 @@ const subtitleGlowStyle = `
     }
   }
   .subtitle-badge {
-    animation: subtitlePulse 2.8s ease-in-out infinite;
+    animation: none;
   }
   @keyframes arrowBounce {
     0%, 100% { transform: translateX(0px); opacity: 0.5; }
     50% { transform: translateX(6px); opacity: 1; }
   }
-  .arrow-bounce { animation: arrowBounce 1s ease-in-out infinite; }
+  .arrow-bounce { animation: none; }
   @keyframes pillPulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.0); transform: scale(1); }
     50% { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18); transform: scale(1.04); }
@@ -34,9 +34,9 @@ const subtitleGlowStyle = `
     0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.0); transform: scale(1); }
     50% { box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18); transform: scale(1.04); }
   }
-  .pill-pulse-blue { animation: pillPulse 2.5s ease-in-out infinite; }
-  .pill-pulse-purple { animation: pillPulsePurple 2.5s ease-in-out infinite; }
-  .pill-pulse-orange { animation: pillPulseOrange 2.5s ease-in-out infinite; }
+  .pill-pulse-blue { animation: none; }
+  .pill-pulse-purple { animation: none; }
+  .pill-pulse-orange { animation: none; }
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -64,7 +64,7 @@ const subtitleGlowStyle = `
       rgba(255,255,255,0.15) 60%,
       transparent 100%
     );
-    animation: shimmer-btn 2.5s ease-in-out infinite;
+    animation: none;
   }
   @keyframes shimmer-btn {
     0%   { left: -100%; }
@@ -79,7 +79,7 @@ const subtitleGlowStyle = `
     50%       { transform: translateY(7px); opacity: 1; }
   }
   .arrow-hint {
-    animation: arrowBounce 1s ease-in-out infinite;
+    animation: none;
     color: #ef4444;
     font-size: 2rem;
     line-height: 1;
@@ -91,7 +91,7 @@ const subtitleGlowStyle = `
     50%       { transform: translateX(-5px); color: #dc2626; }
   }
   .back-arrow {
-    animation: backArrowPulse 1.2s ease-in-out infinite;
+    animation: none;
     display: inline-block;
   }
   @keyframes detailsButtonGlow {
@@ -107,7 +107,7 @@ const subtitleGlowStyle = `
     }
   }
   .details-btn {
-    animation: detailsButtonGlow 2.5s ease-in-out infinite;
+    animation: none;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
@@ -165,20 +165,8 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-function IntroCard({ children, delay = 0 }) {
-  const { ref, visible } = useInView(0.15);
-  return (
-    <div
-      ref={ref}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0px)' : 'translateY(30px)',
-        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
-      }}
-    >
-      {children}
-    </div>
-  );
+function IntroCard({ children }: { children: React.ReactNode; delay?: number }) {
+  return <div>{children}</div>;
 }
 
 type Step = 'intro' | 'view-choice' | 'quiz-videos' | 'results';
@@ -371,14 +359,14 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
   const PackageCard = ({ pkg, isComplete = false, isRecommended = false, delay = 0, index = 0 }: { pkg: any, isComplete?: boolean, isRecommended?: boolean, delay?: number, index?: number }) => {
     const { ref, visible } = useInView(0.15);
     const col = index % 3;
-    const hiddenTransform = col === 0 ? 'translate(-40px, 20px)' : col === 2 ? 'translate(40px, 20px)' : 'translateY(40px)';
+    const hiddenTransform = 'translateY(22px)';
     return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translate(0, 0)' : hiddenTransform,
-        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
       }}
       className={`relative bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition-transform duration-300 ${
       isRecommended ? 'ring-4 ring-yellow-400 ring-opacity-80 scale-105' : pkg.popular ? 'ring-4 ring-purple-500 ring-opacity-50' : ''
@@ -618,7 +606,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               Prețuri
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
-              Pachete de editare video
+              Prețuri și pachete de editare video
             </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">

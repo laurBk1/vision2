@@ -33,7 +33,7 @@ const menuButtonStyle = `
     padding: 2px;
     background: linear-gradient(135deg, #2563eb, #7c3aed, #2563eb);
     background-size: 200% 200%;
-    animation: menuBorderSpin 2.5s ease infinite;
+    animation: none;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;

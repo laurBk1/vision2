@@ -176,7 +176,7 @@ const Hero = () => {
           display: flex;
           justify-content: center;
           margin-bottom: 8px;
-          animation: bounce-icon 2.5s ease-in-out infinite;
+          animation: none;
         }
         .h-stat:nth-child(2) .h-stat-icon { animation-delay: 0.4s; }
         .h-stat:nth-child(3) .h-stat-icon { animation-delay: 0.8s; }
@@ -211,7 +211,7 @@ const Hero = () => {
           border-radius: 24px;
           padding: 3px;
           box-shadow: 0 24px 60px rgba(37,99,235,0.3);
-          animation: float 2.5s ease-in-out infinite;
+          animation: none;
           will-change: transform;
           transition: transform 0.6s ease;
           transform-origin: center center;
@@ -294,7 +294,7 @@ const Hero = () => {
           background: rgba(255,255,255,0.03);
           border: 1px solid rgba(255,255,255,0.07);
           border-radius: 10px; padding: 10px 14px;
-          animation: badge-float 3s ease-in-out infinite;
+          animation: none;
         }
         .h-proof-item:nth-child(2) { animation-delay: 1.5s; }
         @keyframes badge-float {
@@ -358,7 +358,7 @@ const Hero = () => {
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             min-width: 150px;
             max-width: 210px;
-            animation: badge-float 3s ease-in-out infinite;
+            animation: none;
           }
           .h-proof-top { top: -18px; right: 10px; animation-delay: 0s; }
           .h-proof-bottom { 
@@ -509,8 +509,8 @@ const Hero = () => {
             </div>
 
             <div className="h-cta">
-              <Link to="/faq" className="h-btn-primary">
-                <span>Întrebări frecvente</span>
+              <Link to="/contact" className="h-btn-primary">
+                <span>Cere ofertă gratuită</span>
                 <ArrowRight size={16} />
               </Link>
               <button onClick={handleViewPortfolio} className="h-btn-secondary" type="button">
