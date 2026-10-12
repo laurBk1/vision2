@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play, CheckCircle, Video, Users, Award } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 
 const Hero = () => {
   const handleViewPortfolio = () => {
@@ -517,24 +517,6 @@ const Hero = () => {
                 <Play size={15} />
                 <span>Vezi portofoliul</span>
               </button>
-            </div>
-
-            <div className="h-stats">
-              <div className="h-stat h-stat-anim">
-                <div className="h-stat-icon"><Video size={28} color="#60A5FA" /></div>
-                <div className="h-stat-num">2.340+</div>
-                <div className="h-stat-lbl">Proiecte finalizate</div>
-              </div>
-              <div className="h-stat h-stat-anim">
-                <div className="h-stat-icon"><Users size={28} color="#FBBF24" /></div>
-                <div className="h-stat-num">150+</div>
-                <div className="h-stat-lbl">Clienți mulțumiți</div>
-              </div>
-              <div className="h-stat h-stat-anim">
-                <div className="h-stat-icon"><Award size={28} color="#34D399" /></div>
-                <div className="h-stat-num">3+</div>
-                <div className="h-stat-lbl">Ani experiență</div>
-              </div>
             </div>
           </div>
 

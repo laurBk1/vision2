@@ -11,9 +11,6 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
   const TitleTag = asH1 ? 'h1' : 'h2';
 
   const achievements = [
-    { number: '150+', label: 'Clienți mulțumiți' },
-    { number: '2.340+', label: 'Proiecte finalizate' },
-    { number: '3+', label: 'Ani experiență' },
     { number: '100%', label: 'Confidențialitate' }
   ];
 
@@ -27,7 +24,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
               Portofoliu confidențial
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Portofoliu de editare video (nu este public)
+              Portofoliu confidențial
             </TitleTag>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
@@ -106,7 +103,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
                 Chiar dacă nu afișăm portofoliul public, rezultatele demonstrează calitatea și profesionalismul nostru.
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-1 max-w-xs mx-auto gap-4">
               {achievements.map((achievement, index) => (
                 <Reveal key={index} delay={(index % 4) * 0.1} direction={index % 2 === 0 ? 'left' : 'right'}>
                   <div className="text-center bg-white/5 rounded-xl py-5 px-2">

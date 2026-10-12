@@ -21,7 +21,7 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
               Despre noi
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-green-900 bg-clip-text text-transparent leading-tight">
-              Despre VisionEdit: studio de editare video
+              Despre VisionEdit
             </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 py-6 text-center">

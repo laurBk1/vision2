@@ -606,7 +606,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               Prețuri
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
-              Prețuri și pachete de editare video
+              Prețuri și pachete
             </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">

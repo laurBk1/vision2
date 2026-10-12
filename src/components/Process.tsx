@@ -138,7 +138,7 @@ const Process = ({ asH1 = false }: { asH1?: boolean }) => {
               Proces Creativ
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Procesul nostru de editare video
+              Procesul nostru
             </TitleTag>
           </div>
 

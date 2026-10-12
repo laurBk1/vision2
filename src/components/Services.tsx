@@ -273,7 +273,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
               Servicii complete
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Servicii de editare video profesională
+              Servicii de editare video
             </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto px-4 mt-6">
