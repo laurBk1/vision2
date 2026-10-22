@@ -509,8 +509,8 @@ const Hero = () => {
             </div>
 
             <div className="h-cta">
-              <Link to="/pricing" className="h-btn-primary">
-                <span>Vezi prețurile</span>
+              <Link to="/contact" className="h-btn-primary">
+                <span>Cere ofertă gratuită</span>
                 <ArrowRight size={16} />
               </Link>
               <button onClick={handleViewPortfolio} className="h-btn-secondary" type="button">
