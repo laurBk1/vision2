@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const menuButtonStyle = `
@@ -78,7 +78,6 @@ const navItems = [
 const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPage?: string }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -136,7 +135,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50" style={headerStyle}>
-      <style>{menuButtonStyle}</style>
+      <style dangerouslySetInnerHTML={{ __html: menuButtonStyle }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
@@ -148,7 +147,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               width="274"
               height="153"
               loading="eager"
-              fetchPriority="high"
+              {...{ fetchpriority: 'high' }}
             />
           </Link>
 

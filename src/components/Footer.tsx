@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 import Reveal from '../hooks/Reveal';
+
+// Insigna oficială (imagine). Dacă fișierul lipsește din /public, afișăm un link text în loc de imagine ruptă.
+function BadgeLink({ href, src, label }: { href: string; src: string; label: string }) {
+  const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const el = imgRef.current;
+    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+  }, []);
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:opacity-80 transition-opacity duration-200"
+      aria-label={label}
+    >
+      {failed ? (
+        <span className="inline-block border border-gray-500 rounded px-3 py-2 text-xs text-gray-300">{label}</span>
+      ) : (
+        <img
+          ref={imgRef}
+          src={src}
+          alt={label}
+          className="h-10 w-auto object-contain"
+          loading="lazy"
+          width={120}
+          height={40}
+          onError={() => setFailed(true)}
+        />
+      )}
+    </a>
+  );
+}
 
 const Footer = () => {
   const location = useLocation();
 
   // Navighează la o secțiune folosind <Link> (href real, crawlabil de Google).
   // Dacă suntem deja pe home, interceptăm click-ul și facem scroll în loc de navigare.
-  const handleSectionNav = (e: React.MouseEvent, path: string, sectionId: string) => {
+  const handleSectionNav = (e: React.MouseEvent, _path: string, sectionId: string) => {
     if (location.pathname === '/') {
       const el = document.getElementById(sectionId);
       if (el) {
@@ -114,11 +148,6 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Informații utile</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <Link to="/faq" className="hover:text-white transition-colors text-left">
-                  FAQ
-                </Link>
-              </li>
-              <li>
                 <Link to="/privacy" className="hover:text-white transition-colors text-left">
                   Confidențialitate și GDPR
                 </Link>
@@ -198,39 +227,8 @@ const Footer = () => {
             <p className="text-gray-400 text-xs mb-4">Protecția consumatorului - Conform legislației din România și UE</p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <a
-                href="https://reclamatiisal.anpc.ro/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-200"
-                aria-label="ANPC - Soluționarea alternativă a litigiilor"
-              >
-                <img
-                  src="/anpc-visionedit.ro.webp"
-                  alt="ANPC - Soluționarea alternativă a litigiilor"
-                  className="h-10 w-auto object-contain"
-                  loading="lazy"
-                  width="120"
-                  height="40"
-                />
-              </a>
-
-              <a
-                href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-200"
-                aria-label="SOL - Soluționarea online a litigiilor UE"
-              >
-                <img
-                  src="/sol-visionedit.ro.png"
-                  alt="SOL - Soluționarea online a litigiilor UE"
-                  className="h-10 w-auto object-contain"
-                  loading="lazy"
-                  width="120"
-                  height="40"
-                />
-              </a>
+              <BadgeLink href="https://reclamatiisal.anpc.ro/" src="/anpc-visionedit.ro.webp" label="ANPC - Soluționarea alternativă a litigiilor" />
+              <BadgeLink href="https://consumer-redress.ec.europa.eu/site-relocation_en?event=main.home2.show&lng=RO" src="/sol-visionedit.ro.png" label="SOL - Soluționarea online a litigiilor UE" />
             </div>
           </div>
         </div>

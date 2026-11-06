@@ -1,45 +1,9 @@
-import React from 'react';
 import { Shield, Lock, Eye, FileText, Users, AlertCircle, CheckCircle, Scale, Mail, Phone } from 'lucide-react';
 
 
-const copyProtectionStyle = `
-  .no-copy {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-`;
-
-const useCopyProtection = () => {
-  React.useEffect(() => {
-    const handleCopy = (e: ClipboardEvent) => {
-      e.preventDefault();
-      if (e.clipboardData) e.clipboardData.setData('text/plain', '');
-    };
-    const handleContextMenu = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest('a')) e.preventDefault();
-    };
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 'u'].includes(e.key)) {
-        e.preventDefault();
-      }
-    };
-    document.addEventListener('copy', handleCopy);
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('copy', handleCopy);
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-};
 
 
 const Privacy = () => {
-  useCopyProtection();
 
   const sections = [
     {
@@ -235,8 +199,7 @@ const Privacy = () => {
 
   return (
     <>
-      <style>{copyProtectionStyle}</style>
-      <section className="no-copy pt-28 pb-20 bg-gray-50 min-h-screen">
+      <section className="pt-28 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -252,9 +215,9 @@ const Privacy = () => {
             <div className="bg-blue-100 rounded-lg p-3 flex-shrink-0">
               <Shield className="h-6 w-6 text-blue-600" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900">
               Protecția datelor personale
-            </h3>
+            </h2>
           </div>
           <p className="text-gray-700 leading-relaxed">
             VisionEdit România se angajează să protejeze confidențialitatea și securitatea datelor tale personale, în conformitate cu Regulamentul General privind Protecția Datelor (GDPR) (UE) 2016/679 și legislația românească aplicabilă. Această politică îți explică clar ce date colectăm, de ce le colectăm și cum le protejăm.
@@ -268,9 +231,9 @@ const Privacy = () => {
                 <div className="bg-blue-100 rounded-lg p-3 flex-shrink-0">
                   <section.icon className="h-6 w-6 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h2 className="text-xl font-semibold text-gray-900">
                   {section.title}
-                </h3>
+                </h2>
               </div>
               
               <div className="space-y-3">
@@ -341,7 +304,7 @@ const Privacy = () => {
 
         <div className="mt-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-2xl p-8 lg:p-12 text-white">
           <div className="text-center">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-6">Ai întrebări despre protecția datelor?</h3>
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6">Ai întrebări despre protecția datelor?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
               Pentru orice întrebări legate de protecția datelor personale sau pentru exercitarea drepturilor tale GDPR, 
               nu ezita să ne contactezi.

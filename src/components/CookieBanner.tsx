@@ -119,18 +119,6 @@ const CookieBanner = () => {
     }
   }, [location.pathname]);
 
-  // Blochează scroll-ul când bannerul e vizibil
-  useEffect(() => {
-    if (visible) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [visible]);
-
   const handleAccept = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
     localStorage.setItem(COOKIE_CONSENT_DATE_KEY, new Date().toISOString());
@@ -158,18 +146,9 @@ const CookieBanner = () => {
 
   return (
     <>
-      {/* Overlay care blochează orice interacțiune cu pagina din spate */}
-      <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99998] cookie-overlay-anim"
-        onClick={(e) => e.stopPropagation()}
-        onMouseDown={(e) => e.stopPropagation()}
-        aria-hidden="true"
-        style={{ pointerEvents: 'all' }}
-      />
-
       {/* Bannerul cookies */}
-      <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
-        <div className="max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden cookie-banner-anim">
+      <div role="dialog" aria-label="Setări cookie" className="fixed bottom-0 left-0 right-0 z-[99999] p-3 sm:p-4 max-h-[85vh] overflow-y-auto pointer-events-none">
+        <div className="pointer-events-auto max-w-4xl mx-auto bg-gray-900 border border-purple-500/30 rounded-2xl shadow-2xl shadow-purple-900/30 overflow-hidden cookie-banner-anim">
 
           {/* Header */}
           <div className="bg-gradient-to-r from-purple-900/80 to-slate-900/80 px-6 py-4 flex items-center justify-between border-b border-purple-500/20">

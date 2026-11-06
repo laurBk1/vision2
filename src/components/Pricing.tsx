@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, ArrowRight, Clapperboard, BarChart2, Rocket, PlayCircle, TrendingUp, Crown, Scissors, Film, Eye, Package, Info } from 'lucide-react';
+import React, { useState, useEffect, useRef, type ReactNode } from 'react';
+import { Check, Star, Zap, AlertCircle, Clock, ChevronRight, ArrowLeft, ArrowRight, Clapperboard, Rocket, PlayCircle, TrendingUp, Crown, Scissors, Film, Eye, Info } from 'lucide-react';
 
 const subtitleGlowStyle = `
   @keyframes subtitlePulse {
@@ -169,6 +169,65 @@ function IntroCard({ children }: { children: React.ReactNode; delay?: number }) 
   return <div>{children}</div>;
 }
 
+
+// Tabel de prețuri static, mereu în HTML (indexabil de Google și de motoarele AI),
+// independent de wizard-ul interactiv de mai sus.
+const PriceTable = () => (
+  <div className="max-w-4xl mx-auto mb-16 bg-white rounded-2xl shadow-lg border border-gray-100 p-4 md:p-8">
+    <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 text-center">
+      Prețuri editare video pe scurt (fără TVA)
+    </h2>
+    <p className="text-gray-600 text-center mb-6">
+      Prețul final per videoclip scade odată cu numărul de videoclipuri comandate pe lună.
+    </p>
+    <div className="overflow-x-auto">
+      <table className="w-full text-left text-sm md:text-base">
+        <caption className="sr-only">Tarife VisionEdit pentru editare video, per videoclip</caption>
+        <thead>
+          <tr className="border-b-2 border-gray-200 text-gray-900">
+            <th scope="col" className="py-3 pr-3">Videoclipuri / lună</th>
+            <th scope="col" className="py-3 pr-3">Editare (materiale de la tine)</th>
+            <th scope="col" className="py-3">Pachet complet A–Z (script, voiceover, avatar UGC)</th>
+          </tr>
+        </thead>
+        <tbody className="text-gray-700">
+          <tr className="border-b border-gray-100">
+            <th scope="row" className="py-3 pr-3 font-semibold">1–5 · Start Smart</th>
+            <td className="py-3 pr-3">249 lei/video</td>
+            <td className="py-3">280 lei (sub 30 sec) – 350 lei (30 sec–1 min)</td>
+          </tr>
+          <tr className="border-b border-gray-100">
+            <th scope="row" className="py-3 pr-3 font-semibold">6–12 · Creștere Accelerată</th>
+            <td className="py-3 pr-3">210 lei/video</td>
+            <td className="py-3">255 lei (sub 30 sec) – 315 lei (30 sec–1 min)</td>
+          </tr>
+          <tr>
+            <th scope="row" className="py-3 pr-3 font-semibold">13+ · Vizibilitate Max</th>
+            <td className="py-3 pr-3">185 lei/video</td>
+            <td className="py-3">240 lei (sub 30 sec) – 295 lei (30 sec–1 min)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p className="text-sm text-gray-500 mt-4">
+      Include o revizie gratuită per videoclip. VisionEdit SRL nu este plătitor de TVA — prețurile afișate sunt finale.
+    </p>
+  </div>
+);
+
+interface PackageData {
+  name: string;
+  subtitle: string;
+  icon: React.ElementType;
+  popular: boolean;
+  price: string;
+  description: string;
+  priceDetails?: { duration: string; price: string }[];
+  features: ReactNode[];
+  buttonText: string;
+  buttonColor: string;
+}
+
 type Step = 'intro' | 'view-choice' | 'quiz-videos' | 'results';
 type ViewChoice = 'both' | 'editing' | 'complete';
 
@@ -254,7 +313,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
       price: '210 lei/video',
       description: '(1.260 lei — 2.520 lei / lună)',
       features: [
-        <><span className="font-bold text-gray-900">Toate beneficiile din Start Smart</span></> as any,
+        <span className="font-bold text-gray-900">Toate beneficiile din Start Smart</span>,
         'Preț redus per videoclip',
         'Suport prioritar',
         'Feedback rapid pe materialele trimise',
@@ -321,7 +380,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
       ],
       description: 'Videoclip complet, gata de publicat',
       features: [
-        <><span className="font-bold text-gray-900">Toate beneficiile din Start Smart Complet</span></> as any,
+        <span className="font-bold text-gray-900">Toate beneficiile din Start Smart Complet</span>,
         'Preț redus per videoclip',
         'Suport prioritar',
         'Plan de editare video personalizat',
@@ -356,9 +415,8 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
     }
   ];
 
-  const PackageCard = ({ pkg, isComplete = false, isRecommended = false, delay = 0, index = 0 }: { pkg: any, isComplete?: boolean, isRecommended?: boolean, delay?: number, index?: number }) => {
+  const PackageCard = ({ pkg, isComplete = false, isRecommended = false, delay = 0 }: { pkg: PackageData, isComplete?: boolean, isRecommended?: boolean, delay?: number }) => {
     const { ref, visible } = useInView(0.15);
-    const col = index % 3;
     const hiddenTransform = 'translateY(22px)';
     return (
     <div
@@ -395,7 +453,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
           <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{pkg.price}</div>
           {isComplete && pkg.priceDetails && (
             <div className="bg-gray-50 rounded-lg p-3 mb-3">
-              {pkg.priceDetails.map((detail: any, idx: number) => (
+              {pkg.priceDetails.map((detail, idx) => (
                 <div key={idx} className="text-base md:text-lg">
                   <span className="font-bold text-gray-900">{detail.duration}</span>
                   <span className="text-gray-700"> - </span>
@@ -407,7 +465,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
           <p className={`text-base font-bold ${isComplete ? 'text-green-800' : 'text-gray-800'} leading-tight`}>{pkg.description}</p>
         </div>
         <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-          {pkg.features.map((feature: any, idx: number) => (
+          {pkg.features.map((feature, idx) => (
             <li key={idx} className="flex items-start">
               <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
               <span className="text-gray-700 text-base leading-relaxed font-medium">{feature}</span>
@@ -595,7 +653,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
 
   return (
     <section id="pricing" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
-      <style>{subtitleGlowStyle}</style>
+      <style dangerouslySetInnerHTML={{ __html: subtitleGlowStyle }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header — vizibil doar pe intro si results */}
@@ -606,7 +664,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
               Prețuri
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
-              Prețuri și pachete
+              Prețuri editare video și pachete
             </TitleTag>
           </div>
           <div className="max-w-3xl mx-auto text-center px-4">
@@ -628,6 +686,8 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
             {step === 'quiz-videos' && <StepQuizVideos />}
           </div>
         )}
+
+        {step !== 'results' && <PriceTable />}
 
         {/* ── RESULTS ── */}
         {step === 'results' && (
@@ -687,7 +747,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                   {editingPackages.map((pkg, index) => (
-                    <PackageCard key={index} pkg={pkg} isComplete={false} isRecommended={recommendedTier === index} delay={index * 0.15} index={index} />
+                    <PackageCard key={index} pkg={pkg} isComplete={false} isRecommended={recommendedTier === index} delay={index * 0.15} />
                   ))}
                 </div>
               </div>
@@ -729,7 +789,7 @@ const Pricing = ({ asH1 = false }: { asH1?: boolean }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                   {completePackages.map((pkg, index) => (
-                    <PackageCard key={index} pkg={pkg} isComplete={true} isRecommended={recommendedTier === index} delay={index * 0.15} index={index} />
+                    <PackageCard key={index} pkg={pkg} isComplete={true} isRecommended={recommendedTier === index} delay={index * 0.15} />
                   ))}
                 </div>
               </div>

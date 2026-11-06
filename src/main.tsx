@@ -1,23 +1,18 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import App from './App';
 import './index.css';
 
-// Initialize Trusted Types policy for React
-if (window.trustedTypes && window.trustedTypes.createPolicy) {
-  try {
-    window.trustedTypes.createPolicy('react-app', {
-      createHTML: (input: string) => input,
-      createScript: (input: string) => input,
-      createScriptURL: (input: string) => input
-    });
-  } catch (e) {
-    // Policy already exists, continue
-  }
-}
-
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!;
+const app = (
   <StrictMode>
     <App />
   </StrictMode>
 );
+
+// HTML-ul prerenderat (build) se hidratează; în dev (fără prerender) se randează normal.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app);
+} else {
+  createRoot(container).render(app);
+}

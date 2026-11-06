@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import type { ElementType } from 'react';
 import { MessageSquare, FileText, Scissors, CheckCircle } from 'lucide-react';
 
 interface StepProps {
-  icon: React.ElementType;
+  icon: ElementType;
   title: string;
   description: string;
   details: string[];
@@ -94,7 +94,7 @@ const Process = ({ asH1 = false }: { asH1?: boolean }) => {
 
   return (
     <section id="process" className="py-16 md:py-24 bg-slate-50">
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .proc-card {
           background: white;
           border-radius: 12px;
@@ -125,7 +125,7 @@ const Process = ({ asH1 = false }: { asH1?: boolean }) => {
             display: flex !important;
           }
         }
-      `}</style>
+      ` }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -138,7 +138,7 @@ const Process = ({ asH1 = false }: { asH1?: boolean }) => {
               Proces Creativ
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Procesul nostru
+              Cum lucrăm: procesul de editare video
             </TitleTag>
           </div>
 

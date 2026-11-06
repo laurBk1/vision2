@@ -1,4 +1,3 @@
-import React from 'react';
 import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket } from 'lucide-react';
 import Reveal from '../hooks/Reveal';
 
@@ -44,8 +43,12 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
           <Reveal direction="left" className="relative order-2 lg:order-1">
             <div className="rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio: '3/2'}}>
               <img
-                src="/team.jpg"
-                alt="Echipa VisionEdit România"
+                src="/team.webp"
+                alt="Echipa VisionEdit România — editori video pentru TikTok, Reels și Shorts"
+                width={1200}
+                height={799}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

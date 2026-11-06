@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Star, Quote } from 'lucide-react';
 
 function useInView(threshold = 0.15) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
@@ -19,9 +19,17 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-function TestimonialCard({ testimonial, delay, index = 0 }) {
+interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  rating: number;
+  image: string;
+}
+
+function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
   const { ref, visible } = useInView(0.12);
-  const col = index % 3;
   const hiddenTransform = 'translateY(22px)';
   return (
     <div
@@ -37,6 +45,10 @@ function TestimonialCard({ testimonial, delay, index = 0 }) {
         <img
           src={testimonial.image}
           alt={testimonial.name}
+          width={80}
+          height={80}
+          loading="lazy"
+          decoding="async"
           className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover object-center mr-4 border-2 border-white/30 flex-shrink-0"
         />
         <div>
@@ -76,7 +88,7 @@ const Testimonials = () => {
       company: 'TechFlow Solutions',
       content: 'VisionEdit a transformat videoclipul de lansare al produsului nostru dincolo de așteptări. Atenția la detalii și viziunea creativă au dat viață poveștii brandului nostru în mod frumos.',
       rating: 5,
-      image: '/testimonial-1.jpg'
+      image: '/testimonial-1.webp'
     },
     {
       name: 'Ana Petrescu',
@@ -84,7 +96,7 @@ const Testimonials = () => {
       company: 'Studio Creative',
       content: 'Serviciile sunt adaptate perfect nevoilor noastre și comunicarea a fost impecabilă. Recomand cu încredere pentru profesionalism și rezultate de calitate.',
       rating: 5,
-      image: '/testimonial-2.jpg'
+      image: '/testimonial-2.webp'
     },
     {
       name: 'Mihai Dumitrescu',
@@ -92,7 +104,7 @@ const Testimonials = () => {
       company: 'Beauty Studio',
       content: 'Echipa oferă un serviciu profesional care aduce valoare reală pentru orice tip de proiect video. Colaborarea a fost ușoară și rezultatele au depășit așteptările.',
       rating: 5,
-      image: '/testimonial-3.jpg'
+      image: '/testimonial-3.webp'
     }
   ];
 
@@ -114,7 +126,7 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} delay={(index % 3) * 0.15} index={index} />
+            <TestimonialCard key={index} testimonial={testimonial} delay={(index % 3) * 0.15} />
           ))}
         </div>
       </div>

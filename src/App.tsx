@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, type ReactNode } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -16,83 +16,55 @@ import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 import CookieBanner from './components/CookieBanner';
 import NotFound from './components/NotFound';
+import { PAGE_META, NOT_FOUND_META, SITE_URL, normalizePath, breadcrumbSchema } from './seo';
 
-// ─── Meta tags per pagină ────────────────────────────────────────────────────
-const PAGE_META: Record<string, { title: string; description: string }> = {
-  '/': {
-    title: 'VisionEdit România - Editare Video Profesională | TikTok, Reels, FB Ads, Shorts',
-    description: 'VisionEdit oferă servicii profesionale de editare video în România: TikTok, Instagram Reels, Facebook Ads, YouTube Shorts. Transformăm ideile tale în conținut captivant, optimizat SEO, care atrage și vinde.',
-  },
-  '/services': {
-    title: 'Servicii Editare Video Profesională | VisionEdit România',
-    description: 'Descoperă serviciile profesionale de editare video VisionEdit: TikTok, Instagram Reels, Facebook Ads, YouTube Shorts, videoclipuri corporate și conținut social media. Calitate premium la prețuri accesibile.',
-  },
-  '/portfolio': {
-    title: 'Portofoliu Editare Video | Proiecte VisionEdit România',
-    description: 'Vezi portofoliul VisionEdit: proiecte de editare video pentru clienți din România. TikTok, Reels, Facebook Ads, YouTube Shorts și videoclipuri corporate realizate profesional.',
-  },
-  '/process': {
-    title: 'Cum Lucrăm | Procesul de Editare Video VisionEdit',
-    description: 'Află cum funcționează procesul de editare video la VisionEdit: de la brief și materiale brute, până la livrarea finală. Simplu, rapid și transparent.',
-  },
-  '/pricing': {
-    title: 'Prețuri Editare Video | Pachete și Tarife VisionEdit România',
-    description: 'Prețuri transparente pentru editare video profesională: pachete pentru TikTok, Instagram Reels, Facebook Ads, YouTube Shorts și conținut corporate. Alege pachetul potrivit pentru afacerea ta.',
-  },
-  '/about': {
-    title: 'Despre VisionEdit | Studio de Editare Video din România',
-    description: 'Află povestea VisionEdit: cine suntem, ce ne motivează și de ce sute de clienți din România au ales serviciile noastre de editare video pentru creșterea prezenței online.',
-  },
-  '/contact': {
-    title: 'Contact VisionEdit | Solicită Ofertă de Editare Video',
-    description: 'Contactează VisionEdit pentru o ofertă personalizată de editare video. Răspundem în maxim 24h. Telefon: +40 767 082 106 | Email: contact@visionedit.ro',
-  },
-  '/faq': {
-    title: 'Întrebări Frecvente despre Editare Video | VisionEdit România',
-    description: 'Găsești răspunsuri la cele mai frecvente întrebări despre serviciile de editare video VisionEdit: termene, formate, revizuiri, plăți și colaborare.',
-  },
-  '/terms': {
-    title: 'Termeni și Condiții | VisionEdit România',
-    description: 'Termenii și condițiile de utilizare ale serviciilor VisionEdit România. Informații despre contracte, plăți, drepturi de autor și politica de revizuiri.',
-  },
-  '/privacy': {
-    title: 'Politica de Confidențialitate | VisionEdit România',
-    description: 'Politica de confidențialitate VisionEdit: cum colectăm, folosim și protejăm datele tale personale conform GDPR.',
-  },
-};
-
-// ─── Nume afișate pentru breadcrumb, per rută ────────────────────────────────
-const PAGE_NAMES: Record<string, string> = {
-  '/services': 'Servicii',
-  '/portfolio': 'Portofoliu',
-  '/process': 'Proces',
-  '/pricing': 'Prețuri',
-  '/about': 'Despre noi',
-  '/contact': 'Contact',
-  '/faq': 'FAQ',
-  '/terms': 'Termeni și condiții',
-  '/privacy': 'Politica de confidențialitate',
-};
-
-function updateBreadcrumb(pathname: string) {
-  const itemListElement: Array<Record<string, unknown>> = [
-    { '@type': 'ListItem', position: 1, name: 'Acasă', item: 'https://visionedit.ro/' },
-  ];
-
-  if (pathname !== '/' && PAGE_NAMES[pathname]) {
-    itemListElement.push({
-      '@type': 'ListItem',
-      position: 2,
-      name: PAGE_NAMES[pathname],
-      item: `https://visionedit.ro${pathname}`,
-    });
+// ─── Actualizare <head> la navigarea client-side ─────────────────────────────
+// (la încărcarea inițială, HTML-ul prerenderat conține deja valorile corecte)
+function setTag(selector: string, attr: string, value: string, create: () => HTMLElement) {
+  let el = document.head.querySelector(selector) as HTMLElement | null;
+  if (!el) {
+    el = create();
+    document.head.appendChild(el);
   }
+  el.setAttribute(attr, value);
+}
 
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement,
-  };
+const metaByName = (name: string) => () => {
+  const el = document.createElement('meta');
+  el.setAttribute('name', name);
+  return el;
+};
+const metaByProp = (prop: string) => () => {
+  const el = document.createElement('meta');
+  el.setAttribute('property', prop);
+  return el;
+};
+
+function updateHead(rawPath: string) {
+  const path = normalizePath(rawPath);
+  const known = Object.prototype.hasOwnProperty.call(PAGE_META, path);
+  const meta = known ? PAGE_META[path] : NOT_FOUND_META;
+  const canonical = known ? `${SITE_URL}${path === '/' ? '/' : path}` : `${SITE_URL}/`;
+
+  document.title = meta.title;
+  setTag('meta[name="description"]', 'content', meta.description, metaByName('description'));
+  setTag('meta[name="robots"]', 'content',
+    known ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' : 'noindex, follow',
+    metaByName('robots'));
+  if (known) {
+    setTag('link[rel="canonical"]', 'href', canonical, () => {
+      const el = document.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      return el;
+    });
+  } else {
+    document.head.querySelector('link[rel="canonical"]')?.remove();
+  }
+  setTag('meta[property="og:title"]', 'content', meta.title, metaByProp('og:title'));
+  setTag('meta[property="og:description"]', 'content', meta.description, metaByProp('og:description'));
+  setTag('meta[property="og:url"]', 'content', canonical, metaByProp('og:url'));
+  setTag('meta[name="twitter:title"]', 'content', meta.title, metaByName('twitter:title'));
+  setTag('meta[name="twitter:description"]', 'content', meta.description, metaByName('twitter:description'));
 
   let script = document.getElementById('breadcrumb-schema') as HTMLScriptElement | null;
   if (!script) {
@@ -101,219 +73,96 @@ function updateBreadcrumb(pathname: string) {
     script.id = 'breadcrumb-schema';
     document.head.appendChild(script);
   }
-  script.textContent = JSON.stringify(schema);
+  script.textContent = JSON.stringify(breadcrumbSchema(known ? path : '/'));
 }
 
-function updateHead(pathname: string) {
-  const meta = PAGE_META[pathname] || PAGE_META['/'];
-  const canonical = `https://visionedit.ro${pathname === '/' ? '/' : pathname}`;
-
-  document.title = meta.title;
-
-  const setMeta = (selector: string, attr: string, value: string) => {
-    let el = document.querySelector(selector) as HTMLElement | null;
-    if (!el) {
-      el = document.createElement(selector.startsWith('link') ? 'link' : 'meta');
-      const parts = selector.match(/\[([^\]=]+)="([^"]+)"\]/);
-      if (parts) el.setAttribute(parts[1], parts[2]);
-      document.head.appendChild(el);
-    }
-    el.setAttribute(attr, value);
-  };
-
-  setMeta('meta[name="description"]', 'content', meta.description);
-  setMeta('link[rel="canonical"]', 'href', canonical);
-  setMeta('meta[property="og:title"]', 'content', meta.title);
-  setMeta('meta[property="og:description"]', 'content', meta.description);
-  setMeta('meta[property="og:url"]', 'content', canonical);
-  setMeta('meta[name="twitter:title"]', 'content', meta.title);
-  setMeta('meta[name="twitter:description"]', 'content', meta.description);
-
-  updateBreadcrumb(pathname);
-}
-
-// ─── ScrollToTop: scroll sus la fiecare navigare ─────────────────────────────
-function ScrollToTop() {
+// ─── ScrollToTop + actualizare head la fiecare navigare ──────────────────────
+function RouteEffects() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     updateHead(pathname);
-    document.documentElement.style.overflowX = 'hidden';
-    document.body.style.overflowX = 'hidden';
-    document.body.style.maxWidth = '100vw';
   }, [pathname]);
   return null;
 }
 
-// ─── Pagina principală (Home) ────────────────────────────────────────────────
+// ─── Layout comun ────────────────────────────────────────────────────────────
+function Layout({ children, special = true }: { children: ReactNode; special?: boolean }) {
+  return (
+    <div className="min-h-screen">
+      <Header isSpecialPage={special} />
+      {children}
+      <Footer />
+      <WhatsAppButton />
+      <CookieBanner />
+    </div>
+  );
+}
+
+// Pe pagini standalone, H1-ul este vizibil (titlul secțiunii principale).
+// Contact/Pricing/etc. incluse ca secțiuni secundare folosesc H2.
 function HomePage() {
   return (
-    <div className="min-h-screen">
-      <Header />
+    <Layout special={false}>
       <main>
         <div id="home"><Hero /></div>
-        <div id="services"><Services /></div>
-        <div id="portfolio"><Portfolio /></div>
-        <div id="process"><Process /></div>
-        <div id="pricing"><Pricing /></div>
-        <div id="about"><About /></div>
-        <Testimonials />
-        <div id="contact"><Contact /></div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina Services ─────────────────────────────────────────────────────────
-function ServicesPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main className="pt-24">
-        <h1 className="sr-only">Servicii de Editare Video Profesională | VisionEdit România</h1>
         <Services />
-        <div id="pricing"><Pricing /></div>
-        <div id="contact"><Contact /></div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina Portfolio ─────────────────────────────────────────────────────────
-function PortfolioPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main className="pt-24">
-        <h1 className="sr-only">Portofoliu de Editare Video | Proiecte VisionEdit România</h1>
         <Portfolio />
-        <div id="contact"><Contact /></div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina Process ───────────────────────────────────────────────────────────
-function ProcessPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main className="pt-24">
-        <h1 className="sr-only">Cum Lucrăm | Procesul de Editare Video VisionEdit</h1>
         <Process />
-        <div id="contact"><Contact /></div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina Pricing ───────────────────────────────────────────────────────────
-function PricingPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main className="pt-24">
-        <h1 className="sr-only">Prețuri Editare Video | Pachete și Tarife VisionEdit România</h1>
         <Pricing />
-        <div id="contact"><Contact /></div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina About ─────────────────────────────────────────────────────────────
-function AboutPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main className="pt-24">
-        <h1 className="sr-only">Despre VisionEdit | Studio de Editare Video din România</h1>
         <About />
         <Testimonials />
-        <div id="contact"><Contact /></div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina Contact ───────────────────────────────────────────────────────────
-function ContactPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main className="pt-24">
-        <h1 className="sr-only">Contact VisionEdit | Solicită Ofertă de Editare Video</h1>
         <Contact />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
+    </Layout>
   );
 }
 
-// ─── Pagina FAQ ───────────────────────────────────────────────────────────────
-function FAQPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main><FAQ /></main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
+const ServicesPage = () => (
+  <Layout>
+    <main className="pt-24"><Services asH1 /><Pricing /><Contact /></main>
+  </Layout>
+);
+const PortfolioPage = () => (
+  <Layout>
+    <main className="pt-24"><Portfolio asH1 /><Contact /></main>
+  </Layout>
+);
+const ProcessPage = () => (
+  <Layout>
+    <main className="pt-24"><Process asH1 /><Contact /></main>
+  </Layout>
+);
+const PricingPage = () => (
+  <Layout>
+    <main className="pt-24"><Pricing asH1 /><Contact /></main>
+  </Layout>
+);
+const AboutPage = () => (
+  <Layout>
+    <main className="pt-24"><About asH1 /><Testimonials /><Contact /></main>
+  </Layout>
+);
+const ContactPage = () => (
+  <Layout>
+    <main className="pt-24"><Contact asH1 /></main>
+  </Layout>
+);
+const FAQPage = () => (
+  <Layout><main><FAQ /></main></Layout>
+);
+const TermsPage = () => (
+  <Layout><main><Terms /></main></Layout>
+);
+const PrivacyPage = () => (
+  <Layout><main><Privacy /></main></Layout>
+);
 
-// ─── Pagina Terms ─────────────────────────────────────────────────────────────
-function TermsPage() {
+// ─── Rute (comune pentru client și server) ───────────────────────────────────
+export function AppRoutes() {
   return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main><Terms /></main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── Pagina Privacy ───────────────────────────────────────────────────────────
-function PrivacyPage() {
-  return (
-    <div className="min-h-screen">
-      <Header isSpecialPage={true} />
-      <main><Privacy /></main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieBanner />
-    </div>
-  );
-}
-
-// ─── App Root ─────────────────────────────────────────────────────────────────
-function App() {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
+    <>
+      <RouteEffects />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -325,11 +174,16 @@ function App() {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
-        {/* Pagina 404 custom */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}

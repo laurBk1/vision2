@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 
@@ -10,7 +9,7 @@ const Hero = () => {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .h-root *, .h-root *::before, .h-root *::after {
           box-sizing: border-box; margin: 0; padding: 0;
         }
@@ -476,7 +475,7 @@ const Hero = () => {
         .h-stat:nth-child(2).h-stat-anim { animation-delay: 0.62s; }
         .h-stat:nth-child(3).h-stat-anim { animation-delay: 0.74s; }
         .h-check-anim { animation: heroLeftIn 0.6s ease both; }
-      `}</style>
+      ` }} />
 
       <section className="h-root h-section" style={{maxWidth: '100%', width: '100%'}}>
         <div className="h-blob1" />
@@ -486,13 +485,16 @@ const Hero = () => {
 
           {/* LEFT */}
           <div className="h-left h-left-anim">
+            <p style={{ color: '#93C5FD', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.06em', textTransform: 'uppercase', margin: '0 0 10px' }}>
+              Editare video profesională · TikTok · Reels · Shorts
+            </p>
             <h1 className="h-heading h-heading-mobile">
               Vrei mai multă vizibilitate pentru afacerea ta?
+              <span className="h-heading-accent h-heading-accent-mobile" style={{ display: 'block' }}>
+                <span style={{color:'#38BDF8'}}>Video marketingul</span>
+                <span style={{color:'#FBBF24'}}> e soluția!</span>
+              </span>
             </h1>
-            <span className="h-heading-accent h-heading-accent-mobile">
-              <span style={{color:'#38BDF8'}}>Video marketingul</span>
-              <span style={{color:'#FBBF24'}}> e soluția!</span>
-            </span>
 
             <div className="h-checks">
               {[
@@ -537,9 +539,12 @@ const Hero = () => {
                 <div className="h-card-inner">
                   <div className="h-card-thumb">
                     <img
-                      src="/workspace-visionedit.jpg"
+                      src="/workspace-visionedit.webp"
                       alt="VisionEdit — Studio editare video profesional"
+                      width={1200}
+                      height={670}
                       loading="eager"
+                      decoding="async"
                     />
                     <div className="h-thumb-fade-left" />
                     <div className="h-thumb-fade-bottom" />

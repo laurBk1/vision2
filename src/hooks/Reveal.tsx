@@ -1,7 +1,7 @@
-import React from 'react';
+import type { ElementType, ReactNode } from 'react';
 
 interface RevealProps {
-  children: React.ReactNode;
+  children: ReactNode;
   // Props păstrate pentru compatibilitate; animația la scroll a fost eliminată intenționat.
   direction?: 'up' | 'left' | 'right' | 'fade';
   distance?: number;
@@ -17,7 +17,7 @@ interface RevealProps {
  * doar pe cartonașele din Servicii, Prețuri și Testimoniale.
  */
 const Reveal = ({ children, className = '', as = 'div' }: RevealProps) => {
-  const Tag = as as any;
+  const Tag = as as ElementType;
   return <Tag className={className}>{children}</Tag>;
 };
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Video, Scissors, Palette, Megaphone, Zap, Eye, Volume2, Type, Sparkles, Target, Layers, Image, RefreshCw, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle, Clapperboard, Music2, ImagePlus, Stamp, Repeat2, ZoomIn, Wand2, ScanLine, Crop, Smartphone, TrendingUp, BarChart2 } from 'lucide-react';
+import React, { useState, useEffect, useRef, type ElementType } from 'react';
+import { Scissors, Palette, Zap, Type, Sparkles, Layers, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle, Clapperboard, Music2, ImagePlus, Stamp, Repeat2, ZoomIn, Wand2, ScanLine, Crop, Smartphone, TrendingUp, BarChart2 } from 'lucide-react';
 
 const shimmerStyle = `
   .btn-shimmer {
@@ -47,7 +47,7 @@ const shimmerStyle = `
 `;
 
 function useInView(threshold = 0.15) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
@@ -64,10 +64,26 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, setExpandedFeatures, setExpandedDesc }) {
+interface ServiceItem {
+  icon: ElementType;
+  title: string;
+  highlight: string;
+  description: string;
+  features: string[];
+}
+interface ServiceCardProps {
+  service: ServiceItem;
+  index: number;
+  delay: number;
+  expandedFeatures: number | null;
+  expandedDesc: number | null;
+  setExpandedFeatures: (v: number | null) => void;
+  setExpandedDesc: (v: number | null) => void;
+}
+
+function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, setExpandedFeatures, setExpandedDesc }: ServiceCardProps) {
   const { ref, visible } = useInView(0.1);
   const Icon = service.icon;
-  const col = index % 3;
   const hiddenTransform = 'translateY(22px)';
   return (
     <div
@@ -95,8 +111,9 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
         {expandedFeatures === index ? 'Ascunde detalii' : 'Vezi ce include'}
         {expandedFeatures === index ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
       </button>
-      {expandedFeatures === index && (
-        <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+      {/* Randat mereu în DOM (indexabil), ascuns vizual cât e restrâns */}
+      {(
+        <ul hidden={expandedFeatures !== index} className="space-y-2 md:space-y-3 mb-4 md:mb-6">
           {service.features.map((feature, idx) => (
             <li key={idx} className="flex items-start text-base text-gray-700">
               <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-2 md:mr-3 flex-shrink-0 mt-1.5"></div>
@@ -116,8 +133,8 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
       >
         {expandedDesc === index ? 'Ascunde' : 'Află mai multe'}
       </button>
-      {expandedDesc === index && (
-        <div className="mt-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
+      {(
+        <div hidden={expandedDesc !== index} className="mt-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
           <p className="text-gray-700 text-base leading-relaxed font-medium">
             {service.description}
           </p>
@@ -128,8 +145,8 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
 }
 
 const Services = ({ asH1 = false }: { asH1?: boolean }) => {
-  const [expandedFeatures, setExpandedFeatures] = useState(null);
-  const [expandedDesc, setExpandedDesc] = useState(null);
+  const [expandedFeatures, setExpandedFeatures] = useState<number | null>(null);
+  const [expandedDesc, setExpandedDesc] = useState<number | null>(null);
   const TitleTag = asH1 ? 'h1' : 'h2';
 
   const services = [
@@ -263,7 +280,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
 
   return (
     <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
-      <style>{shimmerStyle}</style>
+      <style dangerouslySetInnerHTML={{ __html: shimmerStyle }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Section */}
@@ -328,7 +345,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
 
         {/* Process Overview */}
         <div className="bg-white rounded-2xl p-6 md:p-12 shadow-xl mb-12 md:mb-16">
-          <style>{`
+          <style dangerouslySetInnerHTML={{ __html: `
             @keyframes arrowFlow {
               0%, 100% { opacity: 0.4; transform: translateX(0); }
               50% { opacity: 1; transform: translateX(4px); }
@@ -340,7 +357,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
               50% { opacity: 1; transform: translateY(4px); }
             }
             .proc-arrow-down { animation: none; }
-          `}</style>
+          ` }} />
 
           <div className="text-center mb-8 md:mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">

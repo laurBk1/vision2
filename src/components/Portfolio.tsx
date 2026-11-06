@@ -24,7 +24,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
               Portofoliu confidențial
             </span>
             <TitleTag className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-              Portofoliu confidențial
+              Portofoliu editare video
             </TitleTag>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
@@ -54,11 +54,7 @@ const Portfolio = ({ asH1 = false }: { asH1?: boolean }) => {
                         borderRadius: '0.75rem'
                       }}
                     >
-                      <source 
-                        src={CLOUDINARY_VIDEO_URL} 
-                        type="video/mp4"
-                        crossOrigin="anonymous"
-                      />
+                      <source src={CLOUDINARY_VIDEO_URL} type="video/mp4" />
                       <p className="text-white text-center p-4">
                         Browser-ul tău nu suportă redarea video. Te rog actualizează-l.
                       </p>
