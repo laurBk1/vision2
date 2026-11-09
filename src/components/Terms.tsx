@@ -98,7 +98,7 @@ const Terms = () => {
         '',
         '3.4. Toate plățile se efectuează prin transfer bancar. Factura fiscală este emisă conform legislației române în vigoare.',
         '',
-        '3.5. Penalități de întârziere: în caz de neplată la scadență, Clientul datorează 0,5% pe zi din suma restantă. Prestatorul poate suspenda lucrările până la achitarea integrală.'
+        '3.5. Penalități de întârziere: în caz de neplată la scadență, Clientul datorează 0,5% pe zi din suma restantă. Prestatorul poate suspenda lucrările până la achitarea integrală. Pentru Clienții consumatori, nivelul penalităților se limitează conform dispozițiilor legale aplicabile.'
       ]
     },
     {
@@ -208,11 +208,13 @@ const Terms = () => {
       content: [
         '11.1. Orice neînțelegere se soluționează în primul rând pe cale amiabilă, în termen de 30 de zile.',
         '',
-        '11.2. Dacă nu se ajunge la o soluție, litigiile vor fi supuse instanțelor judecătorești competente de la sediul Prestatorului, conform legii române.',
+        '11.2. Dacă nu se ajunge la o soluție, litigiile vor fi supuse instanțelor judecătorești competente de la sediul Prestatorului, conform legii române. Pentru Clienții consumatori se aplică dispozițiile legale privind competența instanțelor.',
         '',
         '11.3. Prezentul document reprezintă termenii și condițiile de colaborare cu Prestatorul. Semnarea contractului implică acceptarea integrală a acestor termeni.',
         '',
-        '11.4. Contractul complet, cu toate clauzele detaliate și Anexa 1 (oferta de preț), este transmis Clientului înainte de începerea colaborării.'
+        '11.4. Contractul complet, cu toate clauzele detaliate și Anexa 1 (oferta de preț), este transmis Clientului înainte de începerea colaborării.',
+        '',
+        '11.5. Dreptul de retragere (numai pentru Clienții consumatori, adică persoane fizice care nu acționează în scop profesional): în cazul contractelor încheiate la distanță, Clientul consumator are dreptul de a se retrage din contract în termen de 14 zile, fără a invoca vreun motiv, conform OUG nr. 34/2014. Dacă Clientul solicită expres începerea prestării serviciului înainte de expirarea acestui termen, în cazul retragerii acesta datorează o sumă proporțională cu serviciul prestat până la momentul comunicării retragerii, iar după prestarea integrală a serviciului dreptul de retragere se pierde, cu acordul expres și prealabil al Clientului. Retragerea se comunică prin email la contact@visionedit.ro.'
       ]
     }
   ];

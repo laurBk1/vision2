@@ -159,6 +159,11 @@ const Privacy = () => {
         '• Furnizori de servicii IT parteneri (doar în măsura strict necesară pentru funcționarea site-ului)',
         '• Google LLC — prin Google Analytics, pentru statistici anonime despre vizite',
         '• Microsoft Corporation — prin Microsoft Clarity, pentru optimizarea experienței utilizatorilor',
+        '• FormSubmit.co — pentru procesarea și transmiterea către noi a mesajelor trimise prin formularul de contact',
+        '• Netlify, Inc. (găzduirea site-ului) și Cloudinary (găzduirea materialelor video din portofoliu) — primesc date tehnice, precum adresa IP, necesare funcționării site-ului',
+        '• Meta Platforms (WhatsApp) — dacă alegi să ne contactezi prin butonul WhatsApp, conversația se desfășoară pe platforma WhatsApp, conform politicii proprii a acesteia',
+        '',
+        'Unii dintre furnizorii de mai sus pot fi stabiliți în afara Spațiului Economic European; transferurile se realizează pe baza garanțiilor prevăzute de GDPR (Clauze Contractuale Standard sau EU-US Data Privacy Framework).',
         '',
         'Atât Google LLC cât și Microsoft Corporation sunt stabiliți în SUA. Datele transferate sunt pseudonimizate și protejate prin Clauze Contractuale Standard (art. 46 GDPR) și EU-US Data Privacy Framework.',
         '',
@@ -226,7 +231,7 @@ const Privacy = () => {
         '• Email: contact@visionedit.ro',
         '• Telefon: +40 767 082 106',
         '',
-        'Această politică este efectivă începând cu 03.04.2026.',
+        'Această politică este efectivă începând cu 09.11.2026.',
         '',
         'VisionEdit România se angajează să respecte cele mai înalte standarde de protecție a datelor personale, în conformitate cu legislația europeană și românească. Dacă ai întrebări, suntem oricând disponibili.'
       ]

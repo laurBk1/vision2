@@ -16,7 +16,6 @@ import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 import CookieBanner from './components/CookieBanner';
 import NotFound from './components/NotFound';
-import SeoIntro from './components/SeoIntro';
 import { PAGE_META, NOT_FOUND_META, SITE_URL, normalizePath, breadcrumbSchema } from './seo';
 
 // ─── Actualizare <head> la navigarea client-side ─────────────────────────────
@@ -114,7 +113,6 @@ function HomePage() {
         <About />
         <Testimonials />
         <Contact />
-        <SeoIntro />
       </main>
     </Layout>
   );
