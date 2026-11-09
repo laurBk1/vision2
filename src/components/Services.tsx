@@ -95,9 +95,6 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
       }}
       className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
     >
-      <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-blue-600 text-white text-xs font-bold px-2 md:px-3 py-1 rounded-full">
-        {service.highlight}
-      </div>
       <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-3 md:p-4 w-fit mb-4 md:mb-6 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
         <Icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
       </div>
