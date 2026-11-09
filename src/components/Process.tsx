@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import type { ElementType } from 'react';
 import { MessageSquare, FileText, Scissors, CheckCircle } from 'lucide-react';
 
@@ -9,11 +10,38 @@ interface StepProps {
   index: number;
 }
 
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setVisible(true); return; }
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) { setVisible(true); return; }
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting || entry.boundingClientRect.top < 0) { setVisible(true); obs.disconnect(); } },
+      { threshold, rootMargin: '0px 0px -60px 0px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
 function StepItem({ icon: Icon, title, description, details, index }: StepProps) {
   const isEven = index % 2 === 0;
+  const { ref, visible } = useInView(0.15);
 
   return (
     <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0) scale(1)' : 'translateY(36px) scale(0.97)',
+        transition: 'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)',
+        willChange: 'opacity, transform',
+      }}
       className="relative mb-8 md:mb-16"
     >
       <div className={`md:flex md:items-center ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>

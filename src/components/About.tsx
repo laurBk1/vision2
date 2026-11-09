@@ -1,13 +1,50 @@
-import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket } from 'lucide-react';
+import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket, Instagram, Youtube, Facebook } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import Reveal from '../hooks/Reveal';
+
+/** Număr care crește animat când ajunge în ecran (valoarea finală e în HTML pentru SEO). */
+function CountUp({ target, suffix = '', dots = false, duration = 1800 }: { target: number; suffix?: string; dots?: boolean; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const fmt = (n: number) => (dots ? Math.round(n).toLocaleString('de-DE') : String(Math.round(n)));
+  const [value, setValue] = useState(target);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let raf = 0;
+    let started = false;
+    setValue(0);
+    const run = () => {
+      started = true;
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min((now - t0) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 4);
+        setValue(target * eased);
+        if (p < 1) raf = requestAnimationFrame(tick);
+        else setValue(target);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) { obs.disconnect(); run(); } },
+      { threshold: 0.4 }
+    );
+    obs.observe(el);
+    return () => { obs.disconnect(); cancelAnimationFrame(raf); };
+  }, [target, duration]);
+
+  return <span ref={ref} style={{ fontVariantNumeric: 'tabular-nums' }}>{fmt(value)}{suffix}</span>;
+}
 
 const About = ({ asH1 = false }: { asH1?: boolean }) => {
   const TitleTag = asH1 ? 'h1' : 'h2';
   const achievements = [
-    { icon: Award, label: 'Ani experiență', value: '3+' },
-    { icon: Users, label: 'Clienți mulțumiți', value: '150+' },
-    { icon: Clock, label: 'Proiecte finalizate', value: '2.340+' },
-    { icon: Zap, label: 'Ore editare', value: '3000+' }
+    { icon: Award, label: 'Ani experiență', target: 3, dots: false },
+    { icon: Users, label: 'Clienți mulțumiți', target: 150, dots: false },
+    { icon: Clock, label: 'Proiecte finalizate', target: 2340, dots: true },
+    { icon: Zap, label: 'Ore editare', target: 3000, dots: false }
   ];
 
   return (
@@ -25,12 +62,29 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
           </div>
           <div className="max-w-3xl mx-auto px-4 py-6 text-center">
   <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
-    Creăm și edităm videoclipuri scurte, captivante și optimizate pentru 
-    <strong> TikTok, Reels, Shorts</strong> și alte platforme.
+    Creăm și edităm videoclipuri scurte, captivante, optimizate pentru{' '}
+    <span className="whitespace-nowrap font-bold text-gray-900">
+      <svg aria-hidden="true" className="inline-block h-[1em] w-[1em] -mt-1 mr-1 text-black" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+      </svg>
+      TikTok,
+    </span>{' '}
+    <span className="whitespace-nowrap font-bold text-gray-900">
+      <Instagram aria-hidden="true" className="inline-block h-[1em] w-[1em] -mt-1 mr-1 text-pink-600" />
+      Reels,
+    </span>{' '}
+    <span className="whitespace-nowrap font-bold text-gray-900">
+      <Youtube aria-hidden="true" className="inline-block h-[1em] w-[1em] -mt-1 mr-1 text-red-600" />
+      Shorts
+    </span>{' '}
+    și{' '}
+    <span className="whitespace-nowrap font-bold text-gray-900">
+      <Facebook aria-hidden="true" className="inline-block h-[1em] w-[1em] -mt-1 mr-1 text-blue-600" />
+      Facebook Ads
+    </span>.
   </p>
   <p className="text-base md:text-lg text-gray-500 mt-4 leading-relaxed italic">
-    Combinăm storytelling-ul autentic și trendurile actuale pentru a transforma 
-    ideile tale în conținut video care atrage și convertește.
+    Combinăm <span className="text-indigo-600 font-bold not-italic">storytelling-ul autentic</span> cu <span className="text-indigo-600 font-bold not-italic">trendurile actuale</span>, ca ideile tale să devină conținut care <span className="text-gray-900 font-bold not-italic">atrage și convertește</span>.
   </p>
 </div>
 </Reveal>
@@ -53,7 +107,7 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
               />
             </div>
             <div className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 bg-blue-600 rounded-xl p-4 md:p-6 text-white shadow-xl">
-              <div className="text-2xl md:text-3xl font-bold text-white">2.340+</div>
+              <div className="text-2xl md:text-3xl font-bold text-white"><CountUp target={2340} dots suffix="+" /></div>
               <div className="text-xs md:text-sm text-white font-medium">Proiecte finalizate</div>
             </div>
           </Reveal>
@@ -62,13 +116,10 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
           <Reveal direction="right" delay={0.1} className="order-1 lg:order-2 flex flex-col justify-center">
             <div className="bg-gray-50 rounded-2xl p-6 md:p-8 shadow-sm">
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-4">
-                Transformăm <strong className="text-gray-900">clipurile tale</strong> în <strong className="text-gray-900">conținut scurt, clar și captivant</strong>, optimizat pentru <strong className="text-blue-600">TikTok, Instagram Reels, YouTube Shorts și Facebook Ads</strong> — indiferent de nișă.
-              </p>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-4">
-                Lucrăm cu <strong className="text-gray-900">antreprenori, business-uri, influenceri și creatori de conținut</strong> din domenii precum beauty, educație, sănătate, imobiliare, comerț și multe altele. Fiecare video este adaptat pentru <strong className="text-gray-900">publicul tău și obiectivul tău de marketing</strong>.
+                Lucrăm cu <strong className="text-gray-900">antreprenori, business-uri, influenceri și creatori de conținut</strong> din beauty, educație, sănătate, imobiliare, comerț și multe altele. Fiecare video este adaptat <strong className="text-gray-900">publicului și obiectivului tău de marketing</strong>.
               </p>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-6">
-                Livrăm în <strong className="text-gray-900">orice format ai nevoie</strong> — vertical 9:16, pătrat 1:1, 4:5 sau orizontal 16:9 — adaptat platformei și campaniei tale. Procesul nostru e simplu: <strong className="text-gray-900">tu trimiți materialele video — noi livrăm clipurile editate, gata de publicat</strong>. Fără complicații, fără pierdere de timp.
+                Tu trimiți materialele video — noi livrăm <strong className="text-gray-900">clipurile editate, gata de publicat</strong>.
               </p>
               {/* Key points */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -96,7 +147,7 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
                 <achievement.icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
               </div>
               <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">
-                {achievement.value}
+                <CountUp target={achievement.target} dots={achievement.dots} suffix="+" />
               </div>
               <div className="text-sm text-gray-600 font-medium">
                 {achievement.label}

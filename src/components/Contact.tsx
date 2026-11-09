@@ -26,6 +26,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showRemoteInfo, setShowRemoteInfo] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -307,17 +308,24 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                 București - Ilfov, România
               </a>
             </p>
-            {/* Mesaj pentru mobil */}
-            <div className="lg:hidden bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
-              <h2 className="text-blue-700 text-base font-semibold mb-2">
-                Cum lucrăm împreună?
-              </h2>
-              <p className="text-base text-gray-700 leading-relaxed font-medium">
-                La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.
-              </p>
-              <p className="text-gray-700 text-sm leading-relaxed font-medium mt-2">
-                Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
-              </p>
+            {/* Cum lucrăm - Află mai multe (mobil) */}
+            <div className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setShowRemoteInfo(v => !v)}
+                aria-expanded={showRemoteInfo}
+                aria-controls="remote-info-mobile"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              >
+                {showRemoteInfo ? 'Mai puțin' : 'Află mai multe'}
+                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showRemoteInfo ? 'rotate-180' : ''}`} />
+              </button>
+              <div id="remote-info-mobile" hidden={!showRemoteInfo} className="mt-3 bg-blue-50 rounded-lg p-4 text-left border-l-4 border-blue-500">
+                <h2 className="text-blue-700 text-base font-semibold mb-2">Cum lucrăm împreună?</h2>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație. Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
+                </p>
+              </div>
             </div>
           </Reveal>
 
@@ -390,7 +398,17 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                   </h4>
                   
                   <div className="space-y-4 text-white/90">
-                    <p className="text-base leading-relaxed font-medium">
+                    <button
+                      type="button"
+                      onClick={() => setShowRemoteInfo(v => !v)}
+                      aria-expanded={showRemoteInfo}
+                      aria-controls="remote-info-desktop"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-white underline-offset-4 hover:underline"
+                    >
+                      {showRemoteInfo ? 'Mai puțin' : 'Află mai multe'}
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showRemoteInfo ? 'rotate-180' : ''}`} />
+                    </button>
+                    <p id="remote-info-desktop" hidden={!showRemoteInfo} className="text-base leading-relaxed font-medium !mt-3">
                       <strong className="text-white">La VisionEdit oferim servicii profesionale de editare video pentru clienți din toată România, indiferent de locație.</strong> Lucrăm 100% remote, astfel încât să putem livra rapid și eficient, oriunde v-ați afla.
                     </p>
                     

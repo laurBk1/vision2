@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useRef, type ElementType } from 'react';
-import { Scissors, Palette, Zap, Type, Sparkles, Layers, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle, Clapperboard, Music2, ImagePlus, Stamp, Repeat2, ZoomIn, Wand2, ScanLine, Crop, Smartphone, TrendingUp, BarChart2 } from 'lucide-react';
+import { Scissors, Palette, Zap, Type, Sparkles, Layers, Flame, ChevronDown, ChevronUp, MessageSquare, FileText, CheckCircle, Clapperboard, Music2, ImagePlus, Stamp, Repeat2, ZoomIn, Wand2, ScanLine, Crop, Smartphone, TrendingUp, BarChart2, Mic, UserRound, Library, PenLine } from 'lucide-react';
 
 const shimmerStyle = `
   .btn-shimmer {
@@ -67,7 +68,7 @@ function useInView(threshold = 0.15) {
 interface ServiceItem {
   icon: ElementType;
   title: string;
-  highlight: string;
+  highlight?: string;
   description: string;
   features: string[];
 }
@@ -93,17 +94,23 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
         transform: visible ? 'translate(0, 0)' : hiddenTransform,
         transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
       }}
-      className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
+      className="group bg-white rounded-2xl p-5 md:p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden flex flex-col"
     >
-      <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-3 md:p-4 w-fit mb-4 md:mb-6 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
-        <Icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+      {/* Antet: iconiță + titlu pe același rând */}
+      <div className="flex items-center gap-4">
+        <div className="shrink-0 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-2.5 md:p-3 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300 ring-1 ring-blue-100">
+          <Icon className="h-6 w-6 md:h-7 md:w-7 text-blue-600" />
+        </div>
+        <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-snug">
+          {service.title}
+        </h3>
       </div>
-      <h3 className="text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-        {service.title}
-      </h3>
+      {/* Linie de separare + zona de acțiuni (aliniată jos în fiecare rând) */}
+      <div className="mt-auto pt-4">
+        <div className="border-t border-gray-100 pt-3">
       <button
         onClick={() => setExpandedFeatures(expandedFeatures === index ? null : index)}
-        className="flex items-center gap-1.5 text-blue-600 text-base font-bold mb-4 hover:text-blue-800 transition-colors w-fit"
+        className="flex items-center gap-1.5 text-blue-600 text-base font-bold mb-3 hover:text-blue-800 transition-colors w-fit"
       >
         {expandedFeatures === index ? 'Ascunde detalii' : 'Vezi ce include'}
         {expandedFeatures === index ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
@@ -126,7 +133,7 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
           if (!isOpen) setExpandedFeatures(index);
           else setExpandedFeatures(null);
         }}
-        className={`w-full font-bold py-3 rounded-lg text-base ${expandedDesc === index ? 'btn-shimmer-close' : 'btn-shimmer'}`}
+        className={`w-full font-bold py-2.5 rounded-lg text-base ${expandedDesc === index ? 'btn-shimmer-close' : 'btn-shimmer'}`}
       >
         {expandedDesc === index ? 'Ascunde' : 'Află mai multe'}
       </button>
@@ -137,6 +144,8 @@ function ServiceCard({ service, index, delay, expandedFeatures, expandedDesc, se
           </p>
         </div>
       )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -254,6 +263,34 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
     }
   ];
 
+  // Servicii incluse DOAR în pachetele complete A–Z (nu se aplică la editarea din materialele clientului)
+  const completeServices: ServiceItem[] = [
+    {
+      icon: PenLine,
+      title: 'Script personalizat și copywriting',
+      description: 'Pornim de la ideea ta și scriem scriptul: hook, mesaj și call-to-action, adaptate nișei tale și formatului scurt. Nu trebuie să știi ce să spui în fața camerei sau în voiceover.',
+      features: ['Hook scris pentru primele 3 secunde', 'Mesaj clar și call-to-action adaptat nișei', 'Ton potrivit brandului tău'],
+    },
+    {
+      icon: Mic,
+      title: 'Voiceover profesional',
+      description: 'Voce naturală, clară și expresivă, care transmite mesajul exact cum trebuie. Fără să te înregistrezi tu și fără echipament audio.',
+      features: ['Voce naturală, impact maxim', 'Sincronizat cu montajul și subtitrările', 'Fără să te înregistrezi tu'],
+    },
+    {
+      icon: UserRound,
+      title: 'Avatar UGC virtual',
+      description: 'Un personaj virtual care prezintă produsul sau serviciul tău ca un creator real. Ideal dacă nu vrei sau nu poți să apari pe cameră.',
+      features: ['Avatar din stoc, disponibil imediat', 'Avatar adaptat nișei și publicului tău', 'Potrivit pentru orice nișă și tip de conținut'],
+    },
+    {
+      icon: Library,
+      title: 'Materiale video și foto stock (B-roll)',
+      description: 'Completăm videoclipul cu imagini și secvențe potrivite nișei tale, ca să nu ai nevoie să filmezi nimic.',
+      features: ['B-roll video și foto pentru nișa ta', 'Integrate în montaj, în limita materialelor disponibile', 'Fără filmări din partea ta'],
+    },
+  ];
+
   const specialFeatures = [
     {
       icon: Smartphone,
@@ -338,6 +375,46 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
               setExpandedDesc={setExpandedDesc}
             />
           ))}
+        </div>
+
+        {/* Servicii incluse în pachetele complete A–Z */}
+        <div className="mb-12 md:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
+            <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm tracking-wide px-3 py-1 rounded-full mb-3">
+              Pachete complete A–Z
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">
+              Nu ai materiale filmate? Noi creăm tot videoclipul
+            </h3>
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+              Pe lângă editare, pachetele complete includ tot ce e nevoie ca să ai un videoclip gata de publicat, fără să filmezi sau să scrii nimic.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
+            {completeServices.map((service, i) => {
+              const index = services.length + i;
+              return (
+                <ServiceCard
+                  key={index}
+                  service={service}
+                  index={index}
+                  delay={(i % 2) * 0.12}
+                  expandedFeatures={expandedFeatures}
+                  expandedDesc={expandedDesc}
+                  setExpandedFeatures={setExpandedFeatures}
+                  setExpandedDesc={setExpandedDesc}
+                />
+              );
+            })}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              to="/pricing"
+              className="inline-block font-bold py-3 px-6 rounded-lg text-base text-blue-700 border-2 border-blue-200 bg-white hover:bg-blue-50 transition-colors"
+            >
+              Vezi pachetele complete și prețurile
+            </Link>
+          </div>
         </div>
 
         {/* Process Overview */}
