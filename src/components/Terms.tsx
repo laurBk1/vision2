@@ -1,9 +1,45 @@
+import React from 'react';
 import { FileText, Shield, Clock, CreditCard, Users, AlertCircle, CheckCircle, Scale, Trash2, Lock, Network } from 'lucide-react';
 
 
+const copyProtectionStyle = `
+  .no-copy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;
+
+const useCopyProtection = () => {
+  React.useEffect(() => {
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+    };
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('a')) e.preventDefault();
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 'u'].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+};
 
 
 const Terms = () => {
+  useCopyProtection();
 
   const sections = [
     {
@@ -183,7 +219,8 @@ const Terms = () => {
 
   return (
     <>
-      <section className="pt-28 pb-20 bg-gray-50 min-h-screen">
+      <style dangerouslySetInnerHTML={{ __html: copyProtectionStyle }} />
+      <section className="no-copy pt-36 md:pt-40 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -198,9 +235,9 @@ const Terms = () => {
 
         {/* Introduction */}
         <div className="bg-white rounded-xl p-8 shadow-lg mb-12 border-l-6 border-blue-600">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">
             Bine ai venit la VisionEdit România!
-          </h2>
+          </h3>
           <p className="text-gray-700 leading-relaxed">
             La VisionEdit România suntem o echipă de editori video pasionați, răspândiți în toată țara. Lucrăm cu afaceri mici, mijlocii și mari, cu influenceri, creatori de conținut și antreprenori care vor să atragă clienți noi prin video marketing. Indiferent de nișă, stil sau platformă, fiecare proiect primește aceeași atenție maximă, creativitate și calitate profesională. Transformăm viziunea ta în videoclipuri care vând.
           </p>
@@ -223,9 +260,9 @@ const Terms = () => {
                 <div className="bg-blue-100 rounded-lg p-3 flex-shrink-0">
                   <section.icon className="h-6 w-6 text-blue-600" />
                 </div>
-                <h2 className="text-xl font-semibold text-gray-900">
+                <h3 className="text-xl font-semibold text-gray-900">
                   {section.title}
-                </h2>
+                </h3>
               </div>
 
               <div className="space-y-3">

@@ -13,15 +13,49 @@ const WhatsAppButton = () => {
     // La refresh se resetează automat — fără sessionStorage
     const timer = setTimeout(() => {
       setIsVisible(true);
+      playNotificationSound();
     }, 45000);
 
     return () => clearTimeout(timer);
   }, []);
 
+  // Sunet discret pentru FAB — un singur ding cald, diferit de popup
+  const playFabSound = () => {
+    try {
+      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      const osc2 = ctx.createOscillator();
+      const gainNode2 = ctx.createGain();
+
+      osc.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      osc.frequency.value = 440;
+      osc.type = 'sine';
+      gainNode.gain.setValueAtTime(0, ctx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 0.008);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.7);
+
+      // Armonică subtilă pentru căldură
+      osc2.connect(gainNode2);
+      gainNode2.connect(ctx.destination);
+      osc2.frequency.value = 880;
+      osc2.type = 'sine';
+      gainNode2.gain.setValueAtTime(0, ctx.currentTime);
+      gainNode2.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.008);
+      gainNode2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc2.start(ctx.currentTime);
+      osc2.stop(ctx.currentTime + 0.4);
+    } catch (e) {}
+  };
+
   // FAB: apare după 12 secunde + sunet
   useEffect(() => {
     const fabTimer = setTimeout(() => {
       setFabVisible(true);
+      playFabSound();
     }, 12000);
     return () => clearTimeout(fabTimer);
   }, []);
@@ -42,6 +76,32 @@ const WhatsAppButton = () => {
       if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
     };
   }, []);
+
+  const playNotificationSound = () => {
+    try {
+      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+
+      const playTone = (freq: number, startTime: number, duration: number, gain: number) => {
+        const osc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        osc.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        osc.frequency.value = freq;
+        osc.type = 'sine';
+        gainNode.gain.setValueAtTime(0, startTime);
+        gainNode.gain.linearRampToValueAtTime(gain, startTime + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+      };
+
+      // 2 tonuri scurte și plăcute — similar notificării WhatsApp
+      playTone(620, ctx.currentTime, 0.18, 0.18);
+      playTone(820, ctx.currentTime + 0.2, 0.22, 0.15);
+    } catch (e) {
+      // Browserul nu suportă AudioContext — ignorăm silențios
+    }
+  };
 
   const handleDismiss = () => {
     setIsVisible(false);

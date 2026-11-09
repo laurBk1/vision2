@@ -485,16 +485,13 @@ const Hero = () => {
 
           {/* LEFT */}
           <div className="h-left h-left-anim">
-            <p style={{ color: '#93C5FD', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.06em', textTransform: 'uppercase', margin: '0 0 10px' }}>
-              Editare video profesională · TikTok · Reels · Shorts
-            </p>
             <h1 className="h-heading h-heading-mobile">
               Vrei mai multă vizibilitate pentru afacerea ta?
-              <span className="h-heading-accent h-heading-accent-mobile" style={{ display: 'block' }}>
-                <span style={{color:'#38BDF8'}}>Video marketingul</span>
-                <span style={{color:'#FBBF24'}}> e soluția!</span>
-              </span>
             </h1>
+            <span className="h-heading-accent h-heading-accent-mobile">
+              <span style={{color:'#38BDF8'}}>Video marketingul</span>
+              <span style={{color:'#FBBF24'}}> e soluția!</span>
+            </span>
 
             <div className="h-checks">
               {[
@@ -541,10 +538,7 @@ const Hero = () => {
                     <img
                       src="/workspace-visionedit.webp"
                       alt="VisionEdit — Studio editare video profesional"
-                      width={1200}
-                      height={670}
                       loading="eager"
-                      decoding="async"
                     />
                     <div className="h-thumb-fade-left" />
                     <div className="h-thumb-fade-bottom" />

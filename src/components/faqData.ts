@@ -10,6 +10,14 @@ export const faqSections = [
         a: 'Fluxul nostru de lucru este simplificat și optimizat pentru colaborarea la distanță (100% de la distanță). Procesul include patru etape clare: consultanța inițială, semnarea acordului contractual (însoțită de achitarea avansului), transmiterea asset-urilor sursă și, în final, livrarea conținutului editat prin link securizat, finalizat pentru distribuție imediată.'
       },
       {
+        q: 'Sunteți o agenție sau un studio de editare video din București și Ilfov?',
+        a: 'VisionEdit este un studio de editare video cu sediul în Ilfov, în zona București, specializat în conținut video scurt: TikTok, Instagram Reels, YouTube Shorts și reclame video pentru Facebook Ads. Lucrăm cu clienți din București, Ilfov și din întreaga țară, 100% online: ne trimiteți materialele, le editați împreună cu noi și primiți videoclipurile finale digital.',
+      },
+      {
+        q: 'Ce servicii de editare video oferiți?',
+        a: 'Oferim montaj video profesional, subtitrări, sound design, color grading, hook viral în primele secunde și optimizare pentru formatul vertical 9:16. Pentru clienții fără materiale sau timp de filmat, pachetele complete A–Z includ script, voiceover AI, avatar UGC și materiale stock. Prețurile pornesc de la 185 lei/video, fără TVA.',
+      },
+      {
         q: 'Lucrați cu clienți din toată România?',
         a: 'Da, operăm 100% de la distanță. Indiferent de locația dumneavoastră, primim materialele online și livrăm digital, rapid și eficient, oriunde în România.'
       },

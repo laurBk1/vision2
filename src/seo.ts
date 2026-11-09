@@ -11,13 +11,13 @@ export interface PageMeta {
 
 export const PAGE_META: Record<string, PageMeta> = {
   '/': {
-    title: 'VisionEdit România - Editare Video Profesională | TikTok, Reels, FB Ads, Shorts',
+    title: 'Agenție Editare Video România – București, Ilfov | VisionEdit',
     description:
-      'Editare video profesională în România: TikTok, Instagram Reels, Facebook Ads, YouTube Shorts. Preț de la 185 lei/video, fără TVA. Cere o ofertă gratuită.',
+      'Agenție și studio de editare video din București–Ilfov: TikTok, Instagram Reels, YouTube Shorts, Facebook Ads. De la 185 lei/video, fără TVA. Ofertă gratuită.',
   },
   '/services': {
     name: 'Servicii',
-    title: 'Servicii Editare Video Profesională | VisionEdit România',
+    title: 'Servicii Editare Video – TikTok, Reels, Shorts, Ads | VisionEdit',
     description:
       'Servicii de editare video pentru TikTok, Instagram Reels, Facebook Ads și YouTube Shorts: montaj, subtitrări, sound design, color grading și hook viral. Cere ofertă.',
   },
@@ -35,19 +35,19 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/pricing': {
     name: 'Prețuri',
-    title: 'Prețuri Editare Video | Pachete și Tarife VisionEdit România',
+    title: 'Prețuri Editare Video România – de la 185 lei/video | VisionEdit',
     description:
       'Prețuri transparente pentru editare video: de la 185 lei/video, fără TVA. Pachete pentru TikTok, Reels, Facebook Ads și YouTube Shorts. Alege pachetul potrivit.',
   },
   '/about': {
     name: 'Despre noi',
-    title: 'Despre VisionEdit | Studio de Editare Video din România',
+    title: 'Despre VisionEdit – Studio Editare Video București, Ilfov',
     description:
       'Despre VisionEdit: studio românesc de editare video scurtă pentru TikTok, Reels și Shorts. Cine suntem și cum transformăm clipurile tale în conținut care vinde.',
   },
   '/contact': {
     name: 'Contact',
-    title: 'Contact VisionEdit | Solicită Ofertă de Editare Video',
+    title: 'Contact Studio Editare Video București, Ilfov | VisionEdit',
     description:
       'Contactează VisionEdit pentru o ofertă personalizată de editare video. Răspundem în maximum 24h. Telefon: +40 767 082 106 | Email: contact@visionedit.ro',
   },

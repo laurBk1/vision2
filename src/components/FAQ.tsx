@@ -6,7 +6,44 @@ import { faqSections } from './faqData';
 
 
 
+const copyProtectionStyle = `
+  .no-copy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;
+
+const useCopyProtection = () => {
+  useEffect(() => {
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+    };
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('a')) e.preventDefault();
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 'u'].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+};
+
+
 const FAQ = () => {
+  useCopyProtection();
   const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
 
   // Fix Firefox: forțează repaint compositor pe position:fixed
@@ -24,7 +61,8 @@ const FAQ = () => {
 
   return (
     <>
-            <section className="pt-36 pb-20 bg-gray-50 min-h-screen">
+      <style dangerouslySetInnerHTML={{ __html: copyProtectionStyle }} />
+      <section className="no-copy pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
