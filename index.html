@@ -46,8 +46,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Primar -->
-    <title>Agenție Editare Video România – București, Ilfov | VisionEdit</title>
-    <meta name="description" content="Agenție și studio de editare video din București–Ilfov: TikTok, Instagram Reels, YouTube Shorts, Facebook Ads. De la 185 lei/video, fără TVA. Ofertă gratuită.">
+    <title>VisionEdit – Editare Video TikTok, Reels, Shorts, Instagram, Meta Ads</title>
+    <meta name="description" content="Editare video pentru TikTok, Instagram Reels, YouTube Shorts, Facebook și Meta Ads. Livrare rapidă, de la 185 lei/video, fără TVA. Cere ofertă gratuită.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="VisionEdit România">
     <meta name="format-detection" content="telephone=yes">
@@ -62,8 +62,8 @@
     <meta property="og:site_name" content="VisionEdit România" />
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:url" content="https://visionedit.ro/" />
-    <meta property="og:title" content="Agenție Editare Video România – București, Ilfov | VisionEdit" />
-    <meta property="og:description" content="Agenție și studio de editare video din București–Ilfov: TikTok, Instagram Reels, YouTube Shorts, Facebook Ads. De la 185 lei/video, fără TVA. Ofertă gratuită." />
+    <meta property="og:title" content="VisionEdit – Editare Video TikTok, Reels, Shorts, Instagram, Meta Ads" />
+    <meta property="og:description" content="Editare video pentru TikTok, Instagram Reels, YouTube Shorts, Facebook și Meta Ads. Livrare rapidă, de la 185 lei/video, fără TVA. Cere ofertă gratuită." />
     <meta property="og:image" content="https://visionedit.ro/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -73,17 +73,18 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@laur_visionedit" />
-    <meta name="twitter:title" content="Agenție Editare Video România – București, Ilfov | VisionEdit" />
-    <meta name="twitter:description" content="Agenție și studio de editare video din București–Ilfov: TikTok, Instagram Reels, YouTube Shorts, Facebook Ads. De la 185 lei/video, fără TVA. Ofertă gratuită." />
+    <meta name="twitter:title" content="VisionEdit – Editare Video TikTok, Reels, Shorts, Instagram, Meta Ads" />
+    <meta name="twitter:description" content="Editare video pentru TikTok, Instagram Reels, YouTube Shorts, Facebook și Meta Ads. Livrare rapidă, de la 185 lei/video, fără TVA. Cere ofertă gratuită." />
     <meta name="twitter:image" content="https://visionedit.ro/og-image.jpg" />
 
     <link rel="preload" href="/logo.webp" as="image" type="image/webp" fetchpriority="high">
 
     <!-- Preconnect -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Fonturi Google — o singură cerere, non-blocante -->
+    <!-- Fonturi Google — async, nu blochează randarea -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
@@ -190,16 +191,35 @@
     }
     </script>
 
+    <!-- Schema: pagini principale (ajută la sitelinks) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": "https://visionedit.ro/#navigation",
+      "name": "Pagini principale VisionEdit",
+      "itemListElement": [
+        {"@type": "SiteNavigationElement", "position": 1, "name": "Servicii editare video", "url": "https://visionedit.ro/services"},
+        {"@type": "SiteNavigationElement", "position": 2, "name": "Prețuri editare video", "url": "https://visionedit.ro/pricing"},
+        {"@type": "SiteNavigationElement", "position": 3, "name": "Portofoliu", "url": "https://visionedit.ro/portfolio"},
+        {"@type": "SiteNavigationElement", "position": 4, "name": "Cum lucrăm", "url": "https://visionedit.ro/process"},
+        {"@type": "SiteNavigationElement", "position": 5, "name": "Despre VisionEdit", "url": "https://visionedit.ro/about"},
+        {"@type": "SiteNavigationElement", "position": 6, "name": "Întrebări frecvente", "url": "https://visionedit.ro/faq"},
+        {"@type": "SiteNavigationElement", "position": 7, "name": "Contact și ofertă", "url": "https://visionedit.ro/contact"}
+      ]
+    }
+    </script>
     <!-- Schema: WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": "https://visionedit.ro/#website",
-      "name": "VisionEdit România",
+      "name": "VisionEdit",
       "url": "https://visionedit.ro/",
       "publisher": { "@id": "https://visionedit.ro/#organization" },
-      "description": "Servicii profesionale de editare video în România: TikTok, Instagram Reels, Facebook Ads, YouTube Shorts.",
+      "alternateName": ["VisionEdit România", "visionedit.ro"],
+      "description": "Servicii profesionale de editare video în România: TikTok, Instagram Reels, Facebook și Meta Ads, YouTube Shorts.",
       "inLanguage": "ro-RO"
     }
     </script>

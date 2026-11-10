@@ -11,9 +11,9 @@ export interface PageMeta {
 
 export const PAGE_META: Record<string, PageMeta> = {
   '/': {
-    title: 'Agenție Editare Video România – București, Ilfov | VisionEdit',
+    title: 'VisionEdit – Editare Video TikTok, Reels, Shorts, Instagram, Meta Ads',
     description:
-      'Agenție și studio de editare video din București–Ilfov: TikTok, Instagram Reels, YouTube Shorts, Facebook Ads. De la 185 lei/video, fără TVA. Ofertă gratuită.',
+      'Editare video pentru TikTok, Instagram Reels, YouTube Shorts, Facebook și Meta Ads. Livrare rapidă, de la 185 lei/video, fără TVA. Cere ofertă gratuită.',
   },
   '/services': {
     name: 'Servicii',
