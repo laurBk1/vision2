@@ -159,13 +159,20 @@ const CookieBanner = () => {
   return (
     <>
       {/* Overlay care blochează orice interacțiune cu pagina din spate */}
+      {/* Strat static pentru blur + strat separat pentru întunecare (fade) — evită fulgerul pe Firefox */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99998] cookie-overlay-anim"
+        className="fixed inset-0 z-[99998]"
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}
         aria-hidden="true"
         style={{ pointerEvents: 'all' }}
-      />
+      >
+        <div
+          className="absolute inset-0 backdrop-blur-sm"
+          style={{ WebkitBackdropFilter: 'blur(4px)', backdropFilter: 'blur(4px)', transform: 'translateZ(0)' }}
+        />
+        <div className="absolute inset-0 bg-black/60 cookie-overlay-anim" style={{ willChange: 'opacity' }} />
+      </div>
 
       {/* Bannerul cookies */}
       <div className="fixed bottom-0 left-0 right-0 z-[99999] p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
