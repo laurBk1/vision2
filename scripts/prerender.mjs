@@ -23,7 +23,20 @@ const { PAGE_META, NOT_FOUND_META, SITE_URL, breadcrumbSchema, faqSections } =
 
 
 
-const template = readFileSync(resolve(dist, 'index.html'), 'utf-8');
+let template = readFileSync(resolve(dist, 'index.html'), 'utf-8');
+
+// CSS-ul propriu (mic, ~54 KB / 9 KB gzip) se pune direct în HTML: pagina nu mai poate apărea
+// fără stiluri dacă fișierul CSS e întrerupt (ex. refresh-uri repetate în Firefox) și dispare
+// cererea blocantă de randare.
+template = template.replace(
+  /<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/,
+  (_m, href) => {
+    const css = readFileSync(resolve(dist, href.slice(1)), 'utf-8');
+    if (css.includes('</style')) throw new Error('[prerender] CSS conține </style');
+    return `<style>${css}</style>`;
+  }
+);
+if (!template.includes('<style>') ) throw new Error('[prerender] Nu am putut insera CSS-ul inline');
 
 const esc = (t) =>
   String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
