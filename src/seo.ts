@@ -11,15 +11,15 @@ export interface PageMeta {
 
 export const PAGE_META: Record<string, PageMeta> = {
   '/': {
-    title: 'VisionEdit – Editare Video TikTok, Reels, Shorts, Instagram, Meta Ads',
+    title: 'Editare Video Social Media, Reclame & Clipuri Corporate | VisionEdit',
     description:
-      'Editare video pentru TikTok, Instagram Reels, YouTube Shorts, Facebook și Meta Ads. Livrare rapidă, de la 185 lei/video, fără TVA. Cere ofertă gratuită.',
+      'Editare video pentru social media (TikTok, Reels, Shorts), reclame video, prezentări de produse și clipuri corporate. De la 185 lei/video, fără TVA. Cere ofertă.',
   },
   '/services': {
     name: 'Servicii',
     title: 'Servicii Editare Video – TikTok, Reels, Shorts, Ads | VisionEdit',
     description:
-      'Servicii de editare video pentru TikTok, Instagram Reels, Facebook Ads și YouTube Shorts: montaj, subtitrări, sound design, color grading și hook viral. Cere ofertă.',
+      'Servicii de editare video pentru social media, reclame video, prezentări de produse și clipuri corporate: montaj, subtitrări, sound design și color grading. Cere ofertă.',
   },
   '/portfolio': {
     name: 'Portofoliu',
@@ -43,7 +43,7 @@ export const PAGE_META: Record<string, PageMeta> = {
     name: 'Despre noi',
     title: 'Despre VisionEdit – Studio Editare Video București, Ilfov',
     description:
-      'Despre VisionEdit: studio românesc de editare video scurtă pentru TikTok, Reels și Shorts. Cine suntem și cum transformăm clipurile tale în conținut care vinde.',
+      'Despre VisionEdit: studio românesc de editare video pentru social media, reclame, prezentări de produse și clipuri corporate. Cine suntem și cum lucrăm.',
   },
   '/contact': {
     name: 'Contact',

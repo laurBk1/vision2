@@ -1,4 +1,4 @@
-import { Award, Clock, Users, Zap, Clapperboard, Film, Smartphone, Rocket, Instagram, Youtube, Facebook } from 'lucide-react';
+import { Award, Clock, Users, Zap, Instagram, Youtube, Facebook, Smartphone, Megaphone, Building2, Package } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Reveal from '../hooks/Reveal';
 
@@ -119,22 +119,28 @@ const About = ({ asH1 = false }: { asH1?: boolean }) => {
                 Lucrăm cu <strong className="text-gray-900">antreprenori, business-uri, influenceri și creatori de conținut</strong> din beauty, educație, sănătate, imobiliare, comerț și multe altele. Fiecare video este adaptat <strong className="text-gray-900">publicului și obiectivului tău de marketing</strong>.
               </p>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium mb-6">
-                Tu trimiți materialele video — noi livrăm <strong className="text-gray-900">clipurile editate, gata de publicat</strong>.
+                Tu trimiți materialele video — noi livrăm <strong className="text-gray-900">clipurile editate, gata de publicat</strong>, în formatul potrivit fiecărei platforme.
               </p>
-              {/* Key points */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+              {/* Tipuri de videoclipuri */}
+              <h3 className="text-sm font-bold uppercase tracking-wide text-blue-700 mb-3">
+                Editare video profesionistă pentru:
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { icon: Clapperboard, text: 'Editare video profesionistă' },
-                  { icon: Film, text: 'Orice nișă, orice industrie' },
-                  { icon: Smartphone, text: 'Orice format: 9:16, 1:1, 4:5, 16:9' },
-                  { icon: Rocket, text: 'Livrare rapidă, fără complicații' },
+                  { icon: Smartphone, text: 'Social media (Reels, TikTok, Shorts)' },
+                  { icon: Megaphone, text: 'Reclame video și campanii publicitare (Facebook, Instagram, YouTube, TikTok Ads)' },
+                  { icon: Package, text: 'Prezentări de produse și servicii' },
+                  { icon: Building2, text: 'Clipuri corporate și de prezentare a afacerii' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-100">
-                    <item.icon className="h-4 w-4 text-blue-600 flex-shrink-0" />
-                    <span className="text-sm font-semibold text-gray-800">{item.text}</span>
-                  </div>
+                  <li key={i} className="flex items-center gap-3 bg-white rounded-lg px-3 py-2.5 shadow-sm border border-gray-100">
+                    <span className="bg-blue-50 rounded-md p-1.5 flex-shrink-0">
+                      <item.icon aria-hidden="true" className="h-4 w-4 text-blue-600" />
+                    </span>
+                    <span className="text-sm font-semibold text-gray-800 leading-snug">{item.text}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </Reveal>
         </div>

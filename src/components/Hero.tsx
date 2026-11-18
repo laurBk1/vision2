@@ -545,7 +545,7 @@ const Hero = () => {
                     <div className="h-thumb-fade-top" />
                     <div className="h-thumb-fade-right" />
                   </div>
-                  <div className="h-card-title">Editare video profesională</div>
+                  <div className="h-card-title">Editare video pentru social media</div>
                   <p className="h-card-desc">
                     Edităm conținut video profesional pentru orice platformă, gata de publicat.
                   </p>

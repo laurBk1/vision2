@@ -329,7 +329,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
           </div>
           <div className="max-w-3xl mx-auto px-4 mt-6">
             <p className="text-lg md:text-xl text-gray-800 font-semibold leading-tight">
-              Editare profesională pentru <span className="text-blue-700">TikTok, Reels și Shorts</span> + alte formate scurte.
+              Editare video pentru social media: <span className="text-blue-700">TikTok, Reels și Shorts</span> + alte formate scurte.
             </p>
             <p className="text-base md:text-lg text-gray-600 mt-4 leading-relaxed font-medium italic">
               Edităm conținut video care construiește audiențe fidele, generează engagement real și
