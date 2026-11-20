@@ -76,11 +76,31 @@ export const NOT_FOUND_META: PageMeta = {
   description: 'Pagina căutată nu există. Revino la pagina principală VisionEdit.',
 };
 
-/** Normalizează calea: fără trailing slash, fără query/hash, minuscule. */
+/**
+ * Normalizează calea pentru lookup în PAGE_META: fără trailing slash, fără query/hash, minuscule.
+ * `/index.html` și `/<ruta>/index.html` sunt tratate ca ruta lor (altfel clientul le-ar marca
+ * greșit „noindex" și ar șterge canonical-ul).
+ */
 export function normalizePath(pathname: string): string {
   let p = pathname.split('?')[0].split('#')[0].toLowerCase();
+  p = p.replace(/\/index\.html?$/, '/');
   if (p.length > 1) p = p.replace(/\/+$/, '');
   return p || '/';
+}
+
+/**
+ * URL-ul public canonic al unei rute: ÎNTOTDEAUNA cu slash la final.
+ * Motiv: build-ul produce dist/<ruta>/index.html, iar Netlify servește aceste pagini la `/<ruta>/`
+ * și redirecționează `/<ruta>` -> `/<ruta>/`. Canonical, sitemap, schema și linkurile interne
+ * trebuie să indice direct URL-ul final (fără redirect), altfel Google raportează „Page with redirect".
+ */
+export function canonicalPath(path: string): string {
+  const p = normalizePath(path);
+  return p === '/' ? '/' : `${p}/`;
+}
+
+export function canonicalUrl(path: string): string {
+  return `${SITE_URL}${canonicalPath(path)}`;
 }
 
 export function breadcrumbSchema(path: string) {
@@ -89,7 +109,7 @@ export function breadcrumbSchema(path: string) {
   ];
   const meta = PAGE_META[path];
   if (path !== '/' && meta?.name) {
-    items.push({ '@type': 'ListItem', position: 2, name: meta.name, item: `${SITE_URL}${path}` });
+    items.push({ '@type': 'ListItem', position: 2, name: meta.name, item: canonicalUrl(path) });
   }
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
 }

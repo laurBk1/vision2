@@ -409,7 +409,7 @@ const Services = ({ asH1 = false }: { asH1?: boolean }) => {
           </div>
           <div className="text-center mt-8">
             <Link
-              to="/pricing"
+              to="/pricing/"
               className="inline-block font-bold py-3 px-6 rounded-lg text-base text-blue-700 border-2 border-blue-200 bg-white hover:bg-blue-50 transition-colors"
             >
               Vezi pachetele complete și prețurile

@@ -8,7 +8,7 @@ const Footer = () => {
 
   // Navighează la o secțiune folosind <Link> (href real, crawlabil de Google).
   // Dacă suntem deja pe home, interceptăm click-ul și facem scroll în loc de navigare.
-  const handleSectionNav = (e: React.MouseEvent, path: string, sectionId: string) => {
+  const handleSectionNav = (e: React.MouseEvent, _path: string, sectionId: string) => {
     if (location.pathname === '/') {
       const el = document.getElementById(sectionId);
       if (el) {
@@ -73,37 +73,37 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Link-uri rapide</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <Link to="/services" onClick={(e) => handleSectionNav(e, '/services', 'services')} className="hover:text-white transition-colors text-left">
+                <Link to="/services/" onClick={(e) => handleSectionNav(e, '/services', 'services')} className="hover:text-white transition-colors text-left">
                   Servicii
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" onClick={(e) => handleSectionNav(e, '/portfolio', 'portfolio')} className="hover:text-white transition-colors text-left">
+                <Link to="/portfolio/" onClick={(e) => handleSectionNav(e, '/portfolio', 'portfolio')} className="hover:text-white transition-colors text-left">
                   Portofoliu
                 </Link>
               </li>
               <li>
-                <Link to="/process" onClick={(e) => handleSectionNav(e, '/process', 'process')} className="hover:text-white transition-colors text-left">
+                <Link to="/process/" onClick={(e) => handleSectionNav(e, '/process', 'process')} className="hover:text-white transition-colors text-left">
                   Proces
                 </Link>
               </li>
               <li>
-                <Link to="/pricing" onClick={(e) => handleSectionNav(e, '/pricing', 'pricing')} className="hover:text-white transition-colors text-left">
+                <Link to="/pricing/" onClick={(e) => handleSectionNav(e, '/pricing', 'pricing')} className="hover:text-white transition-colors text-left">
                   Prețuri
                 </Link>
               </li>
               <li>
-                <Link to="/about" onClick={(e) => handleSectionNav(e, '/about', 'about')} className="hover:text-white transition-colors text-left">
+                <Link to="/about/" onClick={(e) => handleSectionNav(e, '/about', 'about')} className="hover:text-white transition-colors text-left">
                   Despre
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-white transition-colors text-left">
+                <Link to="/faq/" className="hover:text-white transition-colors text-left">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/contact" onClick={(e) => handleSectionNav(e, '/contact', 'contact')} className="hover:text-white transition-colors text-left">
+                <Link to="/contact/" onClick={(e) => handleSectionNav(e, '/contact', 'contact')} className="hover:text-white transition-colors text-left">
                   Contact
                 </Link>
               </li>
@@ -114,17 +114,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Informații utile</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <Link to="/faq" className="hover:text-white transition-colors text-left">
+                <Link to="/faq/" className="hover:text-white transition-colors text-left">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-white transition-colors text-left">
+                <Link to="/privacy/" className="hover:text-white transition-colors text-left">
                   Confidențialitate și GDPR
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="hover:text-white transition-colors text-left">
+                <Link to="/terms/" className="hover:text-white transition-colors text-left">
                   Termeni și condiții
                 </Link>
               </li>

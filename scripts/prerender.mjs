@@ -18,7 +18,7 @@ const ssrDir = resolve(root, 'dist-ssr');
 
 const { render } = await import(pathToFileURL(resolve(ssrDir, 'entry-server.js')).href);
 
-const { PAGE_META, NOT_FOUND_META, SITE_URL, breadcrumbSchema, faqSections } =
+const { PAGE_META, NOT_FOUND_META, SITE_URL, breadcrumbSchema, canonicalUrl, faqSections } =
   (await import(pathToFileURL(resolve(ssrDir, 'entry-server.js')).href)).meta;
 
 
@@ -64,7 +64,8 @@ function setTag(html, regex, replacement, label) {
 }
 
 function build(path, meta, { index = true } = {}) {
-  const canonical = `${SITE_URL}${path === '/' ? '/' : path}`;
+  // Canonical = URL-ul FINAL, cu slash (Netlify servește dist/<ruta>/index.html la /<ruta>/).
+  const canonical = canonicalUrl(path);
   const appHtml = render(path);
   let html = template;
 
@@ -100,6 +101,19 @@ for (const path of Object.keys(PAGE_META)) {
 }
 // 404 real: Netlify servește dist/404.html cu status 404
 write('404.html', build('/__404__', NOT_FOUND_META, { index: false }));
+
+// sitemap.xml generat din PAGE_META (aceeași sursă ca meta/canonical) => nu poate ieși din sincron
+// cu rutele reale. Conține DOAR URL-urile canonice finale (https, fără www, cu slash).
+const today = new Date().toISOString().slice(0, 10);
+const sitemap =
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  Object.keys(PAGE_META)
+    .map((p) => `  <url>\n    <loc>${canonicalUrl(p)}</loc>\n    <lastmod>${today}</lastmod>\n  </url>\n`)
+    .join('') +
+  '</urlset>\n';
+writeFileSync(resolve(dist, 'sitemap.xml'), sitemap, 'utf-8');
+console.log(`[prerender] dist/sitemap.xml  (${Object.keys(PAGE_META).length} URL-uri)`);
 
 rmSync(ssrDir, { recursive: true, force: true });
 console.log('[prerender] Gata.');

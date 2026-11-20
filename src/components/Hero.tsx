@@ -1,10 +1,15 @@
+import type React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 
 const Hero = () => {
-  const handleViewPortfolio = () => {
+  // Link real (href crawlabil spre /portfolio/); pe homepage interceptăm click-ul și facem scroll lin.
+  const handleViewPortfolio = (e: React.MouseEvent) => {
     const el = document.getElementById('portfolio');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -508,14 +513,14 @@ const Hero = () => {
             </div>
 
             <div className="h-cta">
-              <Link to="/pricing" className="h-btn-primary">
+              <Link to="/pricing/" className="h-btn-primary">
                 <span>Vezi prețurile</span>
                 <ArrowRight size={16} />
               </Link>
-              <button onClick={handleViewPortfolio} className="h-btn-secondary" type="button">
+              <Link to="/portfolio/" onClick={handleViewPortfolio} className="h-btn-secondary">
                 <Play size={15} />
                 <span>Vezi portofoliul</span>
-              </button>
+              </Link>
             </div>
           </div>
 

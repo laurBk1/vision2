@@ -151,7 +151,7 @@ const CookieBanner = () => {
   const handlePrivacyClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    navigate('/privacy');
+    navigate('/privacy/');
   };
 
   if (!visible) return null;

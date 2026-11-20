@@ -86,6 +86,20 @@
   status = 301
   force = true
 
+# /index.html și /<ruta>/index.html sunt duplicate ale URL-urilor canonice -> 301 la versiunea curată.
+# (force = true: fișierele există fizic în dist/, altfel Netlify le-ar servi direct cu 200.)
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*/index.html"
+  to = "/:splat/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "https://celebrated-lebkuchen-782bc0.netlify.app/*"
   to = "https://visionedit.ro/:splat"

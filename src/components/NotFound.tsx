@@ -45,7 +45,7 @@ const NotFound = () => {
           </button>
 
           <button
-            onClick={() => navigate('/pricing')}
+            onClick={() => navigate('/pricing/')}
             className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 border border-white/20"
           >
             <Video className="h-5 w-5" />
@@ -53,7 +53,7 @@ const NotFound = () => {
           </button>
 
           <button
-            onClick={() => navigate('/contact')}
+            onClick={() => navigate('/contact/')}
             className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 border border-white/20"
           >
             <Phone className="h-5 w-5" />

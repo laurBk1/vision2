@@ -16,7 +16,7 @@ import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 import CookieBanner from './components/CookieBanner';
 import NotFound from './components/NotFound';
-import { PAGE_META, NOT_FOUND_META, SITE_URL, normalizePath, breadcrumbSchema } from './seo';
+import { PAGE_META, NOT_FOUND_META, SITE_URL, normalizePath, canonicalUrl, breadcrumbSchema } from './seo';
 
 // ─── Actualizare <head> la navigarea client-side ─────────────────────────────
 // (la încărcarea inițială, HTML-ul prerenderat conține deja valorile corecte)
@@ -44,7 +44,7 @@ function updateHead(rawPath: string) {
   const path = normalizePath(rawPath);
   const known = Object.prototype.hasOwnProperty.call(PAGE_META, path);
   const meta = known ? PAGE_META[path] : NOT_FOUND_META;
-  const canonical = known ? `${SITE_URL}${path === '/' ? '/' : path}` : `${SITE_URL}/`;
+  const canonical = known ? canonicalUrl(path) : `${SITE_URL}/`;
 
   document.title = meta.title;
   setTag('meta[name="description"]', 'content', meta.description, metaByName('description'));

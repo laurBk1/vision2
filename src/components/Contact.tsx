@@ -700,7 +700,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigateToPage('/privacy');
+                      navigateToPage('/privacy/');
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >
@@ -711,7 +711,7 @@ const Contact: React.FC<{ asH1?: boolean }> = ({ asH1 = false }) => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigateToPage('/terms');
+                      navigateToPage('/terms/');
                     }}
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2 inline-block min-h-[44px] min-w-[44px] py-1"
                   >

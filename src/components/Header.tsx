@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { canonicalPath } from '../seo';
 import { Menu, X, Zap, Clapperboard, BookImage, GitMerge, BadgeDollarSign, Users, Mail, ChevronRight, HelpCircle } from 'lucide-react';
 
 const menuButtonStyle = `
@@ -156,7 +157,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
             {navItems.map((item) => (
               <Link
                 key={item.name}
-                to={item.path}
+                to={canonicalPath(item.path)}
                 onClick={(e) => handleSectionNav(e, item.path, item.path.replace('/', ''))}
                 className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold text-sm xl:text-base"
               >
@@ -164,7 +165,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/contact/"
               onClick={(e) => handleSectionNav(e, '/contact', 'contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg font-bold text-sm xl:text-base transition-colors duration-200 flex items-center space-x-2 shadow-lg"
               aria-label="Începe proiectul tău"
@@ -213,7 +214,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
                 return (
                   <Link
                     key={item.name}
-                    to={item.path}
+                    to={canonicalPath(item.path)}
                     onClick={(e) => handleSectionNav(e, item.path, item.path.replace('/', ''))}
                     className="group flex items-center w-full px-5 py-3.5 transition-all duration-200 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                   >
@@ -241,7 +242,7 @@ const Header = ({ isSpecialPage = false }: { isSpecialPage?: boolean; currentPag
               style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(147,51,234,0.08) 100%)' }}
             >
               <Link
-                to="/contact"
+                to="/contact/"
                 onClick={(e) => handleSectionNav(e, '/contact', 'contact')}
                 className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 active:scale-95"
                 style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)', boxShadow: '0 4px 16px rgba(37,99,235,0.35)' }}
